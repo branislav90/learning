@@ -1,0 +1,1 @@
+import{i as e,n as t,t as n}from"./shared-DLjzy5WM.js";var r;e((()=>{n(),r=t+`checkout`}))();export{r as default};

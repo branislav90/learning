@@ -1,0 +1,137 @@
+ experimental_taintUniqueValue – React 
+ (function () {
+ try {
+ let logShown = false;
+ function setUwu(isUwu) {
+ try {
+ if (isUwu) {
+ localStorage.setItem('uwu', true);
+ document.documentElement.classList.add('uwu');
+ if (!logShown) {
+ console.log('uwu mode! turn off with ?uwu=0');
+ console.log('logo credit to @sawaratsuki1004 via https://github.com/SAWARATSUKI/KawaiiLogos');
+ logShown = true;
+ }
+ } else {
+ localStorage.removeItem('uwu');
+ document.documentElement.classList.remove('uwu');
+ console.log('uwu mode off. turn on with ?uwu');
+ }
+ } catch (err) { }
+ }
+ window.__setUwu = setUwu;
+ function checkQueryParam() {
+ const params = new URLSearchParams(window.location.search);
+ const value = params.get('uwu');
+ switch(value) {
+ case '':
+ case 'true':
+ case '1':
+ return true;
+ case 'false':
+ case '0':
+ return false;
+ default:
+ return null;
+ }
+ }
+ function checkLocalStorage() {
+ try {
+ return localStorage.getItem('uwu') === 'true';
+ } catch (err) {
+ return false;
+ }
+ }
+ const uwuQueryParam = checkQueryParam();
+ if (uwuQueryParam != null) {
+ setUwu(uwuQueryParam);
+ } else if (checkLocalStorage()) {
+ document.documentElement.classList.add('uwu');
+ }
+ } catch (err) { }
+ })();
+ 
+ (function () {
+ function setTheme(newTheme) {
+ window.__theme = newTheme;
+ if (newTheme === 'dark') {
+ document.documentElement.classList.add('dark');
+ } else if (newTheme === 'light') {
+ document.documentElement.classList.remove('dark');
+ }
+ }
+ var preferredTheme;
+ try {
+ preferredTheme = localStorage.getItem('theme');
+ } catch (err) { }
+ window.__setPreferredTheme = function(newTheme) {
+ preferredTheme = newTheme;
+ setTheme(newTheme);
+ try {
+ localStorage.setItem('theme', newTheme);
+ } catch (err) { }
+ };
+ var initialTheme = preferredTheme;
+ var darkQuery = window.matchMedia('(prefers-color-scheme: dark)');
+ if (!initialTheme) {
+ initialTheme = darkQuery.matches ? 'dark' : 'light';
+ }
+ setTheme(initialTheme);
+ darkQuery.addEventListener('change', function (e) {
+ if (!preferredTheme) {
+ setTheme(e.matches ? 'dark' : 'light');
+ }
+ });
+ // Detect whether the browser is Mac to display platform specific content
+ // An example of such content can be the keyboard shortcut displayed in the search bar
+ document.documentElement.classList.add(
+ window.navigator.platform.includes('Mac')
+ ? "platform-mac" 
+ : "platform-win"
+ );
+ })();
+ React v 19.3 Search ⌘ Ctrl K Learn Reference Community Blog react@19.3 Overview Hooks useActionState useCallback useContext useDebugValue useDeferredValue useEffect useEffectEvent useId useImperativeHandle useInsertionEffect useLayoutEffect useMemo useOptimistic useReducer useRef useState useSyncExternalStore useTransition Components &lt;Fragment&gt; (&lt;&gt;) &lt;Profiler&gt; &lt;StrictMode&gt; &lt;Suspense&gt; &lt;Activity&gt; &lt;ViewTransition&gt; APIs act addTransitionType cache cacheSignal captureOwnerStack createContext lazy memo startTransition use experimental_taintObjectReference - This feature is available in the latest Experimental version of React experimental_taintUniqueValue - This feature is available in the latest Experimental version of React react-dom@19.3 Hooks useFormStatus Components Common (e.g. &lt;div&gt;) &lt;form&gt; &lt;input&gt; &lt;option&gt; &lt;progress&gt; &lt;select&gt; &lt;textarea&gt; &lt;img&gt; &lt;link&gt; &lt;meta&gt; &lt;script&gt; &lt;style&gt; &lt;title&gt; APIs browser createPortal flushSync preconnect prefetchDNS preinit preinitModule preload preloadModule Client APIs createRoot hydrateRoot Server APIs renderToPipeableStream renderToReadableStream renderToStaticMarkup renderToString resume resumeToPipeableStream Static APIs prerender prerenderToNodeStream resumeAndPrerender resumeAndPrerenderToNodeStream React Compiler Configuration compilationMode gating logger panicThreshold target Directives &quot;use memo&quot; &quot;use no memo&quot; Compiling Libraries React DevTools React Performance tracks React DevTools for agents - This feature is available in the latest Experimental version of React eslint-plugin-react-hooks Lints exhaustive-deps rules-of-hooks component-hook-factories config error-boundaries gating globals immutability incompatible-library preserve-manual-memoization purity refs set-state-in-effect set-state-in-render static-components unsupported-syntax use-memo Rules of React Overview Components and Hooks must be pure React calls Components and Hooks Rules of Hooks React Server Components Server Components Server Functions Directives &#x27;use client&#x27; &#x27;use server&#x27; Legacy APIs Legacy React APIs Children cloneElement Component createElement createRef forwardRef isValidElement PureComponent API Reference APIs Copy page Copy experimental_taintUniqueValue - This feature is available in the latest Experimental version of React Experimental Feature This API is experimental and is not available in a stable version of React yet. You can try it by upgrading React packages to the most recent experimental version: 
+ react@experimental 
+ react-dom@experimental 
+ eslint-plugin-react-hooks@experimental 
+ Experimental versions of React may contain bugs. Don’t use them in production. This API is only available inside React Server Components . 
+ taintUniqueValue lets you prevent unique values from being passed to Client Components like passwords, keys, or tokens. taintUniqueValue ( errMessage , lifetime , value ) To prevent passing an object containing sensitive data, see taintObjectReference . 
+ Reference taintUniqueValue(message, lifetime, value) Usage Prevent a token from being passed to Client Components 
+ 
+ Reference 
+ taintUniqueValue(message, lifetime, value) 
+ Call taintUniqueValue with a password, token, key or hash to register it with React as something that should not be allowed to be passed to the Client as is: 
+ import { experimental_taintUniqueValue } from &#x27;react&#x27; ; experimental_taintUniqueValue ( &#x27;Do not pass secret keys to the client.&#x27; , process , process . env . SECRET_KEY ) ; 
+ See more examples below. 
+ Parameters 
+ 
+ 
+ message : The message you want to display if value is passed to a Client Component. This message will be displayed as a part of the Error that will be thrown if value is passed to a Client Component. 
+ 
+ 
+ lifetime : Any object that indicates how long value should be tainted. value will be blocked from being sent to any Client Component while this object still exists. For example, passing globalThis blocks the value for the lifetime of an app. lifetime is typically an object whose properties contains value . 
+ 
+ 
+ value : A string, bigint or TypedArray. value must be a unique sequence of characters or bytes with high entropy such as a cryptographic token, private key, hash, or a long password. value will be blocked from being sent to any Client Component. 
+ 
+ 
+ Returns 
+ experimental_taintUniqueValue returns undefined . 
+ Caveats 
+ 
+ Deriving new values from tainted values can compromise tainting protection. New values created by uppercasing tainted values, concatenating tainted string values into a larger string, converting tainted values to base64, substringing tainted values, and other similar transformations are not tainted unless you explicitly call taintUniqueValue on these newly created values. 
+ Do not use taintUniqueValue to protect low-entropy values such as PIN codes or phone numbers. If any value in a request is controlled by an attacker, they could infer which value is tainted by enumerating all possible values of the secret. 
+ 
+ 
+ Usage 
+ Prevent a token from being passed to Client Components 
+ To ensure that sensitive information such as passwords, session tokens, or other unique values do not inadvertently get passed to Client Components, the taintUniqueValue function provides a layer of protection. When a value is tainted, any attempt to pass it to a Client Component will result in an error. 
+ The lifetime argument defines the duration for which the value remains tainted. For values that should remain tainted indefinitely, objects like globalThis or process can serve as the lifetime argument. These objects have a lifespan that spans the entire duration of your app’s execution. 
+ import { experimental_taintUniqueValue } from &#x27;react&#x27; ; experimental_taintUniqueValue ( &#x27;Do not pass a user password to the client.&#x27; , globalThis , process . env . SECRET_KEY ) ; 
+ If the tainted value’s lifespan is tied to a object, the lifetime should be the object that encapsulates the value. This ensures the tainted value remains protected for the lifetime of the encapsulating object. 
+ import { experimental_taintUniqueValue } from &#x27;react&#x27; ; export async function getUser ( id ) { const user = await db `SELECT * FROM users WHERE id = ${ id } ` ; experimental_taintUniqueValue ( &#x27;Do not pass a user session token to the client.&#x27; , user , user . session . token ) ; return user ; } 
+ In this example, the user object serves as the lifetime argument. If this object gets stored in a global cache or is accessible by another request, the session token remains tainted. 
+ Pitfall Do not rely solely on tainting for security. Tainting a value doesn’t block every possible derived value. For example, creating a new value by upper casing a tainted string will not taint the new value. import { experimental_taintUniqueValue } from &#x27;react&#x27; ; const password = &#x27;correct horse battery staple&#x27; ; experimental_taintUniqueValue ( &#x27;Do not pass the password to the client.&#x27; , globalThis , password ) ; const uppercasePassword = password . toUpperCase ( ) // `uppercasePassword` is not tainted In this example, the constant password is tainted. Then password is used to create a new value uppercasePassword by calling the toUpperCase method on password . The newly created uppercasePassword is not tainted. Other similar ways of deriving new values from tainted values like concatenating it into a larger string, converting it to base64, or returning a substring create untained values. Tainting only protects against simple mistakes like explicitly passing secret values to the client. Mistakes in calling the taintUniqueValue like using a global store outside of React, without the corresponding lifetime object, can cause the tainted value to become untainted. Tainting is a layer of protection; a secure app will have multiple layers of protection, well designed APIs, and isolation patterns. 
+ Deep Dive Using server-only and taintUniqueValue to prevent leaking secrets Show Details If you’re running a Server Components environment that has access to private keys or passwords such as database passwords, you have to be careful not to pass that to a Client Component. export async function Dashboard ( props ) { // DO NOT DO THIS return &lt; Overview password = { process . env . API_PASSWORD } /&gt; ; } &quot;use client&quot; ; import { useEffect } from &#x27;...&#x27; export async function Overview ( { password } ) { useEffect ( ( ) =&gt; { const headers = { Authorization : password } ; fetch ( url , { headers } ) . then ( ... ) ; } , [ password ] ) ; ... } This example would leak the secret API token to the client. If this API token can be used to access data this particular user shouldn’t have access to, it could lead to a data breach. Ideally, secrets like this are abstracted into a single helper file that can only be imported by trusted data utilities on the server. The helper can even be tagged with server-only to ensure that this file isn’t imported on the client. import &quot;server-only&quot; ; export function fetchAPI ( url ) { const headers = { Authorization : process . env . API_PASSWORD } ; return fetch ( url , { headers } ) ; } Sometimes mistakes happen during refactoring and not all of your colleagues might know about this.
+To protect against this mistakes happening down the line we can “taint” the actual password: import &quot;server-only&quot; ; import { experimental_taintUniqueValue } from &#x27;react&#x27; ; experimental_taintUniqueValue ( &#x27;Do not pass the API token password to the client. &#x27; + &#x27;Instead do all fetches on the server.&#x27; process , process . env . API_PASSWORD ) ; Now whenever anyone tries to pass this password to a Client Component, or send the password to a Client Component with a Server Function, an error will be thrown with message you defined when you called taintUniqueValue . 
+ Previous experimental_taintObjectReference Copyright © Meta Platforms, Inc no uwu plz uwu? Logo by @sawaratsuki1004 Learn React Quick Start Installation Describing the UI Adding Interactivity Managing State Escape Hatches API Reference React APIs React DOM APIs Community Code of Conduct Meet the Team Docs Contributors Acknowledgements More Blog React Native Privacy Terms On this page Overview Reference taintUniqueValue(message, lifetime, value) Usage Prevent a token from being passed to Client Components 

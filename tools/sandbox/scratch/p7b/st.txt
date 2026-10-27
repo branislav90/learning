@@ -1,0 +1,144 @@
+ startTransition – React window.dataLayer = window.dataLayer || [];function gtag(){dataLayer.push(arguments);}gtag('js', new Date());gtag('config', 'G-B1E83PJ3RT'); 
+ (function () {
+ try {
+ let logShown = false;
+ function setUwu(isUwu) {
+ try {
+ if (isUwu) {
+ localStorage.setItem('uwu', true);
+ document.documentElement.classList.add('uwu');
+ if (!logShown) {
+ console.log('uwu mode! turn off with ?uwu=0');
+ console.log('logo credit to @sawaratsuki1004 via https://github.com/SAWARATSUKI/KawaiiLogos');
+ logShown = true;
+ }
+ } else {
+ localStorage.removeItem('uwu');
+ document.documentElement.classList.remove('uwu');
+ console.log('uwu mode off. turn on with ?uwu');
+ }
+ } catch (err) { }
+ }
+ window.__setUwu = setUwu;
+ function checkQueryParam() {
+ const params = new URLSearchParams(window.location.search);
+ const value = params.get('uwu');
+ switch(value) {
+ case '':
+ case 'true':
+ case '1':
+ return true;
+ case 'false':
+ case '0':
+ return false;
+ default:
+ return null;
+ }
+ }
+ function checkLocalStorage() {
+ try {
+ return localStorage.getItem('uwu') === 'true';
+ } catch (err) {
+ return false;
+ }
+ }
+ const uwuQueryParam = checkQueryParam();
+ if (uwuQueryParam != null) {
+ setUwu(uwuQueryParam);
+ } else if (checkLocalStorage()) {
+ document.documentElement.classList.add('uwu');
+ }
+ } catch (err) { }
+ })();
+ 
+ (function () {
+ function setTheme(newTheme) {
+ window.__theme = newTheme;
+ if (newTheme === 'dark') {
+ document.documentElement.classList.add('dark');
+ } else if (newTheme === 'light') {
+ document.documentElement.classList.remove('dark');
+ }
+ }
+
+ var preferredTheme;
+ try {
+ preferredTheme = localStorage.getItem('theme');
+ } catch (err) { }
+
+ window.__setPreferredTheme = function(newTheme) {
+ preferredTheme = newTheme;
+ setTheme(newTheme);
+ try {
+ localStorage.setItem('theme', newTheme);
+ } catch (err) { }
+ };
+
+ var initialTheme = preferredTheme;
+ var darkQuery = window.matchMedia('(prefers-color-scheme: dark)');
+
+ if (!initialTheme) {
+ initialTheme = darkQuery.matches ? 'dark' : 'light';
+ }
+ setTheme(initialTheme);
+
+ darkQuery.addEventListener('change', function (e) {
+ if (!preferredTheme) {
+ setTheme(e.matches ? 'dark' : 'light');
+ }
+ });
+
+ // Detect whether the browser is Mac to display platform specific content
+ // An example of such content can be the keyboard shortcut displayed in the search bar
+ document.documentElement.classList.add(
+ window.navigator.platform.includes('Mac')
+ ? "platform-mac" 
+ : "platform-win"
+ );
+ })();
+ React v 19.3 Search ⌘ Ctrl K Learn Reference Community Blog react@19.3 Overview Hooks useActionState useCallback useContext useDebugValue useDeferredValue useEffect useEffectEvent useId useImperativeHandle useInsertionEffect useLayoutEffect useMemo useOptimistic useReducer useRef useState useSyncExternalStore useTransition Components &lt;Fragment&gt; (&lt;&gt;) &lt;Profiler&gt; &lt;StrictMode&gt; &lt;Suspense&gt; &lt;Activity&gt; &lt;ViewTransition&gt; APIs act addTransitionType cache cacheSignal captureOwnerStack createContext lazy memo startTransition use experimental_taintObjectReference - This feature is available in the latest Experimental version of React experimental_taintUniqueValue - This feature is available in the latest Experimental version of React react-dom@19.3 Hooks useFormStatus Components Common (e.g. &lt;div&gt;) &lt;form&gt; &lt;input&gt; &lt;option&gt; &lt;progress&gt; &lt;select&gt; &lt;textarea&gt; &lt;img&gt; &lt;link&gt; &lt;meta&gt; &lt;script&gt; &lt;style&gt; &lt;title&gt; APIs browser createPortal flushSync preconnect prefetchDNS preinit preinitModule preload preloadModule Client APIs createRoot hydrateRoot Server APIs renderToPipeableStream renderToReadableStream renderToStaticMarkup renderToString resume resumeToPipeableStream Static APIs prerender prerenderToNodeStream resumeAndPrerender resumeAndPrerenderToNodeStream React Compiler Configuration compilationMode gating logger panicThreshold target Directives &quot;use memo&quot; &quot;use no memo&quot; Compiling Libraries React DevTools React Performance tracks React DevTools for agents - This feature is available in the latest Experimental version of React eslint-plugin-react-hooks Lints exhaustive-deps rules-of-hooks component-hook-factories config error-boundaries gating globals immutability incompatible-library preserve-manual-memoization purity refs set-state-in-effect set-state-in-render static-components unsupported-syntax use-memo Rules of React Overview Components and Hooks must be pure React calls Components and Hooks Rules of Hooks React Server Components Server Components Server Functions Directives &#x27;use client&#x27; &#x27;use server&#x27; Legacy APIs Legacy React APIs Children cloneElement Component createElement createRef forwardRef isValidElement PureComponent API Reference APIs Copy page Copy startTransition startTransition lets you render a part of the UI in the background. startTransition ( action ) 
+ Reference startTransition(action) Usage Marking a state update as a non-blocking Transition 
+ 
+ Reference 
+ startTransition(action) 
+ The startTransition function lets you mark a state update as a Transition. 
+ import { startTransition } from &#x27;react&#x27; ; function TabContainer ( ) { const [ tab , setTab ] = useState ( &#x27;about&#x27; ) ; function selectTab ( nextTab ) { startTransition ( ( ) =&gt; { setTab ( nextTab ) ; } ) ; } // ... } 
+ See more examples below. 
+ Parameters 
+ 
+ action : A function that updates some state by calling one or more set functions . React calls action immediately with no parameters and marks all state updates scheduled synchronously during the action function call as Transitions. Any async calls awaited in the action will be included in the transition, but currently require wrapping any set functions after the await in an additional startTransition (see Troubleshooting ). State updates marked as Transitions will be non-blocking and will not display unwanted loading indicators. . 
+ 
+ Returns 
+ startTransition does not return anything. 
+ Caveats 
+ 
+ 
+ startTransition does not provide a way to track whether a Transition is pending. To show a pending indicator while the Transition is ongoing, you need useTransition instead. 
+ 
+ 
+ You can wrap an update into a Transition only if you have access to the set function of that state. If you want to start a Transition in response to some prop or a custom Hook return value, try useDeferredValue instead. 
+ 
+ 
+ The function you pass to startTransition is called immediately, marking all state updates that happen while it executes as Transitions. If you try to perform state updates in a setTimeout , for example, they won’t be marked as Transitions. 
+ 
+ 
+ You must wrap any state updates after any async requests in another startTransition to mark them as Transitions. This is a known limitation that we will fix in the future (see Troubleshooting ). 
+ 
+ 
+ A state update marked as a Transition will be interrupted by other state updates. For example, if you update a chart component inside a Transition, but then start typing into an input while the chart is in the middle of a re-render, React will restart the rendering work on the chart component after handling the input state update. 
+ 
+ 
+ Transition updates can’t be used to control text inputs. 
+ 
+ 
+ If there are multiple ongoing Transitions, React currently batches them together. This is a limitation that may be removed in a future release. 
+ 
+ 
+ 
+ Usage 
+ Marking a state update as a non-blocking Transition 
+ You can mark a state update as a Transition by wrapping it in a startTransition call: 
+ import { startTransition } from &#x27;react&#x27; ; function TabContainer ( ) { const [ tab , setTab ] = useState ( &#x27;about&#x27; ) ; function selectTab ( nextTab ) { startTransition ( ( ) =&gt; { setTab ( nextTab ) ; } ) ; } // ... } 
+ Transitions let you keep the user interface updates responsive even on slow devices. 
+ With a Transition, your UI stays responsive in the middle of a re-render. For example, if the user clicks a tab but then change their mind and click another tab, they can do that without waiting for the first re-render to finish. 
+ Note startTransition is very similar to useTransition , except that it does not provide the isPending flag to track whether a Transition is ongoing. The standalone function is also not associated with a component, so if the function passed to it throws an error or returns a rejected Promise, React reports the error with reportError . You can call startTransition when useTransition is not available. For example, startTransition works outside components, such as from a data library. Learn about Transitions and see examples on the useTransition page. Previous memo Next use Copyright © Meta Platforms, Inc no uwu plz uwu? Logo by @sawaratsuki1004 Learn React Quick Start Installation Describing the UI Adding Interactivity Managing State Escape Hatches API Reference React APIs React DOM APIs Community Code of Conduct Meet the Team Docs Contributors Acknowledgements More Blog React Native Privacy Terms On this page Overview Reference startTransition(action) Usage Marking a state update as a non-blocking Transition {"props":{"pageProps":{"toc":"[{\"url\":\"#\",\"text\":\"Overview\",\"depth\":2},{\"url\":\"#reference\",\"depth\":2,\"text\":\"Reference \"},{\"url\":\"#starttransition\",\"depth\":3,\"text\":[[\"$r\",\"code\",null,{\"children\":\"startTransition(action)\"}],\" \"]},{\"url\":\"#usage\",\"depth\":2,\"text\":\"Usage \"},{\"url\":\"#marking-a-state-update-as-a-non-blocking-transition\",\"depth\":3,\"text\":\"Marking a state update as a non-blocking Transition \"}]","content":"[[\"$r\",\"MaxWidth\",\"last\",{\"children\":[[\"$r\",\"Intro\",null,{\"children\":[[\"$r\",\"p\",null,{\"children\":[[\"$r\",\"code\",null,{\"children\":\"startTransition\"}],\" lets you render a part of the UI in the background.\"]}],[\"$r\",\"pre\",null,{\"children\":[\"$r\",\"code\",null,{\"className\":\"language-js\",\"children\":\"startTransition(action)\\n\"}]}]]}],\"\\n\",[\"$r\",\"InlineToc\",null,{}],\"\\n\",[\"$r\",\"hr\",null,{}],\"\\n\",[\"$r\",\"h2\",null,{\"id\":\"reference\",\"children\":\"Reference \"}],\"\\n\",[\"$r\",\"h3\",null,{\"id\":\"starttransition\",\"children\":[[\"$r\",\"code\",null,{\"children\":\"startTransition(action)\"}],\" \"]}],\"\\n\",[\"$r\",\"p\",null,{\"children\":[\"The \",[\"$r\",\"code\",null,{\"children\":\"startTransition\"}],\" function lets you mark a state update as a Transition.\"]}],\"\\n\",[\"$r\",\"pre\",null,{\"children\":[\"$r\",\"code\",null,{\"className\":\"language-js\",\"meta\":\"{7,9}\",\"children\":\"import { startTransition } from 'react';\\n\\nfunction TabContainer() {\\n const [tab, setTab] = useState('about');\\n\\n function selectTab(nextTab) {\\n startTransition(() =\u003e {\\n setTab(nextTab);\\n });\\n }\\n // ...\\n}\\n\"}]}],\"\\n\",[\"$r\",\"p\",null,{\"children\":[\"$r\",\"a\",null,{\"href\":\"#usage\",\"children\":\"See more examples below.\"}]}],\"\\n\",[\"$r\",\"h4\",null,{\"id\":\"parameters\",\"children\":\"Parameters \"}],\"\\n\",[\"$r\",\"ul\",null,{\"children\":[\"\\n\",[\"$r\",\"li\",null,{\"children\":[[\"$r\",\"code\",null,{\"children\":\"action\"}],\": A function that updates some state by calling one or more \",[\"$r\",\"a\",null,{\"href\":\"/reference/react/useState#setstate\",\"children\":[[\"$r\",\"code\",null,{\"children\":\"set\"}],\" functions\"]}],\". React calls \",[\"$r\",\"code\",null,{\"children\":\"action\"}],\" immediately with no parameters and marks all state updates scheduled synchronously during the \",[\"$r\",\"code\",null,{\"children\":\"action\"}],\" function call as Transitions. Any async calls awaited in the \",[\"$r\",\"code\",null,{\"children\":\"action\"}],\" will be included in the transition, but currently require wrapping any \",[\"$r\",\"code\",null,{\"children\":\"set\"}],\" functions after the \",[\"$r\",\"code\",null,{\"children\":\"await\"}],\" in an additional \",[\"$r\",\"code\",null,{\"children\":\"startTransition\"}],\" (see \",[\"$r\",\"a\",null,{\"href\":\"/reference/react/useTransition#react-doesnt-treat-my-state-update-after-await-as-a-transition\",\"children\":\"Troubleshooting\"}],\"). State updates marked as Transitions will be \",[\"$r\",\"a\",null,{\"href\":\"#marking-a-state-update-as-a-non-blocking-transition\",\"children\":\"non-blocking\"}],\" and \",[\"$r\",\"a\",null,{\"href\":\"/reference/react/useTransition#preventing-unwanted-loading-indicators\",\"children\":\"will not display unwanted loading indicators.\"}],\".\"]}],\"\\n\"]}],\"\\n\",[\"$r\",\"h4\",null,{\"id\":\"returns\",\"children\":\"Returns \"}],\"\\n\",[\"$r\",\"p\",null,{\"children\":[[\"$r\",\"code\",null,{\"children\":\"startTransition\"}],\" does not return anything.\"]}],\"\\n\",[\"$r\",\"h4\",null,{\"id\":\"caveats\",\"children\":\"Caveats \"}],\"\\n\",[\"$r\",\"ul\",null,{\"children\":[\"\\n\",[\"$r\",\"li\",null,{\"children\":[\"\\n\",[\"$r\",\"p\",null,{\"children\":[[\"$r\",\"code\",null,{\"children\":\"startTransition\"}],\" does not provide a way to track whether a Transition is pending. To show a pending indicator while the Transition is ongoing, you need \",[\"$r\",\"a\",null,{\"href\":\"/reference/react/useTransition\",\"children\":[\"$r\",\"code\",null,{\"children\":\"useTransition\"}]}],\" instead.\"]}],\"\\n\"]}],\"\\n\",[\"$r\",\"li\",null,{\"children\":[\"\\n\",[\"$r\",\"p\",null,{\"children\":[\"You can wrap an update into a Transition only if you have access to the \",[\"$r\",\"code\",null,{\"children\":\"set\"}],\" function of that state. If you want to start a Transition in response to some prop or a custom Hook return value, try \",[\"$r\",\"a\",null,{\"href\":\"/reference/react/useDeferredValue\",\"children\":[\"$r\",\"code\",null,{\"children\":\"useDeferredValue\"}]}],\" instead.\"]}],\"\\n\"]}],\"\\n\",[\"$r\",\"li\",null,{\"children\":[\"\\n\",[\"$r\",\"p\",null,{\"children\":[\"The function you pass to \",[\"$r\",\"code\",null,{\"children\":\"startTransition\"}],\" is called immediately, marking all state updates that happen while it executes as Transitions. If you try to perform state updates in a \",[\"$r\",\"code\",null,{\"children\":\"setTimeout\"}],\", for example, they won’t be marked as Transitions.\"]}],\"\\n\"]}],\"\\n\",[\"$r\",\"li\",null,{\"children\":[\"\\n\",[\"$r\",\"p\",null,{\"children\":[\"You must wrap any state updates after any async requests in another \",[\"$r\",\"code\",null,{\"children\":\"startTransition\"}],\" to mark them as Transitions. This is a known limitation that we will fix in the future (see \",[\"$r\",\"a\",null,{\"href\":\"/reference/react/useTransition#react-doesnt-treat-my-state-update-after-await-as-a-transition\",\"children\":\"Troubleshooting\"}],\").\"]}],\"\\n\"]}],\"\\n\",[\"$r\",\"li\",null,{\"children\":[\"\\n\",[\"$r\",\"p\",null,{\"children\":\"A state update marked as a Transition will be interrupted by other state updates. For example, if you update a chart component inside a Transition, but then start typing into an input while the chart is in the middle of a re-render, React will restart the rendering work on the chart component after handling the input state update.\"}],\"\\n\"]}],\"\\n\",[\"$r\",\"li\",null,{\"children\":[\"\\n\",[\"$r\",\"p\",null,{\"children\":\"Transition updates can’t be used to control text inputs.\"}],\"\\n\"]}],\"\\n\",[\"$r\",\"li\",null,{\"children\":[\"\\n\",[\"$r\",\"p\",null,{\"children\":\"If there are multiple ongoing Transitions, React currently batches them together. This is a limitation that may be removed in a future release.\"}],\"\\n\"]}],\"\\n\"]}],\"\\n\",[\"$r\",\"hr\",null,{}],\"\\n\",[\"$r\",\"h2\",null,{\"id\":\"usage\",\"children\":\"Usage \"}],\"\\n\",[\"$r\",\"h3\",null,{\"id\":\"marking-a-state-update-as-a-non-blocking-transition\",\"children\":\"Marking a state update as a non-blocking Transition \"}],\"\\n\",[\"$r\",\"p\",null,{\"children\":[\"You can mark a state update as a \",[\"$r\",\"em\",null,{\"children\":\"Transition\"}],\" by wrapping it in a \",[\"$r\",\"code\",null,{\"children\":\"startTransition\"}],\" call:\"]}],\"\\n\",[\"$r\",\"pre\",null,{\"children\":[\"$r\",\"code\",null,{\"className\":\"language-js\",\"meta\":\"{7,9}\",\"children\":\"import { startTransition } from 'react';\\n\\nfunction TabContainer() {\\n const [tab, setTab] = useState('about');\\n\\n function selectTab(nextTab) {\\n startTransition(() =\u003e {\\n setTab(nextTab);\\n });\\n }\\n // ...\\n}\\n\"}]}],\"\\n\",[\"$r\",\"p\",null,{\"children\":\"Transitions let you keep the user interface updates responsive even on slow devices.\"}],\"\\n\",[\"$r\",\"p\",null,{\"children\":\"With a Transition, your UI stays responsive in the middle of a re-render. For example, if the user clicks a tab but then change their mind and click another tab, they can do that without waiting for the first re-render to finish.\"}],\"\\n\",[\"$r\",\"Note\",null,{\"children\":[[\"$r\",\"p\",null,{\"children\":[[\"$r\",\"code\",null,{\"children\":\"startTransition\"}],\" is very similar to \",[\"$r\",\"a\",null,{\"href\":\"/reference/react/useTransition\",\"children\":[\"$r\",\"code\",null,{\"children\":\"useTransition\"}]}],\", except that it does not provide the \",[\"$r\",\"code\",null,{\"children\":\"isPending\"}],\" flag to track whether a Transition is ongoing. The standalone function is also not associated with a component, so if the function passed to it throws an error or returns a rejected Promise, React reports the error with \",[\"$r\",\"a\",null,{\"href\":\"https://developer.mozilla.org/en-US/docs/Web/API/Window/reportError\",\"target\":\"_blank\",\"rel\":\"nofollow noopener noreferrer\",\"children\":[\"$r\",\"code\",null,{\"children\":\"reportError\"}]}],\". You can call \",[\"$r\",\"code\",null,{\"children\":\"startTransition\"}],\" when \",[\"$r\",\"code\",null,{\"children\":\"useTransition\"}],\" is not available. For example, \",[\"$r\",\"code\",null,{\"children\":\"startTransition\"}],\" works outside components, such as from a data library.\"]}],[\"$r\",\"p\",null,{\"children\":[\"$r\",\"a\",null,{\"href\":\"/reference/react/useTransition\",\"children\":[\"Learn about Transitions and see examples on the \",[\"$r\",\"code\",null,{\"children\":\"useTransition\"}],\" page.\"]}]}]]}]]}]]","meta":{"title":"startTransition"},"languages":null},"__N_SSG":true},"page":"/[[...markdownPath]]","query":{"markdownPath":["reference","react","startTransition"]},"buildId":"iL-S_VcpSPApikCxaBjlp","isFallback":false,"gsp":true,"scriptLoader":[]} 

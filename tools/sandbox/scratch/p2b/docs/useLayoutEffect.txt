@@ -1,0 +1,245 @@
+ useLayoutEffect – React 
+ (function () {
+ try {
+ let logShown = false;
+ function setUwu(isUwu) {
+ try {
+ if (isUwu) {
+ localStorage.setItem('uwu', true);
+ document.documentElement.classList.add('uwu');
+ if (!logShown) {
+ console.log('uwu mode! turn off with ?uwu=0');
+ console.log('logo credit to @sawaratsuki1004 via https://github.com/SAWARATSUKI/KawaiiLogos');
+ logShown = true;
+ }
+ } else {
+ localStorage.removeItem('uwu');
+ document.documentElement.classList.remove('uwu');
+ console.log('uwu mode off. turn on with ?uwu');
+ }
+ } catch (err) { }
+ }
+ window.__setUwu = setUwu;
+ function checkQueryParam() {
+ const params = new URLSearchParams(window.location.search);
+ const value = params.get('uwu');
+ switch(value) {
+ case '':
+ case 'true':
+ case '1':
+ return true;
+ case 'false':
+ case '0':
+ return false;
+ default:
+ return null;
+ }
+ }
+ function checkLocalStorage() {
+ try {
+ return localStorage.getItem('uwu') === 'true';
+ } catch (err) {
+ return false;
+ }
+ }
+ const uwuQueryParam = checkQueryParam();
+ if (uwuQueryParam != null) {
+ setUwu(uwuQueryParam);
+ } else if (checkLocalStorage()) {
+ document.documentElement.classList.add('uwu');
+ }
+ } catch (err) { }
+ })();
+ 
+ (function () {
+ function setTheme(newTheme) {
+ window.__theme = newTheme;
+ if (newTheme === 'dark') {
+ document.documentElement.classList.add('dark');
+ } else if (newTheme === 'light') {
+ document.documentElement.classList.remove('dark');
+ }
+ }
+ var preferredTheme;
+ try {
+ preferredTheme = localStorage.getItem('theme');
+ } catch (err) { }
+ window.__setPreferredTheme = function(newTheme) {
+ preferredTheme = newTheme;
+ setTheme(newTheme);
+ try {
+ localStorage.setItem('theme', newTheme);
+ } catch (err) { }
+ };
+ var initialTheme = preferredTheme;
+ var darkQuery = window.matchMedia('(prefers-color-scheme: dark)');
+ if (!initialTheme) {
+ initialTheme = darkQuery.matches ? 'dark' : 'light';
+ }
+ setTheme(initialTheme);
+ darkQuery.addEventListener('change', function (e) {
+ if (!preferredTheme) {
+ setTheme(e.matches ? 'dark' : 'light');
+ }
+ });
+ // Detect whether the browser is Mac to display platform specific content
+ // An example of such content can be the keyboard shortcut displayed in the search bar
+ document.documentElement.classList.add(
+ window.navigator.platform.includes('Mac')
+ ? "platform-mac" 
+ : "platform-win"
+ );
+ })();
+ React v 19.3 Search ⌘ Ctrl K Learn Reference Community Blog react@19.3 Overview Hooks useActionState useCallback useContext useDebugValue useDeferredValue useEffect useEffectEvent useId useImperativeHandle useInsertionEffect useLayoutEffect useMemo useOptimistic useReducer useRef useState useSyncExternalStore useTransition Components <Fragment> (<>) <Profiler> <StrictMode> <Suspense> <Activity> <ViewTransition> APIs act addTransitionType cache cacheSignal captureOwnerStack createContext lazy memo startTransition use experimental_taintObjectReference - This feature is available in the latest Experimental version of React experimental_taintUniqueValue - This feature is available in the latest Experimental version of React react-dom@19.3 Hooks useFormStatus Components Common (e.g. <div>) <form> <input> <option> <progress> <select> <textarea> <img> <link> <meta> <script> <style> <title> APIs browser createPortal flushSync preconnect prefetchDNS preinit preinitModule preload preloadModule Client APIs createRoot hydrateRoot Server APIs renderToPipeableStream renderToReadableStream renderToStaticMarkup renderToString resume resumeToPipeableStream Static APIs prerender prerenderToNodeStream resumeAndPrerender resumeAndPrerenderToNodeStream React Compiler Configuration compilationMode gating logger panicThreshold target Directives "use memo" "use no memo" Compiling Libraries React DevTools React Performance tracks React DevTools for agents - This feature is available in the latest Experimental version of React eslint-plugin-react-hooks Lints exhaustive-deps rules-of-hooks component-hook-factories config error-boundaries gating globals immutability incompatible-library preserve-manual-memoization purity refs set-state-in-effect set-state-in-render static-components unsupported-syntax use-memo Rules of React Overview Components and Hooks must be pure React calls Components and Hooks Rules of Hooks React Server Components Server Components Server Functions Directives 'use client' 'use server' Legacy APIs Legacy React APIs Children cloneElement Component createElement createRef forwardRef isValidElement PureComponent API Reference Hooks Copy page Copy useLayoutEffect Pitfall useLayoutEffect can hurt performance. Prefer useEffect when possible. 
+ useLayoutEffect is a version of useEffect that fires before the browser repaints the screen. useLayoutEffect ( setup , dependencies ? ) 
+ Reference useLayoutEffect(setup, dependencies?) Usage Measuring layout before the browser repaints the screen Troubleshooting I’m getting an error: “ useLayoutEffect does nothing on the server” 
+ 
+ Reference 
+ useLayoutEffect(setup, dependencies?) 
+ Call useLayoutEffect to perform the layout measurements before the browser repaints the screen: 
+ import { useState , useRef , useLayoutEffect } from 'react' ; function Tooltip ( ) { const ref = useRef ( null ) ; const [ tooltipHeight , setTooltipHeight ] = useState ( 0 ) ; useLayoutEffect ( ( ) => { const { height } = ref . current . getBoundingClientRect ( ) ; setTooltipHeight ( height ) ; } , [ ] ) ; // ... 
+ See more examples below. 
+ Parameters 
+ 
+ 
+ setup : The function with your Effect’s logic. Your setup function may also optionally return a cleanup function. After your component commits to the DOM and before the browser repaints the screen, React will run your setup function. After every commit with changed dependencies, React will first run the cleanup function (if you provided it) with the old values, and then run your setup function with the new values. Before your component is removed from the DOM, React will run your cleanup function. 
+ 
+ 
+ optional dependencies : The list of all reactive values referenced inside of the setup code. Reactive values include props, state, and all the variables and functions declared directly inside your component body. If your linter is configured for React , it will verify that every reactive value is correctly specified as a dependency. The list of dependencies must have a constant number of items and be written inline like [dep1, dep2, dep3] . React will compare each dependency with its previous value using the Object.is comparison. If you omit this argument, your Effect will re-run after every commit of the component. 
+ 
+ 
+ Returns 
+ useLayoutEffect returns undefined . 
+ Caveats 
+ 
+ 
+ useLayoutEffect is a Hook, so you can only call it at the top level of your component or your own Hooks. You can’t call it inside loops or conditions. If you need that, extract a component and move the Effect there. 
+ 
+ 
+ When Strict Mode is on, React will run one extra development-only setup+cleanup cycle before the first real setup. This is a stress-test that ensures that your cleanup logic “mirrors” your setup logic and that it stops or undoes whatever the setup is doing. If this causes a problem, implement the cleanup function. 
+ 
+ 
+ If some of your dependencies are objects or functions defined inside the component, there is a risk that they will cause the Effect to re-run more often than needed. To fix this, remove unnecessary object and function dependencies. You can also extract state updates and non-reactive logic outside of your Effect. 
+ 
+ 
+ Effects only run on the client. They don’t run during server rendering. 
+ 
+ 
+ The code inside useLayoutEffect and all state updates scheduled from it block the browser from repainting the screen. When used excessively, this makes your app slow. When possible, prefer useEffect . 
+ 
+ 
+ If you trigger a state update inside useLayoutEffect , React will execute all remaining Effects immediately including useEffect . 
+ 
+ 
+ 
+ Usage 
+ Measuring layout before the browser repaints the screen 
+ Most components don’t need to know their position and size on the screen to decide what to render. They only return some JSX. Then the browser calculates their layout (position and size) and repaints the screen. 
+ Sometimes, that’s not enough. Imagine a tooltip that appears next to some element on hover. If there’s enough space, the tooltip should appear above the element, but if it doesn’t fit, it should appear below. In order to render the tooltip at the right final position, you need to know its height (i.e. whether it fits at the top). 
+ To do this, you need to render in two passes: 
+ 
+ Render the tooltip anywhere (even with a wrong position). 
+ Measure its height and decide where to place the tooltip. 
+ Render the tooltip again in the correct place. 
+ 
+ All of this needs to happen before the browser repaints the screen. You don’t want the user to see the tooltip moving. Call useLayoutEffect to perform the layout measurements before the browser repaints the screen: 
+ function Tooltip ( ) { const ref = useRef ( null ) ; const [ tooltipHeight , setTooltipHeight ] = useState ( 0 ) ; // You don't know real height yet useLayoutEffect ( ( ) => { const { height } = ref . current . getBoundingClientRect ( ) ; setTooltipHeight ( height ) ; // Re-render now that you know the real height } , [ ] ) ; // ...use tooltipHeight in the rendering logic below... } 
+ Here’s how this works step by step: 
+ 
+ Tooltip renders with the initial tooltipHeight = 0 (so the tooltip may be wrongly positioned). 
+ React places it in the DOM and runs the code in useLayoutEffect . 
+ Your useLayoutEffect measures the height of the tooltip content and triggers an immediate re-render. 
+ Tooltip renders again with the real tooltipHeight (so the tooltip is correctly positioned). 
+ React updates it in the DOM, and the browser finally displays the tooltip. 
+ 
+ Hover over the buttons below and see how the tooltip adjusts its position depending on whether it fits: 
+ App.js ButtonWithTooltip.js Tooltip.js TooltipContainer.js Tooltip.js Reload Clear Fork import { useRef , useLayoutEffect , useState } from 'react' ; 
+ import { createPortal } from 'react-dom' ; 
+ import TooltipContainer from './TooltipContainer.js' ; 
+ export default function Tooltip ( { children , targetRect } ) { 
+ const ref = useRef ( null ) ; 
+ const [ tooltipHeight , setTooltipHeight ] = useState ( 0 ) ; 
+ useLayoutEffect ( ( ) => { 
+ const { height } = ref . current . getBoundingClientRect ( ) ; 
+ setTooltipHeight ( height ) ; 
+ console . log ( 'Measured tooltip height: ' + height ) ; 
+ } , [ ] ) ; 
+ let tooltipX = 0 ; 
+ let tooltipY = 0 ; 
+ if ( targetRect !== null ) { 
+ tooltipX = targetRect . left ; 
+ tooltipY = targetRect . top - tooltipHeight ; 
+ if ( tooltipY < 0 ) { 
+ // It doesn't fit above, so place below. 
+ tooltipY = targetRect . bottom ; 
+ } 
+ } 
+ return createPortal ( 
+ < TooltipContainer x = { tooltipX } y = { tooltipY } contentRef = { ref } > 
+ { children } 
+ </ TooltipContainer > , 
+ document . body 
+ ) ; 
+ } 
+ Show more 
+ Notice that even though the Tooltip component has to render in two passes (first, with tooltipHeight initialized to 0 and then with the real measured height), you only see the final result. This is why you need useLayoutEffect instead of useEffect for this example. Let’s look at the difference in detail below. 
+ useLayoutEffect vs useEffect 1 . useLayoutEffect blocks the browser from repainting 2 . useEffect does not block the browser Example 1 of 2 : useLayoutEffect blocks the browser from repainting React guarantees that the code inside useLayoutEffect and any state updates scheduled inside it will be processed before the browser repaints the screen. This lets you render the tooltip, measure it, and re-render the tooltip again without the user noticing the first extra render. In other words, useLayoutEffect blocks the browser from painting. App.js ButtonWithTooltip.js Tooltip.js TooltipContainer.js Tooltip.js Reload Clear Fork import { useRef , useLayoutEffect , useState } from 'react' ; 
+ import { createPortal } from 'react-dom' ; 
+ import TooltipContainer from './TooltipContainer.js' ; 
+ export default function Tooltip ( { children , targetRect } ) { 
+ const ref = useRef ( null ) ; 
+ const [ tooltipHeight , setTooltipHeight ] = useState ( 0 ) ; 
+ useLayoutEffect ( ( ) => { 
+ const { height } = ref . current . getBoundingClientRect ( ) ; 
+ setTooltipHeight ( height ) ; 
+ } , [ ] ) ; 
+ let tooltipX = 0 ; 
+ let tooltipY = 0 ; 
+ if ( targetRect !== null ) { 
+ tooltipX = targetRect . left ; 
+ tooltipY = targetRect . top - tooltipHeight ; 
+ if ( tooltipY < 0 ) { 
+ // It doesn't fit above, so place below. 
+ tooltipY = targetRect . bottom ; 
+ } 
+ } 
+ return createPortal ( 
+ < TooltipContainer x = { tooltipX } y = { tooltipY } contentRef = { ref } > 
+ { children } 
+ </ TooltipContainer > , 
+ document . body 
+ ) ; 
+ } 
+ Show more Next Example 
+ Note Rendering in two passes and blocking the browser hurts performance. Try to avoid this when you can. 
+ 
+ Troubleshooting 
+ I’m getting an error: “ useLayoutEffect does nothing on the server” 
+ The purpose of useLayoutEffect is to let your component use layout information for rendering: 
+ 
+ Render the initial content. 
+ Measure the layout before the browser repaints the screen. 
+ Render the final content using the layout information you’ve read. 
+ 
+ When you or your framework uses server rendering , your React app renders to HTML on the server for the initial render. This lets you show the initial HTML before the JavaScript code loads. 
+ The problem is that on the server, there is no layout information. 
+ In the earlier example , the useLayoutEffect call in the Tooltip component lets it position itself correctly (either above or below content) depending on the content height. If you tried to render Tooltip as a part of the initial server HTML, this would be impossible to determine. On the server, there is no layout yet! So, even if you rendered it on the server, its position would “jump” on the client after the JavaScript loads and runs. 
+ Usually, components that rely on layout information don’t need to render on the server anyway. For example, it probably doesn’t make sense to show a Tooltip during the initial render. It is triggered by a client interaction. 
+ However, if you’re running into this problem, you have a few different options: 
+ 
+ 
+ Replace useLayoutEffect with useEffect . This tells React that it’s okay to display the initial render result without blocking the paint (because the original HTML will become visible before your Effect runs). 
+ 
+ 
+ Alternatively, call use(browser()) to mark the component as browser-only. React will replace its content up to the closest <Suspense> boundary with a loading fallback (for example, a spinner or a glimmer) during server rendering. 
+ 
+ 
+ Alternatively, mark your component as client-only. This tells React to replace its content up to the closest <Suspense> boundary with a loading fallback during server rendering. 
+ 
+ 
+ Alternatively, you can render a component with useLayoutEffect only after hydration. Keep a boolean isMounted state that’s initialized to false , and set it to true inside a useEffect call. Your rendering logic can then be like return isMounted ? <RealContent /> : <FallbackContent /> . On the server and during the hydration, the user will see FallbackContent which should not call useLayoutEffect . Then React will replace it with RealContent which runs on the client only and can include useLayoutEffect calls. 
+ 
+ 
+ If you synchronize your component with an external data store and rely on useLayoutEffect for different reasons than measuring layout, consider useSyncExternalStore instead which supports server rendering. 
+ 
+ Previous useInsertionEffect Next useMemo Copyright © Meta Platforms, Inc no uwu plz uwu? Logo by @sawaratsuki1004 Learn React Quick Start Installation Describing the UI Adding Interactivity Managing State Escape Hatches API Reference React APIs React DOM APIs Community Code of Conduct Meet the Team Docs Contributors Acknowledgements More Blog React Native Privacy Terms On this page Overview Reference useLayoutEffect(setup, dependencies?) Usage Measuring layout before the browser repaints the screen Troubleshooting I’m getting an error: “ useLayoutEffect does nothing on the server” 

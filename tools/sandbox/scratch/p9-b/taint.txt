@@ -1,0 +1,128 @@
+ experimental_taintObjectReference – React window.dataLayer = window.dataLayer || [];function gtag(){dataLayer.push(arguments);}gtag('js', new Date());gtag('config', 'G-B1E83PJ3RT'); 
+ (function () {
+ try {
+ let logShown = false;
+ function setUwu(isUwu) {
+ try {
+ if (isUwu) {
+ localStorage.setItem('uwu', true);
+ document.documentElement.classList.add('uwu');
+ if (!logShown) {
+ console.log('uwu mode! turn off with ?uwu=0');
+ console.log('logo credit to @sawaratsuki1004 via https://github.com/SAWARATSUKI/KawaiiLogos');
+ logShown = true;
+ }
+ } else {
+ localStorage.removeItem('uwu');
+ document.documentElement.classList.remove('uwu');
+ console.log('uwu mode off. turn on with ?uwu');
+ }
+ } catch (err) { }
+ }
+ window.__setUwu = setUwu;
+ function checkQueryParam() {
+ const params = new URLSearchParams(window.location.search);
+ const value = params.get('uwu');
+ switch(value) {
+ case '':
+ case 'true':
+ case '1':
+ return true;
+ case 'false':
+ case '0':
+ return false;
+ default:
+ return null;
+ }
+ }
+ function checkLocalStorage() {
+ try {
+ return localStorage.getItem('uwu') === 'true';
+ } catch (err) {
+ return false;
+ }
+ }
+ const uwuQueryParam = checkQueryParam();
+ if (uwuQueryParam != null) {
+ setUwu(uwuQueryParam);
+ } else if (checkLocalStorage()) {
+ document.documentElement.classList.add('uwu');
+ }
+ } catch (err) { }
+ })();
+ 
+ (function () {
+ function setTheme(newTheme) {
+ window.__theme = newTheme;
+ if (newTheme === 'dark') {
+ document.documentElement.classList.add('dark');
+ } else if (newTheme === 'light') {
+ document.documentElement.classList.remove('dark');
+ }
+ }
+ var preferredTheme;
+ try {
+ preferredTheme = localStorage.getItem('theme');
+ } catch (err) { }
+ window.__setPreferredTheme = function(newTheme) {
+ preferredTheme = newTheme;
+ setTheme(newTheme);
+ try {
+ localStorage.setItem('theme', newTheme);
+ } catch (err) { }
+ };
+ var initialTheme = preferredTheme;
+ var darkQuery = window.matchMedia('(prefers-color-scheme: dark)');
+ if (!initialTheme) {
+ initialTheme = darkQuery.matches ? 'dark' : 'light';
+ }
+ setTheme(initialTheme);
+ darkQuery.addEventListener('change', function (e) {
+ if (!preferredTheme) {
+ setTheme(e.matches ? 'dark' : 'light');
+ }
+ });
+ // Detect whether the browser is Mac to display platform specific content
+ // An example of such content can be the keyboard shortcut displayed in the search bar
+ document.documentElement.classList.add(
+ window.navigator.platform.includes('Mac')
+ ? "platform-mac" 
+ : "platform-win"
+ );
+ })();
+ React v 19.3 Search ⌘ Ctrl K Learn Reference Community Blog react@19.3 Overview Hooks useActionState useCallback useContext useDebugValue useDeferredValue useEffect useEffectEvent useId useImperativeHandle useInsertionEffect useLayoutEffect useMemo useOptimistic useReducer useRef useState useSyncExternalStore useTransition Components <Fragment> (<>) <Profiler> <StrictMode> <Suspense> <Activity> <ViewTransition> APIs act addTransitionType cache cacheSignal captureOwnerStack createContext lazy memo startTransition use experimental_taintObjectReference - This feature is available in the latest Experimental version of React experimental_taintUniqueValue - This feature is available in the latest Experimental version of React react-dom@19.3 Hooks useFormStatus Components Common (e.g. <div>) <form> <input> <option> <progress> <select> <textarea> <img> <link> <meta> <script> <style> <title> APIs browser createPortal flushSync preconnect prefetchDNS preinit preinitModule preload preloadModule Client APIs createRoot hydrateRoot Server APIs renderToPipeableStream renderToReadableStream renderToStaticMarkup renderToString resume resumeToPipeableStream Static APIs prerender prerenderToNodeStream resumeAndPrerender resumeAndPrerenderToNodeStream React Compiler Configuration compilationMode gating logger panicThreshold target Directives "use memo" "use no memo" Compiling Libraries React DevTools React Performance tracks React DevTools for agents - This feature is available in the latest Experimental version of React eslint-plugin-react-hooks Lints exhaustive-deps rules-of-hooks component-hook-factories config error-boundaries gating globals immutability incompatible-library preserve-manual-memoization purity refs set-state-in-effect set-state-in-render static-components unsupported-syntax use-memo Rules of React Overview Components and Hooks must be pure React calls Components and Hooks Rules of Hooks React Server Components Server Components Server Functions Directives 'use client' 'use server' Legacy APIs Legacy React APIs Children cloneElement Component createElement createRef forwardRef isValidElement PureComponent API Reference APIs Copy page Copy experimental_taintObjectReference - This feature is available in the latest Experimental version of React Experimental Feature This API is experimental and is not available in a stable version of React yet. You can try it by upgrading React packages to the most recent experimental version: 
+ react@experimental 
+ react-dom@experimental 
+ eslint-plugin-react-hooks@experimental 
+ Experimental versions of React may contain bugs. Don’t use them in production. This API is only available inside React Server Components. 
+ taintObjectReference lets you prevent a specific object instance from being passed to a Client Component like a user object. experimental_taintObjectReference ( message , object ) ; To prevent passing a key, hash or token, see taintUniqueValue . 
+ Reference taintObjectReference(message, object) Usage Prevent user data from unintentionally reaching the client 
+ 
+ Reference 
+ taintObjectReference(message, object) 
+ Call taintObjectReference with an object to register it with React as something that should not be allowed to be passed to the Client as is: 
+ import { experimental_taintObjectReference } from 'react' ; experimental_taintObjectReference ( 'Do not pass ALL environment variables to the client.' , process . env ) ; 
+ See more examples below. 
+ Parameters 
+ 
+ 
+ message : The message you want to display if the object gets passed to a Client Component. This message will be displayed as a part of the Error that will be thrown if the object gets passed to a Client Component. 
+ 
+ 
+ object : The object to be tainted. Functions and class instances can be passed to taintObjectReference as object . Functions and classes are already blocked from being passed to Client Components but the React’s default error message will be replaced by what you defined in message . When a specific instance of a Typed Array is passed to taintObjectReference as object , any other copies of the Typed Array will not be tainted. 
+ 
+ 
+ Returns 
+ experimental_taintObjectReference returns undefined . 
+ Caveats 
+ 
+ Recreating or cloning a tainted object creates a new untainted object which may contain sensitive data. For example, if you have a tainted user object, const userInfo = {name: user.name, ssn: user.ssn} or {...user} will create new objects which are not tainted. taintObjectReference only protects against simple mistakes when the object is passed through to a Client Component unchanged. 
+ 
+ Pitfall Do not rely on just tainting for security. Tainting an object doesn’t prevent leaking of every possible derived value. For example, the clone of a tainted object will create a new untainted object. Using data from a tainted object (e.g. {secret: taintedObj.secret} ) will create a new value or object that is not tainted. Tainting is a layer of protection; a secure app will have multiple layers of protection, well designed APIs, and isolation patterns. 
+ 
+ Usage 
+ Prevent user data from unintentionally reaching the client 
+ A Client Component should never accept objects that carry sensitive data. Ideally, the data fetching functions should not expose data that the current user should not have access to. Sometimes mistakes happen during refactoring. To protect against these mistakes happening down the line we can “taint” the user object in our data API. 
+ import { experimental_taintObjectReference } from 'react' ; export async function getUser ( id ) { const user = await db `SELECT * FROM users WHERE id = ${ id } ` ; experimental_taintObjectReference ( 'Do not pass the entire user object to the client. ' + 'Instead, pick off the specific properties you need for this use case.' , user , ) ; return user ; } 
+ Now whenever anyone tries to pass this object to a Client Component, an error will be thrown with the passed in error message instead. 
+ Deep Dive Protecting against leaks in data fetching Show Details If you’re running a Server Components environment that has access to sensitive data, you have to be careful not to pass objects straight through: // api.js export async function getUser ( id ) { const user = await db `SELECT * FROM users WHERE id = ${ id } ` ; return user ; } import { getUser } from 'api.js' ; import { InfoCard } from 'components.js' ; export async function Profile ( props ) { const user = await getUser ( props . userId ) ; // DO NOT DO THIS return < InfoCard user = { user } /> ; } // components.js "use client" ; export async function InfoCard ( { user } ) { return < div > { user . name } </ div > ; } Ideally, the getUser should not expose data that the current user should not have access to. To prevent passing the user object to a Client Component down the line we can “taint” the user object: // api.js import { experimental_taintObjectReference } from 'react' ; export async function getUser ( id ) { const user = await db `SELECT * FROM users WHERE id = ${ id } ` ; experimental_taintObjectReference ( 'Do not pass the entire user object to the client. ' + 'Instead, pick off the specific properties you need for this use case.' , user , ) ; return user ; } Now if anyone tries to pass the user object to a Client Component, an error will be thrown with the passed in error message. Previous use Next experimental_taintUniqueValue Copyright © Meta Platforms, Inc no uwu plz uwu? Logo by @sawaratsuki1004 Learn React Quick Start Installation Describing the UI Adding Interactivity Managing State Escape Hatches API Reference React APIs React DOM APIs Community Code of Conduct Meet the Team Docs Contributors Acknowledgements More Blog React Native Privacy Terms On this page Overview Reference taintObjectReference(message, object) Usage Prevent user data from unintentionally reaching the client {"props":{"pageProps":{"toc":"[{\"url\":\"#\",\"text\":\"Overview\",\"depth\":2},{\"url\":\"#reference\",\"depth\":2,\"text\":\"Reference \"},{\"url\":\"#taintobjectreference\",\"depth\":3,\"text\":[[\"$r\",\"code\",null,{\"children\":\"taintObjectReference(message, object)\"}],\" \"]},{\"url\":\"#usage\",\"depth\":2,\"text\":\"Usage \"},{\"url\":\"#prevent-user-data-from-unintentionally-reaching-the-client\",\"depth\":3,\"text\":\"Prevent user data from unintentionally reaching the client \"}]","content":"[[\"$r\",\"MaxWidth\",\"last\",{\"children\":[[\"$r\",\"Experimental\",null,{\"children\":[[\"$r\",\"p\",null,{\"children\":[\"$r\",\"strong\",null,{\"children\":\"This API is experimental and is not available in a stable version of React yet.\"}]}],[\"$r\",\"p\",null,{\"children\":\"You can try it by upgrading React packages to the most recent experimental version:\"}],[\"$r\",\"ul\",null,{\"children\":[\"\\n\",[\"$r\",\"li\",null,{\"children\":[\"$r\",\"code\",null,{\"children\":\"react@experimental\"}]}],\"\\n\",[\"$r\",\"li\",null,{\"children\":[\"$r\",\"code\",null,{\"children\":\"react-dom@experimental\"}]}],\"\\n\",[\"$r\",\"li\",null,{\"children\":[\"$r\",\"code\",null,{\"children\":\"eslint-plugin-react-hooks@experimental\"}]}],\"\\n\"]}],[\"$r\",\"p\",null,{\"children\":\"Experimental versions of React may contain bugs. Don’t use them in production.\"}],[\"$r\",\"p\",null,{\"children\":\"This API is only available inside React Server Components.\"}]]}],\"\\n\",[\"$r\",\"Intro\",null,{\"children\":[[\"$r\",\"p\",null,{\"children\":[[\"$r\",\"code\",null,{\"children\":\"taintObjectReference\"}],\" lets you prevent a specific object instance from being passed to a Client Component like a \",[\"$r\",\"code\",null,{\"children\":\"user\"}],\" object.\"]}],[\"$r\",\"pre\",null,{\"children\":[\"$r\",\"code\",null,{\"className\":\"language-js\",\"children\":\"experimental_taintObjectReference(message, object);\\n\"}]}],[\"$r\",\"p\",null,{\"children\":[\"To prevent passing a key, hash or token, see \",[\"$r\",\"a\",null,{\"href\":\"/reference/react/experimental_taintUniqueValue\",\"children\":[\"$r\",\"code\",null,{\"children\":\"taintUniqueValue\"}]}],\".\"]}]]}],\"\\n\",[\"$r\",\"InlineToc\",null,{}],\"\\n\",[\"$r\",\"hr\",null,{}],\"\\n\",[\"$r\",\"h2\",null,{\"id\":\"reference\",\"children\":\"Reference \"}],\"\\n\",[\"$r\",\"h3\",null,{\"id\":\"taintobjectreference\",\"children\":[[\"$r\",\"code\",null,{\"children\":\"taintObjectReference(message, object)\"}],\" \"]}],\"\\n\",[\"$r\",\"p\",null,{\"children\":[\"Call \",[\"$r\",\"code\",null,{\"children\":\"taintObjectReference\"}],\" with an object to register it with React as something that should not be allowed to be passed to the Client as is:\"]}],\"\\n\",[\"$r\",\"pre\",null,{\"children\":[\"$r\",\"code\",null,{\"className\":\"language-js\",\"children\":\"import {experimental_taintObjectReference} from 'react';\\n\\nexperimental_taintObjectReference(\\n 'Do not pass ALL environment variables to the client.',\\n process.env\\n);\\n\"}]}],\"\\n\",[\"$r\",\"p\",null,{\"children\":[\"$r\",\"a\",null,{\"href\":\"#usage\",\"children\":\"See more examples below.\"}]}],\"\\n\",[\"$r\",\"h4\",null,{\"id\":\"parameters\",\"children\":\"Parameters \"}],\"\\n\",[\"$r\",\"ul\",null,{\"children\":[\"\\n\",[\"$r\",\"li\",null,{\"children\":[\"\\n\",[\"$r\",\"p\",null,{\"children\":[[\"$r\",\"code\",null,{\"children\":\"message\"}],\": The message you want to display if the object gets passed to a Client Component. This message will be displayed as a part of the Error that will be thrown if the object gets passed to a Client Component.\"]}],\"\\n\"]}],\"\\n\",[\"$r\",\"li\",null,{\"children\":[\"\\n\",[\"$r\",\"p\",null,{\"children\":[[\"$r\",\"code\",null,{\"children\":\"object\"}],\": The object to be tainted. Functions and class instances can be passed to \",[\"$r\",\"code\",null,{\"children\":\"taintObjectReference\"}],\" as \",[\"$r\",\"code\",null,{\"children\":\"object\"}],\". Functions and classes are already blocked from being passed to Client Components but the React’s default error message will be replaced by what you defined in \",[\"$r\",\"code\",null,{\"children\":\"message\"}],\". When a specific instance of a Typed Array is passed to \",[\"$r\",\"code\",null,{\"children\":\"taintObjectReference\"}],\" as \",[\"$r\",\"code\",null,{\"children\":\"object\"}],\", any other copies of the Typed Array will not be tainted.\"]}],\"\\n\"]}],\"\\n\"]}],\"\\n\",[\"$r\",\"h4\",null,{\"id\":\"returns\",\"children\":\"Returns \"}],\"\\n\",[\"$r\",\"p\",null,{\"children\":[[\"$r\",\"code\",null,{\"children\":\"experimental_taintObjectReference\"}],\" returns \",[\"$r\",\"code\",null,{\"children\":\"undefined\"}],\".\"]}],\"\\n\",[\"$r\",\"h4\",null,{\"id\":\"caveats\",\"children\":\"Caveats \"}],\"\\n\",[\"$r\",\"ul\",null,{\"children\":[\"\\n\",[\"$r\",\"li\",null,{\"children\":[\"Recreating or cloning a tainted object creates a new untainted object which may contain sensitive data. For example, if you have a tainted \",[\"$r\",\"code\",null,{\"children\":\"user\"}],\" object, \",[\"$r\",\"code\",null,{\"children\":\"const userInfo = {name: user.name, ssn: user.ssn}\"}],\" or \",[\"$r\",\"code\",null,{\"children\":\"{...user}\"}],\" will create new objects which are not tainted. \",[\"$r\",\"code\",null,{\"children\":\"taintObjectReference\"}],\" only protects against simple mistakes when the object is passed through to a Client Component unchanged.\"]}],\"\\n\"]}],\"\\n\",[\"$r\",\"Pitfall\",null,{\"children\":[\"$r\",\"p\",null,{\"children\":[[\"$r\",\"strong\",null,{\"children\":\"Do not rely on just tainting for security.\"}],\" Tainting an object doesn’t prevent leaking of every possible derived value. For example, the clone of a tainted object will create a new untainted object. Using data from a tainted object (e.g. \",[\"$r\",\"code\",null,{\"children\":\"{secret: taintedObj.secret}\"}],\") will create a new value or object that is not tainted. Tainting is a layer of protection; a secure app will have multiple layers of protection, well designed APIs, and isolation patterns.\"]}]}],\"\\n\",[\"$r\",\"hr\",null,{}],\"\\n\",[\"$r\",\"h2\",null,{\"id\":\"usage\",\"children\":\"Usage \"}],\"\\n\",[\"$r\",\"h3\",null,{\"id\":\"prevent-user-data-from-unintentionally-reaching-the-client\",\"children\":\"Prevent user data from unintentionally reaching the client \"}],\"\\n\",[\"$r\",\"p\",null,{\"children\":\"A Client Component should never accept objects that carry sensitive data. Ideally, the data fetching functions should not expose data that the current user should not have access to. Sometimes mistakes happen during refactoring. To protect against these mistakes happening down the line we can “taint” the user object in our data API.\"}],\"\\n\",[\"$r\",\"pre\",null,{\"children\":[\"$r\",\"code\",null,{\"className\":\"language-js\",\"children\":\"import {experimental_taintObjectReference} from 'react';\\n\\nexport async function getUser(id) {\\n const user = await db`SELECT * FROM users WHERE id = ${id}`;\\n experimental_taintObjectReference(\\n 'Do not pass the entire user object to the client. ' +\\n 'Instead, pick off the specific properties you need for this use case.',\\n user,\\n );\\n return user;\\n}\\n\"}]}],\"\\n\",[\"$r\",\"p\",null,{\"children\":\"Now whenever anyone tries to pass this object to a Client Component, an error will be thrown with the passed in error message instead.\"}],\"\\n\",[\"$r\",\"DeepDive\",null,{\"children\":[[\"$r\",\"h4\",null,{\"id\":\"protecting-against-leaks-in-data-fetching\",\"children\":\"Protecting against leaks in data fetching \"}],[\"$r\",\"p\",null,{\"children\":\"If you’re running a Server Components environment that has access to sensitive data, you have to be careful not to pass objects straight through:\"}],[\"$r\",\"pre\",null,{\"children\":[\"$r\",\"code\",null,{\"className\":\"language-js\",\"children\":\"// api.js\\nexport async function getUser(id) {\\n const user = await db`SELECT * FROM users WHERE id = ${id}`;\\n return user;\\n}\\n\"}]}],[\"$r\",\"pre\",null,{\"children\":[\"$r\",\"code\",null,{\"className\":\"language-js\",\"children\":\"import { getUser } from 'api.js';\\nimport { InfoCard } from 'components.js';\\n\\nexport async function Profile(props) {\\n const user = await getUser(props.userId);\\n // DO NOT DO THIS\\n return \u003cInfoCard user={user} /\u003e;\\n}\\n\"}]}],[\"$r\",\"pre\",null,{\"children\":[\"$r\",\"code\",null,{\"className\":\"language-js\",\"children\":\"// components.js\\n\\\"use client\\\";\\n\\nexport async function InfoCard({ user }) {\\n return \u003cdiv\u003e{user.name}\u003c/div\u003e;\\n}\\n\"}]}],[\"$r\",\"p\",null,{\"children\":[\"Ideally, the \",[\"$r\",\"code\",null,{\"children\":\"getUser\"}],\" should not expose data that the current user should not have access to. To prevent passing the \",[\"$r\",\"code\",null,{\"children\":\"user\"}],\" object to a Client Component down the line we can “taint” the user object:\"]}],[\"$r\",\"pre\",null,{\"children\":[\"$r\",\"code\",null,{\"className\":\"language-js\",\"children\":\"// api.js\\nimport {experimental_taintObjectReference} from 'react';\\n\\nexport async function getUser(id) {\\n const user = await db`SELECT * FROM users WHERE id = ${id}`;\\n experimental_taintObjectReference(\\n 'Do not pass the entire user object to the client. ' +\\n 'Instead, pick off the specific properties you need for this use case.',\\n user,\\n );\\n return user;\\n}\\n\"}]}],[\"$r\",\"p\",null,{\"children\":[\"Now if anyone tries to pass the \",[\"$r\",\"code\",null,{\"children\":\"user\"}],\" object to a Client Component, an error will be thrown with the passed in error message.\"]}]]}]]}]]","meta":{"title":"experimental_taintObjectReference","version":"experimental"},"languages":null},"__N_SSG":true},"page":"/[[...markdownPath]]","query":{"markdownPath":["reference","react","experimental_taintObjectReference"]},"buildId":"iL-S_VcpSPApikCxaBjlp","isFallback":false,"gsp":true,"scriptLoader":[]} 

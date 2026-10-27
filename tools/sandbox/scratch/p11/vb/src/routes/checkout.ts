@@ -1,0 +1,1 @@
+import { s } from '../shared'; export default s + 'checkout';

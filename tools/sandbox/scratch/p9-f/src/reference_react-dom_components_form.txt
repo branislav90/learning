@@ -1,0 +1,306 @@
+ &lt;form&gt; – React 
+ (function () {
+ try {
+ let logShown = false;
+ function setUwu(isUwu) {
+ try {
+ if (isUwu) {
+ localStorage.setItem('uwu', true);
+ document.documentElement.classList.add('uwu');
+ if (!logShown) {
+ console.log('uwu mode! turn off with ?uwu=0');
+ console.log('logo credit to @sawaratsuki1004 via https://github.com/SAWARATSUKI/KawaiiLogos');
+ logShown = true;
+ }
+ } else {
+ localStorage.removeItem('uwu');
+ document.documentElement.classList.remove('uwu');
+ console.log('uwu mode off. turn on with ?uwu');
+ }
+ } catch (err) { }
+ }
+ window.__setUwu = setUwu;
+ function checkQueryParam() {
+ const params = new URLSearchParams(window.location.search);
+ const value = params.get('uwu');
+ switch(value) {
+ case '':
+ case 'true':
+ case '1':
+ return true;
+ case 'false':
+ case '0':
+ return false;
+ default:
+ return null;
+ }
+ }
+ function checkLocalStorage() {
+ try {
+ return localStorage.getItem('uwu') === 'true';
+ } catch (err) {
+ return false;
+ }
+ }
+ const uwuQueryParam = checkQueryParam();
+ if (uwuQueryParam != null) {
+ setUwu(uwuQueryParam);
+ } else if (checkLocalStorage()) {
+ document.documentElement.classList.add('uwu');
+ }
+ } catch (err) { }
+ })();
+ 
+ (function () {
+ function setTheme(newTheme) {
+ window.__theme = newTheme;
+ if (newTheme === 'dark') {
+ document.documentElement.classList.add('dark');
+ } else if (newTheme === 'light') {
+ document.documentElement.classList.remove('dark');
+ }
+ }
+ var preferredTheme;
+ try {
+ preferredTheme = localStorage.getItem('theme');
+ } catch (err) { }
+ window.__setPreferredTheme = function(newTheme) {
+ preferredTheme = newTheme;
+ setTheme(newTheme);
+ try {
+ localStorage.setItem('theme', newTheme);
+ } catch (err) { }
+ };
+ var initialTheme = preferredTheme;
+ var darkQuery = window.matchMedia('(prefers-color-scheme: dark)');
+ if (!initialTheme) {
+ initialTheme = darkQuery.matches ? 'dark' : 'light';
+ }
+ setTheme(initialTheme);
+ darkQuery.addEventListener('change', function (e) {
+ if (!preferredTheme) {
+ setTheme(e.matches ? 'dark' : 'light');
+ }
+ });
+ // Detect whether the browser is Mac to display platform specific content
+ // An example of such content can be the keyboard shortcut displayed in the search bar
+ document.documentElement.classList.add(
+ window.navigator.platform.includes('Mac')
+ ? "platform-mac" 
+ : "platform-win"
+ );
+ })();
+ React v 19.3 Search ⌘ Ctrl K Learn Reference Community Blog react@19.3 Overview Hooks useActionState useCallback useContext useDebugValue useDeferredValue useEffect useEffectEvent useId useImperativeHandle useInsertionEffect useLayoutEffect useMemo useOptimistic useReducer useRef useState useSyncExternalStore useTransition Components &lt;Fragment&gt; (&lt;&gt;) &lt;Profiler&gt; &lt;StrictMode&gt; &lt;Suspense&gt; &lt;Activity&gt; &lt;ViewTransition&gt; APIs act addTransitionType cache cacheSignal captureOwnerStack createContext lazy memo startTransition use experimental_taintObjectReference - This feature is available in the latest Experimental version of React experimental_taintUniqueValue - This feature is available in the latest Experimental version of React react-dom@19.3 Hooks useFormStatus Components Common (e.g. &lt;div&gt;) &lt;form&gt; &lt;input&gt; &lt;option&gt; &lt;progress&gt; &lt;select&gt; &lt;textarea&gt; &lt;img&gt; &lt;link&gt; &lt;meta&gt; &lt;script&gt; &lt;style&gt; &lt;title&gt; APIs browser createPortal flushSync preconnect prefetchDNS preinit preinitModule preload preloadModule Client APIs createRoot hydrateRoot Server APIs renderToPipeableStream renderToReadableStream renderToStaticMarkup renderToString resume resumeToPipeableStream Static APIs prerender prerenderToNodeStream resumeAndPrerender resumeAndPrerenderToNodeStream React Compiler Configuration compilationMode gating logger panicThreshold target Directives &quot;use memo&quot; &quot;use no memo&quot; Compiling Libraries React DevTools React Performance tracks React DevTools for agents - This feature is available in the latest Experimental version of React eslint-plugin-react-hooks Lints exhaustive-deps rules-of-hooks component-hook-factories config error-boundaries gating globals immutability incompatible-library preserve-manual-memoization purity refs set-state-in-effect set-state-in-render static-components unsupported-syntax use-memo Rules of React Overview Components and Hooks must be pure React calls Components and Hooks Rules of Hooks React Server Components Server Components Server Functions Directives &#x27;use client&#x27; &#x27;use server&#x27; Legacy APIs Legacy React APIs Children cloneElement Component createElement createRef forwardRef isValidElement PureComponent API Reference Components Copy page Copy &lt;form&gt; The built-in browser &lt;form&gt; component lets you create interactive controls for submitting information. &lt; form action = { search } &gt; &lt; input name = &quot;query&quot; /&gt; &lt; button type = &quot;submit&quot; &gt; Search &lt;/ button &gt; &lt;/ form &gt; 
+ Reference &lt;form&gt; Usage Handle form submission with an event handler Handle form submission with an action prop Handle form submission with a Server Function Display a pending state during form submission Optimistically updating form data Handling form submission errors Display a form submission error without JavaScript Handling multiple submission types 
+ 
+ Reference 
+ &lt;form&gt; 
+ To create interactive controls for submitting information, render the built-in browser &lt;form&gt; component . 
+ &lt; form action = { search } &gt; &lt; input name = &quot;query&quot; /&gt; &lt; button type = &quot;submit&quot; &gt; Search &lt;/ button &gt; &lt;/ form &gt; 
+ See more examples below. 
+ Props 
+ &lt;form&gt; supports all common element props. 
+ action : a URL or function. When a URL is passed to action the form will behave like the HTML form component. When a function is passed to action the function will handle the form submission in a Transition following the Action prop pattern . The function passed to action may be async and will be called with a single argument containing the form data of the submitted form. The action prop can be overridden by a formAction attribute on a &lt;button&gt; , &lt;input type=&quot;submit&quot;&gt; , or &lt;input type=&quot;image&quot;&gt; component. 
+ Caveats 
+ 
+ When a function is passed to action or formAction the HTTP method will be POST regardless of value of the method prop. 
+ 
+ 
+ Usage 
+ Handle form submission with an event handler 
+ Pass a function to the onSubmit event handler to run code when the form is submitted. By default, the browser sends the form data to the current URL and refreshes the page, so call e.preventDefault() to override that behavior. 
+ This example reads the submitted values with new FormData(e.target) , which collects every field by its name . This keeps the inputs uncontrolled . If you instead control an input with state , read from that state on submit rather than from FormData . 
+ App.js App.js Reload Clear Fork export default function Search ( ) { 
+ function handleSubmit ( e ) { 
+ // Prevent the browser from reloading the page 
+ e . preventDefault ( ) ; 
+ // Read the form data 
+ const form = e . target ; 
+ const formData = new FormData ( form ) ; 
+ const query = formData . get ( &quot;query&quot; ) ; 
+ alert ( `You searched for &#x27; ${ query } &#x27;` ) ; 
+ } 
+ return ( 
+ &lt; form onSubmit = { handleSubmit } &gt; 
+ &lt; input name = &quot;query&quot; /&gt; 
+ &lt; button type = &quot;submit&quot; &gt; Search &lt;/ button &gt; 
+ &lt;/ form &gt; 
+ ) ; 
+ } 
+ Show more 
+ Note Reading form data with onSubmit works in every version of React and gives you direct access to the submit event , so you can call e.preventDefault() and read the data yourself. Passing the function to the action prop instead runs the submission in a Transition . React then tracks the pending state, sends thrown errors to the nearest error boundary, and lets the form work with useActionState and useOptimistic . An action can also be a Server Function , which onSubmit does not support. 
+ Handle form submission with an action prop 
+ Pass a function to the action prop of form to run the function when the form is submitted. formData will be passed to the function as an argument so you can access the data submitted by the form. This differs from the conventional HTML action , which only accepts URLs. Unlike onSubmit , an action runs in a Transition and calling e.preventDefault() isn’t needed. After the action function succeeds, all uncontrolled field elements in the form are reset. 
+ App.js App.js Reload Clear Fork export default function Search ( ) { 
+ function search ( formData ) { 
+ const query = formData . get ( &quot;query&quot; ) ; 
+ alert ( `You searched for &#x27; ${ query } &#x27;` ) ; 
+ } 
+ return ( 
+ &lt; form action = { search } &gt; 
+ &lt; input name = &quot;query&quot; /&gt; 
+ &lt; button type = &quot;submit&quot; &gt; Search &lt;/ button &gt; 
+ &lt;/ form &gt; 
+ ) ; 
+ } 
+ 
+ Handle form submission with a Server Function 
+ Render a &lt;form&gt; with an input and submit button. Pass a Server Function (a function marked with &#x27;use server&#x27; ) to the action prop of form to run the function when the form is submitted. 
+ Passing a Server Function to &lt;form action&gt; allow users to submit forms without JavaScript enabled or before the code has loaded. This is beneficial to users who have a slow connection, device, or have JavaScript disabled and is similar to the way forms work when a URL is passed to the action prop. 
+ You can use hidden form fields to provide data to the &lt;form&gt; ’s action. The Server Function will be called with the hidden form field data as an instance of FormData . 
+ import { updateCart } from &#x27;./lib.js&#x27; ; function AddToCart ( { productId } ) { async function addToCart ( formData ) { &#x27;use server&#x27; const productId = formData . get ( &#x27;productId&#x27; ) await updateCart ( productId ) } return ( &lt; form action = { addToCart } &gt; &lt; input type = &quot;hidden&quot; name = &quot;productId&quot; value = { productId } /&gt; &lt; button type = &quot;submit&quot; &gt; Add to Cart &lt;/ button &gt; &lt;/ form &gt; ) ; } 
+ In lieu of using hidden form fields to provide data to the &lt;form&gt; ’s action, you can call the bind method to supply it with extra arguments. This will bind a new argument ( productId ) to the function in addition to the formData that is passed as an argument to the function. 
+ import { updateCart } from &#x27;./lib.js&#x27; ; function AddToCart ( { productId } ) { async function addToCart ( productId , formData ) { &quot;use server&quot; ; await updateCart ( productId ) } const addProductToCart = addToCart . bind ( null , productId ) ; return ( &lt; form action = { addProductToCart } &gt; &lt; button type = &quot;submit&quot; &gt; Add to Cart &lt;/ button &gt; &lt;/ form &gt; ) ; } 
+ When &lt;form&gt; is rendered by a Server Component , and a Server Function is passed to the &lt;form&gt; ’s action prop, the form is progressively enhanced . 
+ Display a pending state during form submission 
+ To display a pending state when a form is being submitted, you can call the useFormStatus Hook in a component rendered in a &lt;form&gt; and read the pending property returned. 
+ Here, we use the pending property to indicate the form is submitting. 
+ App.js App.js Reload Clear Fork import { useFormStatus } from &quot;react-dom&quot; ; 
+ import { submitForm } from &quot;./actions.js&quot; ; 
+ function Submit ( ) { 
+ const { pending } = useFormStatus ( ) ; 
+ return ( 
+ &lt; button type = &quot;submit&quot; disabled = { pending } &gt; 
+ { pending ? &quot;Submitting...&quot; : &quot;Submit&quot; } 
+ &lt;/ button &gt; 
+ ) ; 
+ } 
+ function Form ( { action } ) { 
+ return ( 
+ &lt; form action = { action } &gt; 
+ &lt; Submit /&gt; 
+ &lt;/ form &gt; 
+ ) ; 
+ } 
+ export default function App ( ) { 
+ return &lt; Form action = { submitForm } /&gt; ; 
+ } 
+ Show more 
+ To learn more about the useFormStatus Hook see the reference documentation . 
+ Optimistically updating form data 
+ The useOptimistic Hook provides a way to optimistically update the user interface before a background operation, like a network request, completes. In the context of forms, this technique helps to make apps feel more responsive. When a user submits a form, instead of waiting for the server’s response to reflect the changes, the interface is immediately updated with the expected outcome. 
+ For example, when a user types a message into the form and hits the “Send” button, the useOptimistic Hook allows the message to immediately appear in the list with a “Sending…” label, even before the message is actually sent to a server. This “optimistic” approach gives the impression of speed and responsiveness. The form then attempts to truly send the message in the background. Once the server confirms the message has been received, the “Sending…” label is removed. 
+ App.js actions.js App.js Reload Clear Fork import { useOptimistic , useState , useRef } from &quot;react&quot; ; 
+ import { deliverMessage } from &quot;./actions.js&quot; ; 
+ function Thread ( { messages , sendMessage } ) { 
+ const formRef = useRef ( ) ; 
+ async function formAction ( formData ) { 
+ addOptimisticMessage ( formData . get ( &quot;message&quot; ) ) ; 
+ formRef . current . reset ( ) ; 
+ await sendMessage ( formData ) ; 
+ } 
+ const [ optimisticMessages , addOptimisticMessage ] = useOptimistic ( 
+ messages , 
+ ( state , newMessage ) =&gt; [ 
+ ... state , 
+ { 
+ text : newMessage , 
+ sending : true 
+ } 
+ ] 
+ ) ; 
+ return ( 
+ &lt; &gt; 
+ { optimisticMessages . map ( ( message , index ) =&gt; ( 
+ &lt; div key = { index } &gt; 
+ { message . text } 
+ { !! message . sending &amp;&amp; &lt; small &gt; (Sending...) &lt;/ small &gt; } 
+ &lt;/ div &gt; 
+ ) ) } 
+ &lt; form action = { formAction } ref = { formRef } &gt; 
+ &lt; input type = &quot;text&quot; name = &quot;message&quot; placeholder = &quot;Hello!&quot; /&gt; 
+ &lt; button type = &quot;submit&quot; &gt; Send &lt;/ button &gt; 
+ &lt;/ form &gt; 
+ &lt;/ &gt; 
+ ) ; 
+ } 
+ export default function App ( ) { 
+ const [ messages , setMessages ] = useState ( [ 
+ { text : &quot;Hello there!&quot; , sending : false , key : 1 } 
+ ] ) ; 
+ async function sendMessage ( formData ) { 
+ const sentMessage = await deliverMessage ( formData . get ( &quot;message&quot; ) ) ; 
+ setMessages ( ( messages ) =&gt; [ ... messages , { text : sentMessage } ] ) ; 
+ } 
+ return &lt; Thread messages = { messages } sendMessage = { sendMessage } /&gt; ; 
+ } 
+ Show more 
+ Handling form submission errors 
+ In some cases the function called by a &lt;form&gt; ’s action prop throws an error. You can handle these errors by wrapping &lt;form&gt; in an Error Boundary. If the function called by a &lt;form&gt; ’s action prop throws an error, the fallback for the error boundary will be displayed. 
+ App.js App.js Reload Clear Fork import { ErrorBoundary } from &quot;react-error-boundary&quot; ; 
+ export default function Search ( ) { 
+ function search ( ) { 
+ throw new Error ( &quot;search error&quot; ) ; 
+ } 
+ return ( 
+ &lt; ErrorBoundary 
+ fallback = { &lt; p &gt; There was an error while submitting the form &lt;/ p &gt; } 
+ &gt; 
+ &lt; form action = { search } &gt; 
+ &lt; input name = &quot;query&quot; /&gt; 
+ &lt; button type = &quot;submit&quot; &gt; Search &lt;/ button &gt; 
+ &lt;/ form &gt; 
+ &lt;/ ErrorBoundary &gt; 
+ ) ; 
+ } 
+ Show more 
+ Display a form submission error without JavaScript 
+ Displaying a form submission error message before the JavaScript bundle loads for progressive enhancement requires that: 
+ 
+ &lt;form&gt; be rendered by a Client Component 
+ the function passed to the &lt;form&gt; ’s action prop be a Server Function 
+ the useActionState Hook be used to display the error message 
+ 
+ useActionState takes two parameters: a Server Function and an initial state. useActionState returns two values, a state variable and an action. The action returned by useActionState should be passed to the action prop of the form. The state variable returned by useActionState can be used to display an error message. The value returned by the Server Function passed to useActionState will be used to update the state variable. 
+ App.js App.js Reload Clear Fork import { useActionState } from &quot;react&quot; ; 
+ import { signUpNewUser } from &quot;./api&quot; ; 
+ export default function Page ( ) { 
+ async function signup ( prevState , formData ) { 
+ &quot;use server&quot; ; 
+ const email = formData . get ( &quot;email&quot; ) ; 
+ try { 
+ await signUpNewUser ( email ) ; 
+ alert ( `Added &quot; ${ email } &quot;` ) ; 
+ } catch ( err ) { 
+ return err . toString ( ) ; 
+ } 
+ } 
+ const [ message , signupAction ] = useActionState ( signup , null ) ; 
+ return ( 
+ &lt; &gt; 
+ &lt; h1 &gt; Signup for my newsletter &lt;/ h1 &gt; 
+ &lt; p &gt; Signup with the same email twice to see an error &lt;/ p &gt; 
+ &lt; form action = { signupAction } id = &quot;signup-form&quot; &gt; 
+ &lt; label htmlFor = &quot;email&quot; &gt; Email: &lt;/ label &gt; 
+ &lt; input name = &quot;email&quot; id = &quot;email&quot; placeholder = &quot;react@example.com&quot; /&gt; 
+ &lt; button &gt; Sign up &lt;/ button &gt; 
+ { !! message &amp;&amp; &lt; p &gt; { message } &lt;/ p &gt; } 
+ &lt;/ form &gt; 
+ &lt;/ &gt; 
+ ) ; 
+ } 
+ Show more 
+ Learn more about updating state from a form action with the useActionState docs 
+ Handling multiple submission types 
+ Forms can be designed to handle multiple submission actions based on the button pressed by the user. Each button inside a form can be associated with a distinct action or behavior by setting the formAction prop. 
+ When a user taps a specific button, the form is submitted, and a corresponding action, defined by that button’s attributes and action, is executed. For instance, a form might submit an article for review by default but have a separate button with formAction set to save the article as a draft. 
+ App.js App.js Reload Clear Fork export default function Search ( ) { 
+ function publish ( formData ) { 
+ const content = formData . get ( &quot;content&quot; ) ; 
+ const button = formData . get ( &quot;button&quot; ) ; 
+ alert ( `&#x27; ${ content } &#x27; was published with the &#x27; ${ button } &#x27; button` ) ; 
+ } 
+ function save ( formData ) { 
+ const content = formData . get ( &quot;content&quot; ) ; 
+ alert ( `Your draft of &#x27; ${ content } &#x27; has been saved!` ) ; 
+ } 
+ return ( 
+ &lt; form action = { publish } &gt; 
+ &lt; textarea name = &quot;content&quot; rows = { 4 } cols = { 40 } /&gt; 
+ &lt; br /&gt; 
+ &lt; button type = &quot;submit&quot; name = &quot;button&quot; value = &quot;submit&quot; &gt; Publish &lt;/ button &gt; 
+ &lt; button formAction = { save } &gt; Save draft &lt;/ button &gt; 
+ &lt;/ form &gt; 
+ ) ; 
+ } 
+ Show more Previous Common (e.g. &lt;div&gt;) Next &lt;input&gt; Copyright © Meta Platforms, Inc no uwu plz uwu? Logo by @sawaratsuki1004 Learn React Quick Start Installation Describing the UI Adding Interactivity Managing State Escape Hatches API Reference React APIs React DOM APIs Community Code of Conduct Meet the Team Docs Contributors Acknowledgements More Blog React Native Privacy Terms On this page Overview Reference &lt;form&gt; Usage Handle form submission with an event handler Handle form submission with an action prop Handle form submission with a Server Function Display a pending state during form submission Optimistically updating form data Handling form submission errors Display a form submission error without JavaScript Handling multiple submission types 

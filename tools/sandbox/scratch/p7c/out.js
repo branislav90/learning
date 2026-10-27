@@ -1,0 +1,1 @@
+(()=>{var p=(e,o,t)=>()=>{if(t)throw t[0];try{return e&&(o=e(e=0)),o}catch(r){throw t=[r],r}};var s=(e,o)=>()=>{try{return o||e((o={exports:{}}).exports,o),o.exports}catch(t){throw o=0,t}};var l,n=p(()=>{l="x".repeat(5)});var c=s(()=>{n();console.log(1)});c();})();

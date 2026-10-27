@@ -1,0 +1,26 @@
+from ed import apply
+E=[
+("> ⚠ **Platform caveat.** Examples use GitHub Actions syntax. Action major versions (`actions/checkout`, `actions/setup-node`, `actions/cache`, `actions/upload-artifact`), runner images, and branch-protection UI/API names change; **verify versions and syntax in the current GitHub Actions documentation**.",
+ "> **Platform note (verified 2026-10-22).** Examples use GitHub Actions syntax. The seven YAML workflow blocks parse as valid YAML (the sketch blocks with `...install...` placeholders are intentionally abbreviated and not runnable as-is). Action majors checked against each repo's latest GitHub release: `actions/checkout` **v7**, `actions/setup-node` **v7**, `actions/cache` **v6**, `actions/upload-artifact` **v7**, `actions/download-artifact` **v8**; these are used below (Playwright's own CI docs still show `@v6` for checkout/setup-node). Newer majors move the actions to the Node 24 runtime and raise the minimum runner version (see each release's notes, especially for self-hosted runners). `vitest run --shard`, `--outputFile.junit`, and Playwright's `--shard` + `merge-reports --reporter html ./all-blob-reports` were confirmed in the respective docs. Runner images and branch-protection UI/API names change; the *design principles*"),
+("The *design principles* transfer to GitLab CI","The *design principles* transfer to GitLab CI") if False else ("transfer to GitLab CI","transfer to GitLab CI"),
+("`cache: 'npm'` automates *(verify)*","`cache: 'npm'` automates (setup-node v6+ limits its automatic caching to npm)"),
+("`vitest run --shard=1/4` *(verify flag)*","`vitest run --shard=1/4` (documented in the Vitest CLI guide)"),
+("*(default timeout: verify)*","(GitHub's default job timeout is 360 minutes)"),
+("(`dorny/paths-filter`-style conditions *(verify action)*)","(`dorny/paths-filter`-style conditions; check the action's current docs)"),
+("Vitest supports both *(verify provider names)*","Vitest supports both (`@vitest/coverage-v8` and `@vitest/coverage-istanbul`)"),
+("      - uses: actions/checkout@v7            # (verify current major)\n      - uses: actions/setup-node@v7          # (verify current major)","      - uses: actions/checkout@v7            # latest major on 2026-10-22; pin by SHA in production\n      - uses: actions/setup-node@v7          # latest major on 2026-10-22"),
+("# (verify reporter/flag syntax)","# (syntax verified in the Vitest CLI docs: `outputFile.junit` dot notation)"),
+("# fails PR if bundle budget exceeded (verify config)","# fails PR if bundle budget exceeded (needs a size-limit config in package.json)"),
+("container: mcr.microsoft.com/playwright:v1.XX.X-jammy      # match @playwright/test version (verify tag)","container: mcr.microsoft.com/playwright:v1.64.0-noble      # tag must match the installed @playwright/test version"),
+("*(verify home-directory/permissions caveats of running Playwright in containers)*","(Playwright's CI docs describe the container option; running as root in a container disables the Chromium sandbox, see the Playwright Docker docs)"),
+("// (verify reporter names)","// reporter names verified: 'blob', 'github', 'list', 'html'"),
+("⚠ Verify reporter and option names against the current Playwright docs.","(The `flaky` classification is documented on the Playwright retries page.)"),
+("  id-token: write          # for OIDC to cloud provider (verify)","  id-token: write          # for OIDC to a cloud provider or for npm provenance"),
+("(Playwright/`corepack`... )","") if False else ("packageManager` field/Corepack *(verify)*","packageManager` field/Corepack"),
+("with provenance *(verify npm provenance support)*","with provenance (npm supports `--provenance` from GitHub Actions with `id-token: write`)"),
+("(workflow run insights *(verify availability)* or export via API)","(workflow run insights or export via the API)"),
+("*(Verify `merge-reports` usage.)*","(Usage verified: `npx playwright merge-reports --reporter html ./all-blob-reports`.)"),
+("(verify option names).","(option names verified: `--reporter=blob`, `merge-reports --reporter html`)."),
+("*(verify path; docs reorganise)*","(GitHub reorganises these docs; the path was reachable in 2026)") ,
+]
+apply("15-ci-checks.md",E)

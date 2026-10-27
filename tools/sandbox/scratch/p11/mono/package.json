@@ -1,0 +1,1 @@
+{"name":"root","private":true,"packageManager":"npm@10.0.0","workspaces":["apps/*","packages/*"],"devDependencies":{"@changesets/cli":"^3.0.3","dependency-cruiser":"^18.7.0","eslint":"^9.39.5","eslint-plugin-react-hooks":"^7.1.1","typescript":"^6.0.3","typescript-eslint":"^8.72.0"}}

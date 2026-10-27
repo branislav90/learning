@@ -1,0 +1,426 @@
+prefetchDNS – React
+window.dataLayer = window.dataLayer || [];function gtag(){dataLayer.push(arguments);}gtag('js', new Date());gtag('config', 'G-B1E83PJ3RT');
+ (function () {
+ try {
+ let logShown = false;
+ function setUwu(isUwu) {
+ try {
+ if (isUwu) {
+ localStorage.setItem('uwu', true);
+ document.documentElement.classList.add('uwu');
+ if (!logShown) {
+ console.log('uwu mode! turn off with ?uwu=0');
+ console.log('logo credit to @sawaratsuki1004 via https://github.com/SAWARATSUKI/KawaiiLogos');
+ logShown = true;
+ }
+ } else {
+ localStorage.removeItem('uwu');
+ document.documentElement.classList.remove('uwu');
+ console.log('uwu mode off. turn on with ?uwu');
+ }
+ } catch (err) { }
+ }
+ window.__setUwu = setUwu;
+ function checkQueryParam() {
+ const params = new URLSearchParams(window.location.search);
+ const value = params.get('uwu');
+ switch(value) {
+ case '':
+ case 'true':
+ case '1':
+ return true;
+ case 'false':
+ case '0':
+ return false;
+ default:
+ return null;
+ }
+ }
+ function checkLocalStorage() {
+ try {
+ return localStorage.getItem('uwu') === 'true';
+ } catch (err) {
+ return false;
+ }
+ }
+ const uwuQueryParam = checkQueryParam();
+ if (uwuQueryParam != null) {
+ setUwu(uwuQueryParam);
+ } else if (checkLocalStorage()) {
+ document.documentElement.classList.add('uwu');
+ }
+ } catch (err) { }
+ })();
+ (function () {
+ function setTheme(newTheme) {
+ window.__theme = newTheme;
+ if (newTheme === 'dark') {
+ document.documentElement.classList.add('dark');
+ } else if (newTheme === 'light') {
+ document.documentElement.classList.remove('dark');
+ }
+ }
+ var preferredTheme;
+ try {
+ preferredTheme = localStorage.getItem('theme');
+ } catch (err) { }
+ window.__setPreferredTheme = function(newTheme) {
+ preferredTheme = newTheme;
+ setTheme(newTheme);
+ try {
+ localStorage.setItem('theme', newTheme);
+ } catch (err) { }
+ };
+ var initialTheme = preferredTheme;
+ var darkQuery = window.matchMedia('(prefers-color-scheme: dark)');
+ if (!initialTheme) {
+ initialTheme = darkQuery.matches ? 'dark' : 'light';
+ }
+ setTheme(initialTheme);
+ darkQuery.addEventListener('change', function (e) {
+ if (!preferredTheme) {
+ setTheme(e.matches ? 'dark' : 'light');
+ }
+ });
+ // Detect whether the browser is Mac to display platform specific content
+ // An example of such content can be the keyboard shortcut displayed in the search bar
+ document.documentElement.classList.add(
+ window.navigator.platform.includes('Mac')
+ ? "platform-mac" 
+ : "platform-win"
+ );
+ })();
+React
+v
+19.3
+Search
+⌘
+Ctrl
+K
+Learn
+Reference
+Community
+Blog
+react@19.3
+Overview
+Hooks
+useActionState
+useCallback
+useContext
+useDebugValue
+useDeferredValue
+useEffect
+useEffectEvent
+useId
+useImperativeHandle
+useInsertionEffect
+useLayoutEffect
+useMemo
+useOptimistic
+useReducer
+useRef
+useState
+useSyncExternalStore
+useTransition
+Components
+&lt;Fragment&gt; (&lt;&gt;)
+&lt;Profiler&gt;
+&lt;StrictMode&gt;
+&lt;Suspense&gt;
+&lt;Activity&gt;
+&lt;ViewTransition&gt;
+APIs
+act
+addTransitionType
+cache
+cacheSignal
+captureOwnerStack
+createContext
+lazy
+memo
+startTransition
+use
+experimental_taintObjectReference
+ - This feature is available in the latest Experimental version of React
+experimental_taintUniqueValue
+ - This feature is available in the latest Experimental version of React
+react-dom@19.3
+Hooks
+useFormStatus
+Components
+Common (e.g. &lt;div&gt;)
+&lt;form&gt;
+&lt;input&gt;
+&lt;option&gt;
+&lt;progress&gt;
+&lt;select&gt;
+&lt;textarea&gt;
+&lt;img&gt;
+&lt;link&gt;
+&lt;meta&gt;
+&lt;script&gt;
+&lt;style&gt;
+&lt;title&gt;
+APIs
+browser
+createPortal
+flushSync
+preconnect
+prefetchDNS
+preinit
+preinitModule
+preload
+preloadModule
+Client APIs
+createRoot
+hydrateRoot
+Server APIs
+renderToPipeableStream
+renderToReadableStream
+renderToStaticMarkup
+renderToString
+resume
+resumeToPipeableStream
+Static APIs
+prerender
+prerenderToNodeStream
+resumeAndPrerender
+resumeAndPrerenderToNodeStream
+React Compiler
+Configuration
+compilationMode
+gating
+logger
+panicThreshold
+target
+Directives
+&quot;use memo&quot;
+&quot;use no memo&quot;
+Compiling Libraries
+React DevTools
+React Performance tracks
+React DevTools for agents
+ - This feature is available in the latest Experimental version of React
+eslint-plugin-react-hooks
+Lints
+exhaustive-deps
+rules-of-hooks
+component-hook-factories
+config
+error-boundaries
+gating
+globals
+immutability
+incompatible-library
+preserve-manual-memoization
+purity
+refs
+set-state-in-effect
+set-state-in-render
+static-components
+unsupported-syntax
+use-memo
+Rules of React
+Overview
+Components and Hooks must be pure
+React calls Components and Hooks
+Rules of Hooks
+React Server Components
+Server Components
+Server Functions
+Directives
+&#x27;use client&#x27;
+&#x27;use server&#x27;
+Legacy APIs
+Legacy React APIs
+Children
+cloneElement
+Component
+createElement
+createRef
+forwardRef
+isValidElement
+PureComponent
+API Reference
+APIs
+Copy page
+Copy
+prefetchDNS
+prefetchDNS
+ lets you eagerly look up the IP of a server that you expect to load resources from.
+prefetchDNS
+(
+&quot;https://example.com&quot;
+)
+;
+Reference 
+prefetchDNS(href)
+Usage 
+Prefetching DNS when rendering 
+Prefetching DNS in an event handler 
+Reference 
+prefetchDNS(href)
+To look up a host, call the 
+prefetchDNS
+ function from 
+react-dom
+.
+import
+{
+prefetchDNS
+}
+from
+&#x27;react-dom&#x27;
+;
+function
+AppRoot
+(
+)
+{
+prefetchDNS
+(
+&quot;https://example.com&quot;
+)
+;
+// ...
+}
+See more examples below.
+The prefetchDNS function provides the browser with a hint that it should look up the IP address of a given server. If the browser chooses to do so, this can speed up the loading of resources from that server.
+Parameters 
+href
+: a string. The URL of the server you want to connect to.
+Returns 
+prefetchDNS
+ returns nothing.
+Caveats 
+Multiple calls to 
+prefetchDNS
+ with the same server have the same effect as a single call.
+In the browser, you can call 
+prefetchDNS
+ in any situation: while rendering a component, in an Effect, in an event handler, and so on.
+In server-side rendering or when rendering Server Components, 
+prefetchDNS
+ only has an effect if you call it while rendering a component or in an async context originating from rendering a component. Any other calls will be ignored.
+If you know the specific resources you’ll need, you can call 
+other functions
+ instead that will start loading the resources right away.
+There is no benefit to prefetching the same server the webpage itself is hosted from because it’s already been looked up by the time the hint would be given.
+Compared with 
+preconnect
+, 
+prefetchDNS
+ may be better if you are speculatively connecting to a large number of domains, in which case the overhead of preconnections might outweigh the benefit.
+Usage 
+Prefetching DNS when rendering 
+Call 
+prefetchDNS
+ when rendering a component if you know that its children will load external resources from that host.
+import
+{
+prefetchDNS
+}
+from
+&#x27;react-dom&#x27;
+;
+function
+AppRoot
+(
+)
+{
+prefetchDNS
+(
+&quot;https://example.com&quot;
+)
+;
+return
+...
+;
+}
+Prefetching DNS in an event handler 
+Call 
+prefetchDNS
+ in an event handler before transitioning to a page or state where external resources will be needed. This gets the process started earlier than if you call it during the rendering of the new page or state.
+import
+{
+prefetchDNS
+}
+from
+&#x27;react-dom&#x27;
+;
+function
+CallToAction
+(
+)
+{
+const
+onClick
+ = 
+(
+)
+=&gt;
+{
+prefetchDNS
+(
+&#x27;http://example.com&#x27;
+)
+;
+startWizard
+(
+)
+;
+}
+return
+(
+&lt;
+button
+onClick
+=
+{
+onClick
+}
+&gt;
+Start Wizard
+&lt;/
+button
+&gt;
+)
+;
+}
+Previous
+preconnect
+Next
+preinit
+Copyright © Meta Platforms, Inc
+no uwu plz
+uwu?
+Logo by
+@sawaratsuki1004
+Learn React
+Quick Start
+Installation
+Describing the UI
+Adding Interactivity
+Managing State
+Escape Hatches
+API Reference
+React APIs
+React DOM APIs
+Community
+Code of Conduct
+Meet the Team
+Docs Contributors
+Acknowledgements
+More
+Blog
+React Native
+Privacy
+Terms
+On this page
+Overview
+Reference 
+prefetchDNS(href)
+Usage 
+Prefetching DNS when rendering 
+Prefetching DNS in an event handler 
+{"props":{"pageProps":{"toc":"[{\"url\":\"#\",\"text\":\"Overview\",\"depth\":2},{\"url\":\"#reference\",\"depth\":2,\"text\":\"Reference \"},{\"url\":\"#prefetchdns\",\"depth\":3,\"text\":[[\"$r\",\"code\",null,{\"children\":\"prefetchDNS(href)\"}],\" \"]},{\"url\":\"#usage\",\"depth\":2,\"text\":\"Usage \"},{\"url\":\"#prefetching-dns-when-rendering\",\"depth\":3,\"text\":\"Prefetching DNS when rendering \"},{\"url\":\"#prefetching-dns-in-an-event-handler\",\"depth\":3,\"text\":\"Prefetching DNS in an event handler \"}]","content":"[[\"$r\",\"MaxWidth\",\"last\",{\"children\":[[\"$r\",\"Intro\",null,{\"children\":[[\"$r\",\"p\",null,{\"children\":[[\"$r\",\"code\",null,{\"children\":\"prefetchDNS\"}],\" lets you eagerly look up the IP of a server that you expect to load resources from.\"]}],[\"$r\",\"pre\",null,{\"children\":[\"$r\",\"code\",null,{\"className\":\"language-js\",\"children\":\"prefetchDNS(\\\"https://example.com\\\");\\n\"}]}]]}],\"\\n\",[\"$r\",\"InlineToc\",null,{}],\"\\n\",[\"$r\",\"hr\",null,{}],\"\\n\",[\"$r\",\"h2\",null,{\"id\":\"reference\",\"children\":\"Reference \"}],\"\\n\",[\"$r\",\"h3\",null,{\"id\":\"prefetchdns\",\"children\":[[\"$r\",\"code\",null,{\"children\":\"prefetchDNS(href)\"}],\" \"]}],\"\\n\",[\"$r\",\"p\",null,{\"children\":[\"To look up a host, call the \",[\"$r\",\"code\",null,{\"children\":\"prefetchDNS\"}],\" function from \",[\"$r\",\"code\",null,{\"children\":\"react-dom\"}],\".\"]}],\"\\n\",[\"$r\",\"pre\",null,{\"children\":[\"$r\",\"code\",null,{\"className\":\"language-js\",\"children\":\"import { prefetchDNS } from 'react-dom';\\n\\nfunction AppRoot() {\\n prefetchDNS(\\\"https://example.com\\\");\\n // ...\\n}\\n\\n\"}]}],\"\\n\",[\"$r\",\"p\",null,{\"children\":[\"$r\",\"a\",null,{\"href\":\"#usage\",\"children\":\"See more examples below.\"}]}],\"\\n\",[\"$r\",\"p\",null,{\"children\":\"The prefetchDNS function provides the browser with a hint that it should look up the IP address of a given server. If the browser chooses to do so, this can speed up the loading of resources from that server.\"}],\"\\n\",[\"$r\",\"h4\",null,{\"id\":\"parameters\",\"children\":\"Parameters \"}],\"\\n\",[\"$r\",\"ul\",null,{\"children\":[\"\\n\",[\"$r\",\"li\",null,{\"children\":[[\"$r\",\"code\",null,{\"children\":\"href\"}],\": a string. The URL of the server you want to connect to.\"]}],\"\\n\"]}],\"\\n\",[\"$r\",\"h4\",null,{\"id\":\"returns\",\"children\":\"Returns \"}],\"\\n\",[\"$r\",\"p\",null,{\"children\":[[\"$r\",\"code\",null,{\"children\":\"prefetchDNS\"}],\" returns nothing.\"]}],\"\\n\",[\"$r\",\"h4\",null,{\"id\":\"caveats\",\"children\":\"Caveats \"}],\"\\n\",[\"$r\",\"ul\",null,{\"children\":[\"\\n\",[\"$r\",\"li\",null,{\"children\":[\"Multiple calls to \",[\"$r\",\"code\",null,{\"children\":\"prefetchDNS\"}],\" with the same server have the same effect as a single call.\"]}],\"\\n\",[\"$r\",\"li\",null,{\"children\":[\"In the browser, you can call \",[\"$r\",\"code\",null,{\"children\":\"prefetchDNS\"}],\" in any situation: while rendering a component, in an Effect, in an event handler, and so on.\"]}],\"\\n\",[\"$r\",\"li\",null,{\"children\":[\"In server-side rendering or when rendering Server Components, \",[\"$r\",\"code\",null,{\"children\":\"prefetchDNS\"}],\" only has an effect if you call it while rendering a component or in an async context originating from rendering a component. Any other calls will be ignored.\"]}],\"\\n\",[\"$r\",\"li\",null,{\"children\":[\"If you know the specific resources you’ll need, you can call \",[\"$r\",\"a\",null,{\"href\":\"/reference/react-dom/#resource-preloading-apis\",\"children\":\"other functions\"}],\" instead that will start loading the resources right away.\"]}],\"\\n\",[\"$r\",\"li\",null,{\"children\":\"There is no benefit to prefetching the same server the webpage itself is hosted from because it’s already been looked up by the time the hint would be given.\"}],\"\\n\",[\"$r\",\"li\",null,{\"children\":[\"Compared with \",[\"$r\",\"a\",null,{\"href\":\"/reference/react-dom/preconnect\",\"children\":[\"$r\",\"code\",null,{\"children\":\"preconnect\"}]}],\", \",[\"$r\",\"code\",null,{\"children\":\"prefetchDNS\"}],\" may be better if you are speculatively connecting to a large number of domains, in which case the overhead of preconnections might outweigh the benefit.\"]}],\"\\n\"]}],\"\\n\",[\"$r\",\"hr\",null,{}],\"\\n\",[\"$r\",\"h2\",null,{\"id\":\"usage\",\"children\":\"Usage \"}],\"\\n\",[\"$r\",\"h3\",null,{\"id\":\"prefetching-dns-when-rendering\",\"children\":\"Prefetching DNS when rendering \"}],\"\\n\",[\"$r\",\"p\",null,{\"children\":[\"Call \",[\"$r\",\"code\",null,{\"children\":\"prefetchDNS\"}],\" when rendering a component if you know that its children will load external resources from that host.\"]}],\"\\n\",[\"$r\",\"pre\",null,{\"children\":[\"$r\",\"code\",null,{\"className\":\"language-js\",\"children\":\"import { prefetchDNS } from 'react-dom';\\n\\nfunction AppRoot() {\\n prefetchDNS(\\\"https://example.com\\\");\\n return ...;\\n}\\n\"}]}],\"\\n\",[\"$r\",\"h3\",null,{\"id\":\"prefetching-dns-in-an-event-handler\",\"children\":\"Prefetching DNS in an event handler \"}],\"\\n\",[\"$r\",\"p\",null,{\"children\":[\"Call \",[\"$r\",\"code\",null,{\"children\":\"prefetchDNS\"}],\" in an event handler before transitioning to a page or state where external resources will be needed. This gets the process started earlier than if you call it during the rendering of the new page or state.\"]}],\"\\n\",[\"$r\",\"pre\",null,{\"children\":[\"$r\",\"code\",null,{\"className\":\"language-js\",\"children\":\"import { prefetchDNS } from 'react-dom';\\n\\nfunction CallToAction() {\\n const onClick = () =\u003e {\\n prefetchDNS('http://example.com');\\n startWizard();\\n }\\n return (\\n \u003cbutton onClick={onClick}\u003eStart Wizard\u003c/button\u003e\\n );\\n}\\n\"}]}]]}]]","meta":{"title":"prefetchDNS"},"languages":null},"__N_SSG":true},"page":"/[[...markdownPath]]","query":{"markdownPath":["reference","react-dom","prefetchDNS"]},"buildId":"iL-S_VcpSPApikCxaBjlp","isFallback":false,"gsp":true,"scriptLoader":[]}

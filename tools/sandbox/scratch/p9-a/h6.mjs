@@ -1,0 +1,20 @@
+import {JSDOM} from "jsdom";
+const dom=new JSDOM("<!doctype html><html><body></body></html>",{pretendToBeVisual:true});
+const g=globalThis;
+for(const k of ["window","document","navigator","Node","HTMLElement","Element","MutationObserver","Event","CustomEvent"]) {try{g[k]=dom.window[k]}catch{Object.defineProperty(g,k,{value:dom.window[k],configurable:true})}}
+g.IS_REACT_ACT_ENVIRONMENT=false;
+const React=(await import("react")).default;const {Suspense}=await import("react");
+const {renderToString}=await import("react-dom/server");const {hydrateRoot}=await import("react-dom/client");
+const h=React.createElement;const sleep=ms=>new Promise(r=>setTimeout(r,ms));
+const isServer=typeof window==="undefined";
+let server=true;
+const Reviews=()=>{if(server)throw new Error("srv-fail");return h("p",null,"reviews OK")};
+const App=()=>h("div",null,h("h1",null,"t"),h(Suspense,{fallback:"loading"},h(Reviews)));
+const c=document.createElement("div");
+const origE=console.error;console.error=()=>{};
+c.innerHTML=renderToString(h(App));console.error=origE;
+console.log("server html:",c.innerHTML.replace(/data-stck="[^"]*"|data-cstck="[^"]*"/g,"…").slice(0,300));
+document.body.append(c);server=false;
+const errs=[];
+hydrateRoot(c,h(App),{onRecoverableError(e,i){errs.push(e.message.slice(0,120)+" | cause="+(e.cause&&e.cause.message))}});
+await sleep(100);console.log("after:",c.innerHTML,errs);

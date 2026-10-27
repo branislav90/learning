@@ -1,0 +1,144 @@
+        &lt;Profiler&gt; – React                                                                   window.dataLayer = window.dataLayer || [];function gtag(){dataLayer.push(arguments);}gtag('js', new Date());gtag('config', 'G-B1E83PJ3RT');   
+              (function () {
+                try {
+                  let logShown = false;
+                  function setUwu(isUwu) {
+                    try {
+                      if (isUwu) {
+                        localStorage.setItem('uwu', true);
+                        document.documentElement.classList.add('uwu');
+                        if (!logShown) {
+                          console.log('uwu mode! turn off with ?uwu=0');
+                          console.log('logo credit to @sawaratsuki1004 via https://github.com/SAWARATSUKI/KawaiiLogos');
+                          logShown = true;
+                        }
+                      } else {
+                        localStorage.removeItem('uwu');
+                        document.documentElement.classList.remove('uwu');
+                        console.log('uwu mode off. turn on with ?uwu');
+                      }
+                    } catch (err) { }
+                  }
+                  window.__setUwu = setUwu;
+                  function checkQueryParam() {
+                    const params = new URLSearchParams(window.location.search);
+                    const value = params.get('uwu');
+                    switch(value) {
+                      case '':
+                      case 'true':
+                      case '1':
+                        return true;
+                      case 'false':
+                      case '0':
+                        return false;
+                      default:
+                        return null;
+                    }
+                  }
+                  function checkLocalStorage() {
+                    try {
+                      return localStorage.getItem('uwu') === 'true';
+                    } catch (err) {
+                      return false;
+                    }
+                  }
+                  const uwuQueryParam = checkQueryParam();
+                  if (uwuQueryParam != null) {
+                    setUwu(uwuQueryParam);
+                  } else if (checkLocalStorage()) {
+                    document.documentElement.classList.add('uwu');
+                  }
+                } catch (err) { }
+              })();
+              
+                (function () {
+                  function setTheme(newTheme) {
+                    window.__theme = newTheme;
+                    if (newTheme === 'dark') {
+                      document.documentElement.classList.add('dark');
+                    } else if (newTheme === 'light') {
+                      document.documentElement.classList.remove('dark');
+                    }
+                  }
+
+                  var preferredTheme;
+                  try {
+                    preferredTheme = localStorage.getItem('theme');
+                  } catch (err) { }
+
+                  window.__setPreferredTheme = function(newTheme) {
+                    preferredTheme = newTheme;
+                    setTheme(newTheme);
+                    try {
+                      localStorage.setItem('theme', newTheme);
+                    } catch (err) { }
+                  };
+
+                  var initialTheme = preferredTheme;
+                  var darkQuery = window.matchMedia('(prefers-color-scheme: dark)');
+
+                  if (!initialTheme) {
+                    initialTheme = darkQuery.matches ? 'dark' : 'light';
+                  }
+                  setTheme(initialTheme);
+
+                  darkQuery.addEventListener('change', function (e) {
+                    if (!preferredTheme) {
+                      setTheme(e.matches ? 'dark' : 'light');
+                    }
+                  });
+
+                  // Detect whether the browser is Mac to display platform specific content
+                  // An example of such content can be the keyboard shortcut displayed in the search bar
+                  document.documentElement.classList.add(
+                      window.navigator.platform.includes('Mac')
+                      ? "platform-mac" 
+                      : "platform-win"
+                  );
+                })();
+                                                       React       v 19.3         Search  ⌘  Ctrl  K        Learn    Reference    Community    Blog                                                                           react@19.3    Overview        Hooks                    useActionState        useCallback        useContext        useDebugValue        useDeferredValue        useEffect        useEffectEvent        useId        useImperativeHandle        useInsertionEffect        useLayoutEffect        useMemo        useOptimistic        useReducer        useRef        useState        useSyncExternalStore        useTransition            Components                    &lt;Fragment&gt; (&lt;&gt;)        &lt;Profiler&gt;        &lt;StrictMode&gt;        &lt;Suspense&gt;        &lt;Activity&gt;        &lt;ViewTransition&gt;            APIs                    act        addTransitionType        cache        cacheSignal        captureOwnerStack        createContext        lazy        memo        startTransition        use        experimental_taintObjectReference     - This feature is available in the latest Experimental version of React              experimental_taintUniqueValue     - This feature is available in the latest Experimental version of React                  react-dom@19.3    Hooks                    useFormStatus            Components                    Common (e.g. &lt;div&gt;)        &lt;form&gt;        &lt;input&gt;        &lt;option&gt;        &lt;progress&gt;        &lt;select&gt;        &lt;textarea&gt;        &lt;img&gt;        &lt;link&gt;        &lt;meta&gt;        &lt;script&gt;        &lt;style&gt;        &lt;title&gt;            APIs                    browser        createPortal        flushSync        preconnect        prefetchDNS        preinit        preinitModule        preload        preloadModule            Client APIs                    createRoot        hydrateRoot            Server APIs                    renderToPipeableStream        renderToReadableStream        renderToStaticMarkup        renderToString        resume        resumeToPipeableStream            Static APIs                    prerender        prerenderToNodeStream        resumeAndPrerender        resumeAndPrerenderToNodeStream            React Compiler    Configuration                    compilationMode        gating        logger        panicThreshold        target            Directives                    &quot;use memo&quot;        &quot;use no memo&quot;            Compiling Libraries        React DevTools    React Performance tracks        React DevTools for agents     - This feature is available in the latest Experimental version of React              eslint-plugin-react-hooks    Lints                    exhaustive-deps        rules-of-hooks        component-hook-factories        config        error-boundaries        gating        globals        immutability        incompatible-library        preserve-manual-memoization        purity        refs        set-state-in-effect        set-state-in-render        static-components        unsupported-syntax        use-memo            Rules of React    Overview                    Components and Hooks must be pure        React calls Components and Hooks        Rules of Hooks            React Server Components    Server Components        Server Functions        Directives                    &#x27;use client&#x27;        &#x27;use server&#x27;            Legacy APIs    Legacy React APIs                    Children        cloneElement        Component        createElement        createRef        forwardRef        isValidElement        PureComponent                               API Reference          Components                   Copy page  Copy    &lt;Profiler&gt;                    &lt;Profiler&gt;  lets you measure rendering performance of a React tree programmatically.          &lt;  Profiler   id = &quot;App&quot;   onRender = {  onRender  }  &gt;       &lt;  App   /&gt;     &lt;/  Profiler  &gt;          
+   Reference      &lt;Profiler&gt;       onRender  callback       Usage     Measuring rendering performance programmatically     Measuring different parts of the application      
+ 
+ Reference            
+  &lt;Profiler&gt;             
+ Wrap a component tree in a  &lt;Profiler&gt;  to measure its rendering performance. 
+         &lt;  Profiler   id = &quot;App&quot;   onRender = {  onRender  }  &gt;       &lt;  App   /&gt;     &lt;/  Profiler  &gt;         
+ Props            
+ 
+  id : A string identifying the part of the UI you are measuring. 
+  onRender : An   onRender  callback  that React calls every time components within the profiled tree update. It receives information about what was rendered and how much time it took. 
+ 
+ Caveats            
+ 
+ Profiling adds some additional overhead, so  it is disabled in the production build by default.  To opt into production profiling, you need to enable a  special production build with profiling enabled.  
+ 
+ 
+  onRender  callback            
+ React will call your  onRender  callback with information about what was rendered. 
+         function   onRender  (  id  ,   phase  ,   actualDuration  ,   baseDuration  ,   startTime  ,   commitTime  )   {       // Aggregate or log render timings...     }         
+ Parameters            
+ 
+  id : The string  id  prop of the  &lt;Profiler&gt;  tree that has just committed. This lets you identify which part of the tree was committed if you are using multiple profilers. 
+  phase :  &quot;mount&quot; ,  &quot;update&quot;  or  &quot;nested-update&quot; . This lets you know whether the tree has just been mounted for the first time or re-rendered due to a change in props, state, or Hooks. 
+  actualDuration : The number of milliseconds spent rendering the  &lt;Profiler&gt;  and its descendants for the current update. This indicates how well the subtree makes use of memoization (e.g.   memo   and   useMemo  ). Ideally this value should decrease significantly after the initial mount as many of the descendants will only need to re-render if their specific props change. 
+  baseDuration : The number of milliseconds estimating how much time it would take to re-render the entire  &lt;Profiler&gt;  subtree without any optimizations. It is calculated by summing up the most recent render durations of each component in the tree. This value estimates a worst-case cost of rendering (e.g. the initial mount or a tree with no memoization). Compare  actualDuration  against it to see if memoization is working. 
+  startTime : A numeric timestamp for when React began rendering the current update. 
+  commitTime : A numeric timestamp for when React committed the current update. This value is shared between all profilers in a commit, enabling them to be grouped if desirable. 
+ 
+ 
+ Usage            
+ Measuring rendering performance programmatically            
+ Wrap the  &lt;Profiler&gt;  component around a React tree to measure its rendering performance. 
+         &lt;  App  &gt;       &lt;  Profiler   id = &quot;Sidebar&quot;   onRender = {  onRender  }  &gt;         &lt;  Sidebar   /&gt;       &lt;/  Profiler  &gt;       &lt;  PageContent   /&gt;     &lt;/  App  &gt;         
+ It requires two props: an  id  (string) and an  onRender  callback (function) which React calls any time a component within the tree “commits” an update. 
+              Pitfall    Profiling adds some additional overhead, so  it is disabled in the production build by default.  To opt into production profiling, you need to enable a  special production build with profiling enabled.     
+                  Note     &lt;Profiler&gt;  lets you gather measurements programmatically. If you’re looking for an interactive profiler, try the Profiler tab in  React Developer Tools . It exposes similar functionality as a browser extension.  Components wrapped in  &lt;Profiler&gt;  will also be marked in the  Component tracks  of React Performance tracks even in profiling builds.
+In development builds, all components are marked in the Components track regardless of whether they’re wrapped in  &lt;Profiler&gt; .    
+ 
+ Measuring different parts of the application            
+ You can use multiple  &lt;Profiler&gt;  components to measure different parts of your application: 
+         &lt;  App  &gt;       &lt;  Profiler   id = &quot;Sidebar&quot;   onRender = {  onRender  }  &gt;         &lt;  Sidebar   /&gt;       &lt;/  Profiler  &gt;       &lt;  Profiler   id = &quot;Content&quot;   onRender = {  onRender  }  &gt;         &lt;  Content   /&gt;       &lt;/  Profiler  &gt;     &lt;/  App  &gt;         
+ You can also nest  &lt;Profiler&gt;  components: 
+         &lt;  App  &gt;       &lt;  Profiler   id = &quot;Sidebar&quot;   onRender = {  onRender  }  &gt;         &lt;  Sidebar   /&gt;       &lt;/  Profiler  &gt;       &lt;  Profiler   id = &quot;Content&quot;   onRender = {  onRender  }  &gt;         &lt;  Content  &gt;           &lt;  Profiler   id = &quot;Editor&quot;   onRender = {  onRender  }  &gt;             &lt;  Editor   /&gt;           &lt;/  Profiler  &gt;           &lt;  Preview   /&gt;         &lt;/  Content  &gt;       &lt;/  Profiler  &gt;     &lt;/  App  &gt;         
+ Although  &lt;Profiler&gt;  is a lightweight component, it should be used only when necessary. Each use adds some CPU and memory overhead to an application. 
+               Previous  &lt;Fragment&gt; (&lt;&gt;)              Next  &lt;StrictMode&gt;                                                                                                                                                                  Copyright © Meta Platforms, Inc  no uwu plz  uwu?  Logo by @sawaratsuki1004      Learn React    Quick Start    Installation    Describing the UI    Adding Interactivity    Managing State    Escape Hatches      API Reference    React APIs    React DOM APIs      Community    Code of Conduct    Meet the Team    Docs Contributors    Acknowledgements     More   Blog    React Native    Privacy    Terms                                          On this page     Overview    Reference      &lt;Profiler&gt;       onRender  callback     Usage     Measuring rendering performance programmatically     Measuring different parts of the application          {"props":{"pageProps":{"toc":"[{\"url\":\"#\",\"text\":\"Overview\",\"depth\":2},{\"url\":\"#reference\",\"depth\":2,\"text\":\"Reference \"},{\"url\":\"#profiler\",\"depth\":3,\"text\":[[\"$r\",\"code\",null,{\"children\":\"\u003cProfiler\u003e\"}],\" \"]},{\"url\":\"#onrender-callback\",\"depth\":3,\"text\":[[\"$r\",\"code\",null,{\"children\":\"onRender\"}],\" callback \"]},{\"url\":\"#usage\",\"depth\":2,\"text\":\"Usage \"},{\"url\":\"#measuring-rendering-performance-programmatically\",\"depth\":3,\"text\":\"Measuring rendering performance programmatically \"},{\"url\":\"#measuring-different-parts-of-the-application\",\"depth\":3,\"text\":\"Measuring different parts of the application \"}]","content":"[[\"$r\",\"MaxWidth\",\"last\",{\"children\":[[\"$r\",\"Intro\",null,{\"children\":[[\"$r\",\"p\",null,{\"children\":[[\"$r\",\"code\",null,{\"children\":\"\u003cProfiler\u003e\"}],\" lets you measure rendering performance of a React tree programmatically.\"]}],[\"$r\",\"pre\",null,{\"children\":[\"$r\",\"code\",null,{\"className\":\"language-js\",\"children\":\"\u003cProfiler id=\\\"App\\\" onRender={onRender}\u003e\\n  \u003cApp /\u003e\\n\u003c/Profiler\u003e\\n\"}]}]]}],\"\\n\",[\"$r\",\"InlineToc\",null,{}],\"\\n\",[\"$r\",\"hr\",null,{}],\"\\n\",[\"$r\",\"h2\",null,{\"id\":\"reference\",\"children\":\"Reference \"}],\"\\n\",[\"$r\",\"h3\",null,{\"id\":\"profiler\",\"children\":[[\"$r\",\"code\",null,{\"children\":\"\u003cProfiler\u003e\"}],\" \"]}],\"\\n\",[\"$r\",\"p\",null,{\"children\":[\"Wrap a component tree in a \",[\"$r\",\"code\",null,{\"children\":\"\u003cProfiler\u003e\"}],\" to measure its rendering performance.\"]}],\"\\n\",[\"$r\",\"pre\",null,{\"children\":[\"$r\",\"code\",null,{\"className\":\"language-js\",\"children\":\"\u003cProfiler id=\\\"App\\\" onRender={onRender}\u003e\\n  \u003cApp /\u003e\\n\u003c/Profiler\u003e\\n\"}]}],\"\\n\",[\"$r\",\"h4\",null,{\"id\":\"props\",\"children\":\"Props \"}],\"\\n\",[\"$r\",\"ul\",null,{\"children\":[\"\\n\",[\"$r\",\"li\",null,{\"children\":[[\"$r\",\"code\",null,{\"children\":\"id\"}],\": A string identifying the part of the UI you are measuring.\"]}],\"\\n\",[\"$r\",\"li\",null,{\"children\":[[\"$r\",\"code\",null,{\"children\":\"onRender\"}],\": An \",[\"$r\",\"a\",null,{\"href\":\"#onrender-callback\",\"children\":[[\"$r\",\"code\",null,{\"children\":\"onRender\"}],\" callback\"]}],\" that React calls every time components within the profiled tree update. It receives information about what was rendered and how much time it took.\"]}],\"\\n\"]}],\"\\n\",[\"$r\",\"h4\",null,{\"id\":\"caveats\",\"children\":\"Caveats \"}],\"\\n\",[\"$r\",\"ul\",null,{\"children\":[\"\\n\",[\"$r\",\"li\",null,{\"children\":[\"Profiling adds some additional overhead, so \",[\"$r\",\"strong\",null,{\"children\":\"it is disabled in the production build by default.\"}],\" To opt into production profiling, you need to enable a \",[\"$r\",\"a\",null,{\"href\":\"/reference/dev-tools/react-performance-tracks#using-profiling-builds\",\"children\":\"special production build with profiling enabled.\"}]]}],\"\\n\"]}],\"\\n\",[\"$r\",\"hr\",null,{}],\"\\n\",[\"$r\",\"h3\",null,{\"id\":\"onrender-callback\",\"children\":[[\"$r\",\"code\",null,{\"children\":\"onRender\"}],\" callback \"]}],\"\\n\",[\"$r\",\"p\",null,{\"children\":[\"React will call your \",[\"$r\",\"code\",null,{\"children\":\"onRender\"}],\" callback with information about what was rendered.\"]}],\"\\n\",[\"$r\",\"pre\",null,{\"children\":[\"$r\",\"code\",null,{\"className\":\"language-js\",\"children\":\"function onRender(id, phase, actualDuration, baseDuration, startTime, commitTime) {\\n  // Aggregate or log render timings...\\n}\\n\"}]}],\"\\n\",[\"$r\",\"h4\",null,{\"id\":\"onrender-parameters\",\"children\":\"Parameters \"}],\"\\n\",[\"$r\",\"ul\",null,{\"children\":[\"\\n\",[\"$r\",\"li\",null,{\"children\":[[\"$r\",\"code\",null,{\"children\":\"id\"}],\": The string \",[\"$r\",\"code\",null,{\"children\":\"id\"}],\" prop of the \",[\"$r\",\"code\",null,{\"children\":\"\u003cProfiler\u003e\"}],\" tree that has just committed. This lets you identify which part of the tree was committed if you are using multiple profilers.\"]}],\"\\n\",[\"$r\",\"li\",null,{\"children\":[[\"$r\",\"code\",null,{\"children\":\"phase\"}],\": \",[\"$r\",\"code\",null,{\"children\":\"\\\"mount\\\"\"}],\", \",[\"$r\",\"code\",null,{\"children\":\"\\\"update\\\"\"}],\" or \",[\"$r\",\"code\",null,{\"children\":\"\\\"nested-update\\\"\"}],\". This lets you know whether the tree has just been mounted for the first time or re-rendered due to a change in props, state, or Hooks.\"]}],\"\\n\",[\"$r\",\"li\",null,{\"children\":[[\"$r\",\"code\",null,{\"children\":\"actualDuration\"}],\": The number of milliseconds spent rendering the \",[\"$r\",\"code\",null,{\"children\":\"\u003cProfiler\u003e\"}],\" and its descendants for the current update. This indicates how well the subtree makes use of memoization (e.g. \",[\"$r\",\"a\",null,{\"href\":\"/reference/react/memo\",\"children\":[\"$r\",\"code\",null,{\"children\":\"memo\"}]}],\" and \",[\"$r\",\"a\",null,{\"href\":\"/reference/react/useMemo\",\"children\":[\"$r\",\"code\",null,{\"children\":\"useMemo\"}]}],\"). Ideally this value should decrease significantly after the initial mount as many of the descendants will only need to re-render if their specific props change.\"]}],\"\\n\",[\"$r\",\"li\",null,{\"children\":[[\"$r\",\"code\",null,{\"children\":\"baseDuration\"}],\": The number of milliseconds estimating how much time it would take to re-render the entire \",[\"$r\",\"code\",null,{\"children\":\"\u003cProfiler\u003e\"}],\" subtree without any optimizations. It is calculated by summing up the most recent render durations of each component in the tree. This value estimates a worst-case cost of rendering (e.g. the initial mount or a tree with no memoization). Compare \",[\"$r\",\"code\",null,{\"children\":\"actualDuration\"}],\" against it to see if memoization is working.\"]}],\"\\n\",[\"$r\",\"li\",null,{\"children\":[[\"$r\",\"code\",null,{\"children\":\"startTime\"}],\": A numeric timestamp for when React began rendering the current update.\"]}],\"\\n\",[\"$r\",\"li\",null,{\"children\":[[\"$r\",\"code\",null,{\"children\":\"commitTime\"}],\": A numeric timestamp for when React committed the current update. This value is shared between all profilers in a commit, enabling them to be grouped if desirable.\"]}],\"\\n\"]}],\"\\n\",[\"$r\",\"hr\",null,{}],\"\\n\",[\"$r\",\"h2\",null,{\"id\":\"usage\",\"children\":\"Usage \"}],\"\\n\",[\"$r\",\"h3\",null,{\"id\":\"measuring-rendering-performance-programmatically\",\"children\":\"Measuring rendering performance programmatically \"}],\"\\n\",[\"$r\",\"p\",null,{\"children\":[\"Wrap the \",[\"$r\",\"code\",null,{\"children\":\"\u003cProfiler\u003e\"}],\" component around a React tree to measure its rendering performance.\"]}],\"\\n\",[\"$r\",\"pre\",null,{\"children\":[\"$r\",\"code\",null,{\"className\":\"language-js\",\"meta\":\"{2,4}\",\"children\":\"\u003cApp\u003e\\n  \u003cProfiler id=\\\"Sidebar\\\" onRender={onRender}\u003e\\n    \u003cSidebar /\u003e\\n  \u003c/Profiler\u003e\\n  \u003cPageContent /\u003e\\n\u003c/App\u003e\\n\"}]}],\"\\n\",[\"$r\",\"p\",null,{\"children\":[\"It requires two props: an \",[\"$r\",\"code\",null,{\"children\":\"id\"}],\" (string) and an \",[\"$r\",\"code\",null,{\"children\":\"onRender\"}],\" callback (function) which React calls any time a component within the tree “commits” an update.\"]}],\"\\n\",[\"$r\",\"Pitfall\",null,{\"children\":[\"$r\",\"p\",null,{\"children\":[\"Profiling adds some additional overhead, so \",[\"$r\",\"strong\",null,{\"children\":\"it is disabled in the production build by default.\"}],\" To opt into production profiling, you need to enable a \",[\"$r\",\"a\",null,{\"href\":\"/reference/dev-tools/react-performance-tracks#using-profiling-builds\",\"children\":\"special production build with profiling enabled.\"}]]}]}],\"\\n\",[\"$r\",\"Note\",null,{\"children\":[[\"$r\",\"p\",null,{\"children\":[[\"$r\",\"code\",null,{\"children\":\"\u003cProfiler\u003e\"}],\" lets you gather measurements programmatically. If you’re looking for an interactive profiler, try the Profiler tab in \",[\"$r\",\"a\",null,{\"href\":\"/learn/react-developer-tools\",\"children\":\"React Developer Tools\"}],\". It exposes similar functionality as a browser extension.\"]}],[\"$r\",\"p\",null,{\"children\":[\"Components wrapped in \",[\"$r\",\"code\",null,{\"children\":\"\u003cProfiler\u003e\"}],\" will also be marked in the \",[\"$r\",\"a\",null,{\"href\":\"/reference/dev-tools/react-performance-tracks#components\",\"children\":\"Component tracks\"}],\" of React Performance tracks even in profiling builds.\\nIn development builds, all components are marked in the Components track regardless of whether they’re wrapped in \",[\"$r\",\"code\",null,{\"children\":\"\u003cProfiler\u003e\"}],\".\"]}]]}],\"\\n\",[\"$r\",\"hr\",null,{}],\"\\n\",[\"$r\",\"h3\",null,{\"id\":\"measuring-different-parts-of-the-application\",\"children\":\"Measuring different parts of the application \"}],\"\\n\",[\"$r\",\"p\",null,{\"children\":[\"You can use multiple \",[\"$r\",\"code\",null,{\"children\":\"\u003cProfiler\u003e\"}],\" components to measure different parts of your application:\"]}],\"\\n\",[\"$r\",\"pre\",null,{\"children\":[\"$r\",\"code\",null,{\"className\":\"language-js\",\"meta\":\"{5,7}\",\"children\":\"\u003cApp\u003e\\n  \u003cProfiler id=\\\"Sidebar\\\" onRender={onRender}\u003e\\n    \u003cSidebar /\u003e\\n  \u003c/Profiler\u003e\\n  \u003cProfiler id=\\\"Content\\\" onRender={onRender}\u003e\\n    \u003cContent /\u003e\\n  \u003c/Profiler\u003e\\n\u003c/App\u003e\\n\"}]}],\"\\n\",[\"$r\",\"p\",null,{\"children\":[\"You can also nest \",[\"$r\",\"code\",null,{\"children\":\"\u003cProfiler\u003e\"}],\" components:\"]}],\"\\n\",[\"$r\",\"pre\",null,{\"children\":[\"$r\",\"code\",null,{\"className\":\"language-js\",\"meta\":\"{5,7,9,12}\",\"children\":\"\u003cApp\u003e\\n  \u003cProfiler id=\\\"Sidebar\\\" onRender={onRender}\u003e\\n    \u003cSidebar /\u003e\\n  \u003c/Profiler\u003e\\n  \u003cProfiler id=\\\"Content\\\" onRender={onRender}\u003e\\n    \u003cContent\u003e\\n      \u003cProfiler id=\\\"Editor\\\" onRender={onRender}\u003e\\n        \u003cEditor /\u003e\\n      \u003c/Profiler\u003e\\n      \u003cPreview /\u003e\\n    \u003c/Content\u003e\\n  \u003c/Profiler\u003e\\n\u003c/App\u003e\\n\"}]}],\"\\n\",[\"$r\",\"p\",null,{\"children\":[\"Although \",[\"$r\",\"code\",null,{\"children\":\"\u003cProfiler\u003e\"}],\" is a lightweight component, it should be used only when necessary. Each use adds some CPU and memory overhead to an application.\"]}],\"\\n\",[\"$r\",\"hr\",null,{}]]}]]","meta":{"title":"\u003cProfiler\u003e"},"languages":null},"__N_SSG":true},"page":"/[[...markdownPath]]","query":{"markdownPath":["reference","react","Profiler"]},"buildId":"iL-S_VcpSPApikCxaBjlp","isFallback":false,"gsp":true,"scriptLoader":[]}   

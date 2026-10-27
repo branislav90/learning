@@ -1,0 +1,1 @@
+{showBanner ? <><Banner /><Counter /></> : <Counter />}

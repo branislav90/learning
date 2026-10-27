@@ -1,0 +1,1 @@
+export default [{ files: ["src2/features/**/*.{ts,tsx}"], rules: { "no-restricted-imports": ["error", { patterns: [{ group: ["@/features/*/*", "@/features/*/**"], message: "Import other features only through their public API" }] }] } }];

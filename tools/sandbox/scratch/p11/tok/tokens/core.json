@@ -1,0 +1,15 @@
+{
+  "color": {
+    "$type": "color",
+    "blue": { "600": { "$value": { "colorSpace": "srgb", "components": [0.114, 0.306, 0.847], "hex": "#1d4ed8" } },
+              "400": { "$value": { "colorSpace": "srgb", "components": [0.376, 0.647, 0.98],  "hex": "#60a5fa" } } },
+    "gray": { "50":  { "$value": { "colorSpace": "srgb", "components": [0.976, 0.98, 0.984],  "hex": "#f9fafb" } },
+              "900": { "$value": { "colorSpace": "srgb", "components": [0.067, 0.094, 0.153], "hex": "#111827" } } }
+  },
+  "space": {
+    "$type": "dimension",
+    "2": { "$value": { "value": 0.5,  "unit": "rem" } },
+    "3": { "$value": { "value": 0.75, "unit": "rem" } },
+    "4": { "$value": { "value": 1,    "unit": "rem" } }
+  }
+}

@@ -1,0 +1,902 @@
+useId – React
+window.dataLayer = window.dataLayer || [];function gtag(){dataLayer.push(arguments);}gtag('js', new Date());gtag('config', 'G-B1E83PJ3RT');
+ (function () {
+ try {
+ let logShown = false;
+ function setUwu(isUwu) {
+ try {
+ if (isUwu) {
+ localStorage.setItem('uwu', true);
+ document.documentElement.classList.add('uwu');
+ if (!logShown) {
+ console.log('uwu mode! turn off with ?uwu=0');
+ console.log('logo credit to @sawaratsuki1004 via https://github.com/SAWARATSUKI/KawaiiLogos');
+ logShown = true;
+ }
+ } else {
+ localStorage.removeItem('uwu');
+ document.documentElement.classList.remove('uwu');
+ console.log('uwu mode off. turn on with ?uwu');
+ }
+ } catch (err) { }
+ }
+ window.__setUwu = setUwu;
+ function checkQueryParam() {
+ const params = new URLSearchParams(window.location.search);
+ const value = params.get('uwu');
+ switch(value) {
+ case '':
+ case 'true':
+ case '1':
+ return true;
+ case 'false':
+ case '0':
+ return false;
+ default:
+ return null;
+ }
+ }
+ function checkLocalStorage() {
+ try {
+ return localStorage.getItem('uwu') === 'true';
+ } catch (err) {
+ return false;
+ }
+ }
+ const uwuQueryParam = checkQueryParam();
+ if (uwuQueryParam != null) {
+ setUwu(uwuQueryParam);
+ } else if (checkLocalStorage()) {
+ document.documentElement.classList.add('uwu');
+ }
+ } catch (err) { }
+ })();
+ (function () {
+ function setTheme(newTheme) {
+ window.__theme = newTheme;
+ if (newTheme === 'dark') {
+ document.documentElement.classList.add('dark');
+ } else if (newTheme === 'light') {
+ document.documentElement.classList.remove('dark');
+ }
+ }
+ var preferredTheme;
+ try {
+ preferredTheme = localStorage.getItem('theme');
+ } catch (err) { }
+ window.__setPreferredTheme = function(newTheme) {
+ preferredTheme = newTheme;
+ setTheme(newTheme);
+ try {
+ localStorage.setItem('theme', newTheme);
+ } catch (err) { }
+ };
+ var initialTheme = preferredTheme;
+ var darkQuery = window.matchMedia('(prefers-color-scheme: dark)');
+ if (!initialTheme) {
+ initialTheme = darkQuery.matches ? 'dark' : 'light';
+ }
+ setTheme(initialTheme);
+ darkQuery.addEventListener('change', function (e) {
+ if (!preferredTheme) {
+ setTheme(e.matches ? 'dark' : 'light');
+ }
+ });
+ // Detect whether the browser is Mac to display platform specific content
+ // An example of such content can be the keyboard shortcut displayed in the search bar
+ document.documentElement.classList.add(
+ window.navigator.platform.includes('Mac')
+ ? "platform-mac" 
+ : "platform-win"
+ );
+ })();
+React
+v
+19.3
+Search
+⌘
+Ctrl
+K
+Learn
+Reference
+Community
+Blog
+react@19.3
+Overview
+Hooks
+useActionState
+useCallback
+useContext
+useDebugValue
+useDeferredValue
+useEffect
+useEffectEvent
+useId
+useImperativeHandle
+useInsertionEffect
+useLayoutEffect
+useMemo
+useOptimistic
+useReducer
+useRef
+useState
+useSyncExternalStore
+useTransition
+Components
+&lt;Fragment&gt; (&lt;&gt;)
+&lt;Profiler&gt;
+&lt;StrictMode&gt;
+&lt;Suspense&gt;
+&lt;Activity&gt;
+&lt;ViewTransition&gt;
+APIs
+act
+addTransitionType
+cache
+cacheSignal
+captureOwnerStack
+createContext
+lazy
+memo
+startTransition
+use
+experimental_taintObjectReference
+ - This feature is available in the latest Experimental version of React
+experimental_taintUniqueValue
+ - This feature is available in the latest Experimental version of React
+react-dom@19.3
+Hooks
+useFormStatus
+Components
+Common (e.g. &lt;div&gt;)
+&lt;form&gt;
+&lt;input&gt;
+&lt;option&gt;
+&lt;progress&gt;
+&lt;select&gt;
+&lt;textarea&gt;
+&lt;img&gt;
+&lt;link&gt;
+&lt;meta&gt;
+&lt;script&gt;
+&lt;style&gt;
+&lt;title&gt;
+APIs
+browser
+createPortal
+flushSync
+preconnect
+prefetchDNS
+preinit
+preinitModule
+preload
+preloadModule
+Client APIs
+createRoot
+hydrateRoot
+Server APIs
+renderToPipeableStream
+renderToReadableStream
+renderToStaticMarkup
+renderToString
+resume
+resumeToPipeableStream
+Static APIs
+prerender
+prerenderToNodeStream
+resumeAndPrerender
+resumeAndPrerenderToNodeStream
+React Compiler
+Configuration
+compilationMode
+gating
+logger
+panicThreshold
+target
+Directives
+&quot;use memo&quot;
+&quot;use no memo&quot;
+Compiling Libraries
+React DevTools
+React Performance tracks
+React DevTools for agents
+ - This feature is available in the latest Experimental version of React
+eslint-plugin-react-hooks
+Lints
+exhaustive-deps
+rules-of-hooks
+component-hook-factories
+config
+error-boundaries
+gating
+globals
+immutability
+incompatible-library
+preserve-manual-memoization
+purity
+refs
+set-state-in-effect
+set-state-in-render
+static-components
+unsupported-syntax
+use-memo
+Rules of React
+Overview
+Components and Hooks must be pure
+React calls Components and Hooks
+Rules of Hooks
+React Server Components
+Server Components
+Server Functions
+Directives
+&#x27;use client&#x27;
+&#x27;use server&#x27;
+Legacy APIs
+Legacy React APIs
+Children
+cloneElement
+Component
+createElement
+createRef
+forwardRef
+isValidElement
+PureComponent
+API Reference
+Hooks
+Copy page
+Copy
+useId
+useId
+ is a React Hook for generating unique IDs that can be passed to accessibility attributes.
+const
+id
+ = 
+useId
+(
+)
+Reference 
+useId()
+Usage 
+Generating unique IDs for accessibility attributes 
+Generating IDs for several related elements 
+Specifying a shared prefix for all generated IDs 
+Using the same ID prefix on the client and the server 
+Reference 
+useId()
+Call 
+useId
+ at the top level of your component to generate a unique ID:
+import
+{
+useId
+}
+from
+&#x27;react&#x27;
+;
+function
+PasswordField
+(
+)
+{
+const
+passwordHintId
+ = 
+useId
+(
+)
+;
+// ...
+See more examples below.
+Parameters 
+useId
+ does not take any parameters.
+Returns 
+useId
+ returns a unique ID string associated with this particular 
+useId
+ call in this particular component.
+Caveats 
+useId
+ is a Hook, so you can only call it 
+at the top level of your component
+ or your own Hooks. You can’t call it inside loops or conditions. If you need that, extract a new component and move the state into it.
+useId
+should not be used to generate cache keys
+ for 
+use()
+. The ID is stable when a component is mounted but may change during rendering. Cache keys should be generated from your data.
+useId
+should not be used to generate keys
+ in a list. 
+Keys should be generated from your data.
+useId
+ currently cannot be used in 
+async Server Components
+.
+Usage 
+Pitfall
+Do not call 
+useId
+ to generate keys in a list.
+Keys should be generated from your data.
+Generating unique IDs for accessibility attributes 
+Call 
+useId
+ at the top level of your component to generate a unique ID:
+import
+{
+useId
+}
+from
+&#x27;react&#x27;
+;
+function
+PasswordField
+(
+)
+{
+const
+passwordHintId
+ = 
+useId
+(
+)
+;
+// ...
+You can then pass the 
+generated ID
+ to different attributes:
+&lt;
+&gt;
+&lt;
+input
+type
+=
+&quot;password&quot;
+aria-describedby
+=
+{
+passwordHintId
+}
+/&gt;
+&lt;
+p
+id
+=
+{
+passwordHintId
+}
+&gt;
+&lt;/
+&gt;
+Let’s walk through an example to see when this is useful.
+HTML accessibility attributes
+ like 
+aria-describedby
+ let you specify that two tags are related to each other. For example, you can specify that an element (like an input) is described by another element (like a paragraph).
+In regular HTML, you would write it like this:
+&lt;
+label
+&gt;
+ Password:
+&lt;
+input
+type
+=
+&quot;password&quot;
+aria-describedby
+=
+&quot;password-hint&quot;
+/&gt;
+&lt;/
+label
+&gt;
+&lt;
+p
+id
+=
+&quot;password-hint&quot;
+&gt;
+ The password should contain at least 18 characters
+&lt;/
+p
+&gt;
+However, hardcoding IDs like this is not a good practice in React. A component may be rendered more than once on the page—but IDs have to be unique! Instead of hardcoding an ID, generate a unique ID with 
+useId
+:
+import
+{
+useId
+}
+from
+&#x27;react&#x27;
+;
+function
+PasswordField
+(
+)
+{
+const
+passwordHintId
+ = 
+useId
+(
+)
+;
+return
+(
+&lt;
+&gt;
+&lt;
+label
+&gt;
+ Password:
+&lt;
+input
+type
+=
+&quot;password&quot;
+aria-describedby
+=
+{
+passwordHintId
+}
+/&gt;
+&lt;/
+label
+&gt;
+&lt;
+p
+id
+=
+{
+passwordHintId
+}
+&gt;
+ The password should contain at least 18 characters
+&lt;/
+p
+&gt;
+&lt;/
+&gt;
+)
+;
+}
+Now, even if 
+PasswordField
+ appears multiple times on the screen, the generated IDs won’t clash.
+App.js
+App.js
+Reload
+Clear
+Fork
+import
+{
+useId
+}
+from
+&#x27;react&#x27;
+;
+function
+PasswordField
+(
+)
+{
+const
+passwordHintId
+ = 
+useId
+(
+)
+;
+return
+(
+&lt;
+&gt;
+&lt;
+label
+&gt;
+ Password:
+&lt;
+input
+type
+=
+&quot;password&quot;
+aria-describedby
+=
+{
+passwordHintId
+}
+/&gt;
+&lt;/
+label
+&gt;
+&lt;
+p
+id
+=
+{
+passwordHintId
+}
+&gt;
+ The password should contain at least 18 characters
+&lt;/
+p
+&gt;
+&lt;/
+&gt;
+)
+;
+}
+export
+default
+function
+App
+(
+)
+{
+return
+(
+&lt;
+&gt;
+&lt;
+h2
+&gt;
+Choose password
+&lt;/
+h2
+&gt;
+&lt;
+PasswordField
+/&gt;
+&lt;
+h2
+&gt;
+Confirm password
+&lt;/
+h2
+&gt;
+&lt;
+PasswordField
+/&gt;
+&lt;/
+&gt;
+)
+;
+}
+Show more
+Watch this video
+ to see the difference in the user experience with assistive technologies.
+Pitfall
+With 
+server rendering
+, 
+useId
+ requires an identical component tree on the server and the client
+. If the trees you render on the server and the client don’t match exactly, the generated IDs won’t match.
+Deep Dive
+Why is useId better than an incrementing counter? 
+Show Details
+You might be wondering why 
+useId
+ is better than incrementing a global variable like 
+nextId++
+.
+The primary benefit of 
+useId
+ is that React ensures that it works with 
+server rendering.
+ During server rendering, your components generate HTML output. Later, on the client, 
+hydration
+ attaches your event handlers to the generated HTML. For hydration to work, the client output must match the server HTML.
+This is very difficult to guarantee with an incrementing counter because the order in which the Client Components are hydrated may not match the order in which the server HTML was emitted. By calling 
+useId
+, you ensure that hydration will work, and the output will match between the server and the client.
+Inside React, 
+useId
+ is generated from the “parent path” of the calling component. This is why, if the client and the server tree are the same, the “parent path” will match up regardless of rendering order.
+Generating IDs for several related elements 
+If you need to give IDs to multiple related elements, you can call 
+useId
+ to generate a shared prefix for them:
+App.js
+App.js
+Reload
+Clear
+Fork
+import
+{
+useId
+}
+from
+&#x27;react&#x27;
+;
+export
+default
+function
+Form
+(
+)
+{
+const
+id
+ = 
+useId
+(
+)
+;
+return
+(
+&lt;
+form
+&gt;
+&lt;
+label
+htmlFor
+=
+{
+id
+ + 
+&#x27;-firstName&#x27;
+}
+&gt;
+First Name:
+&lt;/
+label
+&gt;
+&lt;
+input
+id
+=
+{
+id
+ + 
+&#x27;-firstName&#x27;
+}
+type
+=
+&quot;text&quot;
+/&gt;
+&lt;
+hr
+/&gt;
+&lt;
+label
+htmlFor
+=
+{
+id
+ + 
+&#x27;-lastName&#x27;
+}
+&gt;
+Last Name:
+&lt;/
+label
+&gt;
+&lt;
+input
+id
+=
+{
+id
+ + 
+&#x27;-lastName&#x27;
+}
+type
+=
+&quot;text&quot;
+/&gt;
+&lt;/
+form
+&gt;
+)
+;
+}
+This lets you avoid calling 
+useId
+ for every single element that needs a unique ID.
+Specifying a shared prefix for all generated IDs 
+If you render multiple independent React applications on a single page, pass 
+identifierPrefix
+ as an option to your 
+createRoot
+ or 
+hydrateRoot
+ calls. This ensures that the IDs generated by the two different apps never clash because every identifier generated with 
+useId
+ will start with the distinct prefix you’ve specified.
+index.js
+index.html
+App.js
+index.js
+Reload
+Clear
+Fork
+import
+{
+createRoot
+}
+from
+&#x27;react-dom/client&#x27;
+;
+import
+App
+from
+&#x27;./App.js&#x27;
+;
+import
+&#x27;./styles.css&#x27;
+;
+const
+root1
+ = 
+createRoot
+(
+document
+.
+getElementById
+(
+&#x27;root1&#x27;
+)
+,
+{
+identifierPrefix
+:
+&#x27;my-first-app-&#x27;
+}
+)
+;
+root1
+.
+render
+(
+&lt;
+App
+/&gt;
+)
+;
+const
+root2
+ = 
+createRoot
+(
+document
+.
+getElementById
+(
+&#x27;root2&#x27;
+)
+,
+{
+identifierPrefix
+:
+&#x27;my-second-app-&#x27;
+}
+)
+;
+root2
+.
+render
+(
+&lt;
+App
+/&gt;
+)
+;
+Using the same ID prefix on the client and the server 
+If you 
+render multiple independent React apps on the same page
+, and some of these apps are server-rendered, make sure that the 
+identifierPrefix
+ you pass to the 
+hydrateRoot
+ call on the client side is the same as the 
+identifierPrefix
+ you pass to the 
+server APIs
+ such as 
+renderToPipeableStream
+.
+// Server
+import
+{
+renderToPipeableStream
+}
+from
+&#x27;react-dom/server&#x27;
+;
+const
+{
+pipe
+}
+ = 
+renderToPipeableStream
+(
+&lt;
+App
+/&gt;
+,
+{
+identifierPrefix
+:
+&#x27;react-app1&#x27;
+}
+)
+;
+// Client
+import
+{
+hydrateRoot
+}
+from
+&#x27;react-dom/client&#x27;
+;
+const
+domNode
+ = 
+document
+.
+getElementById
+(
+&#x27;root&#x27;
+)
+;
+const
+root
+ = 
+hydrateRoot
+(
+domNode
+,
+reactNode
+,
+{
+identifierPrefix
+:
+&#x27;react-app1&#x27;
+}
+)
+;
+You do not need to pass 
+identifierPrefix
+ if you only have one React app on the page.
+Previous
+useEffectEvent
+Next
+useImperativeHandle
+Copyright © Meta Platforms, Inc
+no uwu plz
+uwu?
+Logo by
+@sawaratsuki1004
+Learn React
+Quick Start
+Installation
+Describing the UI
+Adding Interactivity
+Managing State
+Escape Hatches
+API Reference
+React APIs
+React DOM APIs
+Community
+Code of Conduct
+Meet the Team
+Docs Contributors
+Acknowledgements
+More
+Blog
+React Native
+Privacy
+Terms
+On this page
+Overview
+Reference 
+useId()
+Usage 
+Generating unique IDs for accessibility attributes 
+Generating IDs for several related elements 
+Specifying a shared prefix for all generated IDs 
+Using the same ID prefix on the client and the server 
+{"props":{"pageProps":{"toc":"[{\"url\":\"#\",\"text\":\"Overview\",\"depth\":2},{\"url\":\"#reference\",\"depth\":2,\"text\":\"Reference \"},{\"url\":\"#useid\",\"depth\":3,\"text\":[[\"$r\",\"code\",null,{\"children\":\"useId()\"}],\" \"]},{\"url\":\"#usage\",\"depth\":2,\"text\":\"Usage \"},{\"url\":\"#generating-unique-ids-for-accessibility-attributes\",\"depth\":3,\"text\":\"Generating unique IDs for accessibility attributes \"},{\"url\":\"#generating-ids-for-several-related-elements\",\"depth\":3,\"text\":\"Generating IDs for several related elements \"},{\"url\":\"#specifying-a-shared-prefix-for-all-generated-ids\",\"depth\":3,\"text\":\"Specifying a shared prefix for all generated IDs \"},{\"url\":\"#using-the-same-id-prefix-on-the-client-and-the-server\",\"depth\":3,\"text\":\"Using the same ID prefix on the client and the server \"}]","content":"[[\"$r\",\"MaxWidth\",\"58\",{\"children\":[[\"$r\",\"Intro\",null,{\"children\":[[\"$r\",\"p\",null,{\"children\":[[\"$r\",\"code\",null,{\"children\":\"useId\"}],\" is a React Hook for generating unique IDs that can be passed to accessibility attributes.\"]}],[\"$r\",\"pre\",null,{\"children\":[\"$r\",\"code\",null,{\"className\":\"language-js\",\"children\":\"const id = useId()\\n\"}]}]]}],\"\\n\",[\"$r\",\"InlineToc\",null,{}],\"\\n\",[\"$r\",\"hr\",null,{}],\"\\n\",[\"$r\",\"h2\",null,{\"id\":\"reference\",\"children\":\"Reference \"}],\"\\n\",[\"$r\",\"h3\",null,{\"id\":\"useid\",\"children\":[[\"$r\",\"code\",null,{\"children\":\"useId()\"}],\" \"]}],\"\\n\",[\"$r\",\"p\",null,{\"children\":[\"Call \",[\"$r\",\"code\",null,{\"children\":\"useId\"}],\" at the top level of your component to generate a unique ID:\"]}],\"\\n\",[\"$r\",\"pre\",null,{\"children\":[\"$r\",\"code\",null,{\"className\":\"language-js\",\"children\":\"import { useId } from 'react';\\n\\nfunction PasswordField() {\\n const passwordHintId = useId();\\n // ...\\n\"}]}],\"\\n\",[\"$r\",\"p\",null,{\"children\":[\"$r\",\"a\",null,{\"href\":\"#usage\",\"children\":\"See more examples below.\"}]}],\"\\n\",[\"$r\",\"h4\",null,{\"id\":\"parameters\",\"children\":\"Parameters \"}],\"\\n\",[\"$r\",\"p\",null,{\"children\":[[\"$r\",\"code\",null,{\"children\":\"useId\"}],\" does not take any parameters.\"]}],\"\\n\",[\"$r\",\"h4\",null,{\"id\":\"returns\",\"children\":\"Returns \"}],\"\\n\",[\"$r\",\"p\",null,{\"children\":[[\"$r\",\"code\",null,{\"children\":\"useId\"}],\" returns a unique ID string associated with this particular \",[\"$r\",\"code\",null,{\"children\":\"useId\"}],\" call in this particular component.\"]}],\"\\n\",[\"$r\",\"h4\",null,{\"id\":\"caveats\",\"children\":\"Caveats \"}],\"\\n\",[\"$r\",\"ul\",null,{\"children\":[\"\\n\",[\"$r\",\"li\",null,{\"children\":[\"\\n\",[\"$r\",\"p\",null,{\"children\":[[\"$r\",\"code\",null,{\"children\":\"useId\"}],\" is a Hook, so you can only call it \",[\"$r\",\"strong\",null,{\"children\":\"at the top level of your component\"}],\" or your own Hooks. You can’t call it inside loops or conditions. If you need that, extract a new component and move the state into it.\"]}],\"\\n\"]}],\"\\n\",[\"$r\",\"li\",null,{\"children\":[\"\\n\",[\"$r\",\"p\",null,{\"children\":[[\"$r\",\"code\",null,{\"children\":\"useId\"}],\" \",[\"$r\",\"strong\",null,{\"children\":\"should not be used to generate cache keys\"}],\" for \",[\"$r\",\"a\",null,{\"href\":\"/reference/react/use\",\"children\":\"use()\"}],\". The ID is stable when a component is mounted but may change during rendering. Cache keys should be generated from your data.\"]}],\"\\n\"]}],\"\\n\",[\"$r\",\"li\",null,{\"children\":[\"\\n\",[\"$r\",\"p\",null,{\"children\":[[\"$r\",\"code\",null,{\"children\":\"useId\"}],\" \",[\"$r\",\"strong\",null,{\"children\":\"should not be used to generate keys\"}],\" in a list. \",[\"$r\",\"a\",null,{\"href\":\"/learn/rendering-lists#where-to-get-your-key\",\"children\":\"Keys should be generated from your data.\"}]]}],\"\\n\"]}],\"\\n\",[\"$r\",\"li\",null,{\"children\":[\"\\n\",[\"$r\",\"p\",null,{\"children\":[[\"$r\",\"code\",null,{\"children\":\"useId\"}],\" currently cannot be used in \",[\"$r\",\"a\",null,{\"href\":\"/reference/rsc/server-components#async-components-with-server-components\",\"children\":\"async Server Components\"}],\".\"]}],\"\\n\"]}],\"\\n\"]}],\"\\n\",[\"$r\",\"hr\",null,{}],\"\\n\",[\"$r\",\"h2\",null,{\"id\":\"usage\",\"children\":\"Usage \"}],\"\\n\",[\"$r\",\"Pitfall\",null,{\"children\":[\"$r\",\"p\",null,{\"children\":[[\"$r\",\"strong\",null,{\"children\":[\"Do not call \",[\"$r\",\"code\",null,{\"children\":\"useId\"}],\" to generate keys in a list.\"]}],\" \",[\"$r\",\"a\",null,{\"href\":\"/learn/rendering-lists#where-to-get-your-key\",\"children\":\"Keys should be generated from your data.\"}]]}]}],\"\\n\",[\"$r\",\"h3\",null,{\"id\":\"generating-unique-ids-for-accessibility-attributes\",\"children\":\"Generating unique IDs for accessibility attributes \"}],\"\\n\",[\"$r\",\"p\",null,{\"children\":[\"Call \",[\"$r\",\"code\",null,{\"children\":\"useId\"}],\" at the top level of your component to generate a unique ID:\"]}],\"\\n\",[\"$r\",\"pre\",null,{\"children\":[\"$r\",\"code\",null,{\"className\":\"language-js\",\"meta\":\"[[1, 4, \\\"passwordHintId\\\"]]\",\"children\":\"import { useId } from 'react';\\n\\nfunction PasswordField() {\\n const passwordHintId = useId();\\n // ...\\n\"}]}],\"\\n\",[\"$r\",\"p\",null,{\"children\":[\"You can then pass the \",[\"$r\",\"CodeStep\",null,{\"step\":1,\"children\":\"generated ID\"}],\" to different attributes:\"]}],\"\\n\",[\"$r\",\"pre\",null,{\"children\":[\"$r\",\"code\",null,{\"className\":\"language-js\",\"meta\":\"[[1, 2, \\\"passwordHintId\\\"], [1, 3, \\\"passwordHintId\\\"]]\",\"children\":\"\u003c\u003e\\n \u003cinput type=\\\"password\\\" aria-describedby={passwordHintId} /\u003e\\n \u003cp id={passwordHintId}\u003e\\n\u003c/\u003e\\n\"}]}],\"\\n\",[\"$r\",\"p\",null,{\"children\":[\"$r\",\"strong\",null,{\"children\":\"Let’s walk through an example to see when this is useful.\"}]}],\"\\n\",[\"$r\",\"p\",null,{\"children\":[[\"$r\",\"a\",null,{\"href\":\"https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA\",\"target\":\"_blank\",\"rel\":\"nofollow noopener noreferrer\",\"children\":\"HTML accessibility attributes\"}],\" like \",[\"$r\",\"a\",null,{\"href\":\"https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-describedby\",\"target\":\"_blank\",\"rel\":\"nofollow noopener noreferrer\",\"children\":[\"$r\",\"code\",null,{\"children\":\"aria-describedby\"}]}],\" let you specify that two tags are related to each other. For example, you can specify that an element (like an input) is described by another element (like a paragraph).\"]}],\"\\n\",[\"$r\",\"p\",null,{\"children\":\"In regular HTML, you would write it like this:\"}],\"\\n\",[\"$r\",\"pre\",null,{\"children\":[\"$r\",\"code\",null,{\"className\":\"language-html\",\"meta\":\"{5,8}\",\"children\":\"\u003clabel\u003e\\n Password:\\n \u003cinput\\n type=\\\"password\\\"\\n aria-describedby=\\\"password-hint\\\"\\n /\u003e\\n\u003c/label\u003e\\n\u003cp id=\\\"password-hint\\\"\u003e\\n The password should contain at least 18 characters\\n\u003c/p\u003e\\n\"}]}],\"\\n\",[\"$r\",\"p\",null,{\"children\":[\"However, hardcoding IDs like this is not a good practice in React. A component may be rendered more than once on the page—but IDs have to be unique! Instead of hardcoding an ID, generate a unique ID with \",[\"$r\",\"code\",null,{\"children\":\"useId\"}],\":\"]}],\"\\n\",[\"$r\",\"pre\",null,{\"children\":[\"$r\",\"code\",null,{\"className\":\"language-js\",\"meta\":\"{4,11,14}\",\"children\":\"import { useId } from 'react';\\n\\nfunction PasswordField() {\\n const passwordHintId = useId();\\n return (\\n \u003c\u003e\\n \u003clabel\u003e\\n Password:\\n \u003cinput\\n type=\\\"password\\\"\\n aria-describedby={passwordHintId}\\n /\u003e\\n \u003c/label\u003e\\n \u003cp id={passwordHintId}\u003e\\n The password should contain at least 18 characters\\n \u003c/p\u003e\\n \u003c/\u003e\\n );\\n}\\n\"}]}],\"\\n\",[\"$r\",\"p\",null,{\"children\":[\"Now, even if \",[\"$r\",\"code\",null,{\"children\":\"PasswordField\"}],\" appears multiple times on the screen, the generated IDs won’t clash.\"]}],\"\\n\"]}],[\"$r\",\"Sandpack\",null,{\"children\":[[\"$r\",\"pre\",null,{\"children\":[\"$r\",\"code\",null,{\"className\":\"language-js\",\"children\":\"import { useId } from 'react';\\n\\nfunction PasswordField() {\\n const passwordHintId = useId();\\n return (\\n \u003c\u003e\\n \u003clabel\u003e\\n Password:\\n \u003cinput\\n type=\\\"password\\\"\\n aria-describedby={passwordHintId}\\n /\u003e\\n \u003c/label\u003e\\n \u003cp id={passwordHintId}\u003e\\n The password should contain at least 18 characters\\n \u003c/p\u003e\\n \u003c/\u003e\\n );\\n}\\n\\nexport default function App() {\\n return (\\n \u003c\u003e\\n \u003ch2\u003eChoose password\u003c/h2\u003e\\n \u003cPasswordField /\u003e\\n \u003ch2\u003eConfirm password\u003c/h2\u003e\\n \u003cPasswordField /\u003e\\n \u003c/\u003e\\n );\\n}\\n\"}]}],[\"$r\",\"pre\",null,{\"children\":[\"$r\",\"code\",null,{\"className\":\"language-css\",\"children\":\"input { margin: 5px; }\\n\"}]}]]}],[\"$r\",\"MaxWidth\",\"72\",{\"children\":[\"\\n\",[\"$r\",\"p\",null,{\"children\":[[\"$r\",\"a\",null,{\"href\":\"https://www.youtube.com/watch?v=0dNzNcuEuOo\",\"target\":\"_blank\",\"rel\":\"nofollow noopener noreferrer\",\"children\":\"Watch this video\"}],\" to see the difference in the user experience with assistive technologies.\"]}],\"\\n\",[\"$r\",\"Pitfall\",null,{\"children\":[\"$r\",\"p\",null,{\"children\":[\"With \",[\"$r\",\"a\",null,{\"href\":\"/reference/react-dom/server\",\"children\":\"server rendering\"}],\", \",[\"$r\",\"strong\",null,{\"children\":[[\"$r\",\"code\",null,{\"children\":\"useId\"}],\" requires an identical component tree on the server and the client\"]}],\". If the trees you render on the server and the client don’t match exactly, the generated IDs won’t match.\"]}]}],\"\\n\",[\"$r\",\"DeepDive\",null,{\"children\":[[\"$r\",\"h4\",null,{\"id\":\"why-is-useid-better-than-an-incrementing-counter\",\"children\":\"Why is useId better than an incrementing counter? \"}],[\"$r\",\"p\",null,{\"children\":[\"You might be wondering why \",[\"$r\",\"code\",null,{\"children\":\"useId\"}],\" is better than incrementing a global variable like \",[\"$r\",\"code\",null,{\"children\":\"nextId++\"}],\".\"]}],[\"$r\",\"p\",null,{\"children\":[\"The primary benefit of \",[\"$r\",\"code\",null,{\"children\":\"useId\"}],\" is that React ensures that it works with \",[\"$r\",\"a\",null,{\"href\":\"/reference/react-dom/server\",\"children\":\"server rendering.\"}],\" During server rendering, your components generate HTML output. Later, on the client, \",[\"$r\",\"a\",null,{\"href\":\"/reference/react-dom/client/hydrateRoot\",\"children\":\"hydration\"}],\" attaches your event handlers to the generated HTML. For hydration to work, the client output must match the server HTML.\"]}],[\"$r\",\"p\",null,{\"children\":[\"This is very difficult to guarantee with an incrementing counter because the order in which the Client Components are hydrated may not match the order in which the server HTML was emitted. By calling \",[\"$r\",\"code\",null,{\"children\":\"useId\"}],\", you ensure that hydration will work, and the output will match between the server and the client.\"]}],[\"$r\",\"p\",null,{\"children\":[\"Inside React, \",[\"$r\",\"code\",null,{\"children\":\"useId\"}],\" is generated from the “parent path” of the calling component. This is why, if the client and the server tree are the same, the “parent path” will match up regardless of rendering order.\"]}]]}],\"\\n\",[\"$r\",\"hr\",null,{}],\"\\n\",[\"$r\",\"h3\",null,{\"id\":\"generating-ids-for-several-related-elements\",\"children\":\"Generating IDs for several related elements \"}],\"\\n\",[\"$r\",\"p\",null,{\"children\":[\"If you need to give IDs to multiple related elements, you can call \",[\"$r\",\"code\",null,{\"children\":\"useId\"}],\" to generate a shared prefix for them:\"]}],\"\\n\"]}],[\"$r\",\"Sandpack\",null,{\"children\":[[\"$r\",\"pre\",null,{\"children\":[\"$r\",\"code\",null,{\"className\":\"language-js\",\"children\":\"import { useId } from 'react';\\n\\nexport default function Form() {\\n const id = useId();\\n return (\\n \u003cform\u003e\\n \u003clabel htmlFor={id + '-firstName'}\u003eFirst Name:\u003c/label\u003e\\n \u003cinput id={id + '-firstName'} type=\\\"text\\\" /\u003e\\n \u003chr /\u003e\\n \u003clabel htmlFor={id + '-lastName'}\u003eLast Name:\u003c/label\u003e\\n \u003cinput id={id + '-lastName'} type=\\\"text\\\" /\u003e\\n \u003c/form\u003e\\n );\\n}\\n\"}]}],[\"$r\",\"pre\",null,{\"children\":[\"$r\",\"code\",null,{\"className\":\"language-css\",\"children\":\"input { margin: 5px; }\\n\"}]}]]}],[\"$r\",\"MaxWidth\",\"82\",{\"children\":[\"\\n\",[\"$r\",\"p\",null,{\"children\":[\"This lets you avoid calling \",[\"$r\",\"code\",null,{\"children\":\"useId\"}],\" for every single element that needs a unique ID.\"]}],\"\\n\",[\"$r\",\"hr\",null,{}],\"\\n\",[\"$r\",\"h3\",null,{\"id\":\"specifying-a-shared-prefix-for-all-generated-ids\",\"children\":\"Specifying a shared prefix for all generated IDs \"}],\"\\n\",[\"$r\",\"p\",null,{\"children\":[\"If you render multiple independent React applications on a single page, pass \",[\"$r\",\"code\",null,{\"children\":\"identifierPrefix\"}],\" as an option to your \",[\"$r\",\"a\",null,{\"href\":\"/reference/react-dom/client/createRoot#parameters\",\"children\":[\"$r\",\"code\",null,{\"children\":\"createRoot\"}]}],\" or \",[\"$r\",\"a\",null,{\"href\":\"/reference/react-dom/client/hydrateRoot\",\"children\":[\"$r\",\"code\",null,{\"children\":\"hydrateRoot\"}]}],\" calls. This ensures that the IDs generated by the two different apps never clash because every identifier generated with \",[\"$r\",\"code\",null,{\"children\":\"useId\"}],\" will start with the distinct prefix you’ve specified.\"]}],\"\\n\"]}],[\"$r\",\"Sandpack\",null,{\"children\":[[\"$r\",\"pre\",null,{\"children\":[\"$r\",\"code\",null,{\"className\":\"language-html\",\"meta\":\"public/index.html\",\"children\":\"\u003c!DOCTYPE html\u003e\\n\u003chtml\u003e\\n \u003chead\u003e\u003ctitle\u003eMy app\u003c/title\u003e\u003c/head\u003e\\n \u003cbody\u003e\\n \u003cdiv id=\\\"root1\\\"\u003e\u003c/div\u003e\\n \u003cdiv id=\\\"root2\\\"\u003e\u003c/div\u003e\\n \u003c/body\u003e\\n\u003c/html\u003e\\n\"}]}],[\"$r\",\"pre\",null,{\"children\":[\"$r\",\"code\",null,{\"className\":\"language-js\",\"children\":\"import { useId } from 'react';\\n\\nfunction PasswordField() {\\n const passwordHintId = useId();\\n console.log('Generated identifier:', passwordHintId)\\n return (\\n \u003c\u003e\\n \u003clabel\u003e\\n Password:\\n \u003cinput\\n type=\\\"password\\\"\\n aria-describedby={passwordHintId}\\n /\u003e\\n \u003c/label\u003e\\n \u003cp id={passwordHintId}\u003e\\n The password should contain at least 18 characters\\n \u003c/p\u003e\\n \u003c/\u003e\\n );\\n}\\n\\nexport default function App() {\\n return (\\n \u003c\u003e\\n \u003ch2\u003eChoose password\u003c/h2\u003e\\n \u003cPasswordField /\u003e\\n \u003c/\u003e\\n );\\n}\\n\"}]}],[\"$r\",\"pre\",null,{\"children\":[\"$r\",\"code\",null,{\"className\":\"language-js\",\"meta\":\"src/index.js active\",\"children\":\"import { createRoot } from 'react-dom/client';\\nimport App from './App.js';\\nimport './styles.css';\\n\\nconst root1 = createRoot(document.getElementById('root1'), {\\n identifierPrefix: 'my-first-app-'\\n});\\nroot1.render(\u003cApp /\u003e);\\n\\nconst root2 = createRoot(document.getElementById('root2'), {\\n identifierPrefix: 'my-second-app-'\\n});\\nroot2.render(\u003cApp /\u003e);\\n\"}]}],[\"$r\",\"pre\",null,{\"children\":[\"$r\",\"code\",null,{\"className\":\"language-css\",\"children\":\"#root1 {\\n border: 5px solid blue;\\n padding: 10px;\\n margin: 5px;\\n}\\n\\n#root2 {\\n border: 5px solid green;\\n padding: 10px;\\n margin: 5px;\\n}\\n\\ninput { margin: 5px; }\\n\"}]}]]}],[\"$r\",\"MaxWidth\",\"last\",{\"children\":[\"\\n\",[\"$r\",\"hr\",null,{}],\"\\n\",[\"$r\",\"h3\",null,{\"id\":\"using-the-same-id-prefix-on-the-client-and-the-server\",\"children\":\"Using the same ID prefix on the client and the server \"}],\"\\n\",[\"$r\",\"p\",null,{\"children\":[\"If you \",[\"$r\",\"a\",null,{\"href\":\"#specifying-a-shared-prefix-for-all-generated-ids\",\"children\":\"render multiple independent React apps on the same page\"}],\", and some of these apps are server-rendered, make sure that the \",[\"$r\",\"code\",null,{\"children\":\"identifierPrefix\"}],\" you pass to the \",[\"$r\",\"a\",null,{\"href\":\"/reference/react-dom/client/hydrateRoot\",\"children\":[\"$r\",\"code\",null,{\"children\":\"hydrateRoot\"}]}],\" call on the client side is the same as the \",[\"$r\",\"code\",null,{\"children\":\"identifierPrefix\"}],\" you pass to the \",[\"$r\",\"a\",null,{\"href\":\"/reference/react-dom/server\",\"children\":\"server APIs\"}],\" such as \",[\"$r\",\"a\",null,{\"href\":\"/reference/react-dom/server/renderToPipeableStream\",\"children\":[[\"$r\",\"code\",null,{\"children\":\"renderToPipeableStream\"}],\".\"]}]]}],\"\\n\",[\"$r\",\"pre\",null,{\"children\":[\"$r\",\"code\",null,{\"className\":\"language-js\",\"children\":\"// Server\\nimport { renderToPipeableStream } from 'react-dom/server';\\n\\nconst { pipe } = renderToPipeableStream(\\n \u003cApp /\u003e,\\n { identifierPrefix: 'react-app1' }\\n);\\n\"}]}],\"\\n\",[\"$r\",\"pre\",null,{\"children\":[\"$r\",\"code\",null,{\"className\":\"language-js\",\"children\":\"// Client\\nimport { hydrateRoot } from 'react-dom/client';\\n\\nconst domNode = document.getElementById('root');\\nconst root = hydrateRoot(\\n domNode,\\n reactNode,\\n { identifierPrefix: 'react-app1' }\\n);\\n\"}]}],\"\\n\",[\"$r\",\"p\",null,{\"children\":[\"You do not need to pass \",[\"$r\",\"code\",null,{\"children\":\"identifierPrefix\"}],\" if you only have one React app on the page.\"]}]]}]]","meta":{"title":"useId"},"languages":null},"__N_SSG":true},"page":"/[[...markdownPath]]","query":{"markdownPath":["reference","react","useId"]},"buildId":"iL-S_VcpSPApikCxaBjlp","isFallback":false,"gsp":true,"scriptLoader":[]}

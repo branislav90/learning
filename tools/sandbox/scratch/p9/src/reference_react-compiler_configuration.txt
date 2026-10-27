@@ -1,0 +1,134 @@
+ 
+ (function () {
+ try {
+ let logShown = false;
+ function setUwu(isUwu) {
+ try {
+ if (isUwu) {
+ localStorage.setItem('uwu', true);
+ document.documentElement.classList.add('uwu');
+ if (!logShown) {
+ console.log('uwu mode! turn off with ?uwu=0');
+ console.log('logo credit to @sawaratsuki1004 via https://github.com/SAWARATSUKI/KawaiiLogos');
+ logShown = true;
+ }
+ } else {
+ localStorage.removeItem('uwu');
+ document.documentElement.classList.remove('uwu');
+ console.log('uwu mode off. turn on with ?uwu');
+ }
+ } catch (err) { }
+ }
+ window.__setUwu = setUwu;
+ function checkQueryParam() {
+ const params = new URLSearchParams(window.location.search);
+ const value = params.get('uwu');
+ switch(value) {
+ case '':
+ case 'true':
+ case '1':
+ return true;
+ case 'false':
+ case '0':
+ return false;
+ default:
+ return null;
+ }
+ }
+ function checkLocalStorage() {
+ try {
+ return localStorage.getItem('uwu') === 'true';
+ } catch (err) {
+ return false;
+ }
+ }
+ const uwuQueryParam = checkQueryParam();
+ if (uwuQueryParam != null) {
+ setUwu(uwuQueryParam);
+ } else if (checkLocalStorage()) {
+ document.documentElement.classList.add('uwu');
+ }
+ } catch (err) { }
+ })();
+ 
+ (function () {
+ function setTheme(newTheme) {
+ window.__theme = newTheme;
+ if (newTheme === 'dark') {
+ document.documentElement.classList.add('dark');
+ } else if (newTheme === 'light') {
+ document.documentElement.classList.remove('dark');
+ }
+ }
+ var preferredTheme;
+ try {
+ preferredTheme = localStorage.getItem('theme');
+ } catch (err) { }
+ window.__setPreferredTheme = function(newTheme) {
+ preferredTheme = newTheme;
+ setTheme(newTheme);
+ try {
+ localStorage.setItem('theme', newTheme);
+ } catch (err) { }
+ };
+ var initialTheme = preferredTheme;
+ var darkQuery = window.matchMedia('(prefers-color-scheme: dark)');
+ if (!initialTheme) {
+ initialTheme = darkQuery.matches ? 'dark' : 'light';
+ }
+ setTheme(initialTheme);
+ darkQuery.addEventListener('change', function (e) {
+ if (!preferredTheme) {
+ setTheme(e.matches ? 'dark' : 'light');
+ }
+ });
+ // Detect whether the browser is Mac to display platform specific content
+ // An example of such content can be the keyboard shortcut displayed in the search bar
+ document.documentElement.classList.add(
+ window.navigator.platform.includes('Mac')
+ ? "platform-mac" 
+ : "platform-win"
+ );
+ })();
+ React v 19.3 Search ⌘ Ctrl K Learn Reference Community Blog react@19.3 Overview Hooks useActionState useCallback useContext useDebugValue useDeferredValue useEffect useEffectEvent useId useImperativeHandle useInsertionEffect useLayoutEffect useMemo useOptimistic useReducer useRef useState useSyncExternalStore useTransition Components <Fragment> (<>) <Profiler> <StrictMode> <Suspense> <Activity> <ViewTransition> APIs act addTransitionType cache cacheSignal captureOwnerStack createContext lazy memo startTransition use experimental_taintObjectReference - This feature is available in the latest Experimental version of React experimental_taintUniqueValue - This feature is available in the latest Experimental version of React react-dom@19.3 Hooks useFormStatus Components Common (e.g. <div>) <form> <input> <option> <progress> <select> <textarea> <img> <link> <meta> <script> <style> <title> APIs browser createPortal flushSync preconnect prefetchDNS preinit preinitModule preload preloadModule Client APIs createRoot hydrateRoot Server APIs renderToPipeableStream renderToReadableStream renderToStaticMarkup renderToString resume resumeToPipeableStream Static APIs prerender prerenderToNodeStream resumeAndPrerender resumeAndPrerenderToNodeStream React Compiler Configuration compilationMode gating logger panicThreshold target Directives "use memo" "use no memo" Compiling Libraries React DevTools React Performance tracks React DevTools for agents - This feature is available in the latest Experimental version of React eslint-plugin-react-hooks Lints exhaustive-deps rules-of-hooks component-hook-factories config error-boundaries gating globals immutability incompatible-library preserve-manual-memoization purity refs set-state-in-effect set-state-in-render static-components unsupported-syntax use-memo Rules of React Overview Components and Hooks must be pure React calls Components and Hooks Rules of Hooks React Server Components Server Components Server Functions Directives 'use client' 'use server' Legacy APIs Legacy React APIs Children cloneElement Component createElement createRef forwardRef isValidElement PureComponent API Reference Copy page Copy Configuration This page lists all configuration options available in React Compiler. 
+ Note For most apps, the default options should work out of the box. If you have a special need, you can use these advanced options. 
+ // babel.config.js module . exports = { plugins : [ [ 'babel-plugin-react-compiler' , { // compiler options } ] ] } ; 
+ 
+ Compilation Control 
+ These options control what the compiler optimizes and how it selects components and hooks to compile. 
+ 
+ compilationMode controls the strategy for selecting functions to compile (e.g., all functions, only annotated ones, or intelligent detection). 
+ 
+ { compilationMode : 'annotation' // Only compile "use memo" functions } 
+ 
+ Version Compatibility 
+ React version configuration ensures the compiler generates code compatible with your React version. 
+ target specifies which React version you’re using (17, 18, or 19). 
+ // For React 18 projects { target : '18' // Also requires react-compiler-runtime package } 
+ 
+ Error Handling 
+ These options control how the compiler responds to code that doesn’t follow the Rules of React . 
+ panicThreshold determines whether to fail the build or skip problematic components. 
+ // Recommended for production { panicThreshold : 'none' // Skip components with errors instead of failing the build } 
+ 
+ Debugging 
+ Logging and analysis options help you understand what the compiler is doing. 
+ logger provides custom logging for compilation events. 
+ { logger : { logEvent ( filename , event ) { if ( event . kind === 'CompileSuccess' ) { console . log ( 'Compiled:' , filename ) ; } } } } 
+ 
+ Feature Flags 
+ Conditional compilation lets you control when optimized code is used. 
+ gating enables runtime feature flags for A/B testing or gradual rollouts. 
+ { gating : { source : 'my-feature-flags' , importSpecifierName : 'isCompilerEnabled' } } 
+ 
+ Common Configuration Patterns 
+ Default configuration 
+ For most React 19 applications, the compiler works without configuration: 
+ // babel.config.js module . exports = { plugins : [ 'babel-plugin-react-compiler' ] } ; 
+ React 17/18 projects 
+ Older React versions need the runtime package and target configuration: 
+ npm install react - compiler - runtime @latest 
+ { target : '18' // or '17' } 
+ Incremental adoption 
+ Start with specific directories and expand gradually: 
+ { compilationMode : 'annotation' // Only compile "use memo" functions } Next compilationMode Copyright © Meta Platforms, Inc no uwu plz uwu? Logo by @sawaratsuki1004 Learn React Quick Start Installation Describing the UI Adding Interactivity Managing State Escape Hatches API Reference React APIs React DOM APIs Community Code of Conduct Meet the Team Docs Contributors Acknowledgements More Blog React Native Privacy Terms On this page Overview Compilation Control Version Compatibility Error Handling Debugging Feature Flags Common Configuration Patterns Default configuration React 17/18 projects Incremental adoption 

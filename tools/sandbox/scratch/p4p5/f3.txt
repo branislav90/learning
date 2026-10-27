@@ -1,0 +1,67 @@
+blocks/02-dr_05_L318.ts(6,77): error TS2355: A function whose declared type is neither 'undefined', 'void', nor 'any' must return a value.
+blocks/03-co_05_L417.tsx(44,24): error TS18046: 'p' is of type 'unknown'.
+blocks/03-co_05_L417.tsx(46,57): error TS18046: 'p' is of type 'unknown'.
+blocks/03-co_05_L417.tsx(47,61): error TS18046: 'p' is of type 'unknown'.
+blocks/03-co_05_L676.tsx(8,57): error TS2559: Type '{ children: string; }' has no properties in common with type 'IntrinsicAttributes'.
+blocks/03-co_05_L777.tsx(8,80): error TS18046: 'a' is of type 'unknown'.
+blocks/03-co_05_L777.tsx(8,101): error TS18046: 'b' is of type 'unknown'.
+blocks/04-co_05_L344.tsx(6,32): error TS18046: 'theme' is of type 'unknown'.
+blocks/04-pr_04_L584.tsx(2,74): error TS2786: 'A' cannot be used as a JSX component.
+blocks/10-re_05_L382.tsx(5,38): error TS18046: 'auth' is of type 'unknown'.
+blocks/10-re_05_L426.tsx(10,74): error TS2786: 'Error' cannot be used as a JSX component.
+blocks/11-co_05_L155.tsx(1,8): error TS2322: Type 'void' is not assignable to type 'string | number | readonly string[] | undefined'.
+blocks/11-de_04_L364.ts(3,29): error TS2769: No overload matches this call.
+blocks/12-do_04_L302.tsx(20,13): error TS7053: Element implicitly has an 'any' type because expression of type 'any' can't be used to index type '{ readonly "already-dispatched": "This order has been dispatched and can't be cancelled."; readonly "already-cance
+blocks/14-ap_04_L551.tsx(15,38): error TS18046: 'p' is of type 'unknown'.
+blocks/14-ap_04_L551.tsx(28,13): error TS18046: 'error' is of type 'unknown'.
+blocks/14-ap_04_L551.tsx(31,62): error TS18046: 'error' is of type 'unknown'.
+blocks/14-ap_04_L631.tsx(26,32): error TS18046: 'e' is of type 'unknown'.
+blocks/14-ap_04_L631.tsx(27,48): error TS18046: 'e' is of type 'unknown'.
+blocks/14-ob_05_L284.tsx(16,44): error TS18046: 'c' is of type 'unknown'.
+blocks/15-ad_05_L909.tsx(10,19): error TS2352: Conversion of type '{ [K in B["type"]]: ComponentType<Extract<B, { type: K; }>>; }' to type 'Record<string, ComponentType<B> | undefined>' may be a mistake because neither type sufficiently overlaps with the other
+blocks/15-st_04_L375.tsx(10,2): error TS2786: 'UserForm' cannot be used as a JSX component.
+blocks/17-da_04_L276.ts(15,41): error TS18046: 'order' is of type 'unknown'.
+blocks/17-da_04_L276.ts(18,50): error TS18046: 'order' is of type 'unknown'.
+blocks/17-da_04_L276.ts(19,27): error TS18046: 'order' is of type 'unknown'.
+blocks/17-da_04_L360.ts(11,16): error TS2322: Type 'Set<Handler<K>>' is not assignable to type '{ "auth/signedOut"?: Set<Handler<"auth/signedOut">> | undefined; "order/placed"?: Set<Handler<"order/placed">> | undefined; }[K]'.
+blocks/17-fa_05_L398.tsx(3,15): error TS18046: 'h' is of type 'unknown'.
+blocks/17-fa_05_L398.tsx(19,68): error TS18046: 'h' is of type 'unknown'.
+blocks/17-fa_05_L398.tsx(20,68): error TS18046: 'h' is of type 'unknown'.
+blocks/18-be_05_L398.tsx(42,5): error TS2353: Object literal may only specify known properties, and ''data-state'' does not exist in type 'ButtonHTMLAttributes<HTMLButtonElement> & { ref: (n: HTMLButtonElement | null) => void; }'.
+blocks/19-er_04_L241.tsx(14,24): error TS2554: Expected 1 arguments, but got 2.
+blocks/19-er_04_L723.tsx(1,7): error TS1108: A 'return' statement can only be used within a function body.
+blocks/19-er_04_L723.tsx(1,35): error TS1108: A 'return' statement can only be used within a function body.
+blocks/19-po_05_L265.tsx(4,2): error TS2786: 'Text' cannot be used as a JSX component.
+blocks/19-po_05_L265.tsx(5,1): error TS2607: JSX element class does not support attributes because it does not have a 'props' property.
+blocks/19-po_05_L265.tsx(5,2): error TS2786: 'Text' cannot be used as a JSX component.
+blocks/19-po_05_L265.tsx(6,1): error TS2607: JSX element class does not support attributes because it does not have a 'props' property.
+blocks/19-po_05_L265.tsx(6,2): error TS2786: 'Text' cannot be used as a JSX component.
+blocks/19-po_05_L265.tsx(7,1): error TS2607: JSX element class does not support attributes because it does not have a 'props' property.
+blocks/19-po_05_L265.tsx(7,2): error TS2786: 'Text' cannot be used as a JSX component.
+blocks/19-po_05_L265.tsx(8,1): error TS2607: JSX element class does not support attributes because it does not have a 'props' property.
+blocks/19-po_05_L265.tsx(8,2): error TS2786: 'Text' cannot be used as a JSX component.
+blocks/19-po_05_L265.tsx(9,1): error TS2607: JSX element class does not support attributes because it does not have a 'props' property.
+blocks/19-po_05_L265.tsx(9,2): error TS2786: 'Text' cannot be used as a JSX component.
+blocks/19-po_05_L265.tsx(10,1): error TS2607: JSX element class does not support attributes because it does not have a 'props' property.
+blocks/19-po_05_L265.tsx(10,2): error TS2786: 'Text' cannot be used as a JSX component.
+blocks/19-po_05_L282.tsx(2,1): error TS2607: JSX element class does not support attributes because it does not have a 'props' property.
+blocks/19-po_05_L282.tsx(2,2): error TS2786: 'Text' cannot be used as a JSX component.
+blocks/19-po_05_L418.tsx(11,25): error TS2322: Type '{ href: string; ref?: Ref<HTMLButtonElement> | undefined; key?: Key | null | undefined; disabled?: boolean | undefined; form?: string | undefined; formAction?: string | ... 1 more ... | undefined; ... 284 mo
+blocks/19-po_05_L48.ts(1,10): error TS2391: Function implementation is missing or not immediately following the declaration.
+blocks/19-po_05_L747.tsx(8,1): error TS2578: Unused '@ts-expect-error' directive.
+blocks/19-po_05_L747.tsx(10,1): error TS2578: Unused '@ts-expect-error' directive.
+blocks/20-sl_05_L710.tsx(5,3): error TS1108: A 'return' statement can only be used within a function body.
+blocks/21-er_05_L237.tsx(22,56): error TS2554: Expected 1 arguments, but got 2.
+blocks/23-pa_05_L240.tsx(5,46): error TS2345: Argument of type 'Promise<User> | undefined' is not assignable to parameter of type 'Promise<User>'.
+blocks/23-pa_05_L240.tsx(6,3): error TS2322: Type 'Promise<User> | undefined' is not assignable to type 'Promise<User>'.
+blocks/23-pa_05_L353.tsx(2,33): error TS2769: No overload matches this call.
+blocks/23-pa_05_L353.tsx(6,44): error TS2322: Type '{ key: any; item: Item; onSelect: (id: string) => any; }' is not assignable to type 'IntrinsicAttributes & object'.
+blocks/23-pa_05_L365.tsx(4,29): error TS2786: 'Row' cannot be used as a JSX component.
+blocks/25-co_05_L239.tsx(16,6): error TS2786: 'ProductsView' cannot be used as a JSX component.
+blocks/25-co_05_L389.tsx(2,5): error TS1108: A 'return' statement can only be used within a function body.
+blocks/25-co_05_L422.tsx(15,59): error TS2345: Argument of type '({ user, theme }: { user: User; theme: Theme; }) => void' is not assignable to parameter of type 'ComponentType<{ user: User; theme: Theme; }>'.
+blocks/25-co_05_L466.tsx(9,60): error TS2786: 'Dashboard' cannot be used as a JSX component.
+blocks/25-co_05_L770.tsx(13,34): error TS7053: Element implicitly has an 'any' type because expression of type 'any' can't be used to index type '{ readonly email: "✉"; readonly mention: "@"; readonly billing: "$"; }'.
+blocks/26-ph_04_L143.ts(4,13): error TS2448: Block-scoped variable 'b' used before its declaration.
+blocks/26-ph_04_L143.ts(4,13): error TS2454: Variable 'b' is used before being assigned.
+blocks/26-ph_05_L183.tsx(6,11): error TS2322: Type '{ ref?: Ref<HTMLButtonElement> | undefined; key?: Key | null | undefined; disabled?: boolean | undefined; form?: string | undefined; formAction?: string | ((formData: FormData) => void | Promise<...>) | undef

@@ -1,0 +1,4001 @@
+&lt;Suspense&gt; – React
+window.dataLayer = window.dataLayer || [];function gtag(){dataLayer.push(arguments);}gtag('js', new Date());gtag('config', 'G-B1E83PJ3RT');
+ (function () {
+ try {
+ let logShown = false;
+ function setUwu(isUwu) {
+ try {
+ if (isUwu) {
+ localStorage.setItem('uwu', true);
+ document.documentElement.classList.add('uwu');
+ if (!logShown) {
+ console.log('uwu mode! turn off with ?uwu=0');
+ console.log('logo credit to @sawaratsuki1004 via https://github.com/SAWARATSUKI/KawaiiLogos');
+ logShown = true;
+ }
+ } else {
+ localStorage.removeItem('uwu');
+ document.documentElement.classList.remove('uwu');
+ console.log('uwu mode off. turn on with ?uwu');
+ }
+ } catch (err) { }
+ }
+ window.__setUwu = setUwu;
+ function checkQueryParam() {
+ const params = new URLSearchParams(window.location.search);
+ const value = params.get('uwu');
+ switch(value) {
+ case '':
+ case 'true':
+ case '1':
+ return true;
+ case 'false':
+ case '0':
+ return false;
+ default:
+ return null;
+ }
+ }
+ function checkLocalStorage() {
+ try {
+ return localStorage.getItem('uwu') === 'true';
+ } catch (err) {
+ return false;
+ }
+ }
+ const uwuQueryParam = checkQueryParam();
+ if (uwuQueryParam != null) {
+ setUwu(uwuQueryParam);
+ } else if (checkLocalStorage()) {
+ document.documentElement.classList.add('uwu');
+ }
+ } catch (err) { }
+ })();
+ (function () {
+ function setTheme(newTheme) {
+ window.__theme = newTheme;
+ if (newTheme === 'dark') {
+ document.documentElement.classList.add('dark');
+ } else if (newTheme === 'light') {
+ document.documentElement.classList.remove('dark');
+ }
+ }
+ var preferredTheme;
+ try {
+ preferredTheme = localStorage.getItem('theme');
+ } catch (err) { }
+ window.__setPreferredTheme = function(newTheme) {
+ preferredTheme = newTheme;
+ setTheme(newTheme);
+ try {
+ localStorage.setItem('theme', newTheme);
+ } catch (err) { }
+ };
+ var initialTheme = preferredTheme;
+ var darkQuery = window.matchMedia('(prefers-color-scheme: dark)');
+ if (!initialTheme) {
+ initialTheme = darkQuery.matches ? 'dark' : 'light';
+ }
+ setTheme(initialTheme);
+ darkQuery.addEventListener('change', function (e) {
+ if (!preferredTheme) {
+ setTheme(e.matches ? 'dark' : 'light');
+ }
+ });
+ // Detect whether the browser is Mac to display platform specific content
+ // An example of such content can be the keyboard shortcut displayed in the search bar
+ document.documentElement.classList.add(
+ window.navigator.platform.includes('Mac')
+ ? "platform-mac" 
+ : "platform-win"
+ );
+ })();
+React
+v
+19.3
+Search
+⌘
+Ctrl
+K
+Learn
+Reference
+Community
+Blog
+react@19.3
+Overview
+Hooks
+useActionState
+useCallback
+useContext
+useDebugValue
+useDeferredValue
+useEffect
+useEffectEvent
+useId
+useImperativeHandle
+useInsertionEffect
+useLayoutEffect
+useMemo
+useOptimistic
+useReducer
+useRef
+useState
+useSyncExternalStore
+useTransition
+Components
+&lt;Fragment&gt; (&lt;&gt;)
+&lt;Profiler&gt;
+&lt;StrictMode&gt;
+&lt;Suspense&gt;
+&lt;Activity&gt;
+&lt;ViewTransition&gt;
+APIs
+act
+addTransitionType
+cache
+cacheSignal
+captureOwnerStack
+createContext
+lazy
+memo
+startTransition
+use
+experimental_taintObjectReference
+ - This feature is available in the latest Experimental version of React
+experimental_taintUniqueValue
+ - This feature is available in the latest Experimental version of React
+react-dom@19.3
+Hooks
+useFormStatus
+Components
+Common (e.g. &lt;div&gt;)
+&lt;form&gt;
+&lt;input&gt;
+&lt;option&gt;
+&lt;progress&gt;
+&lt;select&gt;
+&lt;textarea&gt;
+&lt;img&gt;
+&lt;link&gt;
+&lt;meta&gt;
+&lt;script&gt;
+&lt;style&gt;
+&lt;title&gt;
+APIs
+browser
+createPortal
+flushSync
+preconnect
+prefetchDNS
+preinit
+preinitModule
+preload
+preloadModule
+Client APIs
+createRoot
+hydrateRoot
+Server APIs
+renderToPipeableStream
+renderToReadableStream
+renderToStaticMarkup
+renderToString
+resume
+resumeToPipeableStream
+Static APIs
+prerender
+prerenderToNodeStream
+resumeAndPrerender
+resumeAndPrerenderToNodeStream
+React Compiler
+Configuration
+compilationMode
+gating
+logger
+panicThreshold
+target
+Directives
+&quot;use memo&quot;
+&quot;use no memo&quot;
+Compiling Libraries
+React DevTools
+React Performance tracks
+React DevTools for agents
+ - This feature is available in the latest Experimental version of React
+eslint-plugin-react-hooks
+Lints
+exhaustive-deps
+rules-of-hooks
+component-hook-factories
+config
+error-boundaries
+gating
+globals
+immutability
+incompatible-library
+preserve-manual-memoization
+purity
+refs
+set-state-in-effect
+set-state-in-render
+static-components
+unsupported-syntax
+use-memo
+Rules of React
+Overview
+Components and Hooks must be pure
+React calls Components and Hooks
+Rules of Hooks
+React Server Components
+Server Components
+Server Functions
+Directives
+&#x27;use client&#x27;
+&#x27;use server&#x27;
+Legacy APIs
+Legacy React APIs
+Children
+cloneElement
+Component
+createElement
+createRef
+forwardRef
+isValidElement
+PureComponent
+API Reference
+Components
+Copy page
+Copy
+&lt;Suspense&gt;
+&lt;Suspense&gt;
+ lets you display a fallback until its children have finished loading.
+&lt;
+Suspense
+fallback
+=
+{
+&lt;
+Loading
+/&gt;
+}
+&gt;
+&lt;
+SomeComponent
+/&gt;
+&lt;/
+Suspense
+&gt;
+Reference 
+&lt;Suspense&gt;
+What activates a Suspense boundary 
+Usage 
+Displaying a fallback while content is loading 
+Revealing content together at once 
+Revealing nested content as it loads 
+Showing stale content while fresh content is loading 
+Preventing already revealed content from hiding 
+Indicating that a Transition is happening 
+Resetting Suspense boundaries on navigation 
+Providing a fallback for server errors and client-only content 
+Providing a fallback for browser-only content 
+Waiting for a stylesheet to load 
+Animating from Suspense content 
+Waiting for a font to load 
+Waiting for an image to load 
+Coordinating fonts, images, and stylesheets 
+Troubleshooting 
+How do I prevent the UI from being replaced by a fallback during an update? 
+Reference 
+&lt;Suspense&gt;
+Props 
+children
+: The actual UI you intend to render. If 
+children
+ suspends while rendering, the Suspense boundary will switch to rendering 
+fallback
+.
+fallback
+: An alternate UI to render in place of the actual UI if it has not finished loading. Any valid React node is accepted, though in practice, a fallback is a lightweight placeholder view, such as a loading spinner or skeleton. Suspense will automatically switch to 
+fallback
+ when 
+children
+ suspends, and back to 
+children
+ when the data is ready. If 
+fallback
+ suspends while rendering, it will activate the closest parent Suspense boundary.
+Experimental only
+optional
+defer
+: A boolean. When 
+true
+, React may show the 
+fallback
+ first and render or stream 
+children
+ later, even when nothing in them suspends. Use it for content that is expensive to render. Defaults to 
+false
+.
+Caveats 
+Suspense does not detect when data is fetched inside an Effect or event handler. It only activates in the 
+cases listed below.
+React does not preserve any state for renders that got suspended before they were able to mount for the first time. When the component has loaded, React will retry rendering the suspended tree from scratch.
+If Suspense was displaying content for the tree, but then it suspended again, the 
+fallback
+ will be shown again unless the update causing it was caused by 
+startTransition
+ or 
+useDeferredValue
+.
+React reveals suspended content at most once every 300ms, measured from the last reveal. Boundaries that become ready within that window are 
+revealed together
+ rather than one at a time.
+If React needs to hide the already visible content because it suspended again, it will clean up 
+layout Effects
+ in the content tree. When the content is ready to be shown again, React will fire the layout Effects again. This ensures that Effects measuring the DOM layout don’t try to do this while the content is hidden.
+React includes under-the-hood optimizations like 
+Streaming Server Rendering
+ and 
+Selective Hydration
+ that are integrated with Suspense. Read 
+an architectural overview
+ and watch 
+a technical talk
+ to learn more.
+What activates a Suspense boundary 
+A Suspense boundary waits for its content to be ready before revealing it. Any of the following keeps a boundary from revealing its content:
+Lazy-loading component code with 
+lazy
+.
+Reading a Promise with 
+use
+, including data streamed from 
+Server Components
+ or loaded through a 
+Suspense-enabled framework
+.
+Loading a stylesheet rendered with 
+&lt;link rel=&quot;stylesheet&quot;&gt;
+ and a 
+precedence
+ prop.
+ React blocks the boundary until the stylesheet loads, up to a timeout. 
+See an example below.
+Waiting for a large boundary’s HTML to arrive during streaming server rendering. Sending HTML takes time, so a boundary with enough content activates even when nothing in it suspends. React reveals the content as the HTML arrives.
+Loading fonts. Suspense doesn’t wait for fonts by default, but when a 
+&lt;ViewTransition&gt;
+ animates a boundary’s reveal, React waits up to 500 ms for new fonts to load so text doesn’t flash with a fallback font. 
+See an example below.
+Loading images. Suspense doesn’t wait for images by default, but when a 
+&lt;ViewTransition&gt;
+ animates a boundary’s reveal, React waits up to 500 ms for visible images to load before starting the animation. Setting 
+loading=&quot;lazy&quot;
+ or adding an 
+onLoad
+ handler opts a specific image out. 
+See an example below.
+Experimental only
+ Performing CPU-bound render work inside a 
+&lt;Suspense defer&gt;
+ boundary.
+Note
+Suspense-enabled frameworks 
+A 
+Suspense-enabled framework
+ gives you a way to read data in your component in a way that activates the closest Suspense boundary. The exact way you load your data depends on your framework, and you’ll find the details in its documentation. Under the hood, a Suspense-enabled framework maintains a cache of Promises and calls 
+use
+ to suspend on a Promise.
+Without a framework, you can read a Promise with 
+use
+ directly, as long as the Promise is 
+cached so the same instance is reused across renders.
+Usage 
+Displaying a fallback while content is loading 
+You can wrap any part of your application with a Suspense boundary:
+&lt;
+Suspense
+fallback
+=
+{
+&lt;Loading /&gt;
+}
+&gt;
+&lt;Albums /&gt;
+&lt;/
+Suspense
+&gt;
+React will display your 
+loading fallback
+ until all the code and data needed by 
+the children
+ has been loaded.
+In the example below, the 
+Albums
+ component 
+suspends
+ while fetching the list of albums. Until it’s ready to render, React switches the closest Suspense boundary above to show the fallback—your 
+Loading
+ component. Then, when the data loads, React hides the 
+Loading
+ fallback and renders the 
+Albums
+ component with data.
+ArtistPage.js
+Albums.js
+ArtistPage.js
+Reload
+Clear
+Fork
+import
+{
+Suspense
+}
+from
+&#x27;react&#x27;
+;
+import
+Albums
+from
+&#x27;./Albums.js&#x27;
+;
+export
+default
+function
+ArtistPage
+(
+{
+artist
+}
+)
+{
+return
+(
+&lt;
+&gt;
+&lt;
+h1
+&gt;
+{
+artist
+.
+name
+}
+&lt;/
+h1
+&gt;
+&lt;
+Suspense
+fallback
+=
+{
+&lt;
+Loading
+/&gt;
+}
+&gt;
+&lt;
+Albums
+artistId
+=
+{
+artist
+.
+id
+}
+/&gt;
+&lt;/
+Suspense
+&gt;
+&lt;/
+&gt;
+)
+;
+}
+function
+Loading
+(
+)
+{
+return
+&lt;
+h2
+&gt;
+🌀 Loading...
+&lt;/
+h2
+&gt;
+;
+}
+Show more
+By contrast, code that fetches data outside of 
+use
+, such as inside an Effect, does not activate the boundary:
+ArtistPage.js
+EffectAlbums.js
+ArtistPage.js
+Reload
+Clear
+Fork
+import
+{
+Suspense
+}
+from
+&#x27;react&#x27;
+;
+import
+EffectAlbums
+from
+&#x27;./EffectAlbums.js&#x27;
+;
+export
+default
+function
+ArtistPage
+(
+{
+artist
+}
+)
+{
+return
+(
+&lt;
+&gt;
+&lt;
+h1
+&gt;
+{
+artist
+.
+name
+}
+&lt;/
+h1
+&gt;
+&lt;
+Suspense
+fallback
+=
+{
+&lt;
+Loading
+/&gt;
+}
+&gt;
+&lt;
+EffectAlbums
+artistId
+=
+{
+artist
+.
+id
+}
+/&gt;
+&lt;/
+Suspense
+&gt;
+&lt;/
+&gt;
+)
+;
+}
+function
+Loading
+(
+)
+{
+return
+&lt;
+h2
+&gt;
+🌀 Loading...
+&lt;/
+h2
+&gt;
+;
+}
+Show more
+During streaming server rendering, a boundary also activates while its HTML is still streaming in. With any streaming server rendering API, React sends 
+the shell
+ with the 
+fallback
+ first, then streams in each boundary’s HTML and swaps out its 
+fallback
+ as that content arrives. Press “Render the page” to watch the page stream in:
+index.js
+index.html
+index.js
+Reload
+Clear
+Fork
+import
+{
+flushReadableStreamToFrame
+}
+from
+&#x27;./demo-helpers.js&#x27;
+;
+import
+{
+Suspense
+,
+use
+}
+from
+&#x27;react&#x27;
+;
+import
+{
+renderToReadableStream
+}
+from
+&#x27;react-dom/server&#x27;
+;
+let
+posts
+ = 
+null
+;
+function
+Posts
+(
+)
+{
+const
+text
+ = 
+use
+(
+posts
+.
+promise
+)
+;
+return
+&lt;
+p
+&gt;
+{
+text
+}
+&lt;/
+p
+&gt;
+;
+}
+function
+ProfilePage
+(
+)
+{
+return
+(
+&lt;
+html
+&gt;
+&lt;
+body
+&gt;
+&lt;
+h1
+&gt;
+Alice
+&lt;/
+h1
+&gt;
+&lt;
+p
+&gt;
+Photographer and traveler.
+&lt;/
+p
+&gt;
+&lt;
+Suspense
+fallback
+=
+{
+&lt;
+p
+&gt;
+⌛ Loading posts...
+&lt;/
+p
+&gt;
+}
+&gt;
+&lt;
+Posts
+/&gt;
+&lt;/
+Suspense
+&gt;
+&lt;/
+body
+&gt;
+&lt;/
+html
+&gt;
+)
+;
+}
+async
+function
+main
+(
+frame
+)
+{
+posts
+ = 
+Promise
+.
+withResolvers
+(
+)
+;
+const
+stream
+ = 
+await
+renderToReadableStream
+(
+&lt;
+ProfilePage
+/&gt;
+)
+;
+// The posts resolve after the shell has streamed, so React
+// streams their HTML in and swaps out the fallback.
+setTimeout
+(
+(
+)
+=&gt;
+{
+posts
+.
+resolve
+(
+&#x27;Just got back from two weeks along the coast. The drive &#x27;
+ +
+&#x27;was longer than expected, but every stop was worth it. &#x27;
+ +
+&#x27;A full write-up and more photos are coming soon.&#x27;
+)
+;
+}
+,
+1500
+)
+;
+await
+flushReadableStreamToFrame
+(
+stream
+,
+frame
+)
+;
+}
+document
+.
+getElementById
+(
+&#x27;render&#x27;
+)
+.
+addEventListener
+(
+&#x27;click&#x27;
+,
+(
+)
+=&gt;
+{
+main
+(
+document
+.
+getElementById
+(
+&#x27;container&#x27;
+)
+)
+;
+}
+)
+;
+Show more
+Revealing content together at once 
+By default, the whole tree inside Suspense is treated as a single unit. For example, even if 
+only one
+ of these components suspends waiting for some data, 
+all
+ of them together will be replaced by the loading indicator:
+&lt;
+Suspense
+fallback
+=
+{
+&lt;
+Loading
+/&gt;
+}
+&gt;
+&lt;
+Biography
+/&gt;
+&lt;
+Panel
+&gt;
+&lt;
+Albums
+/&gt;
+&lt;/
+Panel
+&gt;
+&lt;/
+Suspense
+&gt;
+Then, after all of them are ready to be displayed, they will all appear together at once.
+In the example below, both 
+Biography
+ and 
+Albums
+ fetch some data. However, because they are grouped under a single Suspense boundary, these components always “pop in” together at the same time.
+ArtistPage.js
+Panel.js
+Biography.js
+Albums.js
+ArtistPage.js
+Reload
+Clear
+Fork
+import
+{
+Suspense
+}
+from
+&#x27;react&#x27;
+;
+import
+Albums
+from
+&#x27;./Albums.js&#x27;
+;
+import
+Biography
+from
+&#x27;./Biography.js&#x27;
+;
+import
+Panel
+from
+&#x27;./Panel.js&#x27;
+;
+export
+default
+function
+ArtistPage
+(
+{
+artist
+}
+)
+{
+return
+(
+&lt;
+&gt;
+&lt;
+h1
+&gt;
+{
+artist
+.
+name
+}
+&lt;/
+h1
+&gt;
+&lt;
+Suspense
+fallback
+=
+{
+&lt;
+Loading
+/&gt;
+}
+&gt;
+&lt;
+Biography
+artistId
+=
+{
+artist
+.
+id
+}
+/&gt;
+&lt;
+Panel
+&gt;
+&lt;
+Albums
+artistId
+=
+{
+artist
+.
+id
+}
+/&gt;
+&lt;/
+Panel
+&gt;
+&lt;/
+Suspense
+&gt;
+&lt;/
+&gt;
+)
+;
+}
+function
+Loading
+(
+)
+{
+return
+&lt;
+h2
+&gt;
+🌀 Loading...
+&lt;/
+h2
+&gt;
+;
+}
+Show more
+Components that load data don’t have to be direct children of the Suspense boundary. For example, you can move 
+Biography
+ and 
+Albums
+ into a new 
+Details
+ component. This doesn’t change the behavior. 
+Biography
+ and 
+Albums
+ share the same closest parent Suspense boundary, so their reveal is coordinated together.
+&lt;
+Suspense
+fallback
+=
+{
+&lt;
+Loading
+/&gt;
+}
+&gt;
+&lt;
+Details
+artistId
+=
+{
+artist
+.
+id
+}
+/&gt;
+&lt;/
+Suspense
+&gt;
+function
+Details
+(
+{
+artistId
+}
+)
+{
+return
+(
+&lt;
+&gt;
+&lt;
+Biography
+artistId
+=
+{
+artistId
+}
+/&gt;
+&lt;
+Panel
+&gt;
+&lt;
+Albums
+artistId
+=
+{
+artistId
+}
+/&gt;
+&lt;/
+Panel
+&gt;
+&lt;/
+&gt;
+)
+;
+}
+Revealing nested content as it loads 
+When a component suspends, the closest parent Suspense component shows the fallback. This lets you nest multiple Suspense components to create a loading sequence. Each Suspense boundary’s fallback will be filled in as the next level of content becomes available. For example, you can give the album list its own fallback:
+&lt;
+Suspense
+fallback
+=
+{
+&lt;
+BigSpinner
+/&gt;
+}
+&gt;
+&lt;
+Biography
+/&gt;
+&lt;
+Suspense
+fallback
+=
+{
+&lt;
+AlbumsGlimmer
+/&gt;
+}
+&gt;
+&lt;
+Panel
+&gt;
+&lt;
+Albums
+/&gt;
+&lt;/
+Panel
+&gt;
+&lt;/
+Suspense
+&gt;
+&lt;/
+Suspense
+&gt;
+With this change, displaying the 
+Biography
+ doesn’t need to “wait” for the 
+Albums
+ to load.
+The sequence will be:
+If 
+Biography
+ hasn’t loaded yet, 
+BigSpinner
+ is shown in place of the entire content area.
+Once 
+Biography
+ finishes loading, 
+BigSpinner
+ is replaced by the content.
+If 
+Albums
+ hasn’t loaded yet, 
+AlbumsGlimmer
+ is shown in place of 
+Albums
+ and its parent 
+Panel
+.
+Finally, once 
+Albums
+ finishes loading, it replaces 
+AlbumsGlimmer
+.
+ArtistPage.js
+Panel.js
+Biography.js
+Albums.js
+ArtistPage.js
+Reload
+Clear
+Fork
+import
+{
+Suspense
+}
+from
+&#x27;react&#x27;
+;
+import
+Albums
+from
+&#x27;./Albums.js&#x27;
+;
+import
+Biography
+from
+&#x27;./Biography.js&#x27;
+;
+import
+Panel
+from
+&#x27;./Panel.js&#x27;
+;
+export
+default
+function
+ArtistPage
+(
+{
+artist
+}
+)
+{
+return
+(
+&lt;
+&gt;
+&lt;
+h1
+&gt;
+{
+artist
+.
+name
+}
+&lt;/
+h1
+&gt;
+&lt;
+Suspense
+fallback
+=
+{
+&lt;
+BigSpinner
+/&gt;
+}
+&gt;
+&lt;
+Biography
+artistId
+=
+{
+artist
+.
+id
+}
+/&gt;
+&lt;
+Suspense
+fallback
+=
+{
+&lt;
+AlbumsGlimmer
+/&gt;
+}
+&gt;
+&lt;
+Panel
+&gt;
+&lt;
+Albums
+artistId
+=
+{
+artist
+.
+id
+}
+/&gt;
+&lt;/
+Panel
+&gt;
+&lt;/
+Suspense
+&gt;
+&lt;/
+Suspense
+&gt;
+&lt;/
+&gt;
+)
+;
+}
+function
+BigSpinner
+(
+)
+{
+return
+&lt;
+h2
+&gt;
+🌀 Loading...
+&lt;/
+h2
+&gt;
+;
+}
+function
+AlbumsGlimmer
+(
+)
+{
+return
+(
+&lt;
+div
+className
+=
+&quot;glimmer-panel&quot;
+&gt;
+&lt;
+div
+className
+=
+&quot;glimmer-line&quot;
+/&gt;
+&lt;
+div
+className
+=
+&quot;glimmer-line&quot;
+/&gt;
+&lt;
+div
+className
+=
+&quot;glimmer-line&quot;
+/&gt;
+&lt;/
+div
+&gt;
+)
+;
+}
+Show more
+Suspense boundaries let you coordinate which parts of your UI should always “pop in” together at the same time, and which parts should progressively reveal more content in a sequence of loading states. You can add, move, or delete Suspense boundaries in any place in the tree without affecting the rest of your app’s behavior.
+Don’t put a Suspense boundary around every component. Suspense boundaries should not be more granular than the loading sequence that you want the user to experience. If you work with a designer, ask them where the loading states should be placed—it’s likely that they’ve already included them in their design wireframes.
+Showing stale content while fresh content is loading 
+In this example, the 
+SearchResults
+ component suspends while fetching the search results. Type 
+&quot;a&quot;
+, wait for the results, and then edit it to 
+&quot;ab&quot;
+. The results for 
+&quot;a&quot;
+ will get replaced by the loading fallback.
+App.js
+SearchResults.js
+App.js
+Reload
+Clear
+Fork
+import
+{
+Suspense
+,
+useState
+}
+from
+&#x27;react&#x27;
+;
+import
+SearchResults
+from
+&#x27;./SearchResults.js&#x27;
+;
+export
+default
+function
+App
+(
+)
+{
+const
+[
+query
+,
+setQuery
+]
+ = 
+useState
+(
+&#x27;&#x27;
+)
+;
+return
+(
+&lt;
+&gt;
+&lt;
+label
+&gt;
+ Search albums:
+&lt;
+input
+value
+=
+{
+query
+}
+onChange
+=
+{
+e
+=&gt;
+setQuery
+(
+e
+.
+target
+.
+value
+)
+}
+/&gt;
+&lt;/
+label
+&gt;
+&lt;
+Suspense
+fallback
+=
+{
+&lt;
+h2
+&gt;
+Loading...
+&lt;/
+h2
+&gt;
+}
+&gt;
+&lt;
+SearchResults
+query
+=
+{
+query
+}
+/&gt;
+&lt;/
+Suspense
+&gt;
+&lt;/
+&gt;
+)
+;
+}
+Show more
+A common alternative UI pattern is to 
+defer
+ updating the list and to keep showing the previous results until the new results are ready. The 
+useDeferredValue
+ Hook lets you pass a deferred version of the query down:
+export
+default
+function
+App
+(
+)
+{
+const
+[
+query
+,
+setQuery
+]
+ = 
+useState
+(
+&#x27;&#x27;
+)
+;
+const
+deferredQuery
+ = 
+useDeferredValue
+(
+query
+)
+;
+return
+(
+&lt;
+&gt;
+&lt;
+label
+&gt;
+ Search albums:
+&lt;
+input
+value
+=
+{
+query
+}
+onChange
+=
+{
+e
+=&gt;
+setQuery
+(
+e
+.
+target
+.
+value
+)
+}
+/&gt;
+&lt;/
+label
+&gt;
+&lt;
+Suspense
+fallback
+=
+{
+&lt;
+h2
+&gt;
+Loading...
+&lt;/
+h2
+&gt;
+}
+&gt;
+&lt;
+SearchResults
+query
+=
+{
+deferredQuery
+}
+/&gt;
+&lt;/
+Suspense
+&gt;
+&lt;/
+&gt;
+)
+;
+}
+The 
+query
+ will update immediately, so the input will display the new value. However, the 
+deferredQuery
+ will keep its previous value until the data has loaded, so 
+SearchResults
+ will show the stale results for a bit.
+To make it more obvious to the user, you can add a visual indication when the stale result list is displayed:
+&lt;
+div
+style
+=
+{
+{
+opacity
+:
+query
+ !== 
+deferredQuery
+ ? 
+0.5
+ : 
+1
+}
+}
+&gt;
+&lt;
+SearchResults
+query
+=
+{
+deferredQuery
+}
+/&gt;
+&lt;/
+div
+&gt;
+Enter 
+&quot;a&quot;
+ in the example below, wait for the results to load, and then edit the input to 
+&quot;ab&quot;
+. Notice how instead of the Suspense fallback, you now see the dimmed stale result list until the new results have loaded:
+App.js
+App.js
+Reload
+Clear
+Fork
+import
+{
+Suspense
+,
+useState
+,
+useDeferredValue
+}
+from
+&#x27;react&#x27;
+;
+import
+SearchResults
+from
+&#x27;./SearchResults.js&#x27;
+;
+export
+default
+function
+App
+(
+)
+{
+const
+[
+query
+,
+setQuery
+]
+ = 
+useState
+(
+&#x27;&#x27;
+)
+;
+const
+deferredQuery
+ = 
+useDeferredValue
+(
+query
+)
+;
+const
+isStale
+ = 
+query
+ !== 
+deferredQuery
+;
+return
+(
+&lt;
+&gt;
+&lt;
+label
+&gt;
+ Search albums:
+&lt;
+input
+value
+=
+{
+query
+}
+onChange
+=
+{
+e
+=&gt;
+setQuery
+(
+e
+.
+target
+.
+value
+)
+}
+/&gt;
+&lt;/
+label
+&gt;
+&lt;
+Suspense
+fallback
+=
+{
+&lt;
+h2
+&gt;
+Loading...
+&lt;/
+h2
+&gt;
+}
+&gt;
+&lt;
+div
+style
+=
+{
+{
+opacity
+:
+isStale
+ ? 
+0.5
+ : 
+1
+}
+}
+&gt;
+&lt;
+SearchResults
+query
+=
+{
+deferredQuery
+}
+/&gt;
+&lt;/
+div
+&gt;
+&lt;/
+Suspense
+&gt;
+&lt;/
+&gt;
+)
+;
+}
+Show more
+Note
+Both deferred values and 
+Transitions
+ let you avoid showing Suspense fallback in favor of inline indicators. Transitions mark the whole update as non-urgent so they are typically used by frameworks and router libraries for navigation. Deferred values, on the other hand, are mostly useful in application code where you want to mark a part of UI as non-urgent and let it “lag behind” the rest of the UI.
+Preventing already revealed content from hiding 
+When a component suspends, the closest parent Suspense boundary switches to showing the fallback. This can lead to a jarring user experience if it was already displaying some content. Try pressing this button:
+App.js
+Layout.js
+IndexPage.js
+ArtistPage.js
+Albums.js
+Biography.js
+Panel.js
+App.js
+Reload
+Clear
+Fork
+import
+{
+Suspense
+,
+useState
+}
+from
+&#x27;react&#x27;
+;
+import
+IndexPage
+from
+&#x27;./IndexPage.js&#x27;
+;
+import
+ArtistPage
+from
+&#x27;./ArtistPage.js&#x27;
+;
+import
+Layout
+from
+&#x27;./Layout.js&#x27;
+;
+export
+default
+function
+App
+(
+)
+{
+return
+(
+&lt;
+Suspense
+fallback
+=
+{
+&lt;
+BigSpinner
+/&gt;
+}
+&gt;
+&lt;
+Router
+/&gt;
+&lt;/
+Suspense
+&gt;
+)
+;
+}
+function
+Router
+(
+)
+{
+const
+[
+page
+,
+setPage
+]
+ = 
+useState
+(
+&#x27;/&#x27;
+)
+;
+function
+navigate
+(
+url
+)
+{
+setPage
+(
+url
+)
+;
+}
+let
+content
+;
+if
+(
+page
+ === 
+&#x27;/&#x27;
+)
+{
+content
+ = 
+(
+&lt;
+IndexPage
+navigate
+=
+{
+navigate
+}
+/&gt;
+)
+;
+}
+else
+if
+(
+page
+ === 
+&#x27;/the-beatles&#x27;
+)
+{
+content
+ = 
+(
+&lt;
+ArtistPage
+artist
+=
+{
+{
+id
+:
+&#x27;the-beatles&#x27;
+,
+name
+:
+&#x27;The Beatles&#x27;
+,
+}
+}
+/&gt;
+)
+;
+}
+return
+(
+&lt;
+Layout
+&gt;
+{
+content
+}
+&lt;/
+Layout
+&gt;
+)
+;
+}
+function
+BigSpinner
+(
+)
+{
+return
+&lt;
+h2
+&gt;
+🌀 Loading...
+&lt;/
+h2
+&gt;
+;
+}
+Show more
+When you pressed the button, the 
+Router
+ component rendered 
+ArtistPage
+ instead of 
+IndexPage
+. A component inside 
+ArtistPage
+ suspended, so the closest Suspense boundary started showing the fallback. The closest Suspense boundary was near the root, so the whole site layout got replaced by 
+BigSpinner
+.
+To prevent this, you can mark the navigation state update as a 
+Transition
+ with 
+startTransition
+:
+function
+Router
+(
+)
+{
+const
+[
+page
+,
+setPage
+]
+ = 
+useState
+(
+&#x27;/&#x27;
+)
+;
+function
+navigate
+(
+url
+)
+{
+startTransition
+(
+(
+)
+=&gt;
+{
+setPage
+(
+url
+)
+;
+}
+)
+;
+}
+// ...
+This tells React that the state transition is not urgent, and it’s better to keep showing the previous page instead of hiding any already revealed content. Now clicking the button “waits” for the 
+Biography
+ to load:
+App.js
+Layout.js
+IndexPage.js
+ArtistPage.js
+Albums.js
+Biography.js
+Panel.js
+App.js
+Reload
+Clear
+Fork
+import
+{
+Suspense
+,
+startTransition
+,
+useState
+}
+from
+&#x27;react&#x27;
+;
+import
+IndexPage
+from
+&#x27;./IndexPage.js&#x27;
+;
+import
+ArtistPage
+from
+&#x27;./ArtistPage.js&#x27;
+;
+import
+Layout
+from
+&#x27;./Layout.js&#x27;
+;
+export
+default
+function
+App
+(
+)
+{
+return
+(
+&lt;
+Suspense
+fallback
+=
+{
+&lt;
+BigSpinner
+/&gt;
+}
+&gt;
+&lt;
+Router
+/&gt;
+&lt;/
+Suspense
+&gt;
+)
+;
+}
+function
+Router
+(
+)
+{
+const
+[
+page
+,
+setPage
+]
+ = 
+useState
+(
+&#x27;/&#x27;
+)
+;
+function
+navigate
+(
+url
+)
+{
+startTransition
+(
+(
+)
+=&gt;
+{
+setPage
+(
+url
+)
+;
+}
+)
+;
+}
+let
+content
+;
+if
+(
+page
+ === 
+&#x27;/&#x27;
+)
+{
+content
+ = 
+(
+&lt;
+IndexPage
+navigate
+=
+{
+navigate
+}
+/&gt;
+)
+;
+}
+else
+if
+(
+page
+ === 
+&#x27;/the-beatles&#x27;
+)
+{
+content
+ = 
+(
+&lt;
+ArtistPage
+artist
+=
+{
+{
+id
+:
+&#x27;the-beatles&#x27;
+,
+name
+:
+&#x27;The Beatles&#x27;
+,
+}
+}
+/&gt;
+)
+;
+}
+return
+(
+&lt;
+Layout
+&gt;
+{
+content
+}
+&lt;/
+Layout
+&gt;
+)
+;
+}
+function
+BigSpinner
+(
+)
+{
+return
+&lt;
+h2
+&gt;
+🌀 Loading...
+&lt;/
+h2
+&gt;
+;
+}
+Show more
+A Transition doesn’t wait for 
+all
+ content to load. It only waits long enough to avoid hiding already revealed content. For example, the website 
+Layout
+ was already revealed, so it would be bad to hide it behind a loading spinner. However, the nested 
+Suspense
+ boundary around 
+Albums
+ is new, so the Transition doesn’t wait for it.
+Note
+Suspense-enabled routers are expected to wrap the navigation updates into Transitions by default.
+Indicating that a Transition is happening 
+In the above example, once you click the button, there is no visual indication that a navigation is in progress. To add an indicator, you can replace 
+startTransition
+ with 
+useTransition
+ which gives you a boolean 
+isPending
+ value. In the example below, it’s used to change the website header styling while a Transition is happening:
+App.js
+Layout.js
+IndexPage.js
+ArtistPage.js
+Albums.js
+Biography.js
+Panel.js
+App.js
+Reload
+Clear
+Fork
+import
+{
+Suspense
+,
+useState
+,
+useTransition
+}
+from
+&#x27;react&#x27;
+;
+import
+IndexPage
+from
+&#x27;./IndexPage.js&#x27;
+;
+import
+ArtistPage
+from
+&#x27;./ArtistPage.js&#x27;
+;
+import
+Layout
+from
+&#x27;./Layout.js&#x27;
+;
+export
+default
+function
+App
+(
+)
+{
+return
+(
+&lt;
+Suspense
+fallback
+=
+{
+&lt;
+BigSpinner
+/&gt;
+}
+&gt;
+&lt;
+Router
+/&gt;
+&lt;/
+Suspense
+&gt;
+)
+;
+}
+function
+Router
+(
+)
+{
+const
+[
+page
+,
+setPage
+]
+ = 
+useState
+(
+&#x27;/&#x27;
+)
+;
+const
+[
+isPending
+,
+startTransition
+]
+ = 
+useTransition
+(
+)
+;
+function
+navigate
+(
+url
+)
+{
+startTransition
+(
+(
+)
+=&gt;
+{
+setPage
+(
+url
+)
+;
+}
+)
+;
+}
+let
+content
+;
+if
+(
+page
+ === 
+&#x27;/&#x27;
+)
+{
+content
+ = 
+(
+&lt;
+IndexPage
+navigate
+=
+{
+navigate
+}
+/&gt;
+)
+;
+}
+else
+if
+(
+page
+ === 
+&#x27;/the-beatles&#x27;
+)
+{
+content
+ = 
+(
+&lt;
+ArtistPage
+artist
+=
+{
+{
+id
+:
+&#x27;the-beatles&#x27;
+,
+name
+:
+&#x27;The Beatles&#x27;
+,
+}
+}
+/&gt;
+)
+;
+}
+return
+(
+&lt;
+Layout
+isPending
+=
+{
+isPending
+}
+&gt;
+{
+content
+}
+&lt;/
+Layout
+&gt;
+)
+;
+}
+function
+BigSpinner
+(
+)
+{
+return
+&lt;
+h2
+&gt;
+🌀 Loading...
+&lt;/
+h2
+&gt;
+;
+}
+Show more
+Resetting Suspense boundaries on navigation 
+During a Transition, React avoids hiding already revealed content. However, when you navigate to 
+different
+ content, such as another user’s profile, you’ll want the boundary to show the fallback instead of the previous content. You can express this with a 
+key
+:
+&lt;
+ProfilePage
+key
+=
+{
+queryParams
+.
+id
+}
+/&gt;
+With a different 
+key
+, React treats the profiles as different content and resets the Suspense boundary during navigation. The 
+key
+ can go on the boundary itself or on a component above it. Suspense-integrated routers should do this automatically.
+In the example below, opening the profile page loads the first profile. Pressing “Bob” navigates to a different profile, and the 
+key
+ resets the boundary, so the fallback shows instead of the previous user’s bio. Try removing the 
+key
+: the previous bio stays visible while the next one loads:
+ProfilePage.js
+Bio.js
+ProfilePage.js
+Reload
+Clear
+Fork
+import
+{
+Suspense
+,
+useState
+,
+startTransition
+}
+from
+&#x27;react&#x27;
+;
+import
+Bio
+from
+&#x27;./Bio.js&#x27;
+;
+import
+{
+fetchBio
+}
+from
+&#x27;./data.js&#x27;
+;
+export
+default
+function
+ProfilePage
+(
+)
+{
+const
+[
+user
+,
+setUser
+]
+ = 
+useState
+(
+(
+)
+=&gt;
+(
+{
+id
+:
+&#x27;alice&#x27;
+,
+bioPromise
+:
+fetchBio
+(
+&#x27;alice&#x27;
+)
+,
+}
+)
+)
+;
+function
+navigate
+(
+id
+)
+{
+startTransition
+(
+(
+)
+=&gt;
+{
+setUser
+(
+{
+id
+,
+bioPromise
+:
+fetchBio
+(
+id
+)
+}
+)
+;
+}
+)
+;
+}
+return
+(
+&lt;
+&gt;
+&lt;
+button
+onClick
+=
+{
+(
+)
+=&gt;
+navigate
+(
+&#x27;alice&#x27;
+)
+}
+&gt;
+ Alice
+&lt;/
+button
+&gt;
+&lt;
+button
+onClick
+=
+{
+(
+)
+=&gt;
+navigate
+(
+&#x27;bob&#x27;
+)
+}
+&gt;
+ Bob
+&lt;/
+button
+&gt;
+&lt;
+Suspense
+key
+=
+{
+user
+.
+id
+}
+fallback
+=
+{
+&lt;
+p
+&gt;
+⌛ Loading profile...
+&lt;/
+p
+&gt;
+}
+&gt;
+&lt;
+Bio
+bioPromise
+=
+{
+user
+.
+bioPromise
+}
+/&gt;
+&lt;/
+Suspense
+&gt;
+&lt;/
+&gt;
+)
+;
+}
+Show more
+Providing a fallback for server errors and client-only content 
+If you use one of the 
+streaming server rendering APIs
+ (or a framework that relies on them), React will also use your 
+&lt;Suspense&gt;
+ boundaries to handle errors on the server. If a component throws an error on the server, React will not abort the server render. Instead, it will find the closest 
+&lt;Suspense&gt;
+ component above it and include its fallback (such as a spinner) into the generated server HTML. The user will see a spinner at first.
+On the client, React will attempt to render the same component again. If it errors on the client too, React will throw the error and display the closest 
+Error Boundary.
+ However, if it does not error on the client, React will not display the error to the user since the content was eventually displayed successfully.
+You can use this to opt out some components from rendering on the server. To do this, throw an error in the server environment and then wrap them in a 
+&lt;Suspense&gt;
+ boundary to replace their HTML with fallbacks:
+&lt;
+Suspense
+fallback
+=
+{
+&lt;
+Loading
+/&gt;
+}
+&gt;
+&lt;
+Chat
+/&gt;
+&lt;/
+Suspense
+&gt;
+function
+Chat
+(
+)
+{
+if
+(
+typeof
+window
+ === 
+&#x27;undefined&#x27;
+)
+{
+throw
+Error
+(
+&#x27;Chat should only render on the client.&#x27;
+)
+;
+}
+// ...
+}
+The server HTML will include the loading indicator. It will be replaced by the 
+Chat
+ component on the client.
+Providing a fallback for browser-only content 
+A Suspense boundary can provide a fallback for a browser-only component. Wrap the component in 
+&lt;Suspense&gt;
+ and call 
+use(browser())
+ inside it.
+Click 
+Reload
+ to see the loading fallback in the initial HTML. After hydration, React displays the draft loaded from 
+localStorage
+.
+App.js
+App.js
+Reload
+Clear
+Fork
+import
+{
+Suspense
+,
+use
+,
+useState
+}
+from
+&#x27;react&#x27;
+;
+import
+{
+browser
+}
+from
+&#x27;react-dom&#x27;
+;
+function
+SavedDraft
+(
+)
+{
+use
+(
+browser
+(
+&#x27;The draft is stored in localStorage.&#x27;
+)
+)
+;
+const
+[
+draft
+,
+setDraft
+]
+ = 
+useState
+(
+(
+)
+=&gt;
+localStorage
+.
+getItem
+(
+&#x27;draft&#x27;
+)
+ ?? 
+&#x27;&#x27;
+)
+;
+function
+handleChange
+(
+event
+)
+{
+const
+nextDraft
+ = 
+event
+.
+target
+.
+value
+;
+setDraft
+(
+nextDraft
+)
+;
+localStorage
+.
+setItem
+(
+&#x27;draft&#x27;
+,
+nextDraft
+)
+;
+}
+return
+(
+&lt;
+label
+&gt;
+ Draft:
+&lt;
+textarea
+value
+=
+{
+draft
+}
+onChange
+=
+{
+handleChange
+}
+rows
+=
+{
+4
+}
+cols
+=
+{
+30
+}
+/&gt;
+&lt;/
+label
+&gt;
+)
+;
+}
+export
+default
+function
+App
+(
+)
+{
+return
+(
+&lt;
+&gt;
+&lt;
+h1
+&gt;
+Saved draft
+&lt;/
+h1
+&gt;
+&lt;
+Suspense
+fallback
+=
+{
+&lt;
+p
+&gt;
+Loading draft...
+&lt;/
+p
+&gt;
+}
+&gt;
+&lt;
+SavedDraft
+/&gt;
+&lt;/
+Suspense
+&gt;
+&lt;/
+&gt;
+)
+;
+}
+Show more
+During server rendering, React includes the Suspense boundary’s fallback in the HTML. In the browser, React replaces the fallback with the saved draft.
+Waiting for a stylesheet to load 
+A stylesheet rendered with 
+&lt;link rel=&quot;stylesheet&quot;&gt;
+ and a 
+precedence
+ prop
+ blocks the Suspense boundary until the stylesheet loads, up to a timeout, so the content doesn’t appear unstyled.
+In the example below, the 
+Card
+ component renders a stylesheet with 
+precedence
+. Press “Show card”: React shows the fallback until the stylesheet has loaded, and then reveals the card with its styles applied.
+For comparison, the second button performs the same update without React, in a separate document. Nothing waits for the stylesheet, so the card’s text appears in a fallback font first and then switches:
+App.js
+VanillaCard.js
+App.js
+Reload
+Clear
+Fork
+import
+{
+Suspense
+,
+useState
+,
+startTransition
+}
+from
+&#x27;react&#x27;
+;
+import
+{
+freshStylesheetUrl
+}
+from
+&#x27;./styles.js&#x27;
+;
+import
+VanillaCard
+from
+&#x27;./VanillaCard.js&#x27;
+;
+function
+Card
+(
+{
+href
+}
+)
+{
+return
+(
+&lt;
+&gt;
+&lt;
+link
+rel
+=
+&quot;stylesheet&quot;
+href
+=
+{
+href
+}
+precedence
+=
+&quot;default&quot;
+/&gt;
+&lt;
+div
+className
+=
+&quot;fancy-card&quot;
+&gt;
+This card uses a font from the stylesheet.
+&lt;/
+div
+&gt;
+&lt;/
+&gt;
+)
+;
+}
+export
+default
+function
+App
+(
+)
+{
+const
+[
+href
+,
+setHref
+]
+ = 
+useState
+(
+null
+)
+;
+return
+(
+&lt;
+&gt;
+&lt;
+button
+onClick
+=
+{
+(
+)
+=&gt;
+{
+startTransition
+(
+(
+)
+=&gt;
+{
+setHref
+(
+freshStylesheetUrl
+(
+)
+)
+;
+}
+)
+;
+}
+}
+&gt;
+ Show card
+&lt;/
+button
+&gt;
+{
+href
+ &amp;&amp; 
+(
+&lt;
+Suspense
+fallback
+=
+{
+&lt;
+p
+&gt;
+⌛ Loading styles...
+&lt;/
+p
+&gt;
+}
+&gt;
+&lt;
+Card
+href
+=
+{
+href
+}
+/&gt;
+&lt;/
+Suspense
+&gt;
+)
+}
+&lt;
+hr
+/&gt;
+&lt;
+VanillaCard
+/&gt;
+&lt;/
+&gt;
+)
+;
+}
+Show more
+Animating from Suspense content 
+Suspense composes with 
+&lt;ViewTransition&gt;
+ to animate the swap from the fallback to the content. Wrap the boundary in a 
+&lt;ViewTransition&gt;
+, and React treats the swap as an update, cross-fading between the fallback and the content by default:
+App.js
+App.js
+Reload
+Clear
+Fork
+import
+{
+ViewTransition
+,
+useState
+,
+startTransition
+,
+Suspense
+}
+from
+&#x27;react&#x27;
+;
+import
+{
+Video
+,
+VideoPlaceholder
+}
+from
+&#x27;./Video&#x27;
+;
+import
+{
+useLazyVideoData
+}
+from
+&#x27;./data&#x27;
+;
+function
+LazyVideo
+(
+)
+{
+const
+video
+ = 
+useLazyVideoData
+(
+)
+;
+return
+&lt;
+Video
+video
+=
+{
+video
+}
+/&gt;
+;
+}
+export
+default
+function
+Component
+(
+)
+{
+const
+[
+showItem
+,
+setShowItem
+]
+ = 
+useState
+(
+false
+)
+;
+return
+(
+&lt;
+&gt;
+&lt;
+button
+onClick
+=
+{
+(
+)
+=&gt;
+{
+startTransition
+(
+(
+)
+=&gt;
+{
+setShowItem
+(
+(
+prev
+)
+=&gt;
+ !
+prev
+)
+;
+}
+)
+;
+}
+}
+&gt;
+{
+showItem
+ ? 
+&#x27;➖&#x27;
+ : 
+&#x27;➕&#x27;
+}
+&lt;/
+button
+&gt;
+{
+showItem
+ ? 
+(
+&lt;
+ViewTransition
+&gt;
+&lt;
+Suspense
+fallback
+=
+{
+&lt;
+VideoPlaceholder
+/&gt;
+}
+&gt;
+&lt;
+LazyVideo
+/&gt;
+&lt;/
+Suspense
+&gt;
+&lt;/
+ViewTransition
+&gt;
+)
+ : 
+null
+}
+&lt;/
+&gt;
+)
+;
+}
+Show more
+Note
+Where you place the 
+&lt;ViewTransition&gt;
+ relative to the boundary determines whether the fallback and content cross-fade as one update or animate as separate exit and enter animations. You can also 
+customize the animation
+ with View Transition classes.
+Learn more about animating from Suspense content.
+Waiting for a font to load 
+When a 
+&lt;ViewTransition&gt;
+ animates a Suspense boundary’s reveal, React waits up to 500 ms for new fonts the content introduces so the text doesn’t flash with a fallback font. This only happens during a 
+&lt;ViewTransition&gt;
+ update.
+In the example below, the Suspense boundary is wrapped in a 
+&lt;ViewTransition&gt;
+, and the 
+Quote
+ component suspends while its data loads. Rendering the quote loads a stylesheet that introduces the font. React keeps the fallback visible while the stylesheet and font load. If the font loads within the 500 ms limit, the quote appears already in its font.
+For comparison, the second button performs the same update without React. Nothing waits for the font, so the text appears in a fallback font first and then switches:
+App.js
+VanillaQuote.js
+App.js
+Reload
+Clear
+Fork
+import
+{
+ViewTransition
+,
+Suspense
+,
+use
+,
+useState
+,
+startTransition
+,
+}
+from
+&#x27;react&#x27;
+;
+import
+{
+fetchQuote
+}
+from
+&#x27;./data.js&#x27;
+;
+import
+{
+freshFontUrl
+,
+freshStylesheetUrl
+,
+}
+from
+&#x27;./font.js&#x27;
+;
+import
+VanillaQuote
+from
+&#x27;./VanillaQuote.js&#x27;
+;
+function
+Quote
+(
+{
+stylesheet
+}
+)
+{
+const
+quote
+ = 
+use
+(
+fetchQuote
+(
+)
+)
+;
+return
+(
+&lt;
+&gt;
+&lt;
+link
+rel
+=
+&quot;stylesheet&quot;
+href
+=
+{
+stylesheet
+}
+precedence
+=
+&quot;default&quot;
+/&gt;
+&lt;
+p
+className
+=
+&quot;quote fancy&quot;
+&gt;
+{
+quote
+}
+&lt;/
+p
+&gt;
+&lt;/
+&gt;
+)
+;
+}
+export
+default
+function
+App
+(
+)
+{
+const
+[
+stylesheet
+,
+setStylesheet
+]
+ = 
+useState
+(
+null
+)
+;
+return
+(
+&lt;
+&gt;
+&lt;
+button
+onClick
+=
+{
+(
+)
+=&gt;
+{
+startTransition
+(
+(
+)
+=&gt;
+{
+setStylesheet
+(
+freshStylesheetUrl
+(
+)
+)
+;
+}
+)
+;
+}
+}
+&gt;
+ Show quote
+&lt;/
+button
+&gt;
+{
+stylesheet
+ &amp;&amp; 
+(
+&lt;
+ViewTransition
+&gt;
+&lt;
+Suspense
+fallback
+=
+{
+&lt;
+p
+className
+=
+&quot;quote&quot;
+&gt;
+⌛ Loading quote...
+&lt;/
+p
+&gt;
+}
+&gt;
+&lt;
+Quote
+stylesheet
+=
+{
+stylesheet
+}
+/&gt;
+&lt;/
+Suspense
+&gt;
+&lt;/
+ViewTransition
+&gt;
+)
+}
+&lt;
+hr
+/&gt;
+&lt;
+VanillaQuote
+/&gt;
+&lt;/
+&gt;
+)
+;
+}
+Show more
+Waiting for an image to load 
+When a Suspense boundary reveals content inside a 
+&lt;ViewTransition&gt;
+, React waits up to 500 ms for visible images to load before starting the animation. Setting 
+loading=&quot;lazy&quot;
+ or adding an 
+onLoad
+ handler opts an image out.
+Compare the same boundary inside and outside a 
+&lt;ViewTransition&gt;
+. Inside, React keeps the profile skeleton visible for up to 500 ms while the image loads, so the card can be revealed with its image already in place. Outside, Suspense stops showing the skeleton as soon as the Promise resolves. If the image is still loading, the card appears first and the image pops in afterward:
+App.js
+App.js
+Reload
+Clear
+Fork
+import
+{
+ViewTransition
+,
+Suspense
+,
+use
+,
+useState
+,
+}
+from
+&#x27;react&#x27;
+;
+import
+{
+fetchImageSrc
+}
+from
+&#x27;./image.js&#x27;
+;
+function
+Profile
+(
+{
+cacheKey
+}
+)
+{
+const
+src
+ = 
+use
+(
+fetchImageSrc
+(
+cacheKey
+)
+)
+;
+return
+(
+&lt;
+div
+className
+=
+&quot;card&quot;
+&gt;
+&lt;
+img
+src
+=
+{
+src
+}
+alt
+=
+&quot;&quot;
+width
+=
+{
+80
+}
+height
+=
+{
+80
+}
+/&gt;
+&lt;
+p
+&gt;
+Jack Pope
+&lt;/
+p
+&gt;
+&lt;/
+div
+&gt;
+)
+;
+}
+function
+ProfilePlaceholder
+(
+)
+{
+return
+(
+&lt;
+div
+className
+=
+&quot;card&quot;
+&gt;
+&lt;
+div
+className
+=
+&quot;avatar-placeholder&quot;
+/&gt;
+&lt;
+p
+className
+=
+&quot;name-placeholder&quot;
+&gt;
+&amp;nbsp;
+&lt;/
+p
+&gt;
+&lt;/
+div
+&gt;
+)
+;
+}
+export
+default
+function
+App
+(
+)
+{
+const
+[
+showWithTransition
+,
+setShowWithTransition
+]
+ =
+useState
+(
+false
+)
+;
+const
+[
+showWithoutTransition
+,
+setShowWithoutTransition
+]
+ =
+useState
+(
+false
+)
+;
+return
+(
+&lt;
+&gt;
+&lt;
+button
+onClick
+=
+{
+(
+)
+=&gt;
+setShowWithTransition
+(
+true
+)
+}
+&gt;
+ Show profile with View Transition
+&lt;/
+button
+&gt;
+{
+showWithTransition
+ &amp;&amp; 
+(
+&lt;
+ViewTransition
+&gt;
+&lt;
+Suspense
+fallback
+=
+{
+&lt;
+ProfilePlaceholder
+/&gt;
+}
+&gt;
+&lt;
+Profile
+cacheKey
+=
+&quot;with-transition&quot;
+/&gt;
+&lt;/
+Suspense
+&gt;
+&lt;/
+ViewTransition
+&gt;
+)
+}
+&lt;
+hr
+/&gt;
+&lt;
+button
+onClick
+=
+{
+(
+)
+=&gt;
+setShowWithoutTransition
+(
+true
+)
+}
+&gt;
+ Show profile without View Transition
+&lt;/
+button
+&gt;
+{
+showWithoutTransition
+ &amp;&amp; 
+(
+&lt;
+Suspense
+fallback
+=
+{
+&lt;
+ProfilePlaceholder
+/&gt;
+}
+&gt;
+&lt;
+Profile
+cacheKey
+=
+&quot;without-transition&quot;
+/&gt;
+&lt;/
+Suspense
+&gt;
+)
+}
+&lt;/
+&gt;
+)
+;
+}
+Show more
+Coordinating fonts, images, and stylesheets 
+A Suspense boundary can wait for data, stylesheets, fonts, and images at once. Waiting for fonts and images only happens during a 
+&lt;ViewTransition&gt;
+ update. In the example below, the 
+ProfileCard
+ component suspends while its data loads, and renders a stylesheet with 
+precedence
+, text in a new font, and a portrait. React keeps the skeleton visible while the data and the stylesheet load. The 
+&lt;ViewTransition&gt;
+ reveal then waits for the font and the image, so the card appears complete.
+For comparison, the version without React loads the same data and shows every resource arriving on its own schedule:
+App.js
+VanillaProfileCard.js
+App.js
+Reload
+Clear
+Fork
+import
+{
+ViewTransition
+,
+Suspense
+,
+use
+,
+useState
+,
+startTransition
+}
+from
+&#x27;react&#x27;
+;
+import
+{
+fetchQuote
+}
+from
+&#x27;./data.js&#x27;
+;
+import
+{
+freshStylesheetUrl
+,
+freshImageUrl
+}
+from
+&#x27;./resources.js&#x27;
+;
+import
+VanillaProfileCard
+from
+&#x27;./VanillaProfileCard.js&#x27;
+;
+function
+ProfileCard
+(
+{
+resources
+}
+)
+{
+const
+quote
+ = 
+use
+(
+resources
+.
+quotePromise
+)
+;
+return
+(
+&lt;
+&gt;
+&lt;
+link
+rel
+=
+&quot;stylesheet&quot;
+href
+=
+{
+resources
+.
+stylesheet
+}
+precedence
+=
+&quot;default&quot;
+/&gt;
+&lt;
+div
+className
+=
+&quot;profile-card&quot;
+&gt;
+&lt;
+img
+src
+=
+{
+resources
+.
+image
+}
+alt
+=
+&quot;&quot;
+width
+=
+{
+80
+}
+height
+=
+{
+80
+}
+/&gt;
+&lt;
+div
+&gt;
+&lt;
+p
+className
+=
+&quot;name&quot;
+&gt;
+Jack Pope
+&lt;/
+p
+&gt;
+&lt;
+p
+className
+=
+&quot;bio&quot;
+&gt;
+{
+quote
+}
+&lt;/
+p
+&gt;
+&lt;/
+div
+&gt;
+&lt;/
+div
+&gt;
+&lt;/
+&gt;
+)
+;
+}
+function
+ProfileCardPlaceholder
+(
+)
+{
+return
+(
+&lt;
+div
+className
+=
+&quot;profile-card&quot;
+&gt;
+&lt;
+div
+className
+=
+&quot;avatar-placeholder&quot;
+/&gt;
+&lt;
+div
+&gt;
+&lt;
+p
+className
+=
+&quot;name name-placeholder&quot;
+&gt;
+&amp;nbsp;
+&lt;/
+p
+&gt;
+&lt;
+p
+className
+=
+&quot;bio bio-placeholder&quot;
+&gt;
+&amp;nbsp;
+&lt;/
+p
+&gt;
+&lt;/
+div
+&gt;
+&lt;/
+div
+&gt;
+)
+;
+}
+export
+default
+function
+App
+(
+)
+{
+const
+[
+resources
+,
+setResources
+]
+ = 
+useState
+(
+null
+)
+;
+return
+(
+&lt;
+&gt;
+&lt;
+button
+onClick
+=
+{
+(
+)
+=&gt;
+{
+startTransition
+(
+(
+)
+=&gt;
+{
+setResources
+(
+{
+quotePromise
+:
+fetchQuote
+(
+)
+,
+stylesheet
+:
+freshStylesheetUrl
+(
+)
+,
+image
+:
+freshImageUrl
+(
+)
+,
+}
+)
+;
+}
+)
+;
+}
+}
+&gt;
+ Show profile
+&lt;/
+button
+&gt;
+{
+resources
+ &amp;&amp; 
+(
+&lt;
+ViewTransition
+&gt;
+&lt;
+Suspense
+fallback
+=
+{
+&lt;
+ProfileCardPlaceholder
+/&gt;
+}
+&gt;
+&lt;
+ProfileCard
+resources
+=
+{
+resources
+}
+/&gt;
+&lt;/
+Suspense
+&gt;
+&lt;/
+ViewTransition
+&gt;
+)
+}
+&lt;
+hr
+/&gt;
+&lt;
+VanillaProfileCard
+/&gt;
+&lt;/
+&gt;
+)
+;
+}
+Show more
+Troubleshooting 
+How do I prevent the UI from being replaced by a fallback during an update? 
+Replacing visible UI with a fallback creates a jarring user experience. This can happen when an update causes a component to suspend, and the nearest Suspense boundary is already showing content to the user.
+To prevent this from happening, 
+mark the update as non-urgent using 
+startTransition
+. During a Transition, React will wait until enough data has loaded to prevent an unwanted fallback from appearing:
+function
+handleNextPageClick
+(
+)
+{
+// If this update suspends, don&#x27;t hide the already displayed content
+startTransition
+(
+(
+)
+=&gt;
+{
+setCurrentPage
+(
+currentPage
+ + 
+1
+)
+;
+}
+)
+;
+}
+This will avoid hiding existing content. However, any newly rendered 
+Suspense
+ boundaries will still immediately display fallbacks to avoid blocking the UI and let the user see the content as it becomes available.
+React will only prevent unwanted fallbacks during non-urgent updates
+. It will not delay a render if it’s the result of an urgent update. You must opt in with an API like 
+startTransition
+ or 
+useDeferredValue
+.
+If your router is integrated with Suspense, it should wrap its updates into 
+startTransition
+ automatically.
+Previous
+&lt;StrictMode&gt;
+Next
+&lt;Activity&gt;
+Copyright © Meta Platforms, Inc
+no uwu plz
+uwu?
+Logo by
+@sawaratsuki1004
+Learn React
+Quick Start
+Installation
+Describing the UI
+Adding Interactivity
+Managing State
+Escape Hatches
+API Reference
+React APIs
+React DOM APIs
+Community
+Code of Conduct
+Meet the Team
+Docs Contributors
+Acknowledgements
+More
+Blog
+React Native
+Privacy
+Terms
+On this page
+Overview
+Reference 
+&lt;Suspense&gt;
+What activates a Suspense boundary 
+Usage 
+Displaying a fallback while content is loading 
+Revealing content together at once 
+Revealing nested content as it loads 
+Showing stale content while fresh content is loading 
+Preventing already revealed content from hiding 
+Indicating that a Transition is happening 
+Resetting Suspense boundaries on navigation 
+Providing a fallback for server errors and client-only content 
+Providing a fallback for browser-only content 
+Waiting for a stylesheet to load 
+Animating from Suspense content 
+Waiting for a font to load 
+Waiting for an image to load 
+Coordinating fonts, images, and stylesheets 
+Troubleshooting 
+How do I prevent the UI from being replaced by a fallback during an update? 
+{"props":{"pageProps":{"toc":"[{\"url\":\"#\",\"text\":\"Overview\",\"depth\":2},{\"url\":\"#reference\",\"depth\":2,\"text\":\"Reference \"},{\"url\":\"#suspense\",\"depth\":3,\"text\":[[\"$r\",\"code\",null,{\"children\":\"\u003cSuspense\u003e\"}],\" \"]},{\"url\":\"#what-activates-a-suspense-boundary\",\"depth\":3,\"text\":\"What activates a Suspense boundary \"},{\"url\":\"#usage\",\"depth\":2,\"text\":\"Usage \"},{\"url\":\"#displaying-a-fallback-while-content-is-loading\",\"depth\":3,\"text\":\"Displaying a fallback while content is loading \"},{\"url\":\"#revealing-content-together-at-once\",\"depth\":3,\"text\":\"Revealing content together at once \"},{\"url\":\"#revealing-nested-content-as-it-loads\",\"depth\":3,\"text\":\"Revealing nested content as it loads \"},{\"url\":\"#showing-stale-content-while-fresh-content-is-loading\",\"depth\":3,\"text\":\"Showing stale content while fresh content is loading \"},{\"url\":\"#preventing-already-revealed-content-from-hiding\",\"depth\":3,\"text\":\"Preventing already revealed content from hiding \"},{\"url\":\"#indicating-that-a-transition-is-happening\",\"depth\":3,\"text\":\"Indicating that a Transition is happening \"},{\"url\":\"#resetting-suspense-boundaries-on-navigation\",\"depth\":3,\"text\":\"Resetting Suspense boundaries on navigation \"},{\"url\":\"#providing-a-fallback-for-server-errors-and-client-only-content\",\"depth\":3,\"text\":\"Providing a fallback for server errors and client-only content \"},{\"url\":\"#providing-a-fallback-for-browser-only-content\",\"depth\":3,\"text\":\"Providing a fallback for browser-only content \"},{\"url\":\"#waiting-for-a-stylesheet-to-load\",\"depth\":3,\"text\":\"Waiting for a stylesheet to load \"},{\"url\":\"#animating-from-suspense-content\",\"depth\":3,\"text\":\"Animating from Suspense content \"},{\"url\":\"#waiting-for-a-font-to-load\",\"depth\":3,\"text\":\"Waiting for a font to load \"},{\"url\":\"#waiting-for-an-image-to-load\",\"depth\":3,\"text\":\"Waiting for an image to load \"},{\"url\":\"#coordinating-fonts-images-and-stylesheets\",\"depth\":3,\"text\":\"Coordinating fonts, images, and stylesheets \"},{\"url\":\"#troubleshooting\",\"depth\":2,\"text\":\"Troubleshooting \"},{\"url\":\"#preventing-unwanted-fallbacks\",\"depth\":3,\"text\":\"How do I prevent the UI from being replaced by a fallback during an update? \"}]","content":"[[\"$r\",\"MaxWidth\",\"42\",{\"children\":[[\"$r\",\"Intro\",null,{\"children\":[[\"$r\",\"p\",null,{\"children\":[[\"$r\",\"code\",null,{\"children\":\"\u003cSuspense\u003e\"}],\" lets you display a fallback until its children have finished loading.\"]}],[\"$r\",\"pre\",null,{\"children\":[\"$r\",\"code\",null,{\"className\":\"language-js\",\"children\":\"\u003cSuspense fallback={\u003cLoading /\u003e}\u003e\\n \u003cSomeComponent /\u003e\\n\u003c/Suspense\u003e\\n\"}]}]]}],\"\\n\",[\"$r\",\"InlineToc\",null,{}],\"\\n\",[\"$r\",\"hr\",null,{}],\"\\n\",[\"$r\",\"h2\",null,{\"id\":\"reference\",\"children\":\"Reference \"}],\"\\n\",[\"$r\",\"h3\",null,{\"id\":\"suspense\",\"children\":[[\"$r\",\"code\",null,{\"children\":\"\u003cSuspense\u003e\"}],\" \"]}],\"\\n\",[\"$r\",\"h4\",null,{\"id\":\"props\",\"children\":\"Props \"}],\"\\n\",[\"$r\",\"ul\",null,{\"children\":[\"\\n\",[\"$r\",\"li\",null,{\"children\":[[\"$r\",\"code\",null,{\"children\":\"children\"}],\": The actual UI you intend to render. If \",[\"$r\",\"code\",null,{\"children\":\"children\"}],\" suspends while rendering, the Suspense boundary will switch to rendering \",[\"$r\",\"code\",null,{\"children\":\"fallback\"}],\".\"]}],\"\\n\",[\"$r\",\"li\",null,{\"children\":[[\"$r\",\"code\",null,{\"children\":\"fallback\"}],\": An alternate UI to render in place of the actual UI if it has not finished loading. Any valid React node is accepted, though in practice, a fallback is a lightweight placeholder view, such as a loading spinner or skeleton. Suspense will automatically switch to \",[\"$r\",\"code\",null,{\"children\":\"fallback\"}],\" when \",[\"$r\",\"code\",null,{\"children\":\"children\"}],\" suspends, and back to \",[\"$r\",\"code\",null,{\"children\":\"children\"}],\" when the data is ready. If \",[\"$r\",\"code\",null,{\"children\":\"fallback\"}],\" suspends while rendering, it will activate the closest parent Suspense boundary.\"]}],\"\\n\",[\"$r\",\"li\",null,{\"children\":[[\"$r\",\"ExperimentalBadge\",null,{}],\" \",[\"$r\",\"strong\",null,{\"children\":\"optional\"}],\" \",[\"$r\",\"code\",null,{\"children\":\"defer\"}],\": A boolean. When \",[\"$r\",\"code\",null,{\"children\":\"true\"}],\", React may show the \",[\"$r\",\"code\",null,{\"children\":\"fallback\"}],\" first and render or stream \",[\"$r\",\"code\",null,{\"children\":\"children\"}],\" later, even when nothing in them suspends. Use it for content that is expensive to render. Defaults to \",[\"$r\",\"code\",null,{\"children\":\"false\"}],\".\"]}],\"\\n\"]}],\"\\n\",[\"$r\",\"h4\",null,{\"id\":\"caveats\",\"children\":\"Caveats \"}],\"\\n\",[\"$r\",\"ul\",null,{\"children\":[\"\\n\",[\"$r\",\"li\",null,{\"children\":[\"Suspense does not detect when data is fetched inside an Effect or event handler. It only activates in the \",[\"$r\",\"a\",null,{\"href\":\"#what-activates-a-suspense-boundary\",\"children\":\"cases listed below.\"}]]}],\"\\n\",[\"$r\",\"li\",null,{\"children\":\"React does not preserve any state for renders that got suspended before they were able to mount for the first time. When the component has loaded, React will retry rendering the suspended tree from scratch.\"}],\"\\n\",[\"$r\",\"li\",null,{\"children\":[\"If Suspense was displaying content for the tree, but then it suspended again, the \",[\"$r\",\"code\",null,{\"children\":\"fallback\"}],\" will be shown again unless the update causing it was caused by \",[\"$r\",\"a\",null,{\"href\":\"/reference/react/startTransition\",\"children\":[\"$r\",\"code\",null,{\"children\":\"startTransition\"}]}],\" or \",[\"$r\",\"a\",null,{\"href\":\"/reference/react/useDeferredValue\",\"children\":[\"$r\",\"code\",null,{\"children\":\"useDeferredValue\"}]}],\".\"]}],\"\\n\",[\"$r\",\"li\",null,{\"children\":[\"React reveals suspended content at most once every 300ms, measured from the last reveal. Boundaries that become ready within that window are \",[\"$r\",\"a\",null,{\"href\":\"/blog/2025/10/01/react-19-2#batching-suspense-boundaries-for-ssr\",\"children\":\"revealed together\"}],\" rather than one at a time.\"]}],\"\\n\",[\"$r\",\"li\",null,{\"children\":[\"If React needs to hide the already visible content because it suspended again, it will clean up \",[\"$r\",\"a\",null,{\"href\":\"/reference/react/useLayoutEffect\",\"children\":\"layout Effects\"}],\" in the content tree. When the content is ready to be shown again, React will fire the layout Effects again. This ensures that Effects measuring the DOM layout don’t try to do this while the content is hidden.\"]}],\"\\n\",[\"$r\",\"li\",null,{\"children\":[\"React includes under-the-hood optimizations like \",[\"$r\",\"em\",null,{\"children\":\"Streaming Server Rendering\"}],\" and \",[\"$r\",\"em\",null,{\"children\":\"Selective Hydration\"}],\" that are integrated with Suspense. Read \",[\"$r\",\"a\",null,{\"href\":\"https://github.com/reactwg/react-18/discussions/37\",\"target\":\"_blank\",\"rel\":\"nofollow noopener noreferrer\",\"children\":\"an architectural overview\"}],\" and watch \",[\"$r\",\"a\",null,{\"href\":\"https://www.youtube.com/watch?v=pj5N-Khihgc\",\"target\":\"_blank\",\"rel\":\"nofollow noopener noreferrer\",\"children\":\"a technical talk\"}],\" to learn more.\"]}],\"\\n\"]}],\"\\n\",[\"$r\",\"hr\",null,{}],\"\\n\",[\"$r\",\"h3\",null,{\"id\":\"what-activates-a-suspense-boundary\",\"children\":\"What activates a Suspense boundary \"}],\"\\n\",[\"$r\",\"p\",null,{\"children\":\"A Suspense boundary waits for its content to be ready before revealing it. Any of the following keeps a boundary from revealing its content:\"}],\"\\n\",[\"$r\",\"ul\",null,{\"children\":[\"\\n\",[\"$r\",\"li\",null,{\"children\":[\"Lazy-loading component code with \",[\"$r\",\"a\",null,{\"href\":\"/reference/react/lazy\",\"children\":[\"$r\",\"code\",null,{\"children\":\"lazy\"}]}],\".\"]}],\"\\n\",[\"$r\",\"li\",null,{\"children\":[\"Reading a Promise with \",[\"$r\",\"a\",null,{\"href\":\"/reference/react/use\",\"children\":[\"$r\",\"code\",null,{\"children\":\"use\"}]}],\", including data streamed from \",[\"$r\",\"a\",null,{\"href\":\"/reference/rsc/server-components\",\"children\":\"Server Components\"}],\" or loaded through a \",[\"$r\",\"a\",null,{\"href\":\"#suspense-enabled-frameworks\",\"children\":\"Suspense-enabled framework\"}],\".\"]}],\"\\n\",[\"$r\",\"li\",null,{\"children\":[\"Loading a stylesheet rendered with \",[\"$r\",\"a\",null,{\"href\":\"/reference/react-dom/components/link#special-rendering-behavior\",\"children\":[[\"$r\",\"code\",null,{\"children\":\"\u003clink rel=\\\"stylesheet\\\"\u003e\"}],\" and a \",[\"$r\",\"code\",null,{\"children\":\"precedence\"}],\" prop.\"]}],\" React blocks the boundary until the stylesheet loads, up to a timeout. \",[\"$r\",\"a\",null,{\"href\":\"#waiting-for-a-stylesheet-to-load\",\"children\":\"See an example below.\"}]]}],\"\\n\",[\"$r\",\"li\",null,{\"children\":\"Waiting for a large boundary’s HTML to arrive during streaming server rendering. Sending HTML takes time, so a boundary with enough content activates even when nothing in it suspends. React reveals the content as the HTML arrives.\"}],\"\\n\",[\"$r\",\"li\",null,{\"children\":[\"Loading fonts. Suspense doesn’t wait for fonts by default, but when a \",[\"$r\",\"a\",null,{\"href\":\"/reference/react/ViewTransition\",\"children\":[\"$r\",\"code\",null,{\"children\":\"\u003cViewTransition\u003e\"}]}],\" animates a boundary’s reveal, React waits up to 500 ms for new fonts to load so text doesn’t flash with a fallback font. \",[\"$r\",\"a\",null,{\"href\":\"#waiting-for-a-font-to-load\",\"children\":\"See an example below.\"}]]}],\"\\n\",[\"$r\",\"li\",null,{\"children\":[\"Loading images. Suspense doesn’t wait for images by default, but when a \",[\"$r\",\"a\",null,{\"href\":\"/reference/react/ViewTransition\",\"children\":[\"$r\",\"code\",null,{\"children\":\"\u003cViewTransition\u003e\"}]}],\" animates a boundary’s reveal, React waits up to 500 ms for visible images to load before starting the animation. Setting \",[\"$r\",\"code\",null,{\"children\":\"loading=\\\"lazy\\\"\"}],\" or adding an \",[\"$r\",\"code\",null,{\"children\":\"onLoad\"}],\" handler opts a specific image out. \",[\"$r\",\"a\",null,{\"href\":\"#waiting-for-an-image-to-load\",\"children\":\"See an example below.\"}]]}],\"\\n\",[\"$r\",\"li\",null,{\"children\":[[\"$r\",\"ExperimentalBadge\",null,{}],\" Performing CPU-bound render work inside a \",[\"$r\",\"a\",null,{\"href\":\"#props\",\"children\":[\"$r\",\"code\",null,{\"children\":\"\u003cSuspense defer\u003e\"}]}],\" boundary.\"]}],\"\\n\"]}],\"\\n\",[\"$r\",\"Note\",null,{\"children\":[[\"$r\",\"h4\",null,{\"id\":\"suspense-enabled-frameworks\",\"children\":\"Suspense-enabled frameworks \"}],[\"$r\",\"p\",null,{\"children\":[\"A \",[\"$r\",\"em\",null,{\"children\":\"Suspense-enabled framework\"}],\" gives you a way to read data in your component in a way that activates the closest Suspense boundary. The exact way you load your data depends on your framework, and you’ll find the details in its documentation. Under the hood, a Suspense-enabled framework maintains a cache of Promises and calls \",[\"$r\",\"a\",null,{\"href\":\"/reference/react/use\",\"children\":[\"$r\",\"code\",null,{\"children\":\"use\"}]}],\" to suspend on a Promise.\"]}],[\"$r\",\"p\",null,{\"children\":[\"Without a framework, you can read a Promise with \",[\"$r\",\"code\",null,{\"children\":\"use\"}],\" directly, as long as the Promise is \",[\"$r\",\"a\",null,{\"href\":\"/reference/react/use#caching-promises-for-client-components\",\"children\":\"cached so the same instance is reused across renders.\"}]]}]]}],\"\\n\",[\"$r\",\"hr\",null,{}],\"\\n\",[\"$r\",\"h2\",null,{\"id\":\"usage\",\"children\":\"Usage \"}],\"\\n\",[\"$r\",\"h3\",null,{\"id\":\"displaying-a-fallback-while-content-is-loading\",\"children\":\"Displaying a fallback while content is loading \"}],\"\\n\",[\"$r\",\"p\",null,{\"children\":\"You can wrap any part of your application with a Suspense boundary:\"}],\"\\n\",[\"$r\",\"pre\",null,{\"children\":[\"$r\",\"code\",null,{\"className\":\"language-js\",\"meta\":\"[[1, 1, \\\"\u003cLoading /\u003e\\\"], [2, 2, \\\"\u003cAlbums /\u003e\\\"]]\",\"children\":\"\u003cSuspense fallback={\u003cLoading /\u003e}\u003e\\n \u003cAlbums /\u003e\\n\u003c/Suspense\u003e\\n\"}]}],\"\\n\",[\"$r\",\"p\",null,{\"children\":[\"React will display your \",[\"$r\",\"CodeStep\",null,{\"step\":1,\"children\":\"loading fallback\"}],\" until all the code and data needed by \",[\"$r\",\"CodeStep\",null,{\"step\":2,\"children\":\"the children\"}],\" has been loaded.\"]}],\"\\n\",[\"$r\",\"p\",null,{\"children\":[\"In the example below, the \",[\"$r\",\"code\",null,{\"children\":\"Albums\"}],\" component \",[\"$r\",\"em\",null,{\"children\":\"suspends\"}],\" while fetching the list of albums. Until it’s ready to render, React switches the closest Suspense boundary above to show the fallback—your \",[\"$r\",\"code\",null,{\"children\":\"Loading\"}],\" component. Then, when the data loads, React hides the \",[\"$r\",\"code\",null,{\"children\":\"Loading\"}],\" fallback and renders the \",[\"$r\",\"code\",null,{\"children\":\"Albums\"}],\" component with data.\"]}],\"\\n\"]}],[\"$r\",\"Sandpack\",null,{\"children\":[[\"$r\",\"pre\",null,{\"children\":[\"$r\",\"code\",null,{\"className\":\"language-js\",\"meta\":\"src/App.js hidden\",\"children\":\"import { useState } from 'react';\\nimport ArtistPage from './ArtistPage.js';\\n\\nexport default function App() {\\n const [show, setShow] = useState(false);\\n if (show) {\\n return (\\n \u003cArtistPage\\n artist={{\\n id: 'the-beatles',\\n name: 'The Beatles',\\n }}\\n /\u003e\\n );\\n } else {\\n return (\\n \u003cbutton onClick={() =\u003e setShow(true)}\u003e\\n Open The Beatles artist page\\n \u003c/button\u003e\\n );\\n }\\n}\\n\"}]}],[\"$r\",\"pre\",null,{\"children\":[\"$r\",\"code\",null,{\"className\":\"language-js\",\"meta\":\"src/ArtistPage.js active\",\"children\":\"import { Suspense } from 'react';\\nimport Albums from './Albums.js';\\n\\nexport default function ArtistPage({ artist }) {\\n return (\\n \u003c\u003e\\n \u003ch1\u003e{artist.name}\u003c/h1\u003e\\n \u003cSuspense fallback={\u003cLoading /\u003e}\u003e\\n \u003cAlbums artistId={artist.id} /\u003e\\n \u003c/Suspense\u003e\\n \u003c/\u003e\\n );\\n}\\n\\nfunction Loading() {\\n return \u003ch2\u003e🌀 Loading...\u003c/h2\u003e;\\n}\\n\"}]}],[\"$r\",\"pre\",null,{\"children\":[\"$r\",\"code\",null,{\"className\":\"language-js\",\"meta\":\"src/Albums.js\",\"children\":\"import {use} from 'react';\\nimport { fetchData } from './data.js';\\n\\nexport default function Albums({ artistId }) {\\n const albums = use(fetchData(`/${artistId}/albums`));\\n return (\\n \u003cul\u003e\\n {albums.map(album =\u003e (\\n \u003cli key={album.id}\u003e\\n {album.title} ({album.year})\\n \u003c/li\u003e\\n ))}\\n \u003c/ul\u003e\\n );\\n}\\n\"}]}],[\"$r\",\"pre\",null,{\"children\":[\"$r\",\"code\",null,{\"className\":\"language-js\",\"meta\":\"src/data.js hidden\",\"children\":\"// Note: the way you would do data fetching depends on\\n// the framework that you use together with Suspense.\\n// Normally, the caching logic would be inside a framework.\\n\\nlet cache = new Map();\\n\\nexport function fetchData(url) {\\n if (!cache.has(url)) {\\n cache.set(url, getData(url));\\n }\\n return cache.get(url);\\n}\\n\\nasync function getData(url) {\\n if (url === '/the-beatles/albums') {\\n return await getAlbums();\\n } else {\\n throw Error('Not implemented');\\n }\\n}\\n\\nasync function getAlbums() {\\n // Add a fake delay to make waiting noticeable.\\n await new Promise(resolve =\u003e {\\n setTimeout(resolve, 3000);\\n });\\n\\n return [{\\n id: 13,\\n title: 'Let It Be',\\n year: 1970\\n }, {\\n id: 12,\\n title: 'Abbey Road',\\n year: 1969\\n }, {\\n id: 11,\\n title: 'Yellow Submarine',\\n year: 1969\\n }, {\\n id: 10,\\n title: 'The Beatles',\\n year: 1968\\n }, {\\n id: 9,\\n title: 'Magical Mystery Tour',\\n year: 1967\\n }, {\\n id: 8,\\n title: 'Sgt. Pepper\\\\'s Lonely Hearts Club Band',\\n year: 1967\\n }, {\\n id: 7,\\n title: 'Revolver',\\n year: 1966\\n }, {\\n id: 6,\\n title: 'Rubber Soul',\\n year: 1965\\n }, {\\n id: 5,\\n title: 'Help!',\\n year: 1965\\n }, {\\n id: 4,\\n title: 'Beatles For Sale',\\n year: 1964\\n }, {\\n id: 3,\\n title: 'A Hard Day\\\\'s Night',\\n year: 1964\\n }, {\\n id: 2,\\n title: 'With The Beatles',\\n year: 1963\\n }, {\\n id: 1,\\n title: 'Please Please Me',\\n year: 1963\\n }];\\n}\\n\"}]}]]}],[\"$r\",\"MaxWidth\",\"46\",{\"children\":[\"\\n\",[\"$r\",\"p\",null,{\"children\":[\"By contrast, code that fetches data outside of \",[\"$r\",\"code\",null,{\"children\":\"use\"}],\", such as inside an Effect, does not activate the boundary:\"]}],\"\\n\"]}],[\"$r\",\"Sandpack\",null,{\"children\":[[\"$r\",\"pre\",null,{\"children\":[\"$r\",\"code\",null,{\"className\":\"language-js\",\"meta\":\"src/App.js hidden\",\"children\":\"import { useState } from 'react';\\nimport ArtistPage from './ArtistPage.js';\\n\\nexport default function App() {\\n const [show, setShow] = useState(false);\\n if (show) {\\n return (\\n \u003cArtistPage\\n artist={{\\n id: 'the-beatles',\\n name: 'The Beatles',\\n }}\\n /\u003e\\n );\\n } else {\\n return (\\n \u003cbutton onClick={() =\u003e setShow(true)}\u003e\\n Open The Beatles artist page\\n \u003c/button\u003e\\n );\\n }\\n}\\n\"}]}],[\"$r\",\"pre\",null,{\"children\":[\"$r\",\"code\",null,{\"className\":\"language-js\",\"meta\":\"src/ArtistPage.js active\",\"children\":\"import { Suspense } from 'react';\\nimport EffectAlbums from './EffectAlbums.js';\\n\\nexport default function ArtistPage({ artist }) {\\n return (\\n \u003c\u003e\\n \u003ch1\u003e{artist.name}\u003c/h1\u003e\\n \u003cSuspense fallback={\u003cLoading /\u003e}\u003e\\n \u003cEffectAlbums artistId={artist.id} /\u003e\\n \u003c/Suspense\u003e\\n \u003c/\u003e\\n );\\n}\\n\\nfunction Loading() {\\n return \u003ch2\u003e🌀 Loading...\u003c/h2\u003e;\\n}\\n\"}]}],[\"$r\",\"pre\",null,{\"children\":[\"$r\",\"code\",null,{\"className\":\"language-js\",\"meta\":\"src/EffectAlbums.js\",\"children\":\"import { useState, useEffect } from 'react';\\nimport { fetchData } from './data.js';\\n\\nexport default function EffectAlbums({ artistId }) {\\n const [albums, setAlbums] = useState([]);\\n\\n useEffect(() =\u003e {\\n let active = true;\\n fetchData(`/${artistId}/albums`).then(result =\u003e {\\n if (active) {\\n setAlbums(result);\\n }\\n });\\n return () =\u003e {\\n active = false;\\n };\\n }, [artistId]);\\n\\n // Suspense can't see this fetch, so its fallback never\\n // shows. The list stays empty until the data arrives.\\n return (\\n \u003cul\u003e\\n {albums.map(album =\u003e (\\n \u003cli key={album.id}\u003e\\n {album.title} ({album.year})\\n \u003c/li\u003e\\n ))}\\n \u003c/ul\u003e\\n );\\n}\\n\"}]}],[\"$r\",\"pre\",null,{\"children\":[\"$r\",\"code\",null,{\"className\":\"language-js\",\"meta\":\"src/data.js hidden\",\"children\":\"// Note: the way you would do data fetching depends on\\n// the framework that you use together with Suspense.\\n// Normally, the caching logic would be inside a framework.\\n\\nlet cache = new Map();\\n\\nexport function fetchData(url) {\\n if (!cache.has(url)) {\\n cache.set(url, getData(url));\\n }\\n return cache.get(url);\\n}\\n\\nasync function getData(url) {\\n if (url === '/the-beatles/albums') {\\n return await getAlbums();\\n } else {\\n throw Error('Not implemented');\\n }\\n}\\n\\nasync function getAlbums() {\\n // Add a fake delay to make waiting noticeable.\\n await new Promise(resolve =\u003e {\\n setTimeout(resolve, 3000);\\n });\\n\\n return [{\\n id: 13,\\n title: 'Let It Be',\\n year: 1970\\n }, {\\n id: 12,\\n title: 'Abbey Road',\\n year: 1969\\n }, {\\n id: 11,\\n title: 'Yellow Submarine',\\n year: 1969\\n }, {\\n id: 10,\\n title: 'The Beatles',\\n year: 1968\\n }, {\\n id: 9,\\n title: 'Magical Mystery Tour',\\n year: 1967\\n }, {\\n id: 8,\\n title: 'Sgt. Pepper\\\\'s Lonely Hearts Club Band',\\n year: 1967\\n }, {\\n id: 7,\\n title: 'Revolver',\\n year: 1966\\n }, {\\n id: 6,\\n title: 'Rubber Soul',\\n year: 1965\\n }, {\\n id: 5,\\n title: 'Help!',\\n year: 1965\\n }, {\\n id: 4,\\n title: 'Beatles For Sale',\\n year: 1964\\n }, {\\n id: 3,\\n title: 'A Hard Day\\\\'s Night',\\n year: 1964\\n }, {\\n id: 2,\\n title: 'With The Beatles',\\n year: 1963\\n }, {\\n id: 1,\\n title: 'Please Please Me',\\n year: 1963\\n }];\\n}\\n\"}]}]]}],[\"$r\",\"MaxWidth\",\"50\",{\"children\":[\"\\n\",[\"$r\",\"p\",null,{\"children\":[\"During streaming server rendering, a boundary also activates while its HTML is still streaming in. With any streaming server rendering API, React sends \",[\"$r\",\"a\",null,{\"href\":\"/reference/react-dom/server/renderToPipeableStream#specifying-what-goes-into-the-shell\",\"children\":\"the shell\"}],\" with the \",[\"$r\",\"code\",null,{\"children\":\"fallback\"}],\" first, then streams in each boundary’s HTML and swaps out its \",[\"$r\",\"code\",null,{\"children\":\"fallback\"}],\" as that content arrives. Press “Render the page” to watch the page stream in:\"]}],\"\\n\"]}],[\"$r\",\"Sandpack\",null,{\"children\":[[\"$r\",\"pre\",null,{\"children\":[\"$r\",\"code\",null,{\"className\":\"language-js\",\"meta\":\"src/App.js hidden\"}]}],[\"$r\",\"pre\",null,{\"children\":[\"$r\",\"code\",null,{\"className\":\"language-html\",\"meta\":\"public/index.html\",\"children\":\"\u003c!DOCTYPE html\u003e\\n\u003chtml lang=\\\"en\\\"\u003e\\n\u003chead\u003e\\n \u003cmeta charset=\\\"UTF-8\\\" /\u003e\\n \u003ctitle\u003eStreaming SSR\u003c/title\u003e\\n\u003c/head\u003e\\n\u003cbody\u003e\\n \u003cbutton id=\\\"render\\\"\u003eRender the page\u003c/button\u003e\\n \u003cbr /\u003e\u003cbr /\u003e\\n \u003ciframe id=\\\"container\\\" style=\\\"width: 100%; height: 180px; border: 1px solid #aaa;\\\"\u003e\u003c/iframe\u003e\\n\u003c/body\u003e\\n\u003c/html\u003e\\n\"}]}],[\"$r\",\"pre\",null,{\"children\":[\"$r\",\"code\",null,{\"className\":\"language-js\",\"meta\":\"src/index.js\",\"children\":\"import { flushReadableStreamToFrame } from './demo-helpers.js';\\nimport { Suspense, use } from 'react';\\nimport { renderToReadableStream } from 'react-dom/server';\\n\\nlet posts = null;\\n\\nfunction Posts() {\\n const text = use(posts.promise);\\n return \u003cp\u003e{text}\u003c/p\u003e;\\n}\\n\\nfunction ProfilePage() {\\n return (\\n \u003chtml\u003e\\n \u003cbody\u003e\\n \u003ch1\u003eAlice\u003c/h1\u003e\\n \u003cp\u003ePhotographer and traveler.\u003c/p\u003e\\n \u003cSuspense fallback={\u003cp\u003e⌛ Loading posts...\u003c/p\u003e}\u003e\\n \u003cPosts /\u003e\\n \u003c/Suspense\u003e\\n \u003c/body\u003e\\n \u003c/html\u003e\\n );\\n}\\n\\nasync function main(frame) {\\n posts = Promise.withResolvers();\\n const stream = await renderToReadableStream(\u003cProfilePage /\u003e);\\n\\n // The posts resolve after the shell has streamed, so React\\n // streams their HTML in and swaps out the fallback.\\n setTimeout(() =\u003e {\\n posts.resolve(\\n 'Just got back from two weeks along the coast. The drive ' +\\n 'was longer than expected, but every stop was worth it. ' +\\n 'A full write-up and more photos are coming soon.'\\n );\\n }, 1500);\\n\\n await flushReadableStreamToFrame(stream, frame);\\n}\\n\\ndocument.getElementById('render').addEventListener('click', () =\u003e {\\n main(document.getElementById('container'));\\n});\\n\"}]}],[\"$r\",\"pre\",null,{\"children\":[\"$r\",\"code\",null,{\"className\":\"language-js\",\"meta\":\"src/demo-helpers.js hidden\",\"children\":\"export async function flushReadableStreamToFrame(readable, frame) {\\n const doc = frame.contentWindow.document;\\n const decoder = new TextDecoder();\\n const reader = readable.getReader();\\n\\n while (true) {\\n const {done, value} = await reader.read();\\n if (done) {\\n break;\\n }\\n doc.write(decoder.decode(value, {stream: true}));\\n }\\n\\n doc.write(decoder.decode());\\n doc.close();\\n}\\n\"}]}]]}],[\"$r\",\"MaxWidth\",\"64\",{\"children\":[\"\\n\",[\"$r\",\"hr\",null,{}],\"\\n\",[\"$r\",\"h3\",null,{\"id\":\"revealing-content-together-at-once\",\"children\":\"Revealing content together at once \"}],\"\\n\",[\"$r\",\"p\",null,{\"children\":[\"By default, the whole tree inside Suspense is treated as a single unit. For example, even if \",[\"$r\",\"em\",null,{\"children\":\"only one\"}],\" of these components suspends waiting for some data, \",[\"$r\",\"em\",null,{\"children\":\"all\"}],\" of them together will be replaced by the loading indicator:\"]}],\"\\n\",[\"$r\",\"pre\",null,{\"children\":[\"$r\",\"code\",null,{\"className\":\"language-js\",\"meta\":\"{2-5}\",\"children\":\"\u003cSuspense fallback={\u003cLoading /\u003e}\u003e\\n \u003cBiography /\u003e\\n \u003cPanel\u003e\\n \u003cAlbums /\u003e\\n \u003c/Panel\u003e\\n\u003c/Suspense\u003e\\n\"}]}],\"\\n\",[\"$r\",\"p\",null,{\"children\":\"Then, after all of them are ready to be displayed, they will all appear together at once.\"}],\"\\n\",[\"$r\",\"p\",null,{\"children\":[\"In the example below, both \",[\"$r\",\"code\",null,{\"children\":\"Biography\"}],\" and \",[\"$r\",\"code\",null,{\"children\":\"Albums\"}],\" fetch some data. However, because they are grouped under a single Suspense boundary, these components always “pop in” together at the same time.\"]}],\"\\n\"]}],[\"$r\",\"Sandpack\",null,{\"children\":[[\"$r\",\"pre\",null,{\"children\":[\"$r\",\"code\",null,{\"className\":\"language-js\",\"meta\":\"src/App.js hidden\",\"children\":\"import { useState } from 'react';\\nimport ArtistPage from './ArtistPage.js';\\n\\nexport default function App() {\\n const [show, setShow] = useState(false);\\n if (show) {\\n return (\\n \u003cArtistPage\\n artist={{\\n id: 'the-beatles',\\n name: 'The Beatles',\\n }}\\n /\u003e\\n );\\n } else {\\n return (\\n \u003cbutton onClick={() =\u003e setShow(true)}\u003e\\n Open The Beatles artist page\\n \u003c/button\u003e\\n );\\n }\\n}\\n\"}]}],[\"$r\",\"pre\",null,{\"children\":[\"$r\",\"code\",null,{\"className\":\"language-js\",\"meta\":\"src/ArtistPage.js active\",\"children\":\"import { Suspense } from 'react';\\nimport Albums from './Albums.js';\\nimport Biography from './Biography.js';\\nimport Panel from './Panel.js';\\n\\nexport default function ArtistPage({ artist }) {\\n return (\\n \u003c\u003e\\n \u003ch1\u003e{artist.name}\u003c/h1\u003e\\n \u003cSuspense fallback={\u003cLoading /\u003e}\u003e\\n \u003cBiography artistId={artist.id} /\u003e\\n \u003cPanel\u003e\\n \u003cAlbums artistId={artist.id} /\u003e\\n \u003c/Panel\u003e\\n \u003c/Suspense\u003e\\n \u003c/\u003e\\n );\\n}\\n\\nfunction Loading() {\\n return \u003ch2\u003e🌀 Loading...\u003c/h2\u003e;\\n}\\n\"}]}],[\"$r\",\"pre\",null,{\"children\":[\"$r\",\"code\",null,{\"className\":\"language-js\",\"meta\":\"src/Panel.js\",\"children\":\"export default function Panel({ children }) {\\n return (\\n \u003csection className=\\\"panel\\\"\u003e\\n {children}\\n \u003c/section\u003e\\n );\\n}\\n\"}]}],[\"$r\",\"pre\",null,{\"children\":[\"$r\",\"code\",null,{\"className\":\"language-js\",\"meta\":\"src/Biography.js\",\"children\":\"import {use} from 'react';\\nimport { fetchData } from './data.js';\\n\\nexport default function Biography({ artistId }) {\\n const bio = use(fetchData(`/${artistId}/bio`));\\n return (\\n \u003csection\u003e\\n \u003cp className=\\\"bio\\\"\u003e{bio}\u003c/p\u003e\\n \u003c/section\u003e\\n );\\n}\\n\"}]}],[\"$r\",\"pre\",null,{\"children\":[\"$r\",\"code\",null,{\"className\":\"language-js\",\"meta\":\"src/Albums.js\",\"children\":\"import {use} from 'react';\\nimport { fetchData } from './data.js';\\n\\nexport default function Albums({ artistId }) {\\n const albums = use(fetchData(`/${artistId}/albums`));\\n return (\\n \u003cul\u003e\\n {albums.map(album =\u003e (\\n \u003cli key={album.id}\u003e\\n {album.title} ({album.year})\\n \u003c/li\u003e\\n ))}\\n \u003c/ul\u003e\\n );\\n}\\n\"}]}],[\"$r\",\"pre\",null,{\"children\":[\"$r\",\"code\",null,{\"className\":\"language-js\",\"meta\":\"src/data.js hidden\",\"children\":\"// Note: the way you would do data fetching depends on\\n// the framework that you use together with Suspense.\\n// Normally, the caching logic would be inside a framework.\\n\\nlet cache = new Map();\\n\\nexport function fetchData(url) {\\n if (!cache.has(url)) {\\n cache.set(url, getData(url));\\n }\\n return cache.get(url);\\n}\\n\\nasync function getData(url) {\\n if (url === '/the-beatles/albums') {\\n return await getAlbums();\\n } else if (url === '/the-beatles/bio') {\\n return await getBio();\\n } else {\\n throw Error('Not implemented');\\n }\\n}\\n\\nasync function getBio() {\\n // Add a fake delay to make waiting noticeable.\\n await new Promise(resolve =\u003e {\\n setTimeout(resolve, 1500);\\n });\\n\\n return `The Beatles were an English rock band,\\n formed in Liverpool in 1960, that comprised\\n John Lennon, Paul McCartney, George Harrison\\n and Ringo Starr.`;\\n}\\n\\nasync function getAlbums() {\\n // Add a fake delay to make waiting noticeable.\\n await new Promise(resolve =\u003e {\\n setTimeout(resolve, 3000);\\n });\\n\\n return [{\\n id: 13,\\n title: 'Let It Be',\\n year: 1970\\n }, {\\n id: 12,\\n title: 'Abbey Road',\\n year: 1969\\n }, {\\n id: 11,\\n title: 'Yellow Submarine',\\n year: 1969\\n }, {\\n id: 10,\\n title: 'The Beatles',\\n year: 1968\\n }, {\\n id: 9,\\n title: 'Magical Mystery Tour',\\n year: 1967\\n }, {\\n id: 8,\\n title: 'Sgt. Pepper\\\\'s Lonely Hearts Club Band',\\n year: 1967\\n }, {\\n id: 7,\\n title: 'Revolver',\\n year: 1966\\n }, {\\n id: 6,\\n title: 'Rubber Soul',\\n year: 1965\\n }, {\\n id: 5,\\n title: 'Help!',\\n year: 1965\\n }, {\\n id: 4,\\n title: 'Beatles For Sale',\\n year: 1964\\n }, {\\n id: 3,\\n title: 'A Hard Day\\\\'s Night',\\n year: 1964\\n }, {\\n id: 2,\\n title: 'With The Beatles',\\n year: 1963\\n }, {\\n id: 1,\\n title: 'Please Please Me',\\n year: 1963\\n }];\\n}\\n\"}]}],[\"$r\",\"pre\",null,{\"children\":[\"$r\",\"code\",null,{\"className\":\"language-css\",\"children\":\".bio { font-style: italic; }\\n\\n.panel {\\n border: 1px solid #aaa;\\n border-radius: 6px;\\n margin-top: 20px;\\n padding: 10px;\\n}\\n\"}]}]]}],[\"$r\",\"MaxWidth\",\"84\",{\"children\":[\"\\n\",[\"$r\",\"p\",null,{\"children\":[\"Components that load data don’t have to be direct children of the Suspense boundary. For example, you can move \",[\"$r\",\"code\",null,{\"children\":\"Biography\"}],\" and \",[\"$r\",\"code\",null,{\"children\":\"Albums\"}],\" into a new \",[\"$r\",\"code\",null,{\"children\":\"Details\"}],\" component. This doesn’t change the behavior. \",[\"$r\",\"code\",null,{\"children\":\"Biography\"}],\" and \",[\"$r\",\"code\",null,{\"children\":\"Albums\"}],\" share the same closest parent Suspense boundary, so their reveal is coordinated together.\"]}],\"\\n\",[\"$r\",\"pre\",null,{\"children\":[\"$r\",\"code\",null,{\"className\":\"language-js\",\"meta\":\"{2,8-11}\",\"children\":\"\u003cSuspense fallback={\u003cLoading /\u003e}\u003e\\n \u003cDetails artistId={artist.id} /\u003e\\n\u003c/Suspense\u003e\\n\\nfunction Details({ artistId }) {\\n return (\\n \u003c\u003e\\n \u003cBiography artistId={artistId} /\u003e\\n \u003cPanel\u003e\\n \u003cAlbums artistId={artistId} /\u003e\\n \u003c/Panel\u003e\\n \u003c/\u003e\\n );\\n}\\n\"}]}],\"\\n\",[\"$r\",\"hr\",null,{}],\"\\n\",[\"$r\",\"h3\",null,{\"id\":\"revealing-nested-content-as-it-loads\",\"children\":\"Revealing nested content as it loads \"}],\"\\n\",[\"$r\",\"p\",null,{\"children\":\"When a component suspends, the closest parent Suspense component shows the fallback. This lets you nest multiple Suspense components to create a loading sequence. Each Suspense boundary’s fallback will be filled in as the next level of content becomes available. For example, you can give the album list its own fallback:\"}],\"\\n\",[\"$r\",\"pre\",null,{\"children\":[\"$r\",\"code\",null,{\"className\":\"language-js\",\"meta\":\"{3,7}\",\"children\":\"\u003cSuspense fallback={\u003cBigSpinner /\u003e}\u003e\\n \u003cBiography /\u003e\\n \u003cSuspense fallback={\u003cAlbumsGlimmer /\u003e}\u003e\\n \u003cPanel\u003e\\n \u003cAlbums /\u003e\\n \u003c/Panel\u003e\\n \u003c/Suspense\u003e\\n\u003c/Suspense\u003e\\n\"}]}],\"\\n\",[\"$r\",\"p\",null,{\"children\":[\"With this change, displaying the \",[\"$r\",\"code\",null,{\"children\":\"Biography\"}],\" doesn’t need to “wait” for the \",[\"$r\",\"code\",null,{\"children\":\"Albums\"}],\" to load.\"]}],\"\\n\",[\"$r\",\"p\",null,{\"children\":\"The sequence will be:\"}],\"\\n\",[\"$r\",\"ol\",null,{\"children\":[\"\\n\",[\"$r\",\"li\",null,{\"children\":[\"If \",[\"$r\",\"code\",null,{\"children\":\"Biography\"}],\" hasn’t loaded yet, \",[\"$r\",\"code\",null,{\"children\":\"BigSpinner\"}],\" is shown in place of the entire content area.\"]}],\"\\n\",[\"$r\",\"li\",null,{\"children\":[\"Once \",[\"$r\",\"code\",null,{\"children\":\"Biography\"}],\" finishes loading, \",[\"$r\",\"code\",null,{\"children\":\"BigSpinner\"}],\" is replaced by the content.\"]}],\"\\n\",[\"$r\",\"li\",null,{\"children\":[\"If \",[\"$r\",\"code\",null,{\"children\":\"Albums\"}],\" hasn’t loaded yet, \",[\"$r\",\"code\",null,{\"children\":\"AlbumsGlimmer\"}],\" is shown in place of \",[\"$r\",\"code\",null,{\"children\":\"Albums\"}],\" and its parent \",[\"$r\",\"code\",null,{\"children\":\"Panel\"}],\".\"]}],\"\\n\",[\"$r\",\"li\",null,{\"children\":[\"Finally, once \",[\"$r\",\"code\",null,{\"children\":\"Albums\"}],\" finishes loading, it replaces \",[\"$r\",\"code\",null,{\"children\":\"AlbumsGlimmer\"}],\".\"]}],\"\\n\"]}],\"\\n\"]}],[\"$r\",\"Sandpack\",null,{\"children\":[[\"$r\",\"pre\",null,{\"children\":[\"$r\",\"code\",null,{\"className\":\"language-js\",\"meta\":\"src/App.js hidden\",\"children\":\"import { useState } from 'react';\\nimport ArtistPage from './ArtistPage.js';\\n\\nexport default function App() {\\n const [show, setShow] = useState(false);\\n if (show) {\\n return (\\n \u003cArtistPage\\n artist={{\\n id: 'the-beatles',\\n name: 'The Beatles',\\n }}\\n /\u003e\\n );\\n } else {\\n return (\\n \u003cbutton onClick={() =\u003e setShow(true)}\u003e\\n Open The Beatles artist page\\n \u003c/button\u003e\\n );\\n }\\n}\\n\"}]}],[\"$r\",\"pre\",null,{\"children\":[\"$r\",\"code\",null,{\"className\":\"language-js\",\"meta\":\"src/ArtistPage.js active\",\"children\":\"import { Suspense } from 'react';\\nimport Albums from './Albums.js';\\nimport Biography from './Biography.js';\\nimport Panel from './Panel.js';\\n\\nexport default function ArtistPage({ artist }) {\\n return (\\n \u003c\u003e\\n \u003ch1\u003e{artist.name}\u003c/h1\u003e\\n \u003cSuspense fallback={\u003cBigSpinner /\u003e}\u003e\\n \u003cBiography artistId={artist.id} /\u003e\\n \u003cSuspense fallback={\u003cAlbumsGlimmer /\u003e}\u003e\\n \u003cPanel\u003e\\n \u003cAlbums artistId={artist.id} /\u003e\\n \u003c/Panel\u003e\\n \u003c/Suspense\u003e\\n \u003c/Suspense\u003e\\n \u003c/\u003e\\n );\\n}\\n\\nfunction BigSpinner() {\\n return \u003ch2\u003e🌀 Loading...\u003c/h2\u003e;\\n}\\n\\nfunction AlbumsGlimmer() {\\n return (\\n \u003cdiv className=\\\"glimmer-panel\\\"\u003e\\n \u003cdiv className=\\\"glimmer-line\\\" /\u003e\\n \u003cdiv className=\\\"glimmer-line\\\" /\u003e\\n \u003cdiv className=\\\"glimmer-line\\\" /\u003e\\n \u003c/div\u003e\\n );\\n}\\n\"}]}],[\"$r\",\"pre\",null,{\"children\":[\"$r\",\"code\",null,{\"className\":\"language-js\",\"meta\":\"src/Panel.js\",\"children\":\"export default function Panel({ children }) {\\n return (\\n \u003csection className=\\\"panel\\\"\u003e\\n {children}\\n \u003c/section\u003e\\n );\\n}\\n\"}]}],[\"$r\",\"pre\",null,{\"children\":[\"$r\",\"code\",null,{\"className\":\"language-js\",\"meta\":\"src/Biography.js\",\"children\":\"import {use} from 'react';\\nimport { fetchData } from './data.js';\\n\\nexport default function Biography({ artistId }) {\\n const bio = use(fetchData(`/${artistId}/bio`));\\n return (\\n \u003csection\u003e\\n \u003cp className=\\\"bio\\\"\u003e{bio}\u003c/p\u003e\\n \u003c/section\u003e\\n );\\n}\\n\"}]}],[\"$r\",\"pre\",null,{\"children\":[\"$r\",\"code\",null,{\"className\":\"language-js\",\"meta\":\"src/Albums.js\",\"children\":\"import {use} from 'react';\\nimport { fetchData } from './data.js';\\n\\nexport default function Albums({ artistId }) {\\n const albums = use(fetchData(`/${artistId}/albums`));\\n return (\\n \u003cul\u003e\\n {albums.map(album =\u003e (\\n \u003cli key={album.id}\u003e\\n {album.title} ({album.year})\\n \u003c/li\u003e\\n ))}\\n \u003c/ul\u003e\\n );\\n}\\n\"}]}],[\"$r\",\"pre\",null,{\"children\":[\"$r\",\"code\",null,{\"className\":\"language-js\",\"meta\":\"src/data.js hidden\",\"children\":\"// Note: the way you would do data fetching depends on\\n// the framework that you use together with Suspense.\\n// Normally, the caching logic would be inside a framework.\\n\\nlet cache = new Map();\\n\\nexport function fetchData(url) {\\n if (!cache.has(url)) {\\n cache.set(url, getData(url));\\n }\\n return cache.get(url);\\n}\\n\\nasync function getData(url) {\\n if (url === '/the-beatles/albums') {\\n return await getAlbums();\\n } else if (url === '/the-beatles/bio') {\\n return await getBio();\\n } else {\\n throw Error('Not implemented');\\n }\\n}\\n\\nasync function getBio() {\\n // Add a fake delay to make waiting noticeable.\\n await new Promise(resolve =\u003e {\\n setTimeout(resolve, 500);\\n });\\n\\n return `The Beatles were an English rock band,\\n formed in Liverpool in 1960, that comprised\\n John Lennon, Paul McCartney, George Harrison\\n and Ringo Starr.`;\\n}\\n\\nasync function getAlbums() {\\n // Add a fake delay to make waiting noticeable.\\n await new Promise(resolve =\u003e {\\n setTimeout(resolve, 3000);\\n });\\n\\n return [{\\n id: 13,\\n title: 'Let It Be',\\n year: 1970\\n }, {\\n id: 12,\\n title: 'Abbey Road',\\n year: 1969\\n }, {\\n id: 11,\\n title: 'Yellow Submarine',\\n year: 1969\\n }, {\\n id: 10,\\n title: 'The Beatles',\\n year: 1968\\n }, {\\n id: 9,\\n title: 'Magical Mystery Tour',\\n year: 1967\\n }, {\\n id: 8,\\n title: 'Sgt. Pepper\\\\'s Lonely Hearts Club Band',\\n year: 1967\\n }, {\\n id: 7,\\n title: 'Revolver',\\n year: 1966\\n }, {\\n id: 6,\\n title: 'Rubber Soul',\\n year: 1965\\n }, {\\n id: 5,\\n title: 'Help!',\\n year: 1965\\n }, {\\n id: 4,\\n title: 'Beatles For Sale',\\n year: 1964\\n }, {\\n id: 3,\\n title: 'A Hard Day\\\\'s Night',\\n year: 1964\\n }, {\\n id: 2,\\n title: 'With The Beatles',\\n year: 1963\\n }, {\\n id: 1,\\n title: 'Please Please Me',\\n year: 1963\\n }];\\n}\\n\"}]}],[\"$r\",\"pre\",null,{\"children\":[\"$r\",\"code\",null,{\"className\":\"language-css\",\"children\":\".bio { font-style: italic; }\\n\\n.panel {\\n border: 1px solid #aaa;\\n border-radius: 6px;\\n margin-top: 20px;\\n padding: 10px;\\n}\\n\\n.glimmer-panel {\\n border: 1px dashed #aaa;\\n background: linear-gradient(90deg, rgba(221,221,221,1) 0%, rgba(255,255,255,1) 100%);\\n border-radius: 6px;\\n margin-top: 20px;\\n padding: 10px;\\n}\\n\\n.glimmer-line {\\n display: block;\\n width: 60%;\\n height: 20px;\\n margin: 10px;\\n border-radius: 4px;\\n background: #f0f0f0;\\n}\\n\"}]}]]}],[\"$r\",\"MaxWidth\",\"96\",{\"children\":[\"\\n\",[\"$r\",\"p\",null,{\"children\":\"Suspense boundaries let you coordinate which parts of your UI should always “pop in” together at the same time, and which parts should progressively reveal more content in a sequence of loading states. You can add, move, or delete Suspense boundaries in any place in the tree without affecting the rest of your app’s behavior.\"}],\"\\n\",[\"$r\",\"p\",null,{\"children\":\"Don’t put a Suspense boundary around every component. Suspense boundaries should not be more granular than the loading sequence that you want the user to experience. If you work with a designer, ask them where the loading states should be placed—it’s likely that they’ve already included them in their design wireframes.\"}],\"\\n\",[\"$r\",\"hr\",null,{}],\"\\n\",[\"$r\",\"h3\",null,{\"id\":\"showing-stale-content-while-fresh-content-is-loading\",\"children\":\"Showing stale content while fresh content is loading \"}],\"\\n\",[\"$r\",\"p\",null,{\"children\":[\"In this example, the \",[\"$r\",\"code\",null,{\"children\":\"SearchResults\"}],\" component suspends while fetching the search results. Type \",[\"$r\",\"code\",null,{\"children\":\"\\\"a\\\"\"}],\", wait for the results, and then edit it to \",[\"$r\",\"code\",null,{\"children\":\"\\\"ab\\\"\"}],\". The results for \",[\"$r\",\"code\",null,{\"children\":\"\\\"a\\\"\"}],\" will get replaced by the loading fallback.\"]}],\"\\n\"]}],[\"$r\",\"Sandpack\",null,{\"children\":[[\"$r\",\"pre\",null,{\"children\":[\"$r\",\"code\",null,{\"className\":\"language-js\",\"meta\":\"src/App.js\",\"children\":\"import { Suspense, useState } from 'react';\\nimport SearchResults from './SearchResults.js';\\n\\nexport default function App() {\\n const [query, setQuery] = useState('');\\n return (\\n \u003c\u003e\\n \u003clabel\u003e\\n Search albums:\\n \u003cinput value={query} onChange={e =\u003e setQuery(e.target.value)} /\u003e\\n \u003c/label\u003e\\n \u003cSuspense fallback={\u003ch2\u003eLoading...\u003c/h2\u003e}\u003e\\n \u003cSearchResults query={query} /\u003e\\n \u003c/Suspense\u003e\\n \u003c/\u003e\\n );\\n}\\n\"}]}],[\"$r\",\"pre\",null,{\"children\":[\"$r\",\"code\",null,{\"className\":\"language-js\",\"meta\":\"src/SearchResults.js\",\"children\":\"import {use} from 'react';\\nimport { fetchData } from './data.js';\\n\\nexport default function SearchResults({ query }) {\\n if (query === '') {\\n return null;\\n }\\n const albums = use(fetchData(`/search?q=${query}`));\\n if (albums.length === 0) {\\n return \u003cp\u003eNo matches for \u003ci\u003e\\\"{query}\\\"\u003c/i\u003e\u003c/p\u003e;\\n }\\n return (\\n \u003cul\u003e\\n {albums.map(album =\u003e (\\n \u003cli key={album.id}\u003e\\n {album.title} ({album.year})\\n \u003c/li\u003e\\n ))}\\n \u003c/ul\u003e\\n );\\n}\\n\"}]}],[\"$r\",\"pre\",null,{\"children\":[\"$r\",\"code\",null,{\"className\":\"language-js\",\"meta\":\"src/data.js hidden\",\"children\":\"// Note: the way you would do data fetching depends on\\n// the framework that you use together with Suspense.\\n// Normally, the caching logic would be inside a framework.\\n\\nlet cache = new Map();\\n\\nexport function fetchData(url) {\\n if (!cache.has(url)) {\\n cache.set(url, getData(url));\\n }\\n return cache.get(url);\\n}\\n\\nasync function getData(url) {\\n if (url.startsWith('/search?q=')) {\\n return await getSearchResults(url.slice('/search?q='.length));\\n } else {\\n throw Error('Not implemented');\\n }\\n}\\n\\nasync function getSearchResults(query) {\\n // Add a fake delay to make waiting noticeable.\\n await new Promise(resolve =\u003e {\\n setTimeout(resolve, 500);\\n });\\n\\n const allAlbums = [{\\n id: 13,\\n title: 'Let It Be',\\n year: 1970\\n }, {\\n id: 12,\\n title: 'Abbey Road',\\n year: 1969\\n }, {\\n id: 11,\\n title: 'Yellow Submarine',\\n year: 1969\\n }, {\\n id: 10,\\n title: 'The Beatles',\\n year: 1968\\n }, {\\n id: 9,\\n title: 'Magical Mystery Tour',\\n year: 1967\\n }, {\\n id: 8,\\n title: 'Sgt. Pepper\\\\'s Lonely Hearts Club Band',\\n year: 1967\\n }, {\\n id: 7,\\n title: 'Revolver',\\n year: 1966\\n }, {\\n id: 6,\\n title: 'Rubber Soul',\\n year: 1965\\n }, {\\n id: 5,\\n title: 'Help!',\\n year: 1965\\n }, {\\n id: 4,\\n title: 'Beatles For Sale',\\n year: 1964\\n }, {\\n id: 3,\\n title: 'A Hard Day\\\\'s Night',\\n year: 1964\\n }, {\\n id: 2,\\n title: 'With The Beatles',\\n year: 1963\\n }, {\\n id: 1,\\n title: 'Please Please Me',\\n year: 1963\\n }];\\n\\n const lowerQuery = query.trim().toLowerCase();\\n return allAlbums.filter(album =\u003e {\\n const lowerTitle = album.title.toLowerCase();\\n return (\\n lowerTitle.startsWith(lowerQuery) ||\\n lowerTitle.indexOf(' ' + lowerQuery) !== -1\\n )\\n });\\n}\\n\"}]}],[\"$r\",\"pre\",null,{\"children\":[\"$r\",\"code\",null,{\"className\":\"language-css\",\"children\":\"input { margin: 10px; }\\n\"}]}]]}],[\"$r\",\"MaxWidth\",\"110\",{\"children\":[\"\\n\",[\"$r\",\"p\",null,{\"children\":[\"A common alternative UI pattern is to \",[\"$r\",\"em\",null,{\"children\":\"defer\"}],\" updating the list and to keep showing the previous results until the new results are ready. The \",[\"$r\",\"a\",null,{\"href\":\"/reference/react/useDeferredValue\",\"children\":[\"$r\",\"code\",null,{\"children\":\"useDeferredValue\"}]}],\" Hook lets you pass a deferred version of the query down:\"]}],\"\\n\",[\"$r\",\"pre\",null,{\"children\":[\"$r\",\"code\",null,{\"className\":\"language-js\",\"meta\":\"{3,11}\",\"children\":\"export default function App() {\\n const [query, setQuery] = useState('');\\n const deferredQuery = useDeferredValue(query);\\n return (\\n \u003c\u003e\\n \u003clabel\u003e\\n Search albums:\\n \u003cinput value={query} onChange={e =\u003e setQuery(e.target.value)} /\u003e\\n \u003c/label\u003e\\n \u003cSuspense fallback={\u003ch2\u003eLoading...\u003c/h2\u003e}\u003e\\n \u003cSearchResults query={deferredQuery} /\u003e\\n \u003c/Suspense\u003e\\n \u003c/\u003e\\n );\\n}\\n\"}]}],\"\\n\",[\"$r\",\"p\",null,{\"children\":[\"The \",[\"$r\",\"code\",null,{\"children\":\"query\"}],\" will update immediately, so the input will display the new value. However, the \",[\"$r\",\"code\",null,{\"children\":\"deferredQuery\"}],\" will keep its previous value until the data has loaded, so \",[\"$r\",\"code\",null,{\"children\":\"SearchResults\"}],\" will show the stale results for a bit.\"]}],\"\\n\",[\"$r\",\"p\",null,{\"children\":\"To make it more obvious to the user, you can add a visual indication when the stale result list is displayed:\"}],\"\\n\",[\"$r\",\"pre\",null,{\"children\":[\"$r\",\"code\",null,{\"className\":\"language-js\",\"meta\":\"{2}\",\"children\":\"\u003cdiv style={{\\n opacity: query !== deferredQuery ? 0.5 : 1\\n}}\u003e\\n \u003cSearchResults query={deferredQuery} /\u003e\\n\u003c/div\u003e\\n\"}]}],\"\\n\",[\"$r\",\"p\",null,{\"children\":[\"Enter \",[\"$r\",\"code\",null,{\"children\":\"\\\"a\\\"\"}],\" in the example below, wait for the results to load, and then edit the input to \",[\"$r\",\"code\",null,{\"children\":\"\\\"ab\\\"\"}],\". Notice how instead of the Suspense fallback, you now see the dimmed stale result list until the new results have loaded:\"]}],\"\\n\"]}],[\"$r\",\"Sandpack\",null,{\"children\":[[\"$r\",\"pre\",null,{\"children\":[\"$r\",\"code\",null,{\"className\":\"language-js\",\"meta\":\"src/App.js\",\"children\":\"import { Suspense, useState, useDeferredValue } from 'react';\\nimport SearchResults from './SearchResults.js';\\n\\nexport default function App() {\\n const [query, setQuery] = useState('');\\n const deferredQuery = useDeferredValue(query);\\n const isStale = query !== deferredQuery;\\n return (\\n \u003c\u003e\\n \u003clabel\u003e\\n Search albums:\\n \u003cinput value={query} onChange={e =\u003e setQuery(e.target.value)} /\u003e\\n \u003c/label\u003e\\n \u003cSuspense fallback={\u003ch2\u003eLoading...\u003c/h2\u003e}\u003e\\n \u003cdiv style={{ opacity: isStale ? 0.5 : 1 }}\u003e\\n \u003cSearchResults query={deferredQuery} /\u003e\\n \u003c/div\u003e\\n \u003c/Suspense\u003e\\n \u003c/\u003e\\n );\\n}\\n\"}]}],[\"$r\",\"pre\",null,{\"children\":[\"$r\",\"code\",null,{\"className\":\"language-js\",\"meta\":\"src/SearchResults.js hidden\",\"children\":\"import {use} from 'react';\\nimport { fetchData } from './data.js';\\n\\nexport default function SearchResults({ query }) {\\n if (query === '') {\\n return null;\\n }\\n const albums = use(fetchData(`/search?q=${query}`));\\n if (albums.length === 0) {\\n return \u003cp\u003eNo matches for \u003ci\u003e\\\"{query}\\\"\u003c/i\u003e\u003c/p\u003e;\\n }\\n return (\\n \u003cul\u003e\\n {albums.map(album =\u003e (\\n \u003cli key={album.id}\u003e\\n {album.title} ({album.year})\\n \u003c/li\u003e\\n ))}\\n \u003c/ul\u003e\\n );\\n}\\n\"}]}],[\"$r\",\"pre\",null,{\"children\":[\"$r\",\"code\",null,{\"className\":\"language-js\",\"meta\":\"src/data.js hidden\",\"children\":\"// Note: the way you would do data fetching depends on\\n// the framework that you use together with Suspense.\\n// Normally, the caching logic would be inside a framework.\\n\\nlet cache = new Map();\\n\\nexport function fetchData(url) {\\n if (!cache.has(url)) {\\n cache.set(url, getData(url));\\n }\\n return cache.get(url);\\n}\\n\\nasync function getData(url) {\\n if (url.startsWith('/search?q=')) {\\n return await getSearchResults(url.slice('/search?q='.length));\\n } else {\\n throw Error('Not implemented');\\n }\\n}\\n\\nasync function getSearchResults(query) {\\n // Add a fake delay to make waiting noticeable.\\n await new Promise(resolve =\u003e {\\n setTimeout(resolve, 500);\\n });\\n\\n const allAlbums = [{\\n id: 13,\\n title: 'Let It Be',\\n year: 1970\\n }, {\\n id: 12,\\n title: 'Abbey Road',\\n year: 1969\\n }, {\\n id: 11,\\n title: 'Yellow Submarine',\\n year: 1969\\n }, {\\n id: 10,\\n title: 'The Beatles',\\n year: 1968\\n }, {\\n id: 9,\\n title: 'Magical Mystery Tour',\\n year: 1967\\n }, {\\n id: 8,\\n title: 'Sgt. Pepper\\\\'s Lonely Hearts Club Band',\\n year: 1967\\n }, {\\n id: 7,\\n title: 'Revolver',\\n year: 1966\\n }, {\\n id: 6,\\n title: 'Rubber Soul',\\n year: 1965\\n }, {\\n id: 5,\\n title: 'Help!',\\n year: 1965\\n }, {\\n id: 4,\\n title: 'Beatles For Sale',\\n year: 1964\\n }, {\\n id: 3,\\n title: 'A Hard Day\\\\'s Night',\\n year: 1964\\n }, {\\n id: 2,\\n title: 'With The Beatles',\\n year: 1963\\n }, {\\n id: 1,\\n title: 'Please Please Me',\\n year: 1963\\n }];\\n\\n const lowerQuery = query.trim().toLowerCase();\\n return allAlbums.filter(album =\u003e {\\n const lowerTitle = album.title.toLowerCase();\\n return (\\n lowerTitle.startsWith(lowerQuery) ||\\n lowerTitle.indexOf(' ' + lowerQuery) !== -1\\n )\\n });\\n}\\n\"}]}],[\"$r\",\"pre\",null,{\"children\":[\"$r\",\"code\",null,{\"className\":\"language-css\",\"children\":\"input { margin: 10px; }\\n\"}]}]]}],[\"$r\",\"MaxWidth\",\"120\",{\"children\":[\"\\n\",[\"$r\",\"Note\",null,{\"children\":[\"$r\",\"p\",null,{\"children\":[\"Both deferred values and \",[\"$r\",\"a\",null,{\"href\":\"#preventing-already-revealed-content-from-hiding\",\"children\":\"Transitions\"}],\" let you avoid showing Suspense fallback in favor of inline indicators. Transitions mark the whole update as non-urgent so they are typically used by frameworks and router libraries for navigation. Deferred values, on the other hand, are mostly useful in application code where you want to mark a part of UI as non-urgent and let it “lag behind” the rest of the UI.\"]}]}],\"\\n\",[\"$r\",\"hr\",null,{}],\"\\n\",[\"$r\",\"h3\",null,{\"id\":\"preventing-already-revealed-content-from-hiding\",\"children\":\"Preventing already revealed content from hiding \"}],\"\\n\",[\"$r\",\"p\",null,{\"children\":\"When a component suspends, the closest parent Suspense boundary switches to showing the fallback. This can lead to a jarring user experience if it was already displaying some content. Try pressing this button:\"}],\"\\n\"]}],[\"$r\",\"Sandpack\",null,{\"children\":[[\"$r\",\"pre\",null,{\"children\":[\"$r\",\"code\",null,{\"className\":\"language-js\",\"meta\":\"src/App.js\",\"children\":\"import { Suspense, useState } from 'react';\\nimport IndexPage from './IndexPage.js';\\nimport ArtistPage from './ArtistPage.js';\\nimport Layout from './Layout.js';\\n\\nexport default function App() {\\n return (\\n \u003cSuspense fallback={\u003cBigSpinner /\u003e}\u003e\\n \u003cRouter /\u003e\\n \u003c/Suspense\u003e\\n );\\n}\\n\\nfunction Router() {\\n const [page, setPage] = useState('/');\\n\\n function navigate(url) {\\n setPage(url);\\n }\\n\\n let content;\\n if (page === '/') {\\n content = (\\n \u003cIndexPage navigate={navigate} /\u003e\\n );\\n } else if (page === '/the-beatles') {\\n content = (\\n \u003cArtistPage\\n artist={{\\n id: 'the-beatles',\\n name: 'The Beatles',\\n }}\\n /\u003e\\n );\\n }\\n return (\\n \u003cLayout\u003e\\n {content}\\n \u003c/Layout\u003e\\n );\\n}\\n\\nfunction BigSpinner() {\\n return \u003ch2\u003e🌀 Loading...\u003c/h2\u003e;\\n}\\n\"}]}],[\"$r\",\"pre\",null,{\"children\":[\"$r\",\"code\",null,{\"className\":\"language-js\",\"meta\":\"src/Layout.js\",\"children\":\"export default function Layout({ children }) {\\n return (\\n \u003cdiv className=\\\"layout\\\"\u003e\\n \u003csection className=\\\"header\\\"\u003e\\n Music Browser\\n \u003c/section\u003e\\n \u003cmain\u003e\\n {children}\\n \u003c/main\u003e\\n \u003c/div\u003e\\n );\\n}\\n\"}]}],[\"$r\",\"pre\",null,{\"children\":[\"$r\",\"code\",null,{\"className\":\"language-js\",\"meta\":\"src/IndexPage.js\",\"children\":\"export default function IndexPage({ navigate }) {\\n return (\\n \u003cbutton onClick={() =\u003e navigate('/the-beatles')}\u003e\\n Open The Beatles artist page\\n \u003c/button\u003e\\n );\\n}\\n\"}]}],[\"$r\",\"pre\",null,{\"children\":[\"$r\",\"code\",null,{\"className\":\"language-js\",\"meta\":\"src/ArtistPage.js\",\"children\":\"import { Suspense } from 'react';\\nimport Albums from './Albums.js';\\nimport Biography from './Biography.js';\\nimport Panel from './Panel.js';\\n\\nexport default function ArtistPage({ artist }) {\\n return (\\n \u003c\u003e\\n \u003ch1\u003e{artist.name}\u003c/h1\u003e\\n \u003cBiography artistId={artist.id} /\u003e\\n \u003cSuspense fallback={\u003cAlbumsGlimmer /\u003e}\u003e\\n \u003cPanel\u003e\\n \u003cAlbums artistId={artist.id} /\u003e\\n \u003c/Panel\u003e\\n \u003c/Suspense\u003e\\n \u003c/\u003e\\n );\\n}\\n\\nfunction AlbumsGlimmer() {\\n return (\\n \u003cdiv className=\\\"glimmer-panel\\\"\u003e\\n \u003cdiv className=\\\"glimmer-line\\\" /\u003e\\n \u003cdiv className=\\\"glimmer-line\\\" /\u003e\\n \u003cdiv className=\\\"glimmer-line\\\" /\u003e\\n \u003c/div\u003e\\n );\\n}\\n\"}]}],[\"$r\",\"pre\",null,{\"children\":[\"$r\",\"code\",null,{\"className\":\"language-js\",\"meta\":\"src/Albums.js\",\"children\":\"import {use} from 'react';\\nimport { fetchData } from './data.js';\\n\\nexport default function Albums({ artistId }) {\\n const albums = use(fetchData(`/${artistId}/albums`));\\n return (\\n \u003cul\u003e\\n {albums.map(album =\u003e (\\n \u003cli key={album.id}\u003e\\n {album.title} ({album.year})\\n \u003c/li\u003e\\n ))}\\n \u003c/ul\u003e\\n );\\n}\\n\"}]}],[\"$r\",\"pre\",null,{\"children\":[\"$r\",\"code\",null,{\"className\":\"language-js\",\"meta\":\"src/Biography.js\",\"children\":\"import {use} from 'react';\\nimport { fetchData } from './data.js';\\n\\nexport default function Biography({ artistId }) {\\n const bio = use(fetchData(`/${artistId}/bio`));\\n return (\\n \u003csection\u003e\\n \u003cp className=\\\"bio\\\"\u003e{bio}\u003c/p\u003e\\n \u003c/section\u003e\\n );\\n}\\n\"}]}],[\"$r\",\"pre\",null,{\"children\":[\"$r\",\"code\",null,{\"className\":\"language-js\",\"meta\":\"src/Panel.js\",\"children\":\"export default function Panel({ children }) {\\n return (\\n \u003csection className=\\\"panel\\\"\u003e\\n {children}\\n \u003c/section\u003e\\n );\\n}\\n\"}]}],[\"$r\",\"pre\",null,{\"children\":[\"$r\",\"code\",null,{\"className\":\"language-js\",\"meta\":\"src/data.js hidden\",\"children\":\"// Note: the way you would do data fetching depends on\\n// the framework that you use together with Suspense.\\n// Normally, the caching logic would be inside a framework.\\n\\nlet cache = new Map();\\n\\nexport function fetchData(url) {\\n if (!cache.has(url)) {\\n cache.set(url, getData(url));\\n }\\n return cache.get(url);\\n}\\n\\nasync function getData(url) {\\n if (url === '/the-beatles/albums') {\\n return await getAlbums();\\n } else if (url === '/the-beatles/bio') {\\n return await getBio();\\n } else {\\n throw Error('Not implemented');\\n }\\n}\\n\\nasync function getBio() {\\n // Add a fake delay to make waiting noticeable.\\n await new Promise(resolve =\u003e {\\n setTimeout(resolve, 500);\\n });\\n\\n return `The Beatles were an English rock band,\\n formed in Liverpool in 1960, that comprised\\n John Lennon, Paul McCartney, George Harrison\\n and Ringo Starr.`;\\n}\\n\\nasync function getAlbums() {\\n // Add a fake delay to make waiting noticeable.\\n await new Promise(resolve =\u003e {\\n setTimeout(resolve, 3000);\\n });\\n\\n return [{\\n id: 13,\\n title: 'Let It Be',\\n year: 1970\\n }, {\\n id: 12,\\n title: 'Abbey Road',\\n year: 1969\\n }, {\\n id: 11,\\n title: 'Yellow Submarine',\\n year: 1969\\n }, {\\n id: 10,\\n title: 'The Beatles',\\n year: 1968\\n }, {\\n id: 9,\\n title: 'Magical Mystery Tour',\\n year: 1967\\n }, {\\n id: 8,\\n title: 'Sgt. Pepper\\\\'s Lonely Hearts Club Band',\\n year: 1967\\n }, {\\n id: 7,\\n title: 'Revolver',\\n year: 1966\\n }, {\\n id: 6,\\n title: 'Rubber Soul',\\n year: 1965\\n }, {\\n id: 5,\\n title: 'Help!',\\n year: 1965\\n }, {\\n id: 4,\\n title: 'Beatles For Sale',\\n year: 1964\\n }, {\\n id: 3,\\n title: 'A Hard Day\\\\'s Night',\\n year: 1964\\n }, {\\n id: 2,\\n title: 'With The Beatles',\\n year: 1963\\n }, {\\n id: 1,\\n title: 'Please Please Me',\\n year: 1963\\n }];\\n}\\n\"}]}],[\"$r\",\"pre\",null,{\"children\":[\"$r\",\"code\",null,{\"className\":\"language-css\",\"children\":\"main {\\n min-height: 200px;\\n padding: 10px;\\n}\\n\\n.layout {\\n border: 1px solid black;\\n}\\n\\n.header {\\n background: #222;\\n padding: 10px;\\n text-align: center;\\n color: white;\\n}\\n\\n.bio { font-style: italic; }\\n\\n.panel {\\n border: 1px solid #aaa;\\n border-radius: 6px;\\n margin-top: 20px;\\n padding: 10px;\\n}\\n\\n.glimmer-panel {\\n border: 1px dashed #aaa;\\n background: linear-gradient(90deg, rgba(221,221,221,1) 0%, rgba(255,255,255,1) 100%);\\n border-radius: 6px;\\n margin-top: 20px;\\n padding: 10px;\\n}\\n\\n.glimmer-line {\\n display: block;\\n width: 60%;\\n height: 20px;\\n margin: 10px;\\n border-radius: 4px;\\n background: #f0f0f0;\\n}\\n\"}]}]]}],[\"$r\",\"MaxWidth\",\"130\",{\"children\":[\"\\n\",[\"$r\",\"p\",null,{\"children\":[\"When you pressed the button, the \",[\"$r\",\"code\",null,{\"children\":\"Router\"}],\" component rendered \",[\"$r\",\"code\",null,{\"children\":\"ArtistPage\"}],\" instead of \",[\"$r\",\"code\",null,{\"children\":\"IndexPage\"}],\". A component inside \",[\"$r\",\"code\",null,{\"children\":\"ArtistPage\"}],\" suspended, so the closest Suspense boundary started showing the fallback. The closest Suspense boundary was near the root, so the whole site layout got replaced by \",[\"$r\",\"code\",null,{\"children\":\"BigSpinner\"}],\".\"]}],\"\\n\",[\"$r\",\"p\",null,{\"children\":[\"To prevent this, you can mark the navigation state update as a \",[\"$r\",\"em\",null,{\"children\":\"Transition\"}],\" with \",[\"$r\",\"a\",null,{\"href\":\"/reference/react/startTransition\",\"children\":[[\"$r\",\"code\",null,{\"children\":\"startTransition\"}],\":\"]}]]}],\"\\n\",[\"$r\",\"pre\",null,{\"children\":[\"$r\",\"code\",null,{\"className\":\"language-js\",\"meta\":\"{5,7}\",\"children\":\"function Router() {\\n const [page, setPage] = useState('/');\\n\\n function navigate(url) {\\n startTransition(() =\u003e {\\n setPage(url);\\n });\\n }\\n // ...\\n\"}]}],\"\\n\",[\"$r\",\"p\",null,{\"children\":[\"This tells React that the state transition is not urgent, and it’s better to keep showing the previous page instead of hiding any already revealed content. Now clicking the button “waits” for the \",[\"$r\",\"code\",null,{\"children\":\"Biography\"}],\" to load:\"]}],\"\\n\"]}],[\"$r\",\"Sandpack\",null,{\"children\":[[\"$r\",\"pre\",null,{\"children\":[\"$r\",\"code\",null,{\"className\":\"language-js\",\"meta\":\"src/App.js\",\"children\":\"import { Suspense, startTransition, useState } from 'react';\\nimport IndexPage from './IndexPage.js';\\nimport ArtistPage from './ArtistPage.js';\\nimport Layout from './Layout.js';\\n\\nexport default function App() {\\n return (\\n \u003cSuspense fallback={\u003cBigSpinner /\u003e}\u003e\\n \u003cRouter /\u003e\\n \u003c/Suspense\u003e\\n );\\n}\\n\\nfunction Router() {\\n const [page, setPage] = useState('/');\\n\\n function navigate(url) {\\n startTransition(() =\u003e {\\n setPage(url);\\n });\\n }\\n\\n let content;\\n if (page === '/') {\\n content = (\\n \u003cIndexPage navigate={navigate} /\u003e\\n );\\n } else if (page === '/the-beatles') {\\n content = (\\n \u003cArtistPage\\n artist={{\\n id: 'the-beatles',\\n name: 'The Beatles',\\n }}\\n /\u003e\\n );\\n }\\n return (\\n \u003cLayout\u003e\\n {content}\\n \u003c/Layout\u003e\\n );\\n}\\n\\nfunction BigSpinner() {\\n return \u003ch2\u003e🌀 Loading...\u003c/h2\u003e;\\n}\\n\"}]}],[\"$r\",\"pre\",null,{\"children\":[\"$r\",\"code\",null,{\"className\":\"language-js\",\"meta\":\"src/Layout.js\",\"children\":\"export default function Layout({ children }) {\\n return (\\n \u003cdiv className=\\\"layout\\\"\u003e\\n \u003csection className=\\\"header\\\"\u003e\\n Music Browser\\n \u003c/section\u003e\\n \u003cmain\u003e\\n {children}\\n \u003c/main\u003e\\n \u003c/div\u003e\\n );\\n}\\n\"}]}],[\"$r\",\"pre\",null,{\"children\":[\"$r\",\"code\",null,{\"className\":\"language-js\",\"meta\":\"src/IndexPage.js\",\"children\":\"export default function IndexPage({ navigate }) {\\n return (\\n \u003cbutton onClick={() =\u003e navigate('/the-beatles')}\u003e\\n Open The Beatles artist page\\n \u003c/button\u003e\\n );\\n}\\n\"}]}],[\"$r\",\"pre\",null,{\"children\":[\"$r\",\"code\",null,{\"className\":\"language-js\",\"meta\":\"src/ArtistPage.js\",\"children\":\"import { Suspense } from 'react';\\nimport Albums from './Albums.js';\\nimport Biography from './Biography.js';\\nimport Panel from './Panel.js';\\n\\nexport default function ArtistPage({ artist }) {\\n return (\\n \u003c\u003e\\n \u003ch1\u003e{artist.name}\u003c/h1\u003e\\n \u003cBiography artistId={artist.id} /\u003e\\n \u003cSuspense fallback={\u003cAlbumsGlimmer /\u003e}\u003e\\n \u003cPanel\u003e\\n \u003cAlbums artistId={artist.id} /\u003e\\n \u003c/Panel\u003e\\n \u003c/Suspense\u003e\\n \u003c/\u003e\\n );\\n}\\n\\nfunction AlbumsGlimmer() {\\n return (\\n \u003cdiv className=\\\"glimmer-panel\\\"\u003e\\n \u003cdiv className=\\\"glimmer-line\\\" /\u003e\\n \u003cdiv className=\\\"glimmer-line\\\" /\u003e\\n \u003cdiv className=\\\"glimmer-line\\\" /\u003e\\n \u003c/div\u003e\\n );\\n}\\n\"}]}],[\"$r\",\"pre\",null,{\"children\":[\"$r\",\"code\",null,{\"className\":\"language-js\",\"meta\":\"src/Albums.js\",\"children\":\"import {use} from 'react';\\nimport { fetchData } from './data.js';\\n\\nexport default function Albums({ artistId }) {\\n const albums = use(fetchData(`/${artistId}/albums`));\\n return (\\n \u003cul\u003e\\n {albums.map(album =\u003e (\\n \u003cli key={album.id}\u003e\\n {album.title} ({album.year})\\n \u003c/li\u003e\\n ))}\\n \u003c/ul\u003e\\n );\\n}\\n\"}]}],[\"$r\",\"pre\",null,{\"children\":[\"$r\",\"code\",null,{\"className\":\"language-js\",\"meta\":\"src/Biography.js\",\"children\":\"import {use} from 'react';\\nimport { fetchData } from './data.js';\\n\\nexport default function Biography({ artistId }) {\\n const bio = use(fetchData(`/${artistId}/bio`));\\n return (\\n \u003csection\u003e\\n \u003cp className=\\\"bio\\\"\u003e{bio}\u003c/p\u003e\\n \u003c/section\u003e\\n );\\n}\\n\"}]}],[\"$r\",\"pre\",null,{\"children\":[\"$r\",\"code\",null,{\"className\":\"language-js\",\"meta\":\"src/Panel.js\",\"children\":\"export default function Panel({ children }) {\\n return (\\n \u003csection className=\\\"panel\\\"\u003e\\n {children}\\n \u003c/section\u003e\\n );\\n}\\n\"}]}],[\"$r\",\"pre\",null,{\"children\":[\"$r\",\"code\",null,{\"className\":\"language-js\",\"meta\":\"src/data.js hidden\",\"children\":\"// Note: the way you would do data fetching depends on\\n// the framework that you use together with Suspense.\\n// Normally, the caching logic would be inside a framework.\\n\\nlet cache = new Map();\\n\\nexport function fetchData(url) {\\n if (!cache.has(url)) {\\n cache.set(url, getData(url));\\n }\\n return cache.get(url);\\n}\\n\\nasync function getData(url) {\\n if (url === '/the-beatles/albums') {\\n return await getAlbums();\\n } else if (url === '/the-beatles/bio') {\\n return await getBio();\\n } else {\\n throw Error('Not implemented');\\n }\\n}\\n\\nasync function getBio() {\\n // Add a fake delay to make waiting noticeable.\\n await new Promise(resolve =\u003e {\\n setTimeout(resolve, 500);\\n });\\n\\n return `The Beatles were an English rock band,\\n formed in Liverpool in 1960, that comprised\\n John Lennon, Paul McCartney, George Harrison\\n and Ringo Starr.`;\\n}\\n\\nasync function getAlbums() {\\n // Add a fake delay to make waiting noticeable.\\n await new Promise(resolve =\u003e {\\n setTimeout(resolve, 3000);\\n });\\n\\n return [{\\n id: 13,\\n title: 'Let It Be',\\n year: 1970\\n }, {\\n id: 12,\\n title: 'Abbey Road',\\n year: 1969\\n }, {\\n id: 11,\\n title: 'Yellow Submarine',\\n year: 1969\\n }, {\\n id: 10,\\n title: 'The Beatles',\\n year: 1968\\n }, {\\n id: 9,\\n title: 'Magical Mystery Tour',\\n year: 1967\\n }, {\\n id: 8,\\n title: 'Sgt. Pepper\\\\'s Lonely Hearts Club Band',\\n year: 1967\\n }, {\\n id: 7,\\n title: 'Revolver',\\n year: 1966\\n }, {\\n id: 6,\\n title: 'Rubber Soul',\\n year: 1965\\n }, {\\n id: 5,\\n title: 'Help!',\\n year: 1965\\n }, {\\n id: 4,\\n title: 'Beatles For Sale',\\n year: 1964\\n }, {\\n id: 3,\\n title: 'A Hard Day\\\\'s Night',\\n year: 1964\\n }, {\\n id: 2,\\n title: 'With The Beatles',\\n year: 1963\\n }, {\\n id: 1,\\n title: 'Please Please Me',\\n year: 1963\\n }];\\n}\\n\"}]}],[\"$r\",\"pre\",null,{\"children\":[\"$r\",\"code\",null,{\"className\":\"language-css\",\"children\":\"main {\\n min-height: 200px;\\n padding: 10px;\\n}\\n\\n.layout {\\n border: 1px solid black;\\n}\\n\\n.header {\\n background: #222;\\n padding: 10px;\\n text-align: center;\\n color: white;\\n}\\n\\n.bio { font-style: italic; }\\n\\n.panel {\\n border: 1px solid #aaa;\\n border-radius: 6px;\\n margin-top: 20px;\\n padding: 10px;\\n}\\n\\n.glimmer-panel {\\n border: 1px dashed #aaa;\\n background: linear-gradient(90deg, rgba(221,221,221,1) 0%, rgba(255,255,255,1) 100%);\\n border-radius: 6px;\\n margin-top: 20px;\\n padding: 10px;\\n}\\n\\n.glimmer-line {\\n display: block;\\n width: 60%;\\n height: 20px;\\n margin: 10px;\\n border-radius: 4px;\\n background: #f0f0f0;\\n}\\n\"}]}]]}],[\"$r\",\"MaxWidth\",\"142\",{\"children\":[\"\\n\",[\"$r\",\"p\",null,{\"children\":[\"A Transition doesn’t wait for \",[\"$r\",\"em\",null,{\"children\":\"all\"}],\" content to load. It only waits long enough to avoid hiding already revealed content. For example, the website \",[\"$r\",\"code\",null,{\"children\":\"Layout\"}],\" was already revealed, so it would be bad to hide it behind a loading spinner. However, the nested \",[\"$r\",\"code\",null,{\"children\":\"Suspense\"}],\" boundary around \",[\"$r\",\"code\",null,{\"children\":\"Albums\"}],\" is new, so the Transition doesn’t wait for it.\"]}],\"\\n\",[\"$r\",\"Note\",null,{\"children\":[\"$r\",\"p\",null,{\"children\":\"Suspense-enabled routers are expected to wrap the navigation updates into Transitions by default.\"}]}],\"\\n\",[\"$r\",\"hr\",null,{}],\"\\n\",[\"$r\",\"h3\",null,{\"id\":\"indicating-that-a-transition-is-happening\",\"children\":\"Indicating that a Transition is happening \"}],\"\\n\",[\"$r\",\"p\",null,{\"children\":[\"In the above example, once you click the button, there is no visual indication that a navigation is in progress. To add an indicator, you can replace \",[\"$r\",\"a\",null,{\"href\":\"/reference/react/startTransition\",\"children\":[\"$r\",\"code\",null,{\"children\":\"startTransition\"}]}],\" with \",[\"$r\",\"a\",null,{\"href\":\"/reference/react/useTransition\",\"children\":[\"$r\",\"code\",null,{\"children\":\"useTransition\"}]}],\" which gives you a boolean \",[\"$r\",\"code\",null,{\"children\":\"isPending\"}],\" value. In the example below, it’s used to change the website header styling while a Transition is happening:\"]}],\"\\n\"]}],[\"$r\",\"Sandpack\",null,{\"children\":[[\"$r\",\"pre\",null,{\"children\":[\"$r\",\"code\",null,{\"className\":\"language-js\",\"meta\":\"src/App.js\",\"children\":\"import { Suspense, useState, useTransition } from 'react';\\nimport IndexPage from './IndexPage.js';\\nimport ArtistPage from './ArtistPage.js';\\nimport Layout from './Layout.js';\\n\\nexport default function App() {\\n return (\\n \u003cSuspense fallback={\u003cBigSpinner /\u003e}\u003e\\n \u003cRouter /\u003e\\n \u003c/Suspense\u003e\\n );\\n}\\n\\nfunction Router() {\\n const [page, setPage] = useState('/');\\n const [isPending, startTransition] = useTransition();\\n\\n function navigate(url) {\\n startTransition(() =\u003e {\\n setPage(url);\\n });\\n }\\n\\n let content;\\n if (page === '/') {\\n content = (\\n \u003cIndexPage navigate={navigate} /\u003e\\n );\\n } else if (page === '/the-beatles') {\\n content = (\\n \u003cArtistPage\\n artist={{\\n id: 'the-beatles',\\n name: 'The Beatles',\\n }}\\n /\u003e\\n );\\n }\\n return (\\n \u003cLayout isPending={isPending}\u003e\\n {content}\\n \u003c/Layout\u003e\\n );\\n}\\n\\nfunction BigSpinner() {\\n return \u003ch2\u003e🌀 Loading...\u003c/h2\u003e;\\n}\\n\"}]}],[\"$r\",\"pre\",null,{\"children\":[\"$r\",\"code\",null,{\"className\":\"language-js\",\"meta\":\"src/Layout.js\",\"children\":\"export default function Layout({ children, isPending }) {\\n return (\\n \u003cdiv className=\\\"layout\\\"\u003e\\n \u003csection className=\\\"header\\\" style={{\\n opacity: isPending ? 0.7 : 1\\n }}\u003e\\n Music Browser\\n \u003c/section\u003e\\n \u003cmain\u003e\\n {children}\\n \u003c/main\u003e\\n \u003c/div\u003e\\n );\\n}\\n\"}]}],[\"$r\",\"pre\",null,{\"children\":[\"$r\",\"code\",null,{\"className\":\"language-js\",\"meta\":\"src/IndexPage.js\",\"children\":\"export default function IndexPage({ navigate }) {\\n return (\\n \u003cbutton onClick={() =\u003e navigate('/the-beatles')}\u003e\\n Open The Beatles artist page\\n \u003c/button\u003e\\n );\\n}\\n\"}]}],[\"$r\",\"pre\",null,{\"children\":[\"$r\",\"code\",null,{\"className\":\"language-js\",\"meta\":\"src/ArtistPage.js\",\"children\":\"import { Suspense } from 'react';\\nimport Albums from './Albums.js';\\nimport Biography from './Biography.js';\\nimport Panel from './Panel.js';\\n\\nexport default function ArtistPage({ artist }) {\\n return (\\n \u003c\u003e\\n \u003ch1\u003e{artist.name}\u003c/h1\u003e\\n \u003cBiography artistId={artist.id} /\u003e\\n \u003cSuspense fallback={\u003cAlbumsGlimmer /\u003e}\u003e\\n \u003cPanel\u003e\\n \u003cAlbums artistId={artist.id} /\u003e\\n \u003c/Panel\u003e\\n \u003c/Suspense\u003e\\n \u003c/\u003e\\n );\\n}\\n\\nfunction AlbumsGlimmer() {\\n return (\\n \u003cdiv className=\\\"glimmer-panel\\\"\u003e\\n \u003cdiv className=\\\"glimmer-line\\\" /\u003e\\n \u003cdiv className=\\\"glimmer-line\\\" /\u003e\\n \u003cdiv className=\\\"glimmer-line\\\" /\u003e\\n \u003c/div\u003e\\n );\\n}\\n\"}]}],[\"$r\",\"pre\",null,{\"children\":[\"$r\",\"code\",null,{\"className\":\"language-js\",\"meta\":\"src/Albums.js\",\"children\":\"import {use} from 'react';\\nimport { fetchData } from './data.js';\\n\\nexport default function Albums({ artistId }) {\\n const albums = use(fetchData(`/${artistId}/albums`));\\n return (\\n \u003cul\u003e\\n {albums.map(album =\u003e (\\n \u003cli key={album.id}\u003e\\n {album.title} ({album.year})\\n \u003c/li\u003e\\n ))}\\n \u003c/ul\u003e\\n );\\n}\\n\"}]}],[\"$r\",\"pre\",null,{\"children\":[\"$r\",\"code\",null,{\"className\":\"language-js\",\"meta\":\"src/Biography.js\",\"children\":\"import {use} from 'react';\\nimport { fetchData } from './data.js';\\n\\nexport default function Biography({ artistId }) {\\n const bio = use(fetchData(`/${artistId}/bio`));\\n return (\\n \u003csection\u003e\\n \u003cp className=\\\"bio\\\"\u003e{bio}\u003c/p\u003e\\n \u003c/section\u003e\\n );\\n}\\n\"}]}],[\"$r\",\"pre\",null,{\"children\":[\"$r\",\"code\",null,{\"className\":\"language-js\",\"meta\":\"src/Panel.js\",\"children\":\"export default function Panel({ children }) {\\n return (\\n \u003csection className=\\\"panel\\\"\u003e\\n {children}\\n \u003c/section\u003e\\n );\\n}\\n\"}]}],[\"$r\",\"pre\",null,{\"children\":[\"$r\",\"code\",null,{\"className\":\"language-js\",\"meta\":\"src/data.js hidden\",\"children\":\"// Note: the way you would do data fetching depends on\\n// the framework that you use together with Suspense.\\n// Normally, the caching logic would be inside a framework.\\n\\nlet cache = new Map();\\n\\nexport function fetchData(url) {\\n if (!cache.has(url)) {\\n cache.set(url, getData(url));\\n }\\n return cache.get(url);\\n}\\n\\nasync function getData(url) {\\n if (url === '/the-beatles/albums') {\\n return await getAlbums();\\n } else if (url === '/the-beatles/bio') {\\n return await getBio();\\n } else {\\n throw Error('Not implemented');\\n }\\n}\\n\\nasync function getBio() {\\n // Add a fake delay to make waiting noticeable.\\n await new Promise(resolve =\u003e {\\n setTimeout(resolve, 500);\\n });\\n\\n return `The Beatles were an English rock band,\\n formed in Liverpool in 1960, that comprised\\n John Lennon, Paul McCartney, George Harrison\\n and Ringo Starr.`;\\n}\\n\\nasync function getAlbums() {\\n // Add a fake delay to make waiting noticeable.\\n await new Promise(resolve =\u003e {\\n setTimeout(resolve, 3000);\\n });\\n\\n return [{\\n id: 13,\\n title: 'Let It Be',\\n year: 1970\\n }, {\\n id: 12,\\n title: 'Abbey Road',\\n year: 1969\\n }, {\\n id: 11,\\n title: 'Yellow Submarine',\\n year: 1969\\n }, {\\n id: 10,\\n title: 'The Beatles',\\n year: 1968\\n }, {\\n id: 9,\\n title: 'Magical Mystery Tour',\\n year: 1967\\n }, {\\n id: 8,\\n title: 'Sgt. Pepper\\\\'s Lonely Hearts Club Band',\\n year: 1967\\n }, {\\n id: 7,\\n title: 'Revolver',\\n year: 1966\\n }, {\\n id: 6,\\n title: 'Rubber Soul',\\n year: 1965\\n }, {\\n id: 5,\\n title: 'Help!',\\n year: 1965\\n }, {\\n id: 4,\\n title: 'Beatles For Sale',\\n year: 1964\\n }, {\\n id: 3,\\n title: 'A Hard Day\\\\'s Night',\\n year: 1964\\n }, {\\n id: 2,\\n title: 'With The Beatles',\\n year: 1963\\n }, {\\n id: 1,\\n title: 'Please Please Me',\\n year: 1963\\n }];\\n}\\n\"}]}],[\"$r\",\"pre\",null,{\"children\":[\"$r\",\"code\",null,{\"className\":\"language-css\",\"children\":\"main {\\n min-height: 200px;\\n padding: 10px;\\n}\\n\\n.layout {\\n border: 1px solid black;\\n}\\n\\n.header {\\n background: #222;\\n padding: 10px;\\n text-align: center;\\n color: white;\\n}\\n\\n.bio { font-style: italic; }\\n\\n.panel {\\n border: 1px solid #aaa;\\n border-radius: 6px;\\n margin-top: 20px;\\n padding: 10px;\\n}\\n\\n.glimmer-panel {\\n border: 1px dashed #aaa;\\n background: linear-gradient(90deg, rgba(221,221,221,1) 0%, rgba(255,255,255,1) 100%);\\n border-radius: 6px;\\n margin-top: 20px;\\n padding: 10px;\\n}\\n\\n.glimmer-line {\\n display: block;\\n width: 60%;\\n height: 20px;\\n margin: 10px;\\n border-radius: 4px;\\n background: #f0f0f0;\\n}\\n\"}]}]]}],[\"$r\",\"MaxWidth\",\"156\",{\"children\":[\"\\n\",[\"$r\",\"hr\",null,{}],\"\\n\",[\"$r\",\"h3\",null,{\"id\":\"resetting-suspense-boundaries-on-navigation\",\"children\":\"Resetting Suspense boundaries on navigation \"}],\"\\n\",[\"$r\",\"p\",null,{\"children\":[\"During a Transition, React avoids hiding already revealed content. However, when you navigate to \",[\"$r\",\"em\",null,{\"children\":\"different\"}],\" content, such as another user’s profile, you’ll want the boundary to show the fallback instead of the previous content. You can express this with a \",[\"$r\",\"code\",null,{\"children\":\"key\"}],\":\"]}],\"\\n\",[\"$r\",\"pre\",null,{\"children\":[\"$r\",\"code\",null,{\"className\":\"language-js\",\"children\":\"\u003cProfilePage key={queryParams.id} /\u003e\\n\"}]}],\"\\n\",[\"$r\",\"p\",null,{\"children\":[\"With a different \",[\"$r\",\"code\",null,{\"children\":\"key\"}],\", React treats the profiles as different content and resets the Suspense boundary during navigation. The \",[\"$r\",\"code\",null,{\"children\":\"key\"}],\" can go on the boundary itself or on a component above it. Suspense-integrated routers should do this automatically.\"]}],\"\\n\",[\"$r\",\"p\",null,{\"children\":[\"In the example below, opening the profile page loads the first profile. Pressing “Bob” navigates to a different profile, and the \",[\"$r\",\"code\",null,{\"children\":\"key\"}],\" resets the boundary, so the fallback shows instead of the previous user’s bio. Try removing the \",[\"$r\",\"code\",null,{\"children\":\"key\"}],\": the previous bio stays visible while the next one loads:\"]}],\"\\n\"]}],[\"$r\",\"Sandpack\",null,{\"children\":[[\"$r\",\"pre\",null,{\"children\":[\"$r\",\"code\",null,{\"className\":\"language-js\",\"meta\":\"src/App.js hidden\",\"children\":\"import { useState } from 'react';\\nimport ProfilePage from './ProfilePage.js';\\n\\nexport default function App() {\\n const [show, setShow] = useState(false);\\n if (show) {\\n return \u003cProfilePage /\u003e;\\n }\\n return (\\n \u003cbutton onClick={() =\u003e setShow(true)}\u003e\\n Open profile page\\n \u003c/button\u003e\\n );\\n}\\n\"}]}],[\"$r\",\"pre\",null,{\"children\":[\"$r\",\"code\",null,{\"className\":\"language-js\",\"meta\":\"src/ProfilePage.js active\",\"children\":\"import { Suspense, useState, startTransition } from 'react';\\nimport Bio from './Bio.js';\\nimport { fetchBio } from './data.js';\\n\\nexport default function ProfilePage() {\\n const [user, setUser] = useState(() =\u003e ({\\n id: 'alice',\\n bioPromise: fetchBio('alice'),\\n }));\\n function navigate(id) {\\n startTransition(() =\u003e {\\n setUser({ id, bioPromise: fetchBio(id) });\\n });\\n }\\n return (\\n \u003c\u003e\\n \u003cbutton onClick={() =\u003e navigate('alice')}\u003e\\n Alice\\n \u003c/button\u003e\\n \u003cbutton onClick={() =\u003e navigate('bob')}\u003e\\n Bob\\n \u003c/button\u003e\\n \u003cSuspense key={user.id} fallback={\u003cp\u003e⌛ Loading profile...\u003c/p\u003e}\u003e\\n \u003cBio bioPromise={user.bioPromise} /\u003e\\n \u003c/Suspense\u003e\\n \u003c/\u003e\\n );\\n}\\n\"}]}],[\"$r\",\"pre\",null,{\"children\":[\"$r\",\"code\",null,{\"className\":\"language-js\",\"meta\":\"src/Bio.js\",\"children\":\"import { use } from 'react';\\n\\nexport default function Bio({ bioPromise }) {\\n const bio = use(bioPromise);\\n return \u003cp\u003e{bio}\u003c/p\u003e;\\n}\\n\"}]}],[\"$r\",\"pre\",null,{\"children\":[\"$r\",\"code\",null,{\"className\":\"language-js\",\"meta\":\"src/data.js hidden\",\"children\":\"// Note: the way you would do data fetching depends on\\n// the framework that you use together with Suspense.\\n\\nexport async function fetchBio(userId) {\\n // Add a fake delay to make waiting noticeable.\\n await new Promise(resolve =\u003e {\\n setTimeout(resolve, 1500);\\n });\\n\\n return userId === 'alice'\\n ? 'Alice is a photographer and traveler.'\\n : 'Bob collects vintage synthesizers.';\\n}\\n\"}]}],[\"$r\",\"pre\",null,{\"children\":[\"$r\",\"code\",null,{\"className\":\"language-css\",\"children\":\"button {\\n margin-right: 8px;\\n}\\n\"}]}]]}],[\"$r\",\"MaxWidth\",\"180\",{\"children\":[\"\\n\",[\"$r\",\"hr\",null,{}],\"\\n\",[\"$r\",\"h3\",null,{\"id\":\"providing-a-fallback-for-server-errors-and-client-only-content\",\"children\":\"Providing a fallback for server errors and client-only content \"}],\"\\n\",[\"$r\",\"p\",null,{\"children\":[\"If you use one of the \",[\"$r\",\"a\",null,{\"href\":\"/reference/react-dom/server\",\"children\":\"streaming server rendering APIs\"}],\" (or a framework that relies on them), React will also use your \",[\"$r\",\"code\",null,{\"children\":\"\u003cSuspense\u003e\"}],\" boundaries to handle errors on the server. If a component throws an error on the server, React will not abort the server render. Instead, it will find the closest \",[\"$r\",\"code\",null,{\"children\":\"\u003cSuspense\u003e\"}],\" component above it and include its fallback (such as a spinner) into the generated server HTML. The user will see a spinner at first.\"]}],\"\\n\",[\"$r\",\"p\",null,{\"children\":[\"On the client, React will attempt to render the same component again. If it errors on the client too, React will throw the error and display the closest \",[\"$r\",\"a\",null,{\"href\":\"/reference/react/Component#static-getderivedstatefromerror\",\"children\":\"Error Boundary.\"}],\" However, if it does not error on the client, React will not display the error to the user since the content was eventually displayed successfully.\"]}],\"\\n\",[\"$r\",\"p\",null,{\"children\":[\"You can use this to opt out some components from rendering on the server. To do this, throw an error in the server environment and then wrap them in a \",[\"$r\",\"code\",null,{\"children\":\"\u003cSuspense\u003e\"}],\" boundary to replace their HTML with fallbacks:\"]}],\"\\n\",[\"$r\",\"pre\",null,{\"children\":[\"$r\",\"code\",null,{\"className\":\"language-js\",\"children\":\"\u003cSuspense fallback={\u003cLoading /\u003e}\u003e\\n \u003cChat /\u003e\\n\u003c/Suspense\u003e\\n\\nfunction Chat() {\\n if (typeof window === 'undefined') {\\n throw Error('Chat should only render on the client.');\\n }\\n // ...\\n}\\n\"}]}],\"\\n\",[\"$r\",\"p\",null,{\"children\":[\"The server HTML will include the loading indicator. It will be replaced by the \",[\"$r\",\"code\",null,{\"children\":\"Chat\"}],\" component on the client.\"]}],\"\\n\",[\"$r\",\"hr\",null,{}],\"\\n\",[\"$r\",\"h3\",null,{\"id\":\"providing-a-fallback-for-browser-only-content\",\"children\":\"Providing a fallback for browser-only content \"}],\"\\n\",[\"$r\",\"p\",null,{\"children\":[\"A Suspense boundary can provide a fallback for a browser-only component. Wrap the component in \",[\"$r\",\"code\",null,{\"children\":\"\u003cSuspense\u003e\"}],\" and call \",[\"$r\",\"a\",null,{\"href\":\"/reference/react/use#use-browser\",\"children\":[\"$r\",\"code\",null,{\"children\":\"use(browser())\"}]}],\" inside it.\"]}],\"\\n\",[\"$r\",\"p\",null,{\"children\":[\"Click \",[\"$r\",\"strong\",null,{\"children\":\"Reload\"}],\" to see the loading fallback in the initial HTML. After hydration, React displays the draft loaded from \",[\"$r\",\"code\",null,{\"children\":\"localStorage\"}],\".\"]}],\"\\n\"]}],[\"$r\",\"Sandpack\",null,{\"children\":[[\"$r\",\"pre\",null,{\"children\":[\"$r\",\"code\",null,{\"className\":\"language-js\",\"meta\":\"src/App.js active\",\"children\":\"import { Suspense, use, useState } from 'react';\\nimport { browser } from 'react-dom';\\n\\nfunction SavedDraft() {\\n use(browser('The draft is stored in localStorage.'));\\n const [draft, setDraft] = useState(\\n () =\u003e localStorage.getItem('draft') ?? ''\\n );\\n\\n function handleChange(event) {\\n const nextDraft = event.target.value;\\n setDraft(nextDraft);\\n localStorage.setItem('draft', nextDraft);\\n }\\n\\n return (\\n \u003clabel\u003e\\n Draft:\\n \u003ctextarea\\n value={draft}\\n onChange={handleChange}\\n rows={4}\\n cols={30}\\n /\u003e\\n \u003c/label\u003e\\n );\\n}\\n\\nexport default function App() {\\n return (\\n \u003c\u003e\\n \u003ch1\u003eSaved draft\u003c/h1\u003e\\n \u003cSuspense fallback={\u003cp\u003eLoading draft...\u003c/p\u003e}\u003e\\n \u003cSavedDraft /\u003e\\n \u003c/Suspense\u003e\\n \u003c/\u003e\\n );\\n}\\n\"}]}],[\"$r\",\"pre\",null,{\"children\":[\"$r\",\"code\",null,{\"className\":\"language-js\",\"meta\":\"src/Document.js hidden\",\"children\":\"import App from './App.js';\\n\\nexport default function Document() {\\n return (\\n \u003chtml lang=\\\"en\\\"\u003e\\n \u003chead\u003e\\n \u003ctitle\u003eSaved draft\u003c/title\u003e\\n \u003cstyle\u003e{`\\n h1 { font-size: 24px; margin-top: 0; }\\n label, textarea { display: block; }\\n textarea { margin-top: 5px; }\\n `}\u003c/style\u003e\\n \u003c/head\u003e\\n \u003cbody\u003e\\n \u003cApp /\u003e\\n \u003c/body\u003e\\n \u003c/html\u003e\\n );\\n}\\n\"}]}],[\"$r\",\"pre\",null,{\"children\":[\"$r\",\"code\",null,{\"className\":\"language-js\",\"meta\":\"src/index.js hidden\",\"children\":\"import { hydrateRoot } from 'react-dom/client';\\nimport { renderToReadableStream } from 'react-dom/server';\\nimport Document from './Document.js';\\nimport { flushReadableStreamToFrame } from './demo-helpers.js';\\nimport './styles.css';\\n\\nasync function main(frame) {\\n const stream = await renderToReadableStream(\u003cDocument /\u003e);\\n await flushReadableStreamToFrame(stream, frame);\\n\\n // Wait so both the fallback and hydrated content are visible.\\n await new Promise(resolve =\u003e setTimeout(resolve, 1200));\\n hydrateRoot(frame.contentDocument, \u003cDocument /\u003e);\\n}\\n\\nmain(document.getElementById('preview'));\\n\"}]}],[\"$r\",\"pre\",null,{\"children\":[\"$r\",\"code\",null,{\"className\":\"language-js\",\"meta\":\"src/demo-helpers.js hidden\",\"children\":\"export async function flushReadableStreamToFrame(readable, frame) {\\n const doc = frame.contentWindow.document;\\n const decoder = new TextDecoder();\\n const reader = readable.getReader();\\n\\n while (true) {\\n const {done, value} = await reader.read();\\n if (done) {\\n break;\\n }\\n doc.write(decoder.decode(value, {stream: true}));\\n }\\n\\n doc.write(decoder.decode());\\n doc.close();\\n}\\n\"}]}],[\"$r\",\"pre\",null,{\"children\":[\"$r\",\"code\",null,{\"className\":\"language-html\",\"meta\":\"public/index.html hidden\",\"children\":\"\u003c!DOCTYPE html\u003e\\n\u003chtml lang=\\\"en\\\"\u003e\\n\u003chead\u003e\\n \u003cmeta charset=\\\"UTF-8\\\" /\u003e\\n \u003ctitle\u003eBrowser-only rendering\u003c/title\u003e\\n\u003c/head\u003e\\n\u003cbody\u003e\\n \u003ciframe id=\\\"preview\\\" title=\\\"Rendered page\\\"\u003e\u003c/iframe\u003e\\n\u003c/body\u003e\\n\u003c/html\u003e\\n\"}]}],[\"$r\",\"pre\",null,{\"children\":[\"$r\",\"code\",null,{\"className\":\"language-css\",\"meta\":\"src/styles.css hidden\",\"children\":\"iframe {\\n width: 100%;\\n height: 160px;\\n border: 0;\\n}\\n\"}]}],[\"$r\",\"pre\",null,{\"children\":[\"$r\",\"code\",null,{\"className\":\"language-json\",\"meta\":\"package.json hidden\",\"children\":\"{\\n \\\"dependencies\\\": {\\n \\\"react\\\": \\\"19.3.0-canary-f1f7ed2a-20260904\\\",\\n \\\"react-dom\\\": \\\"19.3.0-canary-f1f7ed2a-20260904\\\",\\n \\\"react-scripts\\\": \\\"latest\\\"\\n },\\n \\\"scripts\\\": {\\n \\\"start\\\": \\\"react-scripts start\\\",\\n \\\"build\\\": \\\"react-scripts build\\\",\\n \\\"test\\\": \\\"react-scripts test --env=jsdom\\\",\\n \\\"eject\\\": \\\"react-scripts eject\\\"\\n }\\n}\\n\"}]}]]}],[\"$r\",\"MaxWidth\",\"194\",{\"children\":[\"\\n\",[\"$r\",\"p\",null,{\"children\":\"During server rendering, React includes the Suspense boundary’s fallback in the HTML. In the browser, React replaces the fallback with the saved draft.\"}],\"\\n\",[\"$r\",\"hr\",null,{}],\"\\n\",[\"$r\",\"h3\",null,{\"id\":\"waiting-for-a-stylesheet-to-load\",\"children\":\"Waiting for a stylesheet to load \"}],\"\\n\",[\"$r\",\"p\",null,{\"children\":[\"A stylesheet rendered with \",[\"$r\",\"a\",null,{\"href\":\"/reference/react-dom/components/link#special-rendering-behavior\",\"children\":[[\"$r\",\"code\",null,{\"children\":\"\u003clink rel=\\\"stylesheet\\\"\u003e\"}],\" and a \",[\"$r\",\"code\",null,{\"children\":\"precedence\"}],\" prop\"]}],\" blocks the Suspense boundary until the stylesheet loads, up to a timeout, so the content doesn’t appear unstyled.\"]}],\"\\n\",[\"$r\",\"p\",null,{\"children\":[\"In the example below, the \",[\"$r\",\"code\",null,{\"children\":\"Card\"}],\" component renders a stylesheet with \",[\"$r\",\"code\",null,{\"children\":\"precedence\"}],\". Press “Show card”: React shows the fallback until the stylesheet has loaded, and then reveals the card with its styles applied.\"]}],\"\\n\",[\"$r\",\"p\",null,{\"children\":\"For comparison, the second button performs the same update without React, in a separate document. Nothing waits for the stylesheet, so the card’s text appears in a fallback font first and then switches:\"}],\"\\n\"]}],[\"$r\",\"Sandpack\",null,{\"children\":[[\"$r\",\"pre\",null,{\"children\":[\"$r\",\"code\",null,{\"className\":\"language-js\",\"children\":\"import { Suspense, useState, startTransition } from 'react';\\nimport { freshStylesheetUrl } from './styles.js';\\nimport VanillaCard from './VanillaCard.js';\\n\\nfunction Card({ href }) {\\n return (\\n \u003c\u003e\\n \u003clink rel=\\\"stylesheet\\\" href={href} precedence=\\\"default\\\" /\u003e\\n \u003cdiv className=\\\"fancy-card\\\"\u003eThis card uses a font from the stylesheet.\u003c/div\u003e\\n \u003c/\u003e\\n );\\n}\\n\\nexport default function App() {\\n const [href, setHref] = useState(null);\\n return (\\n \u003c\u003e\\n \u003cbutton\\n onClick={() =\u003e {\\n startTransition(() =\u003e {\\n setHref(freshStylesheetUrl());\\n });\\n }}\u003e\\n Show card\\n \u003c/button\u003e\\n {href \u0026\u0026 (\\n \u003cSuspense fallback={\u003cp\u003e⌛ Loading styles...\u003c/p\u003e}\u003e\\n \u003cCard href={href} /\u003e\\n \u003c/Suspense\u003e\\n )}\\n \u003chr /\u003e\\n \u003cVanillaCard /\u003e\\n \u003c/\u003e\\n );\\n}\\n\"}]}],[\"$r\",\"pre\",null,{\"children\":[\"$r\",\"code\",null,{\"className\":\"language-js\",\"meta\":\"src/VanillaCard.js\",\"children\":\"import { useRef } from 'react';\\nimport { freshStylesheetUrl } from './styles.js';\\n\\nexport default function VanillaCard() {\\n const ref = useRef(null);\\n function show() {\\n const doc = ref.current.contentWindow.document;\\n doc.open();\\n doc.write(`\\n \u003cstyle\u003e\\n body { margin: 0; }\\n .fancy-card {\\n padding: 20px;\\n border-radius: 8px;\\n color: white;\\n font-family: 'Caveat', sans-serif;\\n font-size: 24px;\\n background: linear-gradient(135deg, #087ea4, #2b3491);\\n }\\n \u003c/style\u003e\\n \u003cdiv class=\\\"fancy-card\\\"\u003eThis card uses a font from the stylesheet.\u003c/div\u003e\\n \u003clink rel=\\\"stylesheet\\\" href=\\\"${freshStylesheetUrl()}\\\"\u003e\\n `);\\n doc.close();\\n }\\n return (\\n \u003c\u003e\\n \u003cbutton onClick={show}\u003eShow card (without React)\u003c/button\u003e\\n \u003ciframe ref={ref} title=\\\"Vanilla card\\\" className=\\\"vanilla-frame\\\" /\u003e\\n \u003c/\u003e\\n );\\n}\\n\"}]}],[\"$r\",\"pre\",null,{\"children\":[\"$r\",\"code\",null,{\"className\":\"language-js\",\"meta\":\"src/styles.js hidden\",\"children\":\"// Add a unique parameter so the stylesheet isn't cached,\\n// and every run shows the loading state.\\nexport function freshStylesheetUrl() {\\n return (\\n 'https://fonts.googleapis.com/css2?family=Caveat\u0026display=swap' +\\n '\u0026t=' +\\n Date.now()\\n );\\n}\\n\"}]}],[\"$r\",\"pre\",null,{\"children\":[\"$r\",\"code\",null,{\"className\":\"language-css\",\"children\":\"#root {\\n min-height: 300px;\\n}\\nbutton {\\n margin-right: 8px;\\n}\\nhr {\\n margin: 16px 0;\\n}\\n.fancy-card {\\n margin-top: 1em;\\n padding: 20px;\\n border-radius: 8px;\\n color: white;\\n font-family: 'Caveat', sans-serif;\\n font-size: 24px;\\n background: linear-gradient(135deg, #087ea4, #2b3491);\\n}\\n.vanilla-frame {\\n display: block;\\n margin-top: 1em;\\n border: none;\\n width: 100%;\\n height: 90px;\\n}\\n\"}]}]]}],[\"$r\",\"MaxWidth\",\"202\",{\"children\":[\"\\n\",[\"$r\",\"hr\",null,{}],\"\\n\",[\"$r\",\"h3\",null,{\"id\":\"animating-from-suspense-content\",\"children\":\"Animating from Suspense content \"}],\"\\n\",[\"$r\",\"p\",null,{\"children\":[\"Suspense composes with \",[\"$r\",\"a\",null,{\"href\":\"/reference/react/ViewTransition\",\"children\":[\"$r\",\"code\",null,{\"children\":\"\u003cViewTransition\u003e\"}]}],\" to animate the swap from the fallback to the content. Wrap the boundary in a \",[\"$r\",\"code\",null,{\"children\":\"\u003cViewTransition\u003e\"}],\", and React treats the swap as an update, cross-fading between the fallback and the content by default:\"]}],\"\\n\"]}],[\"$r\",\"Sandpack\",null,{\"children\":[[\"$r\",\"pre\",null,{\"children\":[\"$r\",\"code\",null,{\"className\":\"language-js\",\"meta\":\"src/Video.js hidden\",\"children\":\"function Thumbnail({video, children}) {\\n return (\\n \u003cdiv\\n aria-hidden=\\\"true\\\"\\n tabIndex={-1}\\n className={`thumbnail ${video.image}`}\\n /\u003e\\n );\\n}\\n\\nexport function Video({video}) {\\n return (\\n \u003cdiv className=\\\"video\\\"\u003e\\n \u003cdiv className=\\\"link\\\"\u003e\\n \u003cThumbnail video={video}\u003e\u003c/Thumbnail\u003e\\n \u003cdiv className=\\\"info\\\"\u003e\\n \u003cdiv className=\\\"video-title\\\"\u003e{video.title}\u003c/div\u003e\\n \u003cdiv className=\\\"video-description\\\"\u003e{video.description}\u003c/div\u003e\\n \u003c/div\u003e\\n \u003c/div\u003e\\n \u003c/div\u003e\\n );\\n}\\n\\nexport function VideoPlaceholder() {\\n const video = {image: 'loading'};\\n return (\\n \u003cdiv className=\\\"video\\\"\u003e\\n \u003cdiv className=\\\"link\\\"\u003e\\n \u003cThumbnail video={video}\u003e\u003c/Thumbnail\u003e\\n \u003cdiv className=\\\"info\\\"\u003e\\n \u003cdiv className=\\\"video-title loading\\\" /\u003e\\n \u003cdiv className=\\\"video-description loading\\\" /\u003e\\n \u003c/div\u003e\\n \u003c/div\u003e\\n \u003c/div\u003e\\n );\\n}\\n\"}]}],[\"$r\",\"pre\",null,{\"children\":[\"$r\",\"code\",null,{\"className\":\"language-js\",\"children\":\"import {ViewTransition, useState, startTransition, Suspense} from 'react';\\nimport {Video, VideoPlaceholder} from './Video';\\nimport {useLazyVideoData} from './data';\\n\\nfunction LazyVideo() {\\n const video = useLazyVideoData();\\n return \u003cVideo video={video} /\u003e;\\n}\\n\\nexport default function Component() {\\n const [showItem, setShowItem] = useState(false);\\n return (\\n \u003c\u003e\\n \u003cbutton\\n onClick={() =\u003e {\\n startTransition(() =\u003e {\\n setShowItem((prev) =\u003e !prev);\\n });\\n }}\u003e\\n {showItem ? '➖' : '➕'}\\n \u003c/button\u003e\\n {showItem ? (\\n \u003cViewTransition\u003e\\n \u003cSuspense fallback={\u003cVideoPlaceholder /\u003e}\u003e\\n \u003cLazyVideo /\u003e\\n \u003c/Suspense\u003e\\n \u003c/ViewTransition\u003e\\n ) : null}\\n \u003c/\u003e\\n );\\n}\\n\"}]}],[\"$r\",\"pre\",null,{\"children\":[\"$r\",\"code\",null,{\"className\":\"language-js\",\"meta\":\"src/data.js hidden\",\"children\":\"import {use} from 'react';\\n\\nlet cache = null;\\n\\nfunction fetchVideo() {\\n if (!cache) {\\n cache = new Promise((resolve) =\u003e {\\n setTimeout(() =\u003e {\\n resolve({\\n id: '1',\\n title: 'First video',\\n description: 'Video description',\\n image: 'blue',\\n });\\n }, 1000);\\n });\\n }\\n return cache;\\n}\\n\\nexport function useLazyVideoData() {\\n return use(fetchVideo());\\n}\\n\"}]}],[\"$r\",\"pre\",null,{\"children\":[\"$r\",\"code\",null,{\"className\":\"language-css\",\"children\":\"#root {\\n display: flex;\\n flex-direction: column;\\n align-items: center;\\n min-height: 200px;\\n}\\nbutton {\\n border: none;\\n border-radius: 50%;\\n width: 50px;\\n height: 50px;\\n display: flex;\\n justify-content: center;\\n align-items: center;\\n background-color: #f0f8ff;\\n color: white;\\n font-size: 20px;\\n cursor: pointer;\\n transition: background-color 0.3s, border 0.3s;\\n}\\nbutton:hover {\\n border: 2px solid #ccc;\\n background-color: #e0e8ff;\\n}\\n.thumbnail {\\n position: relative;\\n aspect-ratio: 16 / 9;\\n display: flex;\\n overflow: hidden;\\n flex-direction: column;\\n justify-content: center;\\n align-items: center;\\n border-radius: 0.5rem;\\n outline-offset: 2px;\\n width: 8rem;\\n vertical-align: middle;\\n background-color: #ffffff;\\n background-size: cover;\\n user-select: none;\\n}\\n.thumbnail.blue {\\n background-image: conic-gradient(at top right, #c76a15, #087ea4, #2b3491);\\n}\\n.loading {\\n background-image: linear-gradient(\\n 90deg,\\n rgba(173, 216, 230, 0.3) 25%,\\n rgba(135, 206, 250, 0.5) 50%,\\n rgba(173, 216, 230, 0.3) 75%\\n );\\n background-size: 200% 100%;\\n animation: shimmer 1.5s infinite;\\n}\\n@keyframes shimmer {\\n 0% {\\n background-position: -200% 0;\\n }\\n 100% {\\n background-position: 200% 0;\\n }\\n}\\n.video {\\n display: flex;\\n flex-direction: row;\\n gap: 0.75rem;\\n align-items: center;\\n margin-top: 1em;\\n}\\n.video .link {\\n display: flex;\\n flex-direction: row;\\n flex: 1 1 0;\\n gap: 0.125rem;\\n outline-offset: 4px;\\n cursor: pointer;\\n}\\n.video .info {\\n display: flex;\\n flex-direction: column;\\n justify-content: center;\\n margin-left: 8px;\\n gap: 0.125rem;\\n}\\n.video .info:hover {\\n text-decoration: underline;\\n}\\n.video-title {\\n font-size: 15px;\\n line-height: 1.25;\\n font-weight: 700;\\n color: #23272f;\\n}\\n.video-title.loading {\\n height: 20px;\\n width: 80px;\\n border-radius: 0.5rem;\\n}\\n.video-description {\\n color: #5e687e;\\n font-size: 13px;\\n border-radius: 0.5rem;\\n}\\n.video-description.loading {\\n height: 15px;\\n width: 100px;\\n}\\n\"}]}],[\"$r\",\"pre\",null,{\"children\":[\"$r\",\"code\",null,{\"className\":\"language-json\",\"meta\":\"package.json hidden\",\"children\":\"{\\n \\\"dependencies\\\": {\\n \\\"react\\\": \\\"19.3.0-canary-f1f7ed2a-20260904\\\",\\n \\\"react-dom\\\": \\\"19.3.0-canary-f1f7ed2a-20260904\\\",\\n \\\"react-scripts\\\": \\\"latest\\\"\\n }\\n}\\n\"}]}]]}],[\"$r\",\"MaxWidth\",\"216\",{\"children\":[\"\\n\",[\"$r\",\"Note\",null,{\"children\":[[\"$r\",\"p\",null,{\"children\":[\"Where you place the \",[\"$r\",\"code\",null,{\"children\":\"\u003cViewTransition\u003e\"}],\" relative to the boundary determines whether the fallback and content cross-fade as one update or animate as separate exit and enter animations. You can also \",[\"$r\",\"a\",null,{\"href\":\"/reference/react/ViewTransition#customizing-animations\",\"children\":\"customize the animation\"}],\" with View Transition classes.\"]}],[\"$r\",\"p\",null,{\"children\":[\"$r\",\"a\",null,{\"href\":\"/reference/react/ViewTransition#animating-from-suspense-content\",\"children\":\"Learn more about animating from Suspense content.\"}]}]]}],\"\\n\",[\"$r\",\"hr\",null,{}],\"\\n\",[\"$r\",\"h3\",null,{\"id\":\"waiting-for-a-font-to-load\",\"children\":\"Waiting for a font to load \"}],\"\\n\",[\"$r\",\"p\",null,{\"children\":[\"When a \",[\"$r\",\"a\",null,{\"href\":\"/reference/react/ViewTransition\",\"children\":[\"$r\",\"code\",null,{\"children\":\"\u003cViewTransition\u003e\"}]}],\" animates a Suspense boundary’s reveal, React waits up to 500 ms for new fonts the content introduces so the text doesn’t flash with a fallback font. This only happens during a \",[\"$r\",\"code\",null,{\"children\":\"\u003cViewTransition\u003e\"}],\" update.\"]}],\"\\n\",[\"$r\",\"p\",null,{\"children\":[\"In the example below, the Suspense boundary is wrapped in a \",[\"$r\",\"code\",null,{\"children\":\"\u003cViewTransition\u003e\"}],\", and the \",[\"$r\",\"code\",null,{\"children\":\"Quote\"}],\" component suspends while its data loads. Rendering the quote loads a stylesheet that introduces the font. React keeps the fallback visible while the stylesheet and font load. If the font loads within the 500 ms limit, the quote appears already in its font.\"]}],\"\\n\",[\"$r\",\"p\",null,{\"children\":\"For comparison, the second button performs the same update without React. Nothing waits for the font, so the text appears in a fallback font first and then switches:\"}],\"\\n\"]}],[\"$r\",\"Sandpack\",null,{\"children\":[[\"$r\",\"pre\",null,{\"children\":[\"$r\",\"code\",null,{\"className\":\"language-js\",\"children\":\"import {\\n ViewTransition,\\n Suspense,\\n use,\\n useState,\\n startTransition,\\n} from 'react';\\nimport { fetchQuote } from './data.js';\\nimport {\\n freshFontUrl,\\n freshStylesheetUrl,\\n} from './font.js';\\nimport VanillaQuote from './VanillaQuote.js';\\n\\nfunction Quote({ stylesheet }) {\\n const quote = use(fetchQuote());\\n return (\\n \u003c\u003e\\n \u003clink\\n rel=\\\"stylesheet\\\"\\n href={stylesheet}\\n precedence=\\\"default\\\"\\n /\u003e\\n \u003cp className=\\\"quote fancy\\\"\u003e{quote}\u003c/p\u003e\\n \u003c/\u003e\\n );\\n}\\n\\nexport default function App() {\\n const [stylesheet, setStylesheet] = useState(null);\\n return (\\n \u003c\u003e\\n \u003cbutton\\n onClick={() =\u003e {\\n startTransition(() =\u003e {\\n setStylesheet(freshStylesheetUrl());\\n });\\n }}\u003e\\n Show quote\\n \u003c/button\u003e\\n {stylesheet \u0026\u0026 (\\n \u003cViewTransition\u003e\\n \u003cSuspense fallback={\u003cp className=\\\"quote\\\"\u003e⌛ Loading quote...\u003c/p\u003e}\u003e\\n \u003cQuote stylesheet={stylesheet} /\u003e\\n \u003c/Suspense\u003e\\n \u003c/ViewTransition\u003e\\n )}\\n \u003chr /\u003e\\n \u003cVanillaQuote /\u003e\\n \u003c/\u003e\\n );\\n}\\n\"}]}],[\"$r\",\"pre\",null,{\"children\":[\"$r\",\"code\",null,{\"className\":\"language-js\",\"meta\":\"src/VanillaQuote.js\",\"children\":\"import { useRef } from 'react';\\nimport { freshFontUrl } from './font.js';\\n\\nexport default function VanillaQuote() {\\n const ref = useRef(null);\\n function show() {\\n const style = document.createElement('style');\\n style.textContent = `@font-face {\\n font-family: 'VanillaFancy';\\n src: url(${freshFontUrl()}) format('woff2');\\n font-display: swap;\\n }`;\\n document.head.appendChild(style);\\n ref.current.innerHTML = `\u003cp class=\\\"quote vanilla-fancy\\\"\u003eThe best way to predict the future is to invent it.\u003c/p\u003e`;\\n }\\n return (\\n \u003c\u003e\\n \u003cbutton onClick={show}\u003eShow quote (without React)\u003c/button\u003e\\n \u003cdiv ref={ref} /\u003e\\n \u003c/\u003e\\n );\\n}\\n\"}]}],[\"$r\",\"pre\",null,{\"children\":[\"$r\",\"code\",null,{\"className\":\"language-js\",\"meta\":\"src/font.js hidden\",\"children\":\"export function freshStylesheetUrl() {\\n // Add a unique parameter so the stylesheet isn't cached.\\n return (\\n 'https://fonts.googleapis.com/css2?family=Caveat\u0026display=swap' +\\n '\u0026t=' +\\n Date.now()\\n );\\n}\\n\\nexport function freshFontUrl() {\\n // Add a unique parameter so the font isn't cached.\\n return (\\n 'https://fonts.gstatic.com/s/caveat/v23/WnznHAc5bAfYB2QRah7pcpNvOx-pjfJ9eIWpYT5Kmgq3sw.woff2' +\\n '?t=' +\\n Date.now()\\n );\\n}\\n\"}]}],[\"$r\",\"pre\",null,{\"children\":[\"$r\",\"code\",null,{\"className\":\"language-js\",\"meta\":\"src/data.js hidden\",\"children\":\"// Note: the way you would do data fetching depends on\\n// the framework that you use together with Suspense.\\n// Normally, the caching logic would be inside a framework.\\n\\nlet cache = null;\\n\\nexport function fetchQuote() {\\n if (!cache) {\\n cache = new Promise((resolve) =\u003e {\\n // Add a fake delay to make waiting noticeable.\\n setTimeout(() =\u003e {\\n resolve(\\n 'The best way to predict the future is to invent it.'\\n );\\n }, 500);\\n });\\n }\\n return cache;\\n}\\n\"}]}],[\"$r\",\"pre\",null,{\"children\":[\"$r\",\"code\",null,{\"className\":\"language-css\",\"children\":\"#root {\\n min-height: 260px;\\n}\\n.quote {\\n font-size: 20px;\\n margin-top: 1em;\\n}\\n.fancy {\\n font-family: 'Caveat', sans-serif;\\n}\\n.vanilla-fancy {\\n font-family: 'VanillaFancy', sans-serif;\\n}\\nhr {\\n margin: 16px 0;\\n}\\n\"}]}],[\"$r\",\"pre\",null,{\"children\":[\"$r\",\"code\",null,{\"className\":\"language-json\",\"meta\":\"package.json hidden\",\"children\":\"{\\n \\\"dependencies\\\": {\\n \\\"react\\\": \\\"19.3.0\\\",\\n \\\"react-dom\\\": \\\"19.3.0\\\",\\n \\\"react-scripts\\\": \\\"latest\\\"\\n }\\n}\\n\"}]}]]}],[\"$r\",\"MaxWidth\",\"226\",{\"children\":[\"\\n\",[\"$r\",\"hr\",null,{}],\"\\n\",[\"$r\",\"h3\",null,{\"id\":\"waiting-for-an-image-to-load\",\"children\":\"Waiting for an image to load \"}],\"\\n\",[\"$r\",\"p\",null,{\"children\":[\"When a Suspense boundary reveals content inside a \",[\"$r\",\"a\",null,{\"href\":\"/reference/react/ViewTransition\",\"children\":[\"$r\",\"code\",null,{\"children\":\"\u003cViewTransition\u003e\"}]}],\", React waits up to 500 ms for visible images to load before starting the animation. Setting \",[\"$r\",\"code\",null,{\"children\":\"loading=\\\"lazy\\\"\"}],\" or adding an \",[\"$r\",\"code\",null,{\"children\":\"onLoad\"}],\" handler opts an image out.\"]}],\"\\n\",[\"$r\",\"p\",null,{\"children\":[\"Compare the same boundary inside and outside a \",[\"$r\",\"code\",null,{\"children\":\"\u003cViewTransition\u003e\"}],\". Inside, React keeps the profile skeleton visible for up to 500 ms while the image loads, so the card can be revealed with its image already in place. Outside, Suspense stops showing the skeleton as soon as the Promise resolves. If the image is still loading, the card appears first and the image pops in afterward:\"]}],\"\\n\"]}],[\"$r\",\"Sandpack\",null,{\"children\":[[\"$r\",\"pre\",null,{\"children\":[\"$r\",\"code\",null,{\"className\":\"language-js\",\"children\":\"import {\\n ViewTransition,\\n Suspense,\\n use,\\n useState,\\n} from 'react';\\nimport { fetchImageSrc } from './image.js';\\n\\nfunction Profile({ cacheKey }) {\\n const src = use(fetchImageSrc(cacheKey));\\n return (\\n \u003cdiv className=\\\"card\\\"\u003e\\n \u003cimg src={src} alt=\\\"\\\" width={80} height={80} /\u003e\\n \u003cp\u003eJack Pope\u003c/p\u003e\\n \u003c/div\u003e\\n );\\n}\\n\\nfunction ProfilePlaceholder() {\\n return (\\n \u003cdiv className=\\\"card\\\"\u003e\\n \u003cdiv className=\\\"avatar-placeholder\\\" /\u003e\\n \u003cp className=\\\"name-placeholder\\\"\u003e\u0026nbsp;\u003c/p\u003e\\n \u003c/div\u003e\\n );\\n}\\n\\nexport default function App() {\\n const [showWithTransition, setShowWithTransition] =\\n useState(false);\\n const [showWithoutTransition, setShowWithoutTransition] =\\n useState(false);\\n return (\\n \u003c\u003e\\n \u003cbutton onClick={() =\u003e setShowWithTransition(true)}\u003e\\n Show profile with View Transition\\n \u003c/button\u003e\\n {showWithTransition \u0026\u0026 (\\n \u003cViewTransition\u003e\\n \u003cSuspense fallback={\u003cProfilePlaceholder /\u003e}\u003e\\n \u003cProfile cacheKey=\\\"with-transition\\\" /\u003e\\n \u003c/Suspense\u003e\\n \u003c/ViewTransition\u003e\\n )}\\n \u003chr /\u003e\\n \u003cbutton onClick={() =\u003e setShowWithoutTransition(true)}\u003e\\n Show profile without View Transition\\n \u003c/button\u003e\\n {showWithoutTransition \u0026\u0026 (\\n \u003cSuspense fallback={\u003cProfilePlaceholder /\u003e}\u003e\\n \u003cProfile cacheKey=\\\"without-transition\\\" /\u003e\\n \u003c/Suspense\u003e\\n )}\\n \u003c/\u003e\\n );\\n}\\n\"}]}],[\"$r\",\"pre\",null,{\"children\":[\"$r\",\"code\",null,{\"className\":\"language-js\",\"meta\":\"src/image.js hidden\",\"children\":\"// Normally, the caching logic would be inside a framework.\\nconst cache = new Map();\\n\\nexport function fetchImageSrc(cacheKey) {\\n if (!cache.has(cacheKey)) {\\n cache.set(cacheKey, loadImageSrc());\\n }\\n return cache.get(cacheKey);\\n}\\n\\nasync function loadImageSrc() {\\n // Delay the response so the Suspense fallback is visible.\\n await new Promise(resolve =\u003e setTimeout(resolve, 1000));\\n // Add a unique parameter so the image isn't cached.\\n return 'https://react.dev/images/team/jack-pope.jpg?t=' + Date.now();\\n}\\n\"}]}],[\"$r\",\"pre\",null,{\"children\":[\"$r\",\"code\",null,{\"className\":\"language-css\",\"children\":\"#root {\\n min-height: 390px;\\n}\\n.card {\\n margin-top: 1em;\\n}\\n.card img {\\n display: block;\\n border-radius: 50%;\\n background: #dfe3e9;\\n}\\n.card p {\\n font-weight: bold;\\n}\\n.avatar-placeholder {\\n width: 80px;\\n height: 80px;\\n border-radius: 50%;\\n background: #dfe3e9;\\n}\\n.name-placeholder {\\n width: 90px;\\n border-radius: 4px;\\n background: #dfe3e9;\\n}\\nhr {\\n margin: 16px 0;\\n}\\n\"}]}],[\"$r\",\"pre\",null,{\"children\":[\"$r\",\"code\",null,{\"className\":\"language-json\",\"meta\":\"package.json hidden\",\"children\":\"{\\n \\\"dependencies\\\": {\\n \\\"react\\\": \\\"19.3.0\\\",\\n \\\"react-dom\\\": \\\"19.3.0\\\",\\n \\\"react-scripts\\\": \\\"latest\\\"\\n }\\n}\\n\"}]}]]}],[\"$r\",\"MaxWidth\",\"236\",{\"children\":[\"\\n\",[\"$r\",\"hr\",null,{}],\"\\n\",[\"$r\",\"h3\",null,{\"id\":\"coordinating-fonts-images-and-stylesheets\",\"children\":\"Coordinating fonts, images, and stylesheets \"}],\"\\n\",[\"$r\",\"p\",null,{\"children\":[\"A Suspense boundary can wait for data, stylesheets, fonts, and images at once. Waiting for fonts and images only happens during a \",[\"$r\",\"a\",null,{\"href\":\"/reference/react/ViewTransition\",\"children\":[\"$r\",\"code\",null,{\"children\":\"\u003cViewTransition\u003e\"}]}],\" update. In the example below, the \",[\"$r\",\"code\",null,{\"children\":\"ProfileCard\"}],\" component suspends while its data loads, and renders a stylesheet with \",[\"$r\",\"code\",null,{\"children\":\"precedence\"}],\", text in a new font, and a portrait. React keeps the skeleton visible while the data and the stylesheet load. The \",[\"$r\",\"code\",null,{\"children\":\"\u003cViewTransition\u003e\"}],\" reveal then waits for the font and the image, so the card appears complete.\"]}],\"\\n\",[\"$r\",\"p\",null,{\"children\":\"For comparison, the version without React loads the same data and shows every resource arriving on its own schedule:\"}],\"\\n\"]}],[\"$r\",\"Sandpack\",null,{\"children\":[[\"$r\",\"pre\",null,{\"children\":[\"$r\",\"code\",null,{\"className\":\"language-js\",\"children\":\"import { ViewTransition, Suspense, use, useState, startTransition } from 'react';\\nimport { fetchQuote } from './data.js';\\nimport { freshStylesheetUrl, freshImageUrl } from './resources.js';\\nimport VanillaProfileCard from './VanillaProfileCard.js';\\n\\nfunction ProfileCard({ resources }) {\\n const quote = use(resources.quotePromise);\\n return (\\n \u003c\u003e\\n \u003clink rel=\\\"stylesheet\\\" href={resources.stylesheet} precedence=\\\"default\\\" /\u003e\\n \u003cdiv className=\\\"profile-card\\\"\u003e\\n \u003cimg src={resources.image} alt=\\\"\\\" width={80} height={80} /\u003e\\n \u003cdiv\u003e\\n \u003cp className=\\\"name\\\"\u003eJack Pope\u003c/p\u003e\\n \u003cp className=\\\"bio\\\"\u003e{quote}\u003c/p\u003e\\n \u003c/div\u003e\\n \u003c/div\u003e\\n \u003c/\u003e\\n );\\n}\\n\\nfunction ProfileCardPlaceholder() {\\n return (\\n \u003cdiv className=\\\"profile-card\\\"\u003e\\n \u003cdiv className=\\\"avatar-placeholder\\\" /\u003e\\n \u003cdiv\u003e\\n \u003cp className=\\\"name name-placeholder\\\"\u003e\u0026nbsp;\u003c/p\u003e\\n \u003cp className=\\\"bio bio-placeholder\\\"\u003e\u0026nbsp;\u003c/p\u003e\\n \u003c/div\u003e\\n \u003c/div\u003e\\n );\\n}\\n\\nexport default function App() {\\n const [resources, setResources] = useState(null);\\n return (\\n \u003c\u003e\\n \u003cbutton\\n onClick={() =\u003e {\\n startTransition(() =\u003e {\\n setResources({\\n quotePromise: fetchQuote(),\\n stylesheet: freshStylesheetUrl(),\\n image: freshImageUrl(),\\n });\\n });\\n }}\u003e\\n Show profile\\n \u003c/button\u003e\\n {resources \u0026\u0026 (\\n \u003cViewTransition\u003e\\n \u003cSuspense fallback={\u003cProfileCardPlaceholder /\u003e}\u003e\\n \u003cProfileCard resources={resources} /\u003e\\n \u003c/Suspense\u003e\\n \u003c/ViewTransition\u003e\\n )}\\n \u003chr /\u003e\\n \u003cVanillaProfileCard /\u003e\\n \u003c/\u003e\\n );\\n}\\n\"}]}],[\"$r\",\"pre\",null,{\"children\":[\"$r\",\"code\",null,{\"className\":\"language-js\",\"meta\":\"src/VanillaProfileCard.js\",\"children\":\"import { useRef } from 'react';\\nimport { fetchQuote } from './data.js';\\nimport { freshStylesheetUrl, freshImageUrl } from './resources.js';\\n\\nexport default function VanillaProfileCard() {\\n const ref = useRef(null);\\n async function show() {\\n const doc = ref.current.contentWindow.document;\\n doc.open();\\n doc.write(`\\n \u003cstyle\u003e\\n body { margin: 0; font-family: sans-serif; }\\n .profile-card { display: flex; gap: 12px; align-items: center; }\\n .profile-card img { border-radius: 50%; background: #dfe3e9; }\\n .name { margin: 0 0 4px; font-family: 'Caveat', sans-serif; font-size: 22px; line-height: 28px; font-weight: bold; }\\n .bio { margin: 0; font-family: 'Caveat', sans-serif; font-size: 20px; line-height: 26px; }\\n .avatar-placeholder { width: 80px; height: 80px; border-radius: 50%; background: #dfe3e9; }\\n .name-placeholder, .bio-placeholder { border-radius: 4px; background: #dfe3e9; color: transparent; }\\n .name-placeholder { width: 90px; }\\n .bio-placeholder { width: 220px; height: 52px; }\\n \u003c/style\u003e\\n \u003cdiv class=\\\"profile-card\\\"\u003e\\n \u003cdiv class=\\\"avatar-placeholder\\\"\u003e\u003c/div\u003e\\n \u003cdiv\u003e\\n \u003cp class=\\\"name name-placeholder\\\"\u003e\u0026nbsp;\u003c/p\u003e\\n \u003cp class=\\\"bio bio-placeholder\\\"\u003e\u0026nbsp;\u003c/p\u003e\\n \u003c/div\u003e\\n \u003c/div\u003e\\n `);\\n doc.close();\\n\\n const quote = await fetchQuote();\\n doc.body.innerHTML = `\\n \u003cdiv class=\\\"profile-card\\\"\u003e\\n \u003cimg src=\\\"${freshImageUrl()}\\\" alt=\\\"\\\" width=\\\"80\\\" height=\\\"80\\\" /\u003e\\n \u003cdiv\u003e\\n \u003cp class=\\\"name\\\"\u003eJack Pope\u003c/p\u003e\\n \u003cp class=\\\"bio\\\"\u003e${quote}\u003c/p\u003e\\n \u003c/div\u003e\\n \u003c/div\u003e`;\\n const stylesheet = doc.createElement('link');\\n stylesheet.rel = 'stylesheet';\\n stylesheet.href = freshStylesheetUrl();\\n doc.head.appendChild(stylesheet);\\n }\\n return (\\n \u003c\u003e\\n \u003cbutton onClick={show}\u003eShow profile (without React)\u003c/button\u003e\\n \u003ciframe ref={ref} title=\\\"Vanilla profile card\\\" className=\\\"vanilla-frame\\\" /\u003e\\n \u003c/\u003e\\n );\\n}\\n\"}]}],[\"$r\",\"pre\",null,{\"children\":[\"$r\",\"code\",null,{\"className\":\"language-js\",\"meta\":\"src/resources.js hidden\",\"children\":\"// Add a unique parameter so the resources aren't cached,\\n// and every run shows the loading state.\\nexport function freshStylesheetUrl() {\\n return (\\n 'https://fonts.googleapis.com/css2?family=Caveat\u0026display=swap' +\\n '\u0026t=' +\\n Date.now()\\n );\\n}\\n\\nexport function freshImageUrl() {\\n return 'https://react.dev/images/team/jack-pope.jpg?t=' + Date.now();\\n}\\n\"}]}],[\"$r\",\"pre\",null,{\"children\":[\"$r\",\"code\",null,{\"className\":\"language-js\",\"meta\":\"src/data.js hidden\",\"children\":\"// Note: the way you would do data fetching depends on\\n// the framework that you use together with Suspense.\\n\\nexport async function fetchQuote() {\\n // Add a fake delay to make waiting noticeable.\\n await new Promise((resolve) =\u003e {\\n setTimeout(resolve, 1000);\\n });\\n return 'The best way to predict the future is to invent it.';\\n}\\n\"}]}],[\"$r\",\"pre\",null,{\"children\":[\"$r\",\"code\",null,{\"className\":\"language-css\",\"children\":\"#root {\\n min-height: 320px;\\n}\\nbutton {\\n margin-right: 8px;\\n}\\nhr {\\n margin: 16px 0;\\n}\\n.profile-card {\\n display: flex;\\n gap: 12px;\\n align-items: center;\\n margin-top: 1em;\\n}\\n.profile-card img {\\n border-radius: 50%;\\n background: #dfe3e9;\\n}\\n.name {\\n margin: 0 0 4px;\\n font-family: 'Caveat', sans-serif;\\n font-size: 22px;\\n line-height: 28px;\\n font-weight: bold;\\n}\\n.bio {\\n margin: 0;\\n font-family: 'Caveat', sans-serif;\\n font-size: 20px;\\n line-height: 26px;\\n}\\n.profile-card img {\\n display: block;\\n}\\n.avatar-placeholder {\\n width: 80px;\\n height: 80px;\\n border-radius: 50%;\\n background: #dfe3e9;\\n}\\n.name-placeholder,\\n.bio-placeholder {\\n border-radius: 4px;\\n background: #dfe3e9;\\n color: transparent;\\n}\\n.name-placeholder {\\n width: 90px;\\n}\\n.bio-placeholder {\\n width: 220px;\\n height: 52px;\\n}\\n.vanilla-frame {\\n display: block;\\n margin-top: 1em;\\n border: none;\\n width: 100%;\\n height: 110px;\\n}\\n\"}]}],[\"$r\",\"pre\",null,{\"children\":[\"$r\",\"code\",null,{\"className\":\"language-json\",\"meta\":\"package.json hidden\",\"children\":\"{\\n \\\"dependencies\\\": {\\n \\\"react\\\": \\\"19.3.0\\\",\\n \\\"react-dom\\\": \\\"19.3.0\\\",\\n \\\"react-scripts\\\": \\\"latest\\\"\\n }\\n}\\n\"}]}]]}],[\"$r\",\"MaxWidth\",\"last\",{\"children\":[\"\\n\",[\"$r\",\"hr\",null,{}],\"\\n\",[\"$r\",\"h2\",null,{\"id\":\"troubleshooting\",\"children\":\"Troubleshooting \"}],\"\\n\",[\"$r\",\"h3\",null,{\"id\":\"preventing-unwanted-fallbacks\",\"children\":\"How do I prevent the UI from being replaced by a fallback during an update? \"}],\"\\n\",[\"$r\",\"p\",null,{\"children\":\"Replacing visible UI with a fallback creates a jarring user experience. This can happen when an update causes a component to suspend, and the nearest Suspense boundary is already showing content to the user.\"}],\"\\n\",[\"$r\",\"p\",null,{\"children\":[\"To prevent this from happening, \",[\"$r\",\"a\",null,{\"href\":\"#preventing-already-revealed-content-from-hiding\",\"children\":[\"mark the update as non-urgent using \",[\"$r\",\"code\",null,{\"children\":\"startTransition\"}]]}],\". During a Transition, React will wait until enough data has loaded to prevent an unwanted fallback from appearing:\"]}],\"\\n\",[\"$r\",\"pre\",null,{\"children\":[\"$r\",\"code\",null,{\"className\":\"language-js\",\"meta\":\"{2-3,5}\",\"children\":\"function handleNextPageClick() {\\n // If this update suspends, don't hide the already displayed content\\n startTransition(() =\u003e {\\n setCurrentPage(currentPage + 1);\\n });\\n}\\n\"}]}],\"\\n\",[\"$r\",\"p\",null,{\"children\":[\"This will avoid hiding existing content. However, any newly rendered \",[\"$r\",\"code\",null,{\"children\":\"Suspense\"}],\" boundaries will still immediately display fallbacks to avoid blocking the UI and let the user see the content as it becomes available.\"]}],\"\\n\",[\"$r\",\"p\",null,{\"children\":[[\"$r\",\"strong\",null,{\"children\":\"React will only prevent unwanted fallbacks during non-urgent updates\"}],\". It will not delay a render if it’s the result of an urgent update. You must opt in with an API like \",[\"$r\",\"a\",null,{\"href\":\"/reference/react/startTransition\",\"children\":[\"$r\",\"code\",null,{\"children\":\"startTransition\"}]}],\" or \",[\"$r\",\"a\",null,{\"href\":\"/reference/react/useDeferredValue\",\"children\":[\"$r\",\"code\",null,{\"children\":\"useDeferredValue\"}]}],\".\"]}],\"\\n\",[\"$r\",\"p\",null,{\"children\":[\"If your router is integrated with Suspense, it should wrap its updates into \",[\"$r\",\"a\",null,{\"href\":\"/reference/react/startTransition\",\"children\":[\"$r\",\"code\",null,{\"children\":\"startTransition\"}]}],\" automatically.\"]}]]}]]","meta":{"title":"\u003cSuspense\u003e"},"languages":null},"__N_SSG":true},"page":"/[[...markdownPath]]","query":{"markdownPath":["reference","react","Suspense"]},"buildId":"iL-S_VcpSPApikCxaBjlp","isFallback":false,"gsp":true,"scriptLoader":[]}

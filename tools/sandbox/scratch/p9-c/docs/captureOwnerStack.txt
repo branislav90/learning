@@ -1,0 +1,881 @@
+captureOwnerStack – React
+window.dataLayer = window.dataLayer || [];function gtag(){dataLayer.push(arguments);}gtag('js', new Date());gtag('config', 'G-B1E83PJ3RT');
+ (function () {
+ try {
+ let logShown = false;
+ function setUwu(isUwu) {
+ try {
+ if (isUwu) {
+ localStorage.setItem('uwu', true);
+ document.documentElement.classList.add('uwu');
+ if (!logShown) {
+ console.log('uwu mode! turn off with ?uwu=0');
+ console.log('logo credit to @sawaratsuki1004 via https://github.com/SAWARATSUKI/KawaiiLogos');
+ logShown = true;
+ }
+ } else {
+ localStorage.removeItem('uwu');
+ document.documentElement.classList.remove('uwu');
+ console.log('uwu mode off. turn on with ?uwu');
+ }
+ } catch (err) { }
+ }
+ window.__setUwu = setUwu;
+ function checkQueryParam() {
+ const params = new URLSearchParams(window.location.search);
+ const value = params.get('uwu');
+ switch(value) {
+ case '':
+ case 'true':
+ case '1':
+ return true;
+ case 'false':
+ case '0':
+ return false;
+ default:
+ return null;
+ }
+ }
+ function checkLocalStorage() {
+ try {
+ return localStorage.getItem('uwu') === 'true';
+ } catch (err) {
+ return false;
+ }
+ }
+ const uwuQueryParam = checkQueryParam();
+ if (uwuQueryParam != null) {
+ setUwu(uwuQueryParam);
+ } else if (checkLocalStorage()) {
+ document.documentElement.classList.add('uwu');
+ }
+ } catch (err) { }
+ })();
+ (function () {
+ function setTheme(newTheme) {
+ window.__theme = newTheme;
+ if (newTheme === 'dark') {
+ document.documentElement.classList.add('dark');
+ } else if (newTheme === 'light') {
+ document.documentElement.classList.remove('dark');
+ }
+ }
+ var preferredTheme;
+ try {
+ preferredTheme = localStorage.getItem('theme');
+ } catch (err) { }
+ window.__setPreferredTheme = function(newTheme) {
+ preferredTheme = newTheme;
+ setTheme(newTheme);
+ try {
+ localStorage.setItem('theme', newTheme);
+ } catch (err) { }
+ };
+ var initialTheme = preferredTheme;
+ var darkQuery = window.matchMedia('(prefers-color-scheme: dark)');
+ if (!initialTheme) {
+ initialTheme = darkQuery.matches ? 'dark' : 'light';
+ }
+ setTheme(initialTheme);
+ darkQuery.addEventListener('change', function (e) {
+ if (!preferredTheme) {
+ setTheme(e.matches ? 'dark' : 'light');
+ }
+ });
+ // Detect whether the browser is Mac to display platform specific content
+ // An example of such content can be the keyboard shortcut displayed in the search bar
+ document.documentElement.classList.add(
+ window.navigator.platform.includes('Mac')
+ ? "platform-mac" 
+ : "platform-win"
+ );
+ })();
+React
+v
+19.3
+Search
+⌘
+Ctrl
+K
+Learn
+Reference
+Community
+Blog
+react@19.3
+Overview
+Hooks
+useActionState
+useCallback
+useContext
+useDebugValue
+useDeferredValue
+useEffect
+useEffectEvent
+useId
+useImperativeHandle
+useInsertionEffect
+useLayoutEffect
+useMemo
+useOptimistic
+useReducer
+useRef
+useState
+useSyncExternalStore
+useTransition
+Components
+&lt;Fragment&gt; (&lt;&gt;)
+&lt;Profiler&gt;
+&lt;StrictMode&gt;
+&lt;Suspense&gt;
+&lt;Activity&gt;
+&lt;ViewTransition&gt;
+APIs
+act
+addTransitionType
+cache
+cacheSignal
+captureOwnerStack
+createContext
+lazy
+memo
+startTransition
+use
+experimental_taintObjectReference
+ - This feature is available in the latest Experimental version of React
+experimental_taintUniqueValue
+ - This feature is available in the latest Experimental version of React
+react-dom@19.3
+Hooks
+useFormStatus
+Components
+Common (e.g. &lt;div&gt;)
+&lt;form&gt;
+&lt;input&gt;
+&lt;option&gt;
+&lt;progress&gt;
+&lt;select&gt;
+&lt;textarea&gt;
+&lt;img&gt;
+&lt;link&gt;
+&lt;meta&gt;
+&lt;script&gt;
+&lt;style&gt;
+&lt;title&gt;
+APIs
+browser
+createPortal
+flushSync
+preconnect
+prefetchDNS
+preinit
+preinitModule
+preload
+preloadModule
+Client APIs
+createRoot
+hydrateRoot
+Server APIs
+renderToPipeableStream
+renderToReadableStream
+renderToStaticMarkup
+renderToString
+resume
+resumeToPipeableStream
+Static APIs
+prerender
+prerenderToNodeStream
+resumeAndPrerender
+resumeAndPrerenderToNodeStream
+React Compiler
+Configuration
+compilationMode
+gating
+logger
+panicThreshold
+target
+Directives
+&quot;use memo&quot;
+&quot;use no memo&quot;
+Compiling Libraries
+React DevTools
+React Performance tracks
+React DevTools for agents
+ - This feature is available in the latest Experimental version of React
+eslint-plugin-react-hooks
+Lints
+exhaustive-deps
+rules-of-hooks
+component-hook-factories
+config
+error-boundaries
+gating
+globals
+immutability
+incompatible-library
+preserve-manual-memoization
+purity
+refs
+set-state-in-effect
+set-state-in-render
+static-components
+unsupported-syntax
+use-memo
+Rules of React
+Overview
+Components and Hooks must be pure
+React calls Components and Hooks
+Rules of Hooks
+React Server Components
+Server Components
+Server Functions
+Directives
+&#x27;use client&#x27;
+&#x27;use server&#x27;
+Legacy APIs
+Legacy React APIs
+Children
+cloneElement
+Component
+createElement
+createRef
+forwardRef
+isValidElement
+PureComponent
+API Reference
+APIs
+Copy page
+Copy
+captureOwnerStack
+captureOwnerStack
+ reads the current Owner Stack in development and returns it as a string if available.
+const
+stack
+ = 
+captureOwnerStack
+(
+)
+;
+Reference 
+captureOwnerStack()
+Usage 
+Enhance a custom error overlay 
+Troubleshooting 
+The Owner Stack is 
+null
+captureOwnerStack
+ is not available 
+Reference 
+captureOwnerStack()
+Call 
+captureOwnerStack
+ to get the current Owner Stack.
+import
+*
+as
+React
+from
+&#x27;react&#x27;
+;
+function
+Component
+(
+)
+{
+if
+(
+process
+.
+env
+.
+NODE_ENV
+ !== 
+&#x27;production&#x27;
+)
+{
+const
+ownerStack
+ = 
+React
+.
+captureOwnerStack
+(
+)
+;
+console
+.
+log
+(
+ownerStack
+)
+;
+}
+}
+Parameters 
+captureOwnerStack
+ does not take any parameters.
+Returns 
+captureOwnerStack
+ returns 
+string | null
+.
+Owner Stacks are available in
+Component render
+Effects (e.g. 
+useEffect
+)
+React’s event handlers (e.g. 
+&lt;button onClick={...} /&gt;
+)
+React error handlers (
+React Root options
+onCaughtError
+, 
+onRecoverableError
+, and 
+onUncaughtError
+)
+If no Owner Stack is available, 
+null
+ is returned (see 
+Troubleshooting: The Owner Stack is 
+null
+).
+Caveats 
+Owner Stacks are only available in development. 
+captureOwnerStack
+ will always return 
+null
+ outside of development.
+Deep Dive
+Owner Stack vs Component Stack 
+Show Details
+The Owner Stack is different from the Component Stack available in React error handlers like 
+errorInfo.componentStack
+ in 
+onUncaughtError
+.
+For example, consider the following code:
+index.js
+App.js
+index.js
+Reload
+Clear
+Fork
+import
+{
+captureOwnerStack
+}
+from
+&#x27;react&#x27;
+;
+import
+{
+createRoot
+}
+from
+&#x27;react-dom/client&#x27;
+;
+import
+App
+,
+{
+Component
+}
+from
+&#x27;./App.js&#x27;
+;
+import
+&#x27;./styles.css&#x27;
+;
+createRoot
+(
+document
+.
+createElement
+(
+&#x27;div&#x27;
+)
+,
+{
+onUncaughtError
+:
+(
+error
+,
+errorInfo
+)
+=&gt;
+{
+// The stacks are logged instead of showing them in the UI directly to
+// highlight that browsers will apply sourcemaps to the logged stacks.
+// Note that sourcemapping is only applied in the real browser console not
+// in the fake one displayed on this page.
+// Press &quot;fork&quot; to be able to view the sourcemapped stack in a real console.
+console
+.
+log
+(
+errorInfo
+.
+componentStack
+)
+;
+console
+.
+log
+(
+captureOwnerStack
+(
+)
+)
+;
+}
+,
+}
+)
+.
+render
+(
+&lt;
+App
+&gt;
+&lt;
+Component
+label
+=
+&quot;disabled&quot;
+/&gt;
+&lt;/
+App
+&gt;
+)
+;
+Show more
+SubComponent
+ would throw an error.
+The Component Stack of that error would be
+at 
+SubComponent
+at 
+fieldset
+at 
+Component
+at 
+main
+at 
+React
+.
+Suspense
+at 
+App
+However, the Owner Stack would only read
+at 
+Component
+Neither 
+App
+ nor the DOM components (e.g. 
+fieldset
+) are considered Owners in this Stack since they didn’t contribute to “creating” the node containing 
+SubComponent
+. 
+App
+ and DOM components only forwarded the node. 
+App
+ just rendered the 
+children
+ node as opposed to 
+Component
+ which created a node containing 
+SubComponent
+ via 
+&lt;SubComponent /&gt;
+.
+Neither 
+Navigation
+ nor 
+legend
+ are in the stack at all since it’s only a sibling to a node containing 
+&lt;SubComponent /&gt;
+.
+SubComponent
+ is omitted because it’s already part of the callstack.
+Usage 
+Enhance a custom error overlay 
+import
+{
+captureOwnerStack
+}
+from
+&quot;react&quot;
+;
+import
+{
+instrumentedConsoleError
+}
+from
+&quot;./errorOverlay&quot;
+;
+const
+originalConsoleError
+ = 
+console
+.
+error
+;
+console.error
+ = 
+function
+patchedConsoleError
+(
+...
+args
+)
+{
+originalConsoleError
+.
+apply
+(
+console
+,
+args
+)
+;
+const
+ownerStack
+ = 
+captureOwnerStack
+(
+)
+;
+onConsoleError
+(
+{
+// Keep in mind that in a real application, console.error can be
+// called with multiple arguments which you should account for.
+consoleMessage
+:
+args
+[
+0
+]
+,
+ownerStack
+,
+}
+)
+;
+}
+;
+If you intercept 
+console.error
+ calls to highlight them in an error overlay, you can call 
+captureOwnerStack
+ to include the Owner Stack.
+index.js
+errorOverlay.js
+App.js
+index.js
+Reload
+Clear
+Fork
+import
+{
+captureOwnerStack
+}
+from
+&quot;react&quot;
+;
+import
+{
+createRoot
+}
+from
+&quot;react-dom/client&quot;
+;
+import
+App
+from
+&#x27;./App&#x27;
+;
+import
+{
+onConsoleError
+}
+from
+&quot;./errorOverlay&quot;
+;
+import
+&#x27;./styles.css&#x27;
+;
+const
+originalConsoleError
+ = 
+console
+.
+error
+;
+console
+.
+error
+ = 
+function
+patchedConsoleError
+(
+...
+args
+)
+{
+originalConsoleError
+.
+apply
+(
+console
+,
+args
+)
+;
+const
+ownerStack
+ = 
+captureOwnerStack
+(
+)
+;
+onConsoleError
+(
+{
+// Keep in mind that in a real application, console.error can be
+// called with multiple arguments which you should account for.
+consoleMessage
+:
+args
+[
+0
+]
+,
+ownerStack
+,
+}
+)
+;
+}
+;
+const
+container
+ = 
+document
+.
+getElementById
+(
+&quot;root&quot;
+)
+;
+createRoot
+(
+container
+)
+.
+render
+(
+&lt;
+App
+/&gt;
+)
+;
+Show more
+Troubleshooting 
+The Owner Stack is 
+null
+The call of 
+captureOwnerStack
+ happened outside of a React controlled function e.g. in a 
+setTimeout
+ callback, after a 
+fetch
+ call or in a custom DOM event handler. During render, Effects, React event handlers, and React error handlers (e.g. 
+hydrateRoot#options.onCaughtError
+) Owner Stacks should be available.
+In the example below, clicking the button will log an empty Owner Stack because 
+captureOwnerStack
+ was called during a custom DOM event handler. The Owner Stack must be captured earlier e.g. by moving the call of 
+captureOwnerStack
+ into the Effect body.
+App.js
+App.js
+Reload
+Clear
+Fork
+import
+{
+captureOwnerStack
+,
+useEffect
+}
+from
+&#x27;react&#x27;
+;
+export
+default
+function
+App
+(
+)
+{
+useEffect
+(
+(
+)
+=&gt;
+{
+// Should call `captureOwnerStack` here.
+function
+handleEvent
+(
+)
+{
+// Calling it in a custom DOM event handler is too late.
+// The Owner Stack will be `null` at this point.
+console
+.
+log
+(
+&#x27;Owner Stack: &#x27;
+,
+captureOwnerStack
+(
+)
+)
+;
+}
+document
+.
+addEventListener
+(
+&#x27;click&#x27;
+,
+handleEvent
+)
+;
+return
+(
+)
+=&gt;
+{
+document
+.
+removeEventListener
+(
+&#x27;click&#x27;
+,
+handleEvent
+)
+;
+}
+}
+)
+return
+&lt;
+button
+&gt;
+Click me to see that Owner Stacks are not available in custom DOM event handlers
+&lt;/
+button
+&gt;
+;
+}
+Show more
+captureOwnerStack
+ is not available 
+captureOwnerStack
+ is only exported in development builds. It will be 
+undefined
+ in production builds. If 
+captureOwnerStack
+ is used in files that are bundled for production and development, you should conditionally access it from a namespace import.
+// Don&#x27;t use named imports of `captureOwnerStack` in files that are bundled for development and production.
+import
+{
+captureOwnerStack
+}
+from
+&#x27;react&#x27;
+;
+// Use a namespace import instead and access `captureOwnerStack` conditionally.
+import
+*
+as
+React
+from
+&#x27;react&#x27;
+;
+if
+(
+process
+.
+env
+.
+NODE_ENV
+ !== 
+&#x27;production&#x27;
+)
+{
+const
+ownerStack
+ = 
+React
+.
+captureOwnerStack
+(
+)
+;
+console
+.
+log
+(
+&#x27;Owner Stack&#x27;
+,
+ownerStack
+)
+;
+}
+Previous
+cacheSignal
+Next
+createContext
+Copyright © Meta Platforms, Inc
+no uwu plz
+uwu?
+Logo by
+@sawaratsuki1004
+Learn React
+Quick Start
+Installation
+Describing the UI
+Adding Interactivity
+Managing State
+Escape Hatches
+API Reference
+React APIs
+React DOM APIs
+Community
+Code of Conduct
+Meet the Team
+Docs Contributors
+Acknowledgements
+More
+Blog
+React Native
+Privacy
+Terms
+On this page
+Overview
+Reference 
+captureOwnerStack()
+Usage 
+Enhance a custom error overlay 
+Troubleshooting 
+The Owner Stack is 
+null
+captureOwnerStack
+ is not available 
+{"props":{"pageProps":{"toc":"[{\"url\":\"#\",\"text\":\"Overview\",\"depth\":2},{\"url\":\"#reference\",\"depth\":2,\"text\":\"Reference \"},{\"url\":\"#captureownerstack\",\"depth\":3,\"text\":[[\"$r\",\"code\",null,{\"children\":\"captureOwnerStack()\"}],\" \"]},{\"url\":\"#usage\",\"depth\":2,\"text\":\"Usage \"},{\"url\":\"#enhance-a-custom-error-overlay\",\"depth\":3,\"text\":\"Enhance a custom error overlay \"},{\"url\":\"#troubleshooting\",\"depth\":2,\"text\":\"Troubleshooting \"},{\"url\":\"#the-owner-stack-is-null\",\"depth\":3,\"text\":[\"The Owner Stack is \",[\"$r\",\"code\",null,{\"children\":\"null\"}],\" \"]},{\"url\":\"#captureownerstack-is-not-available\",\"depth\":3,\"text\":[[\"$r\",\"code\",null,{\"children\":\"captureOwnerStack\"}],\" is not available \"]}]","content":"[[\"$r\",\"MaxWidth\",\"42\",{\"children\":[[\"$r\",\"Intro\",null,{\"children\":[[\"$r\",\"p\",null,{\"children\":[[\"$r\",\"code\",null,{\"children\":\"captureOwnerStack\"}],\" reads the current Owner Stack in development and returns it as a string if available.\"]}],[\"$r\",\"pre\",null,{\"children\":[\"$r\",\"code\",null,{\"className\":\"language-js\",\"children\":\"const stack = captureOwnerStack();\\n\"}]}]]}],\"\\n\",[\"$r\",\"InlineToc\",null,{}],\"\\n\",[\"$r\",\"hr\",null,{}],\"\\n\",[\"$r\",\"h2\",null,{\"id\":\"reference\",\"children\":\"Reference \"}],\"\\n\",[\"$r\",\"h3\",null,{\"id\":\"captureownerstack\",\"children\":[[\"$r\",\"code\",null,{\"children\":\"captureOwnerStack()\"}],\" \"]}],\"\\n\",[\"$r\",\"p\",null,{\"children\":[\"Call \",[\"$r\",\"code\",null,{\"children\":\"captureOwnerStack\"}],\" to get the current Owner Stack.\"]}],\"\\n\",[\"$r\",\"pre\",null,{\"children\":[\"$r\",\"code\",null,{\"className\":\"language-js\",\"meta\":\"{5,5}\",\"children\":\"import * as React from 'react';\\n\\nfunction Component() {\\n if (process.env.NODE_ENV !== 'production') {\\n const ownerStack = React.captureOwnerStack();\\n console.log(ownerStack);\\n }\\n}\\n\"}]}],\"\\n\",[\"$r\",\"h4\",null,{\"id\":\"parameters\",\"children\":\"Parameters \"}],\"\\n\",[\"$r\",\"p\",null,{\"children\":[[\"$r\",\"code\",null,{\"children\":\"captureOwnerStack\"}],\" does not take any parameters.\"]}],\"\\n\",[\"$r\",\"h4\",null,{\"id\":\"returns\",\"children\":\"Returns \"}],\"\\n\",[\"$r\",\"p\",null,{\"children\":[[\"$r\",\"code\",null,{\"children\":\"captureOwnerStack\"}],\" returns \",[\"$r\",\"code\",null,{\"children\":\"string | null\"}],\".\"]}],\"\\n\",[\"$r\",\"p\",null,{\"children\":\"Owner Stacks are available in\"}],\"\\n\",[\"$r\",\"ul\",null,{\"children\":[\"\\n\",[\"$r\",\"li\",null,{\"children\":\"Component render\"}],\"\\n\",[\"$r\",\"li\",null,{\"children\":[\"Effects (e.g. \",[\"$r\",\"code\",null,{\"children\":\"useEffect\"}],\")\"]}],\"\\n\",[\"$r\",\"li\",null,{\"children\":[\"React’s event handlers (e.g. \",[\"$r\",\"code\",null,{\"children\":\"\u003cbutton onClick={...} /\u003e\"}],\")\"]}],\"\\n\",[\"$r\",\"li\",null,{\"children\":[\"React error handlers (\",[\"$r\",\"a\",null,{\"href\":\"/reference/react-dom/client/createRoot#parameters\",\"children\":\"React Root options\"}],\" \",[\"$r\",\"code\",null,{\"children\":\"onCaughtError\"}],\", \",[\"$r\",\"code\",null,{\"children\":\"onRecoverableError\"}],\", and \",[\"$r\",\"code\",null,{\"children\":\"onUncaughtError\"}],\")\"]}],\"\\n\"]}],\"\\n\",[\"$r\",\"p\",null,{\"children\":[\"If no Owner Stack is available, \",[\"$r\",\"code\",null,{\"children\":\"null\"}],\" is returned (see \",[\"$r\",\"a\",null,{\"href\":\"#the-owner-stack-is-null\",\"children\":[\"Troubleshooting: The Owner Stack is \",[\"$r\",\"code\",null,{\"children\":\"null\"}]]}],\").\"]}],\"\\n\",[\"$r\",\"h4\",null,{\"id\":\"caveats\",\"children\":\"Caveats \"}],\"\\n\",[\"$r\",\"ul\",null,{\"children\":[\"\\n\",[\"$r\",\"li\",null,{\"children\":[\"Owner Stacks are only available in development. \",[\"$r\",\"code\",null,{\"children\":\"captureOwnerStack\"}],\" will always return \",[\"$r\",\"code\",null,{\"children\":\"null\"}],\" outside of development.\"]}],\"\\n\"]}],\"\\n\",[\"$r\",\"DeepDive\",null,{\"children\":[[\"$r\",\"h4\",null,{\"id\":\"owner-stack-vs-component-stack\",\"children\":\"Owner Stack vs Component Stack \"}],[\"$r\",\"p\",null,{\"children\":[\"The Owner Stack is different from the Component Stack available in React error handlers like \",[\"$r\",\"a\",null,{\"href\":\"/reference/react-dom/client/hydrateRoot#error-logging-in-production\",\"children\":[[\"$r\",\"code\",null,{\"children\":\"errorInfo.componentStack\"}],\" in \",[\"$r\",\"code\",null,{\"children\":\"onUncaughtError\"}]]}],\".\"]}],[\"$r\",\"p\",null,{\"children\":\"For example, consider the following code:\"}],[\"$r\",\"Sandpack\",null,{\"children\":[[\"$r\",\"pre\",null,{\"children\":[\"$r\",\"code\",null,{\"className\":\"language-js\",\"meta\":\"src/App.js\",\"children\":\"import {Suspense} from 'react';\\n\\nfunction SubComponent({disabled}) {\\n if (disabled) {\\n throw new Error('disabled');\\n }\\n}\\n\\nexport function Component({label}) {\\n return (\\n \u003cfieldset\u003e\\n \u003clegend\u003e{label}\u003c/legend\u003e\\n \u003cSubComponent key={label} disabled={label === 'disabled'} /\u003e\\n \u003c/fieldset\u003e\\n );\\n}\\n\\nfunction Navigation() {\\n return null;\\n}\\n\\nexport default function App({children}) {\\n return (\\n \u003cSuspense fallback=\\\"loading...\\\"\u003e\\n \u003cmain\u003e\\n \u003cNavigation /\u003e\\n {children}\\n \u003c/main\u003e\\n \u003c/Suspense\u003e\\n );\\n}\\n\"}]}],[\"$r\",\"pre\",null,{\"children\":[\"$r\",\"code\",null,{\"className\":\"language-js\",\"meta\":\"src/index.js\",\"children\":\"import {captureOwnerStack} from 'react';\\nimport {createRoot} from 'react-dom/client';\\nimport App, {Component} from './App.js';\\nimport './styles.css';\\n\\ncreateRoot(document.createElement('div'), {\\n onUncaughtError: (error, errorInfo) =\u003e {\\n // The stacks are logged instead of showing them in the UI directly to\\n // highlight that browsers will apply sourcemaps to the logged stacks.\\n // Note that sourcemapping is only applied in the real browser console not\\n // in the fake one displayed on this page.\\n // Press \\\"fork\\\" to be able to view the sourcemapped stack in a real console.\\n console.log(errorInfo.componentStack);\\n console.log(captureOwnerStack());\\n },\\n}).render(\\n \u003cApp\u003e\\n \u003cComponent label=\\\"disabled\\\" /\u003e\\n \u003c/App\u003e\\n);\\n\"}]}],[\"$r\",\"pre\",null,{\"children\":[\"$r\",\"code\",null,{\"className\":\"language-html\",\"meta\":\"public/index.html hidden\",\"children\":\"\u003c!DOCTYPE html\u003e\\n\u003chtml lang=\\\"en\\\"\u003e\\n \u003chead\u003e\\n \u003cmeta charset=\\\"UTF-8\\\" /\u003e\\n \u003cmeta name=\\\"viewport\\\" content=\\\"width=device-width, initial-scale=1.0\\\" /\u003e\\n \u003ctitle\u003eDocument\u003c/title\u003e\\n \u003c/head\u003e\\n \u003cbody\u003e\\n \u003cp\u003eCheck the console output.\u003c/p\u003e\\n \u003c/body\u003e\\n\u003c/html\u003e\\n\"}]}]]}],[\"$r\",\"p\",null,{\"children\":[[\"$r\",\"code\",null,{\"children\":\"SubComponent\"}],\" would throw an error.\\nThe Component Stack of that error would be\"]}],[\"$r\",\"pre\",null,{\"children\":[\"$r\",\"code\",null,{\"children\":\"at SubComponent\\nat fieldset\\nat Component\\nat main\\nat React.Suspense\\nat App\\n\"}]}],[\"$r\",\"p\",null,{\"children\":\"However, the Owner Stack would only read\"}],[\"$r\",\"pre\",null,{\"children\":[\"$r\",\"code\",null,{\"children\":\"at Component\\n\"}]}],[\"$r\",\"p\",null,{\"children\":[\"Neither \",[\"$r\",\"code\",null,{\"children\":\"App\"}],\" nor the DOM components (e.g. \",[\"$r\",\"code\",null,{\"children\":\"fieldset\"}],\") are considered Owners in this Stack since they didn’t contribute to “creating” the node containing \",[\"$r\",\"code\",null,{\"children\":\"SubComponent\"}],\". \",[\"$r\",\"code\",null,{\"children\":\"App\"}],\" and DOM components only forwarded the node. \",[\"$r\",\"code\",null,{\"children\":\"App\"}],\" just rendered the \",[\"$r\",\"code\",null,{\"children\":\"children\"}],\" node as opposed to \",[\"$r\",\"code\",null,{\"children\":\"Component\"}],\" which created a node containing \",[\"$r\",\"code\",null,{\"children\":\"SubComponent\"}],\" via \",[\"$r\",\"code\",null,{\"children\":\"\u003cSubComponent /\u003e\"}],\".\"]}],[\"$r\",\"p\",null,{\"children\":[\"Neither \",[\"$r\",\"code\",null,{\"children\":\"Navigation\"}],\" nor \",[\"$r\",\"code\",null,{\"children\":\"legend\"}],\" are in the stack at all since it’s only a sibling to a node containing \",[\"$r\",\"code\",null,{\"children\":\"\u003cSubComponent /\u003e\"}],\".\"]}],[\"$r\",\"p\",null,{\"children\":[[\"$r\",\"code\",null,{\"children\":\"SubComponent\"}],\" is omitted because it’s already part of the callstack.\"]}]]}],\"\\n\",[\"$r\",\"h2\",null,{\"id\":\"usage\",\"children\":\"Usage \"}],\"\\n\",[\"$r\",\"h3\",null,{\"id\":\"enhance-a-custom-error-overlay\",\"children\":\"Enhance a custom error overlay \"}],\"\\n\",[\"$r\",\"pre\",null,{\"children\":[\"$r\",\"code\",null,{\"className\":\"language-js\",\"meta\":\"[[1, 5, \\\"console.error\\\"], [4, 7, \\\"captureOwnerStack\\\"]]\",\"children\":\"import { captureOwnerStack } from \\\"react\\\";\\nimport { instrumentedConsoleError } from \\\"./errorOverlay\\\";\\n\\nconst originalConsoleError = console.error;\\nconsole.error = function patchedConsoleError(...args) {\\n originalConsoleError.apply(console, args);\\n const ownerStack = captureOwnerStack();\\n onConsoleError({\\n // Keep in mind that in a real application, console.error can be\\n // called with multiple arguments which you should account for.\\n consoleMessage: args[0],\\n ownerStack,\\n });\\n};\\n\"}]}],\"\\n\",[\"$r\",\"p\",null,{\"children\":[\"If you intercept \",[\"$r\",\"CodeStep\",null,{\"step\":1,\"children\":[\"$r\",\"code\",null,{\"children\":\"console.error\"}]}],\" calls to highlight them in an error overlay, you can call \",[\"$r\",\"CodeStep\",null,{\"step\":2,\"children\":[\"$r\",\"code\",null,{\"children\":\"captureOwnerStack\"}]}],\" to include the Owner Stack.\"]}],\"\\n\"]}],[\"$r\",\"Sandpack\",null,{\"children\":[[\"$r\",\"pre\",null,{\"children\":[\"$r\",\"code\",null,{\"className\":\"language-css\",\"meta\":\"src/styles.css\",\"children\":\"* {\\n box-sizing: border-box;\\n}\\n\\nbody {\\n font-family: sans-serif;\\n margin: 20px;\\n padding: 0;\\n}\\n\\nh1 {\\n margin-top: 0;\\n font-size: 22px;\\n}\\n\\nh2 {\\n margin-top: 0;\\n font-size: 20px;\\n}\\n\\ncode {\\n font-size: 1.2em;\\n}\\n\\nul {\\n padding-inline-start: 20px;\\n}\\n\\nlabel, button { display: block; margin-bottom: 20px; }\\nhtml, body { min-height: 300px; }\\n\\n#error-dialog {\\n position: absolute;\\n top: 0;\\n right: 0;\\n bottom: 0;\\n left: 0;\\n background-color: white;\\n padding: 15px;\\n opacity: 0.9;\\n text-wrap: wrap;\\n overflow: scroll;\\n}\\n\\n.text-red {\\n color: red;\\n}\\n\\n.-mb-20 {\\n margin-bottom: -20px;\\n}\\n\\n.mb-0 {\\n margin-bottom: 0;\\n}\\n\\n.mb-10 {\\n margin-bottom: 10px;\\n}\\n\\npre {\\n text-wrap: wrap;\\n}\\n\\npre.nowrap {\\n text-wrap: nowrap;\\n}\\n\\n.hidden {\\n display: none;\\n}\\n\"}]}],[\"$r\",\"pre\",null,{\"children\":[\"$r\",\"code\",null,{\"className\":\"language-html\",\"meta\":\"public/index.html hidden\",\"children\":\"\u003c!DOCTYPE html\u003e\\n\u003chtml\u003e\\n\u003chead\u003e\\n \u003ctitle\u003eMy app\u003c/title\u003e\\n\u003c/head\u003e\\n\u003cbody\u003e\\n\u003c!--\\n Error dialog in raw HTML\\n since an error in the React app may crash.\\n--\u003e\\n\u003cdiv id=\\\"error-dialog\\\" class=\\\"hidden\\\"\u003e\\n \u003ch1 id=\\\"error-title\\\" class=\\\"text-red\\\"\u003eError\u003c/h1\u003e\\n \u003cp\u003e\\n \u003cpre id=\\\"error-body\\\"\u003e\u003c/pre\u003e\\n \u003c/p\u003e\\n \u003ch2 class=\\\"-mb-20\\\"\u003eOwner Stack:\u003c/h4\u003e\\n \u003cpre id=\\\"error-owner-stack\\\" class=\\\"nowrap\\\"\u003e\u003c/pre\u003e\\n \u003cbutton\\n id=\\\"error-close\\\"\\n class=\\\"mb-10\\\"\\n onclick=\\\"document.getElementById('error-dialog').classList.add('hidden')\\\"\\n \u003e\\n Close\\n \u003c/button\u003e\\n\u003c/div\u003e\\n\u003c!-- This is the DOM node --\u003e\\n\u003cdiv id=\\\"root\\\"\u003e\u003c/div\u003e\\n\u003c/body\u003e\\n\u003c/html\u003e\\n\\n\"}]}],[\"$r\",\"pre\",null,{\"children\":[\"$r\",\"code\",null,{\"className\":\"language-js\",\"meta\":\"src/errorOverlay.js\",\"children\":\"\\nexport function onConsoleError({ consoleMessage, ownerStack }) {\\n const errorDialog = document.getElementById(\\\"error-dialog\\\");\\n const errorBody = document.getElementById(\\\"error-body\\\");\\n const errorOwnerStack = document.getElementById(\\\"error-owner-stack\\\");\\n\\n // Display console.error() message\\n errorBody.innerText = consoleMessage;\\n\\n // Display owner stack\\n errorOwnerStack.innerText = ownerStack;\\n\\n // Show the dialog\\n errorDialog.classList.remove(\\\"hidden\\\");\\n}\\n\"}]}],[\"$r\",\"pre\",null,{\"children\":[\"$r\",\"code\",null,{\"className\":\"language-js\",\"meta\":\"src/index.js active\",\"children\":\"import { captureOwnerStack } from \\\"react\\\";\\nimport { createRoot } from \\\"react-dom/client\\\";\\nimport App from './App';\\nimport { onConsoleError } from \\\"./errorOverlay\\\";\\nimport './styles.css';\\n\\nconst originalConsoleError = console.error;\\nconsole.error = function patchedConsoleError(...args) {\\n originalConsoleError.apply(console, args);\\n const ownerStack = captureOwnerStack();\\n onConsoleError({\\n // Keep in mind that in a real application, console.error can be\\n // called with multiple arguments which you should account for.\\n consoleMessage: args[0],\\n ownerStack,\\n });\\n};\\n\\nconst container = document.getElementById(\\\"root\\\");\\ncreateRoot(container).render(\u003cApp /\u003e);\\n\"}]}],[\"$r\",\"pre\",null,{\"children\":[\"$r\",\"code\",null,{\"className\":\"language-js\",\"meta\":\"src/App.js\",\"children\":\"function Component() {\\n return \u003cbutton onClick={() =\u003e console.error('Some console error')}\u003eTrigger console.error()\u003c/button\u003e;\\n}\\n\\nexport default function App() {\\n return \u003cComponent /\u003e;\\n}\\n\"}]}]]}],[\"$r\",\"MaxWidth\",\"52\",{\"children\":[\"\\n\",[\"$r\",\"h2\",null,{\"id\":\"troubleshooting\",\"children\":\"Troubleshooting \"}],\"\\n\",[\"$r\",\"h3\",null,{\"id\":\"the-owner-stack-is-null\",\"children\":[\"The Owner Stack is \",[\"$r\",\"code\",null,{\"children\":\"null\"}],\" \"]}],\"\\n\",[\"$r\",\"p\",null,{\"children\":[\"The call of \",[\"$r\",\"code\",null,{\"children\":\"captureOwnerStack\"}],\" happened outside of a React controlled function e.g. in a \",[\"$r\",\"code\",null,{\"children\":\"setTimeout\"}],\" callback, after a \",[\"$r\",\"code\",null,{\"children\":\"fetch\"}],\" call or in a custom DOM event handler. During render, Effects, React event handlers, and React error handlers (e.g. \",[\"$r\",\"code\",null,{\"children\":\"hydrateRoot#options.onCaughtError\"}],\") Owner Stacks should be available.\"]}],\"\\n\",[\"$r\",\"p\",null,{\"children\":[\"In the example below, clicking the button will log an empty Owner Stack because \",[\"$r\",\"code\",null,{\"children\":\"captureOwnerStack\"}],\" was called during a custom DOM event handler. The Owner Stack must be captured earlier e.g. by moving the call of \",[\"$r\",\"code\",null,{\"children\":\"captureOwnerStack\"}],\" into the Effect body.\"]}],\"\\n\"]}],[\"$r\",\"Sandpack\",null,{\"children\":[\"$r\",\"pre\",null,{\"children\":[\"$r\",\"code\",null,{\"className\":\"language-js\",\"children\":\"import {captureOwnerStack, useEffect} from 'react';\\n\\nexport default function App() {\\n useEffect(() =\u003e {\\n // Should call `captureOwnerStack` here.\\n function handleEvent() {\\n // Calling it in a custom DOM event handler is too late.\\n // The Owner Stack will be `null` at this point.\\n console.log('Owner Stack: ', captureOwnerStack());\\n }\\n\\n document.addEventListener('click', handleEvent);\\n\\n return () =\u003e {\\n document.removeEventListener('click', handleEvent);\\n }\\n })\\n\\n return \u003cbutton\u003eClick me to see that Owner Stacks are not available in custom DOM event handlers\u003c/button\u003e;\\n}\\n\"}]}]}],[\"$r\",\"MaxWidth\",\"last\",{\"children\":[\"\\n\",[\"$r\",\"h3\",null,{\"id\":\"captureownerstack-is-not-available\",\"children\":[[\"$r\",\"code\",null,{\"children\":\"captureOwnerStack\"}],\" is not available \"]}],\"\\n\",[\"$r\",\"p\",null,{\"children\":[[\"$r\",\"code\",null,{\"children\":\"captureOwnerStack\"}],\" is only exported in development builds. It will be \",[\"$r\",\"code\",null,{\"children\":\"undefined\"}],\" in production builds. If \",[\"$r\",\"code\",null,{\"children\":\"captureOwnerStack\"}],\" is used in files that are bundled for production and development, you should conditionally access it from a namespace import.\"]}],\"\\n\",[\"$r\",\"pre\",null,{\"children\":[\"$r\",\"code\",null,{\"className\":\"language-js\",\"children\":\"// Don't use named imports of `captureOwnerStack` in files that are bundled for development and production.\\nimport {captureOwnerStack} from 'react';\\n// Use a namespace import instead and access `captureOwnerStack` conditionally.\\nimport * as React from 'react';\\n\\nif (process.env.NODE_ENV !== 'production') {\\n const ownerStack = React.captureOwnerStack();\\n console.log('Owner Stack', ownerStack);\\n}\\n\"}]}]]}]]","meta":{"title":"captureOwnerStack"},"languages":null},"__N_SSG":true},"page":"/[[...markdownPath]]","query":{"markdownPath":["reference","react","captureOwnerStack"]},"buildId":"iL-S_VcpSPApikCxaBjlp","isFallback":false,"gsp":true,"scriptLoader":[]}

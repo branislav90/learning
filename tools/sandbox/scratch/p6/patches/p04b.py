@@ -1,0 +1,9 @@
+from patchlib import apply
+apply('04',[
+("consider Temporal ⚠ (not yet universally available; verify) or a date library","consider Temporal (MDN compat data, 2026-10-22: Chrome 144, Firefox 139, Safari only in preview; not in Node 24, so use a polyfill or date library if you need it today)"),
+("TanStack Query, SWR (⚠ verify defaults; both treat results as opaque values and use structural sharing/shallow comparison, not entity identity)","TanStack Query, SWR (both treat results as opaque values and compare/share structure rather than track entity identity; TanStack Query's `structuralSharing` default and `replaceEqualDeep` behaviour were verified, SWR's comparison was not)"),
+("TanStack Query does this by default for query results (`structuralSharing`) ⚠ *verify current option and behavior*;","TanStack Query does this by default for query results (`structuralSharing`, verified in 5.104: `replaceEqualDeep(old, deepEqualNew) === old`);"),
+("Other string formats are implementation-defined. ⚠ Because the two forms","Other string formats are implementation-defined. Verified in Node 24 with `TZ=America/Los_Angeles`: `new Date('2024-01-02')` is `2024-01-02T00:00:00Z` and prints as Jan 1 local time, while `new Date('2024-01-02T10:00:00')` is local (`18:00Z`). Because the two forms"),
+("Redux Toolkit's `createSlice` uses Immer so that \"mutating\" code compiles to immutable updates ⚠ *verify current version behavior and the `createEntityAdapter` API in the docs* ([09](./09-redux-toolkit.md)).","Redux Toolkit's `createSlice` uses Immer so that \"mutating\" code compiles to immutable updates; `createEntityAdapter` exists in RTK 2.13 (see [09](./09-redux-toolkit.md))."),
+("store libraries ship memoized-selector helpers ⚠ verify.","store libraries ship memoized-selector helpers (Reselect's `createSelector` is re-exported by RTK 2)."),
+])

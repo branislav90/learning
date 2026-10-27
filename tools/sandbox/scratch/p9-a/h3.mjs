@@ -1,0 +1,24 @@
+import {JSDOM} from "jsdom";
+const dom=new JSDOM("<!doctype html><html><body></body></html>",{pretendToBeVisual:true});
+const g=globalThis;
+for(const k of ["window","document","navigator","Node","HTMLElement","Element","MutationObserver","Event","CustomEvent"]) {try{g[k]=dom.window[k]}catch{Object.defineProperty(g,k,{value:dom.window[k],configurable:true})}}
+g.IS_REACT_ACT_ENVIRONMENT=false;
+const React=(await import("react")).default; const {Suspense,lazy}=await import("react");
+const {renderToString}=await import("react-dom/server");
+const {hydrateRoot}=await import("react-dom/client");
+const h=React.createElement;const sleep=ms=>new Promise(r=>setTimeout(r,ms));
+const log=[];const t0=Date.now();
+const Btn=()=>h("button",{id:"b",onClick(){log.push("handler@"+(Date.now()-t0))}},"go");
+let res;const Lz=lazy(()=>new Promise(r=>{res=()=>r({default:Btn})}));
+const c=document.createElement("div");
+c.innerHTML=renderToString(h("div",null,h(Suspense,{fallback:"fb"},h(Btn))));document.body.append(c);
+const hr=hydrateRoot(c,h("div",null,h(Suspense,{fallback:"fb"},h(Lz))));
+await sleep(100);
+console.log("res defined:",typeof res);
+c.querySelector("#b").dispatchEvent(new dom.window.MouseEvent("click",{bubbles:true,cancelable:true}));
+log.push("dispatched@"+(Date.now()-t0));
+await sleep(50);
+res&&res(); await sleep(300);
+console.log(log);
+c.querySelector("#b").dispatchEvent(new dom.window.MouseEvent("click",{bubbles:true}));
+await sleep(50);console.log(log);

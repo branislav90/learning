@@ -1,0 +1,143 @@
+ 
+ 
+ 
+ 
+ 
+ Test Projects | Guide | Vitest 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ This documentation covers Vitest v3 (old version) . For the latest version, see https://vitest.dev . Skip to content Vitest Search K Main Navigation Guide & API Config Browser Mode Resources Advanced API Blog Team v3.2.7 v3.2.7 Releases Notes Contributing unreleased v4.x v2.x v1.x v0.x English 简体中文 English 简体中文 Appearance Menu Return to top Sidebar Navigation Introduction Why Vitest Getting Started Features Config Reference API Test API Reference Mock Functions Vi Utility Expect ExpectTypeOf Assert AssertType Guides CLI Test Filtering Test Projects Reporters Coverage Snapshot Mocking Parallelism Testing Types Vitest UI In-Source Testing Test Context Test Annotations Environment Extending Matchers IDE Integration Debugging Common Errors Migration Guide Migrating to Vitest 3.0 Migrating from Jest Performance Profiling Test Performance Improving Performance Browser Mode Node API Reference Comparisons On this page Test Projects ​ Sample Project GitHub - Play Online WARNING This feature is also known as a workspace . The workspace is deprecated since 3.2 and replaced with the projects configuration. They are functionally the same. Vitest provides a way to define multiple project configurations within a single Vitest process. This feature is particularly useful for monorepo setups but can also be used to run tests with different configurations, such as resolve.alias , plugins , or test.browser and more. Defining Projects ​ You can define projects in your root config : vitest.config.ts ts import { defineConfig } from &#39;vitest/config&#39; 
+ 
+ export default defineConfig ({ 
+ test: { 
+ projects: [ &#39;packages/*&#39; ], 
+ }, 
+ }) Project configurations are inlined configs, files, or glob patterns referencing your projects. For example, if you have a folder named packages that contains your projects, you can define an array in your root Vitest config: vitest.config.ts ts import { defineConfig } from &#39;vitest/config&#39; 
+ 
+ export default defineConfig ({ 
+ test: { 
+ projects: [ &#39;packages/*&#39; ], 
+ }, 
+ }) Vitest will treat every folder in packages as a separate project even if it doesn&#39;t have a config file inside. If this glob pattern matches any file , it will be considered a Vitest config even if it doesn&#39;t have a vitest in its name or has an obscure file extension. WARNING Vitest does not treat the root vitest.config file as a project unless it is explicitly specified in the configuration. Consequently, the root configuration will only influence global options such as reporters and coverage . Note that Vitest will always run certain plugin hooks, like apply , config , configResolved or configureServer , specified in the root config file. Vitest also uses the same plugins to execute global setups and custom coverage provider. You can also reference projects with their config files: vitest.config.ts ts import { defineConfig } from &#39;vitest/config&#39; 
+ 
+ export default defineConfig ({ 
+ test: { 
+ projects: [ &#39;packages/*/vitest.config.{e2e,unit}.ts&#39; ], 
+ }, 
+ }) This pattern will only include projects with a vitest.config file that contains e2e or unit before the extension. You can also define projects using inline configuration. The configuration supports both syntaxes simultaneously. vitest.config.ts ts import { defineConfig } from &#39;vitest/config&#39; 
+ 
+ export default defineConfig ({ 
+ test: { 
+ projects: [ 
+ // matches every folder and file inside the `packages` folder 
+ &#39;packages/*&#39; , 
+ { 
+ // add &quot;extends: true&quot; to inherit the options from the root config 
+ extends: true , 
+ test: { 
+ include: [ &#39;tests/**/*.{browser}.test.{ts,js}&#39; ], 
+ // it is recommended to define a name when using inline configs 
+ name: &#39;happy-dom&#39; , 
+ environment: &#39;happy-dom&#39; , 
+ } 
+ }, 
+ { 
+ test: { 
+ include: [ &#39;tests/**/*.{node}.test.{ts,js}&#39; ], 
+ // color of the name label can be changed 
+ name: { label: &#39;node&#39; , color: &#39;green&#39; }, 
+ environment: &#39;node&#39; , 
+ } 
+ } 
+ ] 
+ } 
+ }) WARNING All projects must have unique names; otherwise, Vitest will throw an error. If a name is not provided in the inline configuration, Vitest will assign a number. For project configurations defined with glob syntax, Vitest will default to using the &quot;name&quot; property in the nearest package.json file or, if none exists, the folder name. Projects do not support all configuration properties. For better type safety, use the defineProject method instead of defineConfig within project configuration files: packages/a/vitest.config.ts ts import { defineProject } from &#39;vitest/config&#39; 
+ 
+ export default defineProject ({ 
+ test : { 
+ environment : &#39;jsdom&#39; , 
+ // &quot;reporters&quot; is not supported in a project config, 
+ // so it will show an error 
+ reporters : [ &#39;json&#39; ] No overload matches this call.
+ The last overload gave the following error.
+ Object literal may only specify known properties, and &#39;reporters&#39; does not exist in type &#39;ProjectConfig&#39;. } 
+ }) Running Tests ​ To run tests, define a script in your root package.json : package.json json { 
+ &quot;scripts&quot; : { 
+ &quot;test&quot; : &quot;vitest&quot; 
+ } 
+ } Now tests can be run using your package manager: npm yarn pnpm bun bash npm run test bash yarn test bash pnpm run test bash bun run test If you need to run tests only inside a single project, use the --project CLI option: npm yarn pnpm bun bash npm run test --project e2e bash yarn test --project e2e bash pnpm run test --project e2e bash bun run test --project e2e TIP CLI option --project can be used multiple times to filter out several projects: npm yarn pnpm bun bash npm run test --project e2e --project unit bash yarn test --project e2e --project unit bash pnpm run test --project e2e --project unit bash bun run test --project e2e --project unit Configuration ​ None of the configuration options are inherited from the root-level config file. You can create a shared config file and merge it with the project config yourself: packages/a/vitest.config.ts ts import { defineProject, mergeConfig } from &#39;vitest/config&#39; 
+ import configShared from &#39;../vitest.shared.js&#39; 
+ 
+ export default mergeConfig ( 
+ configShared, 
+ defineProject ({ 
+ test: { 
+ environment: &#39;jsdom&#39; , 
+ } 
+ }) 
+ ) Additionally, you can use the extends option to inherit from your root-level configuration. All options will be merged. vitest.config.ts ts import { defineConfig } from &#39;vitest/config&#39; 
+ import react from &#39;@vitejs/plugin-react&#39; 
+ 
+ export default defineConfig ({ 
+ plugins: [ react ()], 
+ test: { 
+ pool: &#39;threads&#39; , 
+ projects: [ 
+ { 
+ // will inherit options from this config like plugins and pool 
+ extends: true , 
+ test: { 
+ name: &#39;unit&#39; , 
+ include: [ &#39;**/*.unit.test.ts&#39; ], 
+ }, 
+ }, 
+ { 
+ // won&#39;t inherit any options from this config 
+ // this is the default behaviour 
+ extends: false , 
+ test: { 
+ name: &#39;integration&#39; , 
+ include: [ &#39;**/*.integration.test.ts&#39; ], 
+ }, 
+ }, 
+ ], 
+ }, 
+ }) Unsupported Options Some of the configuration options are not allowed in a project config. Most notably: coverage : coverage is done for the whole process reporters : only root-level reporters can be supported resolveSnapshotPath : only root-level resolver is respected all other options that don&#39;t affect test runners All configuration options that are not supported inside a project configuration are marked with a * sign in the &quot;Config&quot; guide. They have to be defined once in the root config file. Suggest changes to this page Last updated: Pager Previous page Test Filtering Next page Reporters Released under the MIT License. Copyright © 2021-PRESENT Anthony Fu, Matías Capeletto and Vitest contributors 
+ 
+ 
+ 
+ 

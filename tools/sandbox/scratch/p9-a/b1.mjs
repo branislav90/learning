@@ -1,0 +1,10 @@
+import React,{Suspense,use} from "react";
+import {browser} from "react-dom";
+import {renderToPipeableStream,renderToString} from "react-dom/server";
+import {Writable} from "node:stream";
+const h=React.createElement;
+const TZ=()=>{use(browser());return h("p",null,"tz")};
+const App=()=>h("div",null,h(Suspense,{fallback:"Loading..."},h(TZ)));
+await new Promise(res=>{let out="";const w=new Writable({write(c,e,cb){out+=c;cb()},final(cb){console.log(out);res();cb()}});
+const s=renderToPipeableStream(h(App),{onBrowserBailout(e,i){console.log("bailout",e.message.slice(0,120),Object.keys(i))},onShellReady(){s.pipe(w)},onError(e){console.log("onError",e.message)},onAllReady(){console.log("allReady")}});});
+console.log("renderToString:",renderToString(h(App)).slice(0,200));

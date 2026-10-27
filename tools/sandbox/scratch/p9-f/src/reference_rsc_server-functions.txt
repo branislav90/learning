@@ -1,0 +1,133 @@
+ Server Functions – React 
+ (function () {
+ try {
+ let logShown = false;
+ function setUwu(isUwu) {
+ try {
+ if (isUwu) {
+ localStorage.setItem('uwu', true);
+ document.documentElement.classList.add('uwu');
+ if (!logShown) {
+ console.log('uwu mode! turn off with ?uwu=0');
+ console.log('logo credit to @sawaratsuki1004 via https://github.com/SAWARATSUKI/KawaiiLogos');
+ logShown = true;
+ }
+ } else {
+ localStorage.removeItem('uwu');
+ document.documentElement.classList.remove('uwu');
+ console.log('uwu mode off. turn on with ?uwu');
+ }
+ } catch (err) { }
+ }
+ window.__setUwu = setUwu;
+ function checkQueryParam() {
+ const params = new URLSearchParams(window.location.search);
+ const value = params.get('uwu');
+ switch(value) {
+ case '':
+ case 'true':
+ case '1':
+ return true;
+ case 'false':
+ case '0':
+ return false;
+ default:
+ return null;
+ }
+ }
+ function checkLocalStorage() {
+ try {
+ return localStorage.getItem('uwu') === 'true';
+ } catch (err) {
+ return false;
+ }
+ }
+ const uwuQueryParam = checkQueryParam();
+ if (uwuQueryParam != null) {
+ setUwu(uwuQueryParam);
+ } else if (checkLocalStorage()) {
+ document.documentElement.classList.add('uwu');
+ }
+ } catch (err) { }
+ })();
+ 
+ (function () {
+ function setTheme(newTheme) {
+ window.__theme = newTheme;
+ if (newTheme === 'dark') {
+ document.documentElement.classList.add('dark');
+ } else if (newTheme === 'light') {
+ document.documentElement.classList.remove('dark');
+ }
+ }
+ var preferredTheme;
+ try {
+ preferredTheme = localStorage.getItem('theme');
+ } catch (err) { }
+ window.__setPreferredTheme = function(newTheme) {
+ preferredTheme = newTheme;
+ setTheme(newTheme);
+ try {
+ localStorage.setItem('theme', newTheme);
+ } catch (err) { }
+ };
+ var initialTheme = preferredTheme;
+ var darkQuery = window.matchMedia('(prefers-color-scheme: dark)');
+ if (!initialTheme) {
+ initialTheme = darkQuery.matches ? 'dark' : 'light';
+ }
+ setTheme(initialTheme);
+ darkQuery.addEventListener('change', function (e) {
+ if (!preferredTheme) {
+ setTheme(e.matches ? 'dark' : 'light');
+ }
+ });
+ // Detect whether the browser is Mac to display platform specific content
+ // An example of such content can be the keyboard shortcut displayed in the search bar
+ document.documentElement.classList.add(
+ window.navigator.platform.includes('Mac')
+ ? "platform-mac" 
+ : "platform-win"
+ );
+ })();
+ React v 19.3 Search ⌘ Ctrl K Learn Reference Community Blog react@19.3 Overview Hooks useActionState useCallback useContext useDebugValue useDeferredValue useEffect useEffectEvent useId useImperativeHandle useInsertionEffect useLayoutEffect useMemo useOptimistic useReducer useRef useState useSyncExternalStore useTransition Components &lt;Fragment&gt; (&lt;&gt;) &lt;Profiler&gt; &lt;StrictMode&gt; &lt;Suspense&gt; &lt;Activity&gt; &lt;ViewTransition&gt; APIs act addTransitionType cache cacheSignal captureOwnerStack createContext lazy memo startTransition use experimental_taintObjectReference - This feature is available in the latest Experimental version of React experimental_taintUniqueValue - This feature is available in the latest Experimental version of React react-dom@19.3 Hooks useFormStatus Components Common (e.g. &lt;div&gt;) &lt;form&gt; &lt;input&gt; &lt;option&gt; &lt;progress&gt; &lt;select&gt; &lt;textarea&gt; &lt;img&gt; &lt;link&gt; &lt;meta&gt; &lt;script&gt; &lt;style&gt; &lt;title&gt; APIs browser createPortal flushSync preconnect prefetchDNS preinit preinitModule preload preloadModule Client APIs createRoot hydrateRoot Server APIs renderToPipeableStream renderToReadableStream renderToStaticMarkup renderToString resume resumeToPipeableStream Static APIs prerender prerenderToNodeStream resumeAndPrerender resumeAndPrerenderToNodeStream React Compiler Configuration compilationMode gating logger panicThreshold target Directives &quot;use memo&quot; &quot;use no memo&quot; Compiling Libraries React DevTools React Performance tracks React DevTools for agents - This feature is available in the latest Experimental version of React eslint-plugin-react-hooks Lints exhaustive-deps rules-of-hooks component-hook-factories config error-boundaries gating globals immutability incompatible-library preserve-manual-memoization purity refs set-state-in-effect set-state-in-render static-components unsupported-syntax use-memo Rules of React Overview Components and Hooks must be pure React calls Components and Hooks Rules of Hooks React Server Components Server Components Server Functions Directives &#x27;use client&#x27; &#x27;use server&#x27; Legacy APIs Legacy React APIs Children cloneElement Component createElement createRef forwardRef isValidElement PureComponent API Reference Copy page Copy Server Functions React Server Components Server Functions are for use in React Server Components . Note: Until September 2024, we referred to all Server Functions as “Server Actions”. If a Server Function is passed to an action prop or called from inside an action then it is a Server Action, but not all Server Functions are Server Actions. The naming in this documentation has been updated to reflect that Server Functions can be used for multiple purposes. 
+ Server Functions allow Client Components to call async functions executed on the server. 
+ 
+ Note How do I build support for Server Functions? While Server Functions in React 19 are stable and will not break between minor versions, the underlying APIs used to implement Server Functions in a React Server Components bundler or framework do not follow semver and may break between minors in React 19.x. To support Server Functions as a bundler or framework, we recommend pinning to a specific React version, or using the Canary release. We will continue working with bundlers and frameworks to stabilize the APIs used to implement Server Functions in the future. 
+ When a Server Function is defined with the &quot;use server&quot; directive, your framework will automatically create a reference to the Server Function, and pass that reference to the Client Component. When that function is called on the client, React will send a request to the server to execute the function, and return the result. 
+ Server Functions can be created in Server Components and passed as props to Client Components, or they can be imported and used in Client Components. 
+ Usage 
+ Creating a Server Function from a Server Component 
+ Server Components can define Server Functions with the &quot;use server&quot; directive: 
+ // Server Component import Button from &#x27;./Button&#x27; ; function EmptyNote ( ) { async function createNoteAction ( ) { // Server Function &#x27;use server&#x27; ; await db . notes . create ( ) ; } return &lt; Button onClick = { createNoteAction } /&gt; ; } 
+ When React renders the EmptyNote Server Component, it will create a reference to the createNoteAction function, and pass that reference to the Button Client Component. When the button is clicked, React will send a request to the server to execute the createNoteAction function with the reference provided: 
+ &quot;use client&quot; ; export default function Button ( { onClick } ) { console . log ( onClick ) ; // {$$typeof: Symbol.for(&quot;react.server.reference&quot;), $$id: &#x27;createNoteAction&#x27;} return &lt; button onClick = { ( ) =&gt; onClick ( ) } &gt; Create Empty Note &lt;/ button &gt; } 
+ For more, see the docs for &quot;use server&quot; . 
+ Importing Server Functions from Client Components 
+ Client Components can import Server Functions from files that use the &quot;use server&quot; directive: 
+ &quot;use server&quot; ; export async function createNote ( ) { await db . notes . create ( ) ; } 
+ When the bundler builds the EmptyNote Client Component, it will create a reference to the createNote function in the bundle. When the button is clicked, React will send a request to the server to execute the createNote function using the reference provided: 
+ &quot;use client&quot; ; import { createNote } from &#x27;./actions&#x27; ; function EmptyNote ( ) { console . log ( createNote ) ; // {$$typeof: Symbol.for(&quot;react.server.reference&quot;), $$id: &#x27;createNote&#x27;} &lt; button onClick = { ( ) =&gt; createNote ( ) } /&gt; } 
+ For more, see the docs for &quot;use server&quot; . 
+ Server Functions with Actions 
+ Server Functions can be called from Actions on the client: 
+ &quot;use server&quot; ; export async function updateName ( name ) { if ( ! name ) { return { error : &#x27;Name is required&#x27; } ; } await db . users . updateName ( name ) ; } 
+ &quot;use client&quot; ; import { updateName } from &#x27;./actions&#x27; ; function UpdateName ( ) { const [ name , setName ] = useState ( &#x27;&#x27; ) ; const [ error , setError ] = useState ( null ) ; const [ isPending , startTransition ] = useTransition ( ) ; const submitAction = async ( ) =&gt; { startTransition ( async ( ) =&gt; { const { error } = await updateName ( name ) ; startTransition ( ( ) =&gt; { if ( error ) { setError ( error ) ; } else { setName ( &#x27;&#x27; ) ; } } ) ; } ) } return ( &lt; form action = { submitAction } &gt; &lt; input type = &quot;text&quot; name = &quot;name&quot; disabled = { isPending } /&gt; { error &amp;&amp; &lt; span &gt; Failed: { error } &lt;/ span &gt; } &lt;/ form &gt; ) } 
+ This allows you to access the isPending state of the Server Function by wrapping it in an Action on the client. 
+ For more, see the docs for Calling a Server Function outside of &lt;form&gt; 
+ Server Functions with Form Actions 
+ Server Functions work with the new Form features in React 19. 
+ You can pass a Server Function to a Form to automatically submit the form to the server: 
+ &quot;use client&quot; ; import { updateName } from &#x27;./actions&#x27; ; function UpdateName ( ) { return ( &lt; form action = { updateName } &gt; &lt; input type = &quot;text&quot; name = &quot;name&quot; /&gt; &lt;/ form &gt; ) } 
+ When the Form submission succeeds, React will automatically reset the form. You can add useActionState to access the pending state, last response, or to support progressive enhancement. 
+ For more, see the docs for Server Functions in Forms . 
+ Server Functions with useActionState 
+ You can call Server Functions with useActionState for the common case where you just need access to the action pending state and last returned response: 
+ &quot;use client&quot; ; import { updateName } from &#x27;./actions&#x27; ; function UpdateName ( ) { const [ state , submitAction , isPending ] = useActionState ( updateName , { error : null } ) ; return ( &lt; form action = { submitAction } &gt; &lt; input type = &quot;text&quot; name = &quot;name&quot; disabled = { isPending } /&gt; { state . error &amp;&amp; &lt; span &gt; Failed: { state . error } &lt;/ span &gt; } &lt;/ form &gt; ) ; } 
+ When using useActionState with Server Functions, React will also automatically replay form submissions entered before hydration finishes. This means users can interact with your app even before the app has hydrated. 
+ For more, see the docs for useActionState . 
+ Progressive enhancement with useActionState 
+ Server Functions also support progressive enhancement with the third argument of useActionState . 
+ &quot;use client&quot; ; import { updateName } from &#x27;./actions&#x27; ; function UpdateName ( ) { const [ , submitAction ] = useActionState ( updateName , null , ` /name/update ` ) ; return ( &lt; form action = { submitAction } &gt; ... &lt;/ form &gt; ) ; } 
+ When the permalink is provided to useActionState , React will redirect to the provided URL if the form is submitted before the JavaScript bundle loads. 
+ For more, see the docs for useActionState . Previous Server Components Next Directives Copyright © Meta Platforms, Inc no uwu plz uwu? Logo by @sawaratsuki1004 Learn React Quick Start Installation Describing the UI Adding Interactivity Managing State Escape Hatches API Reference React APIs React DOM APIs Community Code of Conduct Meet the Team Docs Contributors Acknowledgements More Blog React Native Privacy Terms On this page Overview Usage Creating a Server Function from a Server Component Importing Server Functions from Client Components Server Functions with Actions Server Functions with Form Actions Server Functions with useActionState Progressive enhancement with useActionState 

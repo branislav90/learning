@@ -1,0 +1,36 @@
+{
+  "_shared-DLjzy5WM.js": {
+    "file": "assets/shared-DLjzy5WM.js",
+    "name": "shared"
+  },
+  "index.html": {
+    "file": "assets/main-6yaKJLsF.js",
+    "name": "main",
+    "src": "index.html",
+    "isEntry": true,
+    "imports": [
+      "_shared-DLjzy5WM.js"
+    ],
+    "dynamicImports": [
+      "src/routes/checkout.ts"
+    ]
+  },
+  "src/routes/checkout.ts": {
+    "file": "assets/checkout-DsW2MtUL.js",
+    "name": "checkout",
+    "src": "src/routes/checkout.ts",
+    "isDynamicEntry": true,
+    "imports": [
+      "_shared-DLjzy5WM.js"
+    ]
+  },
+  "src/routes/home.ts": {
+    "file": "assets/home-Ccptsifn.js",
+    "name": "home",
+    "src": "src/routes/home.ts",
+    "isEntry": true,
+    "imports": [
+      "_shared-DLjzy5WM.js"
+    ]
+  }
+}

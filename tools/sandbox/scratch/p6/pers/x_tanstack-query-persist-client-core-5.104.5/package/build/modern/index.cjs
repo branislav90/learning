@@ -1,0 +1,16 @@
+Object.defineProperty(exports, Symbol.toStringTag, { value: "Module" });
+const require_createPersister = require("./createPersister.cjs");
+const require_persist = require("./persist.cjs");
+const require_retryStrategies = require("./retryStrategies.cjs");
+//#region src/index.ts
+/* istanbul ignore file */
+//#endregion
+exports.PERSISTER_KEY_PREFIX = require_createPersister.PERSISTER_KEY_PREFIX;
+exports.experimental_createQueryPersister = require_createPersister.experimental_createQueryPersister;
+exports.persistQueryClient = require_persist.persistQueryClient;
+exports.persistQueryClientRestore = require_persist.persistQueryClientRestore;
+exports.persistQueryClientSave = require_persist.persistQueryClientSave;
+exports.persistQueryClientSubscribe = require_persist.persistQueryClientSubscribe;
+exports.removeOldestQuery = require_retryStrategies.removeOldestQuery;
+
+//# sourceMappingURL=index.cjs.map

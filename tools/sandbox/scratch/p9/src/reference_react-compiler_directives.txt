@@ -1,0 +1,162 @@
+ 
+ (function () {
+ try {
+ let logShown = false;
+ function setUwu(isUwu) {
+ try {
+ if (isUwu) {
+ localStorage.setItem('uwu', true);
+ document.documentElement.classList.add('uwu');
+ if (!logShown) {
+ console.log('uwu mode! turn off with ?uwu=0');
+ console.log('logo credit to @sawaratsuki1004 via https://github.com/SAWARATSUKI/KawaiiLogos');
+ logShown = true;
+ }
+ } else {
+ localStorage.removeItem('uwu');
+ document.documentElement.classList.remove('uwu');
+ console.log('uwu mode off. turn on with ?uwu');
+ }
+ } catch (err) { }
+ }
+ window.__setUwu = setUwu;
+ function checkQueryParam() {
+ const params = new URLSearchParams(window.location.search);
+ const value = params.get('uwu');
+ switch(value) {
+ case '':
+ case 'true':
+ case '1':
+ return true;
+ case 'false':
+ case '0':
+ return false;
+ default:
+ return null;
+ }
+ }
+ function checkLocalStorage() {
+ try {
+ return localStorage.getItem('uwu') === 'true';
+ } catch (err) {
+ return false;
+ }
+ }
+ const uwuQueryParam = checkQueryParam();
+ if (uwuQueryParam != null) {
+ setUwu(uwuQueryParam);
+ } else if (checkLocalStorage()) {
+ document.documentElement.classList.add('uwu');
+ }
+ } catch (err) { }
+ })();
+ 
+ (function () {
+ function setTheme(newTheme) {
+ window.__theme = newTheme;
+ if (newTheme === 'dark') {
+ document.documentElement.classList.add('dark');
+ } else if (newTheme === 'light') {
+ document.documentElement.classList.remove('dark');
+ }
+ }
+ var preferredTheme;
+ try {
+ preferredTheme = localStorage.getItem('theme');
+ } catch (err) { }
+ window.__setPreferredTheme = function(newTheme) {
+ preferredTheme = newTheme;
+ setTheme(newTheme);
+ try {
+ localStorage.setItem('theme', newTheme);
+ } catch (err) { }
+ };
+ var initialTheme = preferredTheme;
+ var darkQuery = window.matchMedia('(prefers-color-scheme: dark)');
+ if (!initialTheme) {
+ initialTheme = darkQuery.matches ? 'dark' : 'light';
+ }
+ setTheme(initialTheme);
+ darkQuery.addEventListener('change', function (e) {
+ if (!preferredTheme) {
+ setTheme(e.matches ? 'dark' : 'light');
+ }
+ });
+ // Detect whether the browser is Mac to display platform specific content
+ // An example of such content can be the keyboard shortcut displayed in the search bar
+ document.documentElement.classList.add(
+ window.navigator.platform.includes('Mac')
+ ? "platform-mac" 
+ : "platform-win"
+ );
+ })();
+ React v 19.3 Search ⌘ Ctrl K Learn Reference Community Blog react@19.3 Overview Hooks useActionState useCallback useContext useDebugValue useDeferredValue useEffect useEffectEvent useId useImperativeHandle useInsertionEffect useLayoutEffect useMemo useOptimistic useReducer useRef useState useSyncExternalStore useTransition Components <Fragment> (<>) <Profiler> <StrictMode> <Suspense> <Activity> <ViewTransition> APIs act addTransitionType cache cacheSignal captureOwnerStack createContext lazy memo startTransition use experimental_taintObjectReference - This feature is available in the latest Experimental version of React experimental_taintUniqueValue - This feature is available in the latest Experimental version of React react-dom@19.3 Hooks useFormStatus Components Common (e.g. <div>) <form> <input> <option> <progress> <select> <textarea> <img> <link> <meta> <script> <style> <title> APIs browser createPortal flushSync preconnect prefetchDNS preinit preinitModule preload preloadModule Client APIs createRoot hydrateRoot Server APIs renderToPipeableStream renderToReadableStream renderToStaticMarkup renderToString resume resumeToPipeableStream Static APIs prerender prerenderToNodeStream resumeAndPrerender resumeAndPrerenderToNodeStream React Compiler Configuration compilationMode gating logger panicThreshold target Directives "use memo" "use no memo" Compiling Libraries React DevTools React Performance tracks React DevTools for agents - This feature is available in the latest Experimental version of React eslint-plugin-react-hooks Lints exhaustive-deps rules-of-hooks component-hook-factories config error-boundaries gating globals immutability incompatible-library preserve-manual-memoization purity refs set-state-in-effect set-state-in-render static-components unsupported-syntax use-memo Rules of React Overview Components and Hooks must be pure React calls Components and Hooks Rules of Hooks React Server Components Server Components Server Functions Directives 'use client' 'use server' Legacy APIs Legacy React APIs Children cloneElement Component createElement createRef forwardRef isValidElement PureComponent API Reference Copy page Copy Directives React Compiler directives are special string literals that control whether specific functions are compiled. 
+ function MyComponent ( ) { "use memo" ; // Opt this component into compilation return < div > { /* ... */ } </ div > ; } 
+ Overview Available directives Quick comparison Usage Function-level directives Module-level directives Compilation modes interaction Best practices Use directives sparingly Document directive usage Plan for removal Common patterns Gradual adoption Troubleshooting Common issues See also 
+ 
+ Overview 
+ React Compiler directives provide fine-grained control over which functions are optimized by the compiler. They are string literals placed at the beginning of a function body or at the top of a module. 
+ Available directives 
+ 
+ "use memo" - Opts a function into compilation 
+ "use no memo" - Opts a function out of compilation 
+ 
+ Quick comparison 
+ Directive Purpose When to use "use memo" Force compilation When using annotation mode or to override infer mode heuristics "use no memo" Prevent compilation Debugging issues or working with incompatible code 
+ 
+ Usage 
+ Function-level directives 
+ Place directives at the beginning of a function to control its compilation: 
+ // Opt into compilation function OptimizedComponent ( ) { "use memo" ; return < div > This will be optimized </ div > ; } // Opt out of compilation function UnoptimizedComponent ( ) { "use no memo" ; return < div > This won't be optimized </ div > ; } 
+ Module-level directives 
+ Place directives at the top of a file to affect all functions in that module: 
+ // At the very top of the file "use memo" ; // All functions in this file will be compiled function Component1 ( ) { return < div > Compiled </ div > ; } function Component2 ( ) { return < div > Also compiled </ div > ; } // Can be overridden at function level function Component3 ( ) { "use no memo" ; // This overrides the module directive return < div > Not compiled </ div > ; } 
+ Compilation modes interaction 
+ Directives behave differently depending on your compilationMode : 
+ 
+ annotation mode : Only functions with "use memo" are compiled 
+ infer mode : Compiler decides what to compile, directives override decisions 
+ all mode : Everything is compiled, "use no memo" can exclude specific functions 
+ 
+ 
+ Best practices 
+ Use directives sparingly 
+ Directives are escape hatches. Prefer configuring the compiler at the project level: 
+ // ✅ Good - project-wide configuration { plugins : [ [ 'babel-plugin-react-compiler' , { compilationMode : 'infer' } ] ] } // ⚠️ Use directives only when needed function SpecialCase ( ) { "use no memo" ; // Document why this is needed // ... } 
+ Document directive usage 
+ Always explain why a directive is used: 
+ // ✅ Good - clear explanation function DataGrid ( ) { "use no memo" ; // TODO: Remove after fixing issue with dynamic row heights (JIRA-123) // Complex grid implementation } // ❌ Bad - no explanation function Mystery ( ) { "use no memo" ; // ... } 
+ Plan for removal 
+ Opt-out directives should be temporary: 
+ 
+ Add the directive with a TODO comment 
+ Create a tracking issue 
+ Fix the underlying problem 
+ Remove the directive 
+ 
+ function TemporaryWorkaround ( ) { "use no memo" ; // TODO: Remove after upgrading ThirdPartyLib to v2.0 return < ThirdPartyComponent /> ; } 
+ 
+ Common patterns 
+ Gradual adoption 
+ When adopting the React Compiler in a large codebase: 
+ // Start with annotation mode { compilationMode : 'annotation' } // Opt in stable components function StableComponent ( ) { "use memo" ; // Well-tested component } // Later, switch to infer mode and opt out problematic ones function ProblematicComponent ( ) { "use no memo" ; // Fix issues before removing // ... } 
+ 
+ Troubleshooting 
+ For specific issues with directives, see the troubleshooting sections in: 
+ 
+ "use memo" troubleshooting 
+ "use no memo" troubleshooting 
+ 
+ Common issues 
+ 
+ Directive ignored : Check placement (must be first) and spelling 
+ Compilation still happens : Check ignoreUseNoForget setting 
+ Module directive not working : Ensure it’s before all imports 
+ 
+ 
+ See also 
+ 
+ compilationMode - Configure how the compiler chooses what to optimize 
+ Configuration - Full compiler configuration options 
+ React Compiler documentation - Getting started guide 
+ Previous target Next "use memo" Copyright © Meta Platforms, Inc no uwu plz uwu? Logo by @sawaratsuki1004 Learn React Quick Start Installation Describing the UI Adding Interactivity Managing State Escape Hatches API Reference React APIs React DOM APIs Community Code of Conduct Meet the Team Docs Contributors Acknowledgements More Blog React Native Privacy Terms On this page Overview Overview Available directives Quick comparison Usage Function-level directives Module-level directives Compilation modes interaction Best practices Use directives sparingly Document directive usage Plan for removal Common patterns Gradual adoption Troubleshooting Common issues See also 

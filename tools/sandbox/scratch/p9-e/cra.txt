@@ -1,0 +1,124 @@
+ Creating a React App – React window.dataLayer = window.dataLayer || [];function gtag(){dataLayer.push(arguments);}gtag('js', new Date());gtag('config', 'G-B1E83PJ3RT'); 
+ (function () {
+ try {
+ let logShown = false;
+ function setUwu(isUwu) {
+ try {
+ if (isUwu) {
+ localStorage.setItem('uwu', true);
+ document.documentElement.classList.add('uwu');
+ if (!logShown) {
+ console.log('uwu mode! turn off with ?uwu=0');
+ console.log('logo credit to @sawaratsuki1004 via https://github.com/SAWARATSUKI/KawaiiLogos');
+ logShown = true;
+ }
+ } else {
+ localStorage.removeItem('uwu');
+ document.documentElement.classList.remove('uwu');
+ console.log('uwu mode off. turn on with ?uwu');
+ }
+ } catch (err) { }
+ }
+ window.__setUwu = setUwu;
+ function checkQueryParam() {
+ const params = new URLSearchParams(window.location.search);
+ const value = params.get('uwu');
+ switch(value) {
+ case '':
+ case 'true':
+ case '1':
+ return true;
+ case 'false':
+ case '0':
+ return false;
+ default:
+ return null;
+ }
+ }
+ function checkLocalStorage() {
+ try {
+ return localStorage.getItem('uwu') === 'true';
+ } catch (err) {
+ return false;
+ }
+ }
+ const uwuQueryParam = checkQueryParam();
+ if (uwuQueryParam != null) {
+ setUwu(uwuQueryParam);
+ } else if (checkLocalStorage()) {
+ document.documentElement.classList.add('uwu');
+ }
+ } catch (err) { }
+ })();
+ 
+ (function () {
+ function setTheme(newTheme) {
+ window.__theme = newTheme;
+ if (newTheme === 'dark') {
+ document.documentElement.classList.add('dark');
+ } else if (newTheme === 'light') {
+ document.documentElement.classList.remove('dark');
+ }
+ }
+ var preferredTheme;
+ try {
+ preferredTheme = localStorage.getItem('theme');
+ } catch (err) { }
+ window.__setPreferredTheme = function(newTheme) {
+ preferredTheme = newTheme;
+ setTheme(newTheme);
+ try {
+ localStorage.setItem('theme', newTheme);
+ } catch (err) { }
+ };
+ var initialTheme = preferredTheme;
+ var darkQuery = window.matchMedia('(prefers-color-scheme: dark)');
+ if (!initialTheme) {
+ initialTheme = darkQuery.matches ? 'dark' : 'light';
+ }
+ setTheme(initialTheme);
+ darkQuery.addEventListener('change', function (e) {
+ if (!preferredTheme) {
+ setTheme(e.matches ? 'dark' : 'light');
+ }
+ });
+ // Detect whether the browser is Mac to display platform specific content
+ // An example of such content can be the keyboard shortcut displayed in the search bar
+ document.documentElement.classList.add(
+ window.navigator.platform.includes('Mac')
+ ? "platform-mac" 
+ : "platform-win"
+ );
+ })();
+ React v 19.3 Search ⌘ Ctrl K Learn Reference Community Blog GET STARTED Quick Start Tutorial: Tic-Tac-Toe Thinking in React Installation Creating a React App Build a React App from Scratch Add React to an Existing Project Setup Editor Setup Using TypeScript React Developer Tools React Compiler Introduction Installation Incremental Adoption Debugging and Troubleshooting LEARN REACT Describing the UI Your First Component Importing and Exporting Components Writing Markup with JSX JavaScript in JSX with Curly Braces Passing Props to a Component Conditional Rendering Rendering Lists Keeping Components Pure Your UI as a Tree Adding Interactivity Responding to Events State: A Component&#x27;s Memory Render and Commit State as a Snapshot Queueing a Series of State Updates Updating Objects in State Updating Arrays in State Managing State Reacting to Input with State Choosing the State Structure Sharing State Between Components Preserving and Resetting State Extracting State Logic into a Reducer Passing Data Deeply with Context Scaling Up with Reducer and Context Escape Hatches Referencing Values with Refs Manipulating the DOM with Refs Synchronizing with Effects You Might Not Need an Effect Lifecycle of Reactive Effects Separating Events from Effects Removing Effect Dependencies Reusing Logic with Custom Hooks Learn React Installation Copy page Copy Creating a React App If you want to build a new app or website with React, we recommend starting with a framework. 
+ If your app has constraints not well-served by existing frameworks, you prefer to build your own framework, or you just want to learn the basics of a React app, you can build a React app from scratch . 
+ Full-stack frameworks 
+ These recommended frameworks support all the features you need to deploy and scale your app in production. They have integrated the latest React features and take advantage of React’s architecture. 
+ Note Full-stack frameworks do not require a server. All the frameworks on this page support client-side rendering ( CSR ), single-page apps ( SPA ), and static-site generation ( SSG ). These apps can be deployed to a CDN or static hosting service without a server. Additionally, these frameworks allow you to add server-side rendering on a per-route basis, when it makes sense for your use case. This allows you to start with a client-only app, and if your needs change later, you can opt-in to using server features on individual routes without rewriting your app. See your framework’s documentation for configuring the rendering strategy. 
+ Next.js (App Router) 
+ Next.js’s App Router is a React framework that takes full advantage of React’s architecture to enable full-stack React apps. 
+ Terminal Copy npx create-next-app@latest 
+ Next.js is maintained by Vercel . You can deploy a Next.js app to any hosting provider that supports Node.js or Docker containers, or to your own server. Next.js also supports static export which doesn’t require a server. 
+ React Router (v7) 
+ React Router is the most popular routing library for React and can be paired with Vite to create a full-stack React framework . It emphasizes standard Web APIs and has several ready to deploy templates for various JavaScript runtimes and platforms. 
+ To create a new React Router framework project, run: 
+ Terminal Copy npx create-react-router@latest 
+ React Router is maintained by Shopify . 
+ Expo (for native apps) 
+ Expo is a React framework that lets you create universal Android, iOS, and web apps with truly native UIs. It provides an SDK for React Native that makes the native parts easier to use. To create a new Expo project, run: 
+ Terminal Copy npx create-expo-app@latest 
+ If you’re new to Expo, check out the Expo tutorial . 
+ Expo is maintained by Expo (the company) . Building apps with Expo is free, and you can submit them to the Google and Apple app stores without restrictions. Expo additionally provides opt-in paid cloud services. 
+ Other frameworks 
+ There are other up-and-coming frameworks that are working towards our full stack React vision: 
+ 
+ TanStack Start (Beta) : TanStack Start is a full-stack React framework powered by TanStack Router. It provides a full-document SSR, streaming, server functions, bundling, and more using tools like Nitro and Vite. 
+ RedwoodSDK : Redwood is a full stack React framework with lots of pre-installed packages and configuration that makes it easy to build full-stack web applications. 
+ 
+ Deep Dive Which features make up the React team’s full-stack architecture vision? Show Details Next.js’s App Router bundler fully implements the official React Server Components specification . This lets you mix build-time, server-only, and interactive components in a single React tree. For example, you can write a server-only React component as an async function that reads from a database or from a file. Then you can pass data down from it to your interactive components: // This component runs *only* on the server (or during the build). async function Talks ( { confId } ) { // 1. You&#x27;re on the server, so you can talk to your data layer. API endpoint not required. const talks = await db . Talks . findAll ( { confId } ) ; // 2. Add any amount of rendering logic. It won&#x27;t make your JavaScript bundle larger. const videos = talks . map ( talk =&gt; talk . video ) ; // 3. Pass the data down to the components that will run in the browser. return &lt; SearchableVideoList videos = { videos } /&gt; ; } Next.js’s App Router also integrates data fetching with Suspense . This lets you specify a loading state (like a skeleton placeholder) for different parts of your user interface directly in your React tree: &lt; Suspense fallback = { &lt; TalksLoading /&gt; } &gt; &lt; Talks confId = { conf . id } /&gt; &lt;/ Suspense &gt; Server Components and Suspense are React features rather than Next.js features. However, adopting them at the framework level requires buy-in and non-trivial implementation work. At the moment, the Next.js App Router is the most complete implementation. The React team is working with bundler developers to make these features easier to implement in the next generation of frameworks. 
+ Start From Scratch 
+ If your app has constraints not well-served by existing frameworks, you prefer to build your own framework, or you just want to learn the basics of a React app, there are other options available for starting a React project from scratch. 
+ Starting from scratch gives you more flexibility, but does require that you make choices on which tools to use for routing, data fetching, and other common usage patterns. It’s a lot like building your own framework, instead of using a framework that already exists. The frameworks we recommend have built-in solutions for these problems. 
+ If you want to build your own solutions, see our guide to build a React app from Scratch for instructions on how to set up a new React project starting with a build tool like Vite , Parcel , or RSbuild . 
+ 
+ If you’re a framework author interested in being included on this page, please let us know . Previous Installation Next Build a React App from Scratch Copyright © Meta Platforms, Inc no uwu plz uwu? Logo by @sawaratsuki1004 Learn React Quick Start Installation Describing the UI Adding Interactivity Managing State Escape Hatches API Reference React APIs React DOM APIs Community Code of Conduct Meet the Team Docs Contributors Acknowledgements More Blog React Native Privacy Terms On this page Overview Full-stack frameworks Next.js (App Router) React Router (v7) Expo (for native apps) Other frameworks Start From Scratch {"props":{"pageProps":{"toc":"[{\"url\":\"#\",\"text\":\"Overview\",\"depth\":2},{\"url\":\"#full-stack-frameworks\",\"depth\":2,\"text\":\"Full-stack frameworks \"},{\"url\":\"#nextjs-app-router\",\"depth\":3,\"text\":\"Next.js (App Router) \"},{\"url\":\"#react-router-v7\",\"depth\":3,\"text\":\"React Router (v7) \"},{\"url\":\"#expo\",\"depth\":3,\"text\":\"Expo (for native apps) \"},{\"url\":\"#other-frameworks\",\"depth\":2,\"text\":\"Other frameworks \"},{\"url\":\"#start-from-scratch\",\"depth\":2,\"text\":\"Start From Scratch \"}]","content":"[[\"$r\",\"MaxWidth\",\"last\",{\"children\":[[\"$r\",\"Intro\",null,{\"children\":[\"$r\",\"p\",null,{\"children\":\"If you want to build a new app or website with React, we recommend starting with a framework.\"}]}],\"\\n\",[\"$r\",\"p\",null,{\"children\":[\"If your app has constraints not well-served by existing frameworks, you prefer to build your own framework, or you just want to learn the basics of a React app, you can \",[\"$r\",\"a\",null,{\"href\":\"/learn/build-a-react-app-from-scratch\",\"children\":\"build a React app from scratch\"}],\".\"]}],\"\\n\",[\"$r\",\"h2\",null,{\"id\":\"full-stack-frameworks\",\"children\":\"Full-stack frameworks \"}],\"\\n\",[\"$r\",\"p\",null,{\"children\":\"These recommended frameworks support all the features you need to deploy and scale your app in production. They have integrated the latest React features and take advantage of React’s architecture.\"}],\"\\n\",[\"$r\",\"Note\",null,{\"children\":[[\"$r\",\"h4\",null,{\"id\":\"react-frameworks-do-not-require-a-server\",\"children\":\"Full-stack frameworks do not require a server. \"}],[\"$r\",\"p\",null,{\"children\":[\"All the frameworks on this page support client-side rendering (\",[\"$r\",\"a\",null,{\"href\":\"https://developer.mozilla.org/en-US/docs/Glossary/CSR\",\"target\":\"_blank\",\"rel\":\"nofollow noopener noreferrer\",\"children\":\"CSR\"}],\"), single-page apps (\",[\"$r\",\"a\",null,{\"href\":\"https://developer.mozilla.org/en-US/docs/Glossary/SPA\",\"target\":\"_blank\",\"rel\":\"nofollow noopener noreferrer\",\"children\":\"SPA\"}],\"), and static-site generation (\",[\"$r\",\"a\",null,{\"href\":\"https://developer.mozilla.org/en-US/docs/Glossary/SSG\",\"target\":\"_blank\",\"rel\":\"nofollow noopener noreferrer\",\"children\":\"SSG\"}],\"). These apps can be deployed to a \",[\"$r\",\"a\",null,{\"href\":\"https://developer.mozilla.org/en-US/docs/Glossary/CDN\",\"target\":\"_blank\",\"rel\":\"nofollow noopener noreferrer\",\"children\":\"CDN\"}],\" or static hosting service without a server. Additionally, these frameworks allow you to add server-side rendering on a per-route basis, when it makes sense for your use case.\"]}],[\"$r\",\"p\",null,{\"children\":\"This allows you to start with a client-only app, and if your needs change later, you can opt-in to using server features on individual routes without rewriting your app. See your framework’s documentation for configuring the rendering strategy.\"}]]}],\"\\n\",[\"$r\",\"h3\",null,{\"id\":\"nextjs-app-router\",\"children\":\"Next.js (App Router) \"}],\"\\n\",[\"$r\",\"p\",null,{\"children\":[\"$r\",\"strong\",null,{\"children\":[[\"$r\",\"a\",null,{\"href\":\"https://nextjs.org/docs\",\"target\":\"_blank\",\"rel\":\"nofollow noopener noreferrer\",\"children\":\"Next.js’s App Router\"}],\" is a React framework that takes full advantage of React’s architecture to enable full-stack React apps.\"]}]}],\"\\n\",[\"$r\",\"TerminalBlock\",null,{\"children\":[\"$r\",\"p\",null,{\"children\":\"npx create-next-app@latest\"}]}],\"\\n\",[\"$r\",\"p\",null,{\"children\":[\"Next.js is maintained by \",[\"$r\",\"a\",null,{\"href\":\"https://vercel.com/\",\"target\":\"_blank\",\"rel\":\"nofollow noopener noreferrer\",\"children\":\"Vercel\"}],\". You can \",[\"$r\",\"a\",null,{\"href\":\"https://nextjs.org/docs/app/building-your-application/deploying\",\"target\":\"_blank\",\"rel\":\"nofollow noopener noreferrer\",\"children\":\"deploy a Next.js app\"}],\" to any hosting provider that supports Node.js or Docker containers, or to your own server. Next.js also supports \",[\"$r\",\"a\",null,{\"href\":\"https://nextjs.org/docs/app/building-your-application/deploying/static-exports\",\"target\":\"_blank\",\"rel\":\"nofollow noopener noreferrer\",\"children\":\"static export\"}],\" which doesn’t require a server.\"]}],\"\\n\",[\"$r\",\"h3\",null,{\"id\":\"react-router-v7\",\"children\":\"React Router (v7) \"}],\"\\n\",[\"$r\",\"p\",null,{\"children\":[[\"$r\",\"strong\",null,{\"children\":[[\"$r\",\"a\",null,{\"href\":\"https://reactrouter.com/start/framework/installation\",\"target\":\"_blank\",\"rel\":\"nofollow noopener noreferrer\",\"children\":\"React Router\"}],\" is the most popular routing library for React and can be paired with Vite to create a full-stack React framework\"]}],\". It emphasizes standard Web APIs and has several \",[\"$r\",\"a\",null,{\"href\":\"https://github.com/remix-run/react-router-templates\",\"target\":\"_blank\",\"rel\":\"nofollow noopener noreferrer\",\"children\":\"ready to deploy templates\"}],\" for various JavaScript runtimes and platforms.\"]}],\"\\n\",[\"$r\",\"p\",null,{\"children\":\"To create a new React Router framework project, run:\"}],\"\\n\",[\"$r\",\"TerminalBlock\",null,{\"children\":[\"$r\",\"p\",null,{\"children\":\"npx create-react-router@latest\"}]}],\"\\n\",[\"$r\",\"p\",null,{\"children\":[\"React Router is maintained by \",[\"$r\",\"a\",null,{\"href\":\"https://www.shopify.com\",\"target\":\"_blank\",\"rel\":\"nofollow noopener noreferrer\",\"children\":\"Shopify\"}],\".\"]}],\"\\n\",[\"$r\",\"h3\",null,{\"id\":\"expo\",\"children\":\"Expo (for native apps) \"}],\"\\n\",[\"$r\",\"p\",null,{\"children\":[[\"$r\",\"strong\",null,{\"children\":[[\"$r\",\"a\",null,{\"href\":\"https://expo.dev/\",\"target\":\"_blank\",\"rel\":\"nofollow noopener noreferrer\",\"children\":\"Expo\"}],\" is a React framework that lets you create universal Android, iOS, and web apps with truly native UIs.\"]}],\" It provides an SDK for \",[\"$r\",\"a\",null,{\"href\":\"https://reactnative.dev/\",\"target\":\"_blank\",\"rel\":\"nofollow noopener noreferrer\",\"children\":\"React Native\"}],\" that makes the native parts easier to use. To create a new Expo project, run:\"]}],\"\\n\",[\"$r\",\"TerminalBlock\",null,{\"children\":[\"$r\",\"p\",null,{\"children\":\"npx create-expo-app@latest\"}]}],\"\\n\",[\"$r\",\"p\",null,{\"children\":[\"If you’re new to Expo, check out the \",[\"$r\",\"a\",null,{\"href\":\"https://docs.expo.dev/tutorial/introduction/\",\"target\":\"_blank\",\"rel\":\"nofollow noopener noreferrer\",\"children\":\"Expo tutorial\"}],\".\"]}],\"\\n\",[\"$r\",\"p\",null,{\"children\":[\"Expo is maintained by \",[\"$r\",\"a\",null,{\"href\":\"https://expo.dev/about\",\"target\":\"_blank\",\"rel\":\"nofollow noopener noreferrer\",\"children\":\"Expo (the company)\"}],\". Building apps with Expo is free, and you can submit them to the Google and Apple app stores without restrictions. Expo additionally provides opt-in paid cloud services.\"]}],\"\\n\",[\"$r\",\"h2\",null,{\"id\":\"other-frameworks\",\"children\":\"Other frameworks \"}],\"\\n\",[\"$r\",\"p\",null,{\"children\":\"There are other up-and-coming frameworks that are working towards our full stack React vision:\"}],\"\\n\",[\"$r\",\"ul\",null,{\"children\":[\"\\n\",[\"$r\",\"li\",null,{\"children\":[[\"$r\",\"a\",null,{\"href\":\"https://tanstack.com/start/\",\"target\":\"_blank\",\"rel\":\"nofollow noopener noreferrer\",\"children\":\"TanStack Start (Beta)\"}],\": TanStack Start is a full-stack React framework powered by TanStack Router. It provides a full-document SSR, streaming, server functions, bundling, and more using tools like Nitro and Vite.\"]}],\"\\n\",[\"$r\",\"li\",null,{\"children\":[[\"$r\",\"a\",null,{\"href\":\"https://rwsdk.com/\",\"target\":\"_blank\",\"rel\":\"nofollow noopener noreferrer\",\"children\":\"RedwoodSDK\"}],\": Redwood is a full stack React framework with lots of pre-installed packages and configuration that makes it easy to build full-stack web applications.\"]}],\"\\n\"]}],\"\\n\",[\"$r\",\"DeepDive\",null,{\"children\":[[\"$r\",\"h4\",null,{\"id\":\"which-features-make-up-the-react-teams-full-stack-architecture-vision\",\"children\":\"Which features make up the React team’s full-stack architecture vision? \"}],[\"$r\",\"p\",null,{\"children\":[\"Next.js’s App Router bundler fully implements the official \",[\"$r\",\"a\",null,{\"href\":\"https://github.com/reactjs/rfcs/blob/main/text/0188-server-components.md\",\"target\":\"_blank\",\"rel\":\"nofollow noopener noreferrer\",\"children\":\"React Server Components specification\"}],\". This lets you mix build-time, server-only, and interactive components in a single React tree.\"]}],[\"$r\",\"p\",null,{\"children\":[\"For example, you can write a server-only React component as an \",[\"$r\",\"code\",null,{\"children\":\"async\"}],\" function that reads from a database or from a file. Then you can pass data down from it to your interactive components:\"]}],[\"$r\",\"pre\",null,{\"children\":[\"$r\",\"code\",null,{\"className\":\"language-js\",\"children\":\"// This component runs *only* on the server (or during the build).\\nasync function Talks({ confId }) {\\n // 1. You're on the server, so you can talk to your data layer. API endpoint not required.\\n const talks = await db.Talks.findAll({ confId });\\n\\n // 2. Add any amount of rendering logic. It won't make your JavaScript bundle larger.\\n const videos = talks.map(talk =\u003e talk.video);\\n\\n // 3. Pass the data down to the components that will run in the browser.\\n return \u003cSearchableVideoList videos={videos} /\u003e;\\n}\\n\"}]}],[\"$r\",\"p\",null,{\"children\":[\"Next.js’s App Router also integrates \",[\"$r\",\"a\",null,{\"href\":\"/blog/2022/03/29/react-v18#suspense-in-data-frameworks\",\"children\":\"data fetching with Suspense\"}],\". This lets you specify a loading state (like a skeleton placeholder) for different parts of your user interface directly in your React tree:\"]}],[\"$r\",\"pre\",null,{\"children\":[\"$r\",\"code\",null,{\"className\":\"language-js\",\"children\":\"\u003cSuspense fallback={\u003cTalksLoading /\u003e}\u003e\\n \u003cTalks confId={conf.id} /\u003e\\n\u003c/Suspense\u003e\\n\"}]}],[\"$r\",\"p\",null,{\"children\":\"Server Components and Suspense are React features rather than Next.js features. However, adopting them at the framework level requires buy-in and non-trivial implementation work. At the moment, the Next.js App Router is the most complete implementation. The React team is working with bundler developers to make these features easier to implement in the next generation of frameworks.\"}]]}],\"\\n\",[\"$r\",\"h2\",null,{\"id\":\"start-from-scratch\",\"children\":\"Start From Scratch \"}],\"\\n\",[\"$r\",\"p\",null,{\"children\":\"If your app has constraints not well-served by existing frameworks, you prefer to build your own framework, or you just want to learn the basics of a React app, there are other options available for starting a React project from scratch.\"}],\"\\n\",[\"$r\",\"p\",null,{\"children\":[\"Starting from scratch gives you more flexibility, but does require that you make choices on which tools to use for routing, data fetching, and other common usage patterns. It’s a lot like building your own framework, instead of using a framework that already exists. The \",[\"$r\",\"a\",null,{\"href\":\"#full-stack-frameworks\",\"children\":\"frameworks we recommend\"}],\" have built-in solutions for these problems.\"]}],\"\\n\",[\"$r\",\"p\",null,{\"children\":[\"If you want to build your own solutions, see our guide to \",[\"$r\",\"a\",null,{\"href\":\"/learn/build-a-react-app-from-scratch\",\"children\":\"build a React app from Scratch\"}],\" for instructions on how to set up a new React project starting with a build tool like \",[\"$r\",\"a\",null,{\"href\":\"https://vite.dev/\",\"target\":\"_blank\",\"rel\":\"nofollow noopener noreferrer\",\"children\":\"Vite\"}],\", \",[\"$r\",\"a\",null,{\"href\":\"https://parceljs.org/\",\"target\":\"_blank\",\"rel\":\"nofollow noopener noreferrer\",\"children\":\"Parcel\"}],\", or \",[\"$r\",\"a\",null,{\"href\":\"https://rsbuild.dev/\",\"target\":\"_blank\",\"rel\":\"nofollow noopener noreferrer\",\"children\":\"RSbuild\"}],\".\"]}],\"\\n\",[\"$r\",\"hr\",null,{}],\"\\n\",[\"$r\",\"p\",null,{\"children\":[\"$r\",\"em\",null,{\"children\":[\"If you’re a framework author interested in being included on this page, \",[\"$r\",\"a\",null,{\"href\":\"https://github.com/reactjs/react.dev/issues/new?assignees=\u0026labels=type%3A+framework\u0026projects=\u0026template=3-framework.yml\u0026title=%5BFramework%5D%3A+\",\"target\":\"_blank\",\"rel\":\"nofollow noopener noreferrer\",\"children\":\"please let us know\"}],\".\"]}]}]]}]]","meta":{"title":"Creating a React App"},"languages":null},"__N_SSG":true},"page":"/[[...markdownPath]]","query":{"markdownPath":["learn","creating-a-react-app"]},"buildId":"iL-S_VcpSPApikCxaBjlp","isFallback":false,"gsp":true,"scriptLoader":[]} 

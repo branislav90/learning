@@ -1,0 +1,36 @@
+{
+  "inputs": {
+    "m.js": {
+      "bytes": 168,
+      "imports": [],
+      "format": "esm"
+    },
+    "e.js": {
+      "bytes": 38,
+      "imports": [
+        {
+          "path": "m.js",
+          "kind": "import-statement",
+          "original": "./m"
+        }
+      ],
+      "format": "cjs"
+    }
+  },
+  "outputs": {
+    "out.js": {
+      "imports": [],
+      "exports": [],
+      "entryPoint": "e.js",
+      "inputs": {
+        "m.js": {
+          "bytesInOutput": 33
+        },
+        "e.js": {
+          "bytesInOutput": 34
+        }
+      },
+      "bytes": 266
+    }
+  }
+}

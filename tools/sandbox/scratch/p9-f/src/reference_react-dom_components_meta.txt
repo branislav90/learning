@@ -1,0 +1,134 @@
+ &lt;meta&gt; – React 
+ (function () {
+ try {
+ let logShown = false;
+ function setUwu(isUwu) {
+ try {
+ if (isUwu) {
+ localStorage.setItem('uwu', true);
+ document.documentElement.classList.add('uwu');
+ if (!logShown) {
+ console.log('uwu mode! turn off with ?uwu=0');
+ console.log('logo credit to @sawaratsuki1004 via https://github.com/SAWARATSUKI/KawaiiLogos');
+ logShown = true;
+ }
+ } else {
+ localStorage.removeItem('uwu');
+ document.documentElement.classList.remove('uwu');
+ console.log('uwu mode off. turn on with ?uwu');
+ }
+ } catch (err) { }
+ }
+ window.__setUwu = setUwu;
+ function checkQueryParam() {
+ const params = new URLSearchParams(window.location.search);
+ const value = params.get('uwu');
+ switch(value) {
+ case '':
+ case 'true':
+ case '1':
+ return true;
+ case 'false':
+ case '0':
+ return false;
+ default:
+ return null;
+ }
+ }
+ function checkLocalStorage() {
+ try {
+ return localStorage.getItem('uwu') === 'true';
+ } catch (err) {
+ return false;
+ }
+ }
+ const uwuQueryParam = checkQueryParam();
+ if (uwuQueryParam != null) {
+ setUwu(uwuQueryParam);
+ } else if (checkLocalStorage()) {
+ document.documentElement.classList.add('uwu');
+ }
+ } catch (err) { }
+ })();
+ 
+ (function () {
+ function setTheme(newTheme) {
+ window.__theme = newTheme;
+ if (newTheme === 'dark') {
+ document.documentElement.classList.add('dark');
+ } else if (newTheme === 'light') {
+ document.documentElement.classList.remove('dark');
+ }
+ }
+ var preferredTheme;
+ try {
+ preferredTheme = localStorage.getItem('theme');
+ } catch (err) { }
+ window.__setPreferredTheme = function(newTheme) {
+ preferredTheme = newTheme;
+ setTheme(newTheme);
+ try {
+ localStorage.setItem('theme', newTheme);
+ } catch (err) { }
+ };
+ var initialTheme = preferredTheme;
+ var darkQuery = window.matchMedia('(prefers-color-scheme: dark)');
+ if (!initialTheme) {
+ initialTheme = darkQuery.matches ? 'dark' : 'light';
+ }
+ setTheme(initialTheme);
+ darkQuery.addEventListener('change', function (e) {
+ if (!preferredTheme) {
+ setTheme(e.matches ? 'dark' : 'light');
+ }
+ });
+ // Detect whether the browser is Mac to display platform specific content
+ // An example of such content can be the keyboard shortcut displayed in the search bar
+ document.documentElement.classList.add(
+ window.navigator.platform.includes('Mac')
+ ? "platform-mac" 
+ : "platform-win"
+ );
+ })();
+ React v 19.3 Search ⌘ Ctrl K Learn Reference Community Blog react@19.3 Overview Hooks useActionState useCallback useContext useDebugValue useDeferredValue useEffect useEffectEvent useId useImperativeHandle useInsertionEffect useLayoutEffect useMemo useOptimistic useReducer useRef useState useSyncExternalStore useTransition Components &lt;Fragment&gt; (&lt;&gt;) &lt;Profiler&gt; &lt;StrictMode&gt; &lt;Suspense&gt; &lt;Activity&gt; &lt;ViewTransition&gt; APIs act addTransitionType cache cacheSignal captureOwnerStack createContext lazy memo startTransition use experimental_taintObjectReference - This feature is available in the latest Experimental version of React experimental_taintUniqueValue - This feature is available in the latest Experimental version of React react-dom@19.3 Hooks useFormStatus Components Common (e.g. &lt;div&gt;) &lt;form&gt; &lt;input&gt; &lt;option&gt; &lt;progress&gt; &lt;select&gt; &lt;textarea&gt; &lt;img&gt; &lt;link&gt; &lt;meta&gt; &lt;script&gt; &lt;style&gt; &lt;title&gt; APIs browser createPortal flushSync preconnect prefetchDNS preinit preinitModule preload preloadModule Client APIs createRoot hydrateRoot Server APIs renderToPipeableStream renderToReadableStream renderToStaticMarkup renderToString resume resumeToPipeableStream Static APIs prerender prerenderToNodeStream resumeAndPrerender resumeAndPrerenderToNodeStream React Compiler Configuration compilationMode gating logger panicThreshold target Directives &quot;use memo&quot; &quot;use no memo&quot; Compiling Libraries React DevTools React Performance tracks React DevTools for agents - This feature is available in the latest Experimental version of React eslint-plugin-react-hooks Lints exhaustive-deps rules-of-hooks component-hook-factories config error-boundaries gating globals immutability incompatible-library preserve-manual-memoization purity refs set-state-in-effect set-state-in-render static-components unsupported-syntax use-memo Rules of React Overview Components and Hooks must be pure React calls Components and Hooks Rules of Hooks React Server Components Server Components Server Functions Directives &#x27;use client&#x27; &#x27;use server&#x27; Legacy APIs Legacy React APIs Children cloneElement Component createElement createRef forwardRef isValidElement PureComponent API Reference Components Copy page Copy &lt;meta&gt; The built-in browser &lt;meta&gt; component lets you add metadata to the document. &lt; meta name = &quot;keywords&quot; content = &quot;React, JavaScript, semantic markup, html&quot; /&gt; 
+ Reference &lt;meta&gt; Usage Annotating the document with metadata Annotating specific items within the document with metadata 
+ 
+ Reference 
+ &lt;meta&gt; 
+ To add document metadata, render the built-in browser &lt;meta&gt; component . You can render &lt;meta&gt; from any component and React will always place the corresponding DOM element in the document head. 
+ &lt; meta name = &quot;keywords&quot; content = &quot;React, JavaScript, semantic markup, html&quot; /&gt; 
+ See more examples below. 
+ Props 
+ &lt;meta&gt; supports all common element props. 
+ It should have exactly one of the following props: name , httpEquiv , charset , itemProp . The &lt;meta&gt; component does something different depending on which of these props is specified. 
+ 
+ name : a string. Specifies the kind of metadata to be attached to the document. 
+ charset : a string. Specifies the character set used by the document. The only valid value is &quot;utf-8&quot; . 
+ httpEquiv : a string. Specifies a directive for processing the document. 
+ itemProp : a string. Specifies metadata about a particular item within the document rather than the document as a whole. 
+ content : a string. Specifies the metadata to be attached when used with the name or itemProp props or the behavior of the directive when used with the httpEquiv prop. 
+ 
+ Special rendering behavior 
+ React will always place the DOM element corresponding to the &lt;meta&gt; component within the document’s &lt;head&gt; , regardless of where in the React tree it is rendered. The &lt;head&gt; is the only valid place for &lt;meta&gt; to exist within the DOM, yet it’s convenient and keeps things composable if a component representing a specific page can render &lt;meta&gt; components itself. 
+ There is one exception to this: if &lt;meta&gt; has an itemProp prop, there is no special behavior, because in this case it doesn’t represent metadata about the document but rather metadata about a specific part of the page. 
+ 
+ Usage 
+ Annotating the document with metadata 
+ You can annotate the document with metadata such as keywords, a summary, or the author’s name. React will place this metadata within the document &lt;head&gt; regardless of where in the React tree it is rendered. 
+ &lt; meta name = &quot;author&quot; content = &quot;John Smith&quot; /&gt; &lt; meta name = &quot;keywords&quot; content = &quot;React, JavaScript, semantic markup, html&quot; /&gt; &lt; meta name = &quot;description&quot; content = &quot;API reference for the &lt;meta&gt; component in React DOM&quot; /&gt; 
+ You can render the &lt;meta&gt; component from any component. React will put a &lt;meta&gt; DOM node in the document &lt;head&gt; . 
+ App.js ShowRenderedHTML.js App.js Reload Clear Fork import ShowRenderedHTML from &#x27;./ShowRenderedHTML.js&#x27; ; 
+ export default function SiteMapPage ( ) { 
+ return ( 
+ &lt; ShowRenderedHTML &gt; 
+ &lt; meta name = &quot;keywords&quot; content = &quot;React&quot; /&gt; 
+ &lt; meta name = &quot;description&quot; content = &quot;A site map for the React website&quot; /&gt; 
+ &lt; h1 &gt; Site Map &lt;/ h1 &gt; 
+ &lt; p &gt; ... &lt;/ p &gt; 
+ &lt;/ ShowRenderedHTML &gt; 
+ ) ; 
+ } 
+ 
+ Annotating specific items within the document with metadata 
+ You can use the &lt;meta&gt; component with the itemProp prop to annotate specific items within the document with metadata. In this case, React will not place these annotations within the document &lt;head&gt; but will place them like any other React component. 
+ &lt; section itemScope &gt; &lt; h3 &gt; Annotating specific items &lt;/ h3 &gt; &lt; meta itemProp = &quot;description&quot; content = &quot;API reference for using &lt;meta&gt; with itemProp&quot; /&gt; &lt; p &gt; ... &lt;/ p &gt; &lt;/ section &gt; Previous &lt;link&gt; Next &lt;script&gt; Copyright © Meta Platforms, Inc no uwu plz uwu? Logo by @sawaratsuki1004 Learn React Quick Start Installation Describing the UI Adding Interactivity Managing State Escape Hatches API Reference React APIs React DOM APIs Community Code of Conduct Meet the Team Docs Contributors Acknowledgements More Blog React Native Privacy Terms On this page Overview Reference &lt;meta&gt; Usage Annotating the document with metadata Annotating specific items within the document with metadata 

@@ -1,0 +1,160 @@
+blocks/b01_248.tsx(20,14): error TS7006: Parameter 'raw' implicitly has an 'any' type.
+blocks/b01_372.tsx(16,48): error TS2339: Property 'status' does not exist on type 'Error'.
+blocks/b01_372.tsx(43,14): error TS7006: Parameter 'raw' implicitly has an 'any' type.
+blocks/b01_467.tsx(9,19): error TS2345: Argument of type 'Promise<User> | undefined' is not assignable to parameter of type 'Promise<User>'.
+  Type 'undefined' is not assignable to type 'Promise<User>'.
+blocks/b01_467.tsx(11,3): error TS2322: Type 'Promise<User> | undefined' is not assignable to type 'Promise<User>'.
+  Type 'undefined' is not assignable to type 'Promise<User>'.
+blocks/b02_223.tsx(23,14): error TS7006: Parameter 'raw' implicitly has an 'any' type.
+blocks/b02_223.tsx(24,14): error TS7006: Parameter 'results' implicitly has an 'any' type.
+blocks/b02_522.tsx(4,3): error TS2322: Type 'Promise<string> | null' is not assignable to type 'Promise<string>'.
+  Type 'null' is not assignable to type 'Promise<string>'.
+blocks/b02_642.tsx(5,35): error TS18004: No value exists in scope for the shorthand property 'query'. Either declare one or provide an initializer.
+blocks/b02_642.tsx(8,14): error TS7006: Parameter 'results' implicitly has an 'any' type.
+blocks/b02_642.tsx(8,90): error TS18004: No value exists in scope for the shorthand property 'query'. Either declare one or provide an initializer.
+blocks/b02_642.tsx(9,15): error TS7006: Parameter 'e' implicitly has an 'any' type.
+blocks/b02_642.tsx(9,83): error TS18004: No value exists in scope for the shorthand property 'query'. Either declare one or provide an initializer.
+blocks/b03_252.tsx(17,34): error TS2593: Cannot find name 'describe'. Do you need to install type definitions for a test runner? Try `npm i --save-dev @types/jest` or `npm i --save-dev @types/mocha` and then add 'jest' or 'mocha' to the types field in your tsconfig.
+blocks/b03_429.tsx(5,47): error TS2593: Cannot find name 'describe'. Do you need to install type definitions for a test runner? Try `npm i --save-dev @types/jest` or `npm i --save-dev @types/mocha` and then add 'jest' or 'mocha' to the types field in your tsconfig.
+blocks/b03_450.tsx(11,20): error TS7006: Parameter 'next' implicitly has an 'any' type.
+blocks/b03_728.ts(3,11): error TS2339: Property 'status' does not exist on type 'Error'.
+blocks/b03_728.ts(4,11): error TS2339: Property 'status' does not exist on type 'Error'.
+blocks/b03_728.ts(5,11): error TS2339: Property 'status' does not exist on type 'Error'.
+blocks/b03_728.ts(6,11): error TS2339: Property 'status' does not exist on type 'Error'.
+blocks/b03_728.ts(7,11): error TS2339: Property 'status' does not exist on type 'Error'.
+blocks/b04_325.tsx(53,35): error TS7006: Parameter 'l' implicitly has an 'any' type.
+blocks/b04_325.tsx(53,38): error TS7006: Parameter 'p' implicitly has an 'any' type.
+blocks/b04_325.tsx(63,34): error TS7006: Parameter 'sum' implicitly has an 'any' type.
+blocks/b04_325.tsx(63,39): error TS7006: Parameter 'l' implicitly has an 'any' type.
+blocks/b04_451.tsx(5,24): error TS7006: Parameter 'o' implicitly has an 'any' type.
+blocks/b04_825.tsx(6,43): error TS7006: Parameter 'id' implicitly has an 'any' type.
+blocks/b05_381.tsx(12,16): error TS18046: 'todos' is of type 'unknown'.
+blocks/b05_381.tsx(12,27): error TS7006: Parameter 't' implicitly has an 'any' type.
+blocks/b05_455.tsx(2,23): error TS7006: Parameter 't' implicitly has an 'any' type.
+blocks/b05_472.tsx(3,13): error TS7006: Parameter 'cur' implicitly has an 'any' type.
+blocks/b05_472.tsx(3,30): error TS7006: Parameter 't' implicitly has an 'any' type.
+blocks/b05_734.tsx(3,48): error TS7006: Parameter '_cur' implicitly has an 'any' type.
+blocks/b06_135.ts(2,2): error TS2695: Left side of comma operator is unused and has no side effects.
+blocks/b06_135.ts(2,2): error TS2695: Left side of comma operator is unused and has no side effects.
+blocks/b06_135.ts(2,2): error TS2538: Type '{ status: string; page: any; }' cannot be used as an index type.
+blocks/b06_135.ts(2,32): error TS18004: No value exists in scope for the shorthand property 'page'. Either declare one or provide an initializer.
+blocks/b06_135.ts(3,2): error TS2695: Left side of comma operator is unused and has no side effects.
+blocks/b06_135.ts(3,2): error TS2695: Left side of comma operator is unused and has no side effects.
+blocks/b06_135.ts(4,2): error TS2695: Left side of comma operator is unused and has no side effects.
+blocks/b06_135.ts(4,2): error TS2695: Left side of comma operator is unused and has no side effects.
+blocks/b06_135.ts(4,2): error TS2695: Left side of comma operator is unused and has no side effects.
+blocks/b06_420.tsx(22,55): error TS7006: Parameter 's' implicitly has an 'any' type.
+blocks/b07_458.tsx(5,17): error TS7031: Binding element 'signal' implicitly has an 'any' type.
+blocks/b07_475.tsx(8,39): error TS7006: Parameter 'p' implicitly has an 'any' type.
+blocks/b07_750.ts(7,38): error TS7006: Parameter 'f' implicitly has an 'any' type.
+blocks/b07_750.ts(7,79): error TS2339: Property 'list' does not exist on type '{}'.
+blocks/b07_750.ts(7,100): error TS7031: Binding element 'signal' implicitly has an 'any' type.
+blocks/b07_750.ts(8,40): error TS7006: Parameter 'id' implicitly has an 'any' type.
+blocks/b07_750.ts(8,82): error TS2339: Property 'detail' does not exist on type '{}'.
+blocks/b07_750.ts(8,106): error TS7031: Binding element 'signal' implicitly has an 'any' type.
+blocks/b07_750.ts(13,17): error TS7006: Parameter 'o' implicitly has an 'any' type.
+blocks/b07_750.ts(13,49): error TS2339: Property 'detail' does not exist on type '{}'.
+blocks/b07_750.ts(14,72): error TS2339: Property 'lists' does not exist on type '{}'.
+blocks/b08_304.tsx(34,10): error TS18046: 'data' is of type 'unknown'.
+blocks/b08_304.tsx(34,26): error TS7006: Parameter 't' implicitly has an 'any' type.
+blocks/b08_387.tsx(3,45): error TS18004: No value exists in scope for the shorthand property 'queryFn'. Either declare one or provide an initializer.
+blocks/b08_423.tsx(6,20): error TS7006: Parameter 'v' implicitly has an 'any' type.
+blocks/b08_423.tsx(9,60): error TS7006: Parameter 'old' implicitly has an 'any' type.
+blocks/b08_423.tsx(15,13): error TS7006: Parameter '_err' implicitly has an 'any' type.
+blocks/b08_423.tsx(15,19): error TS7006: Parameter 'v' implicitly has an 'any' type.
+blocks/b08_423.tsx(15,22): error TS7006: Parameter 'ctx' implicitly has an 'any' type.
+blocks/b08_423.tsx(19,15): error TS7006: Parameter '_data' implicitly has an 'any' type.
+blocks/b08_423.tsx(19,22): error TS7006: Parameter '_err' implicitly has an 'any' type.
+blocks/b08_423.tsx(19,28): error TS7006: Parameter 'v' implicitly has an 'any' type.
+blocks/b08_660.ts(4,23): error TS7031: Binding element 'signal' implicitly has an 'any' type.
+blocks/b08_677.tsx(3,20): error TS7006: Parameter 'title' implicitly has an 'any' type.
+blocks/b08_677.tsx(11,13): error TS7006: Parameter '_e' implicitly has an 'any' type.
+blocks/b08_677.tsx(11,17): error TS7006: Parameter '_t' implicitly has an 'any' type.
+blocks/b08_677.tsx(11,21): error TS7006: Parameter 'ctx' implicitly has an 'any' type.
+blocks/b09_364.ts(4,15): error TS7006: Parameter 'getDefault' implicitly has an 'any' type.
+blocks/b09_402.ts(3,3): error TS7006: Parameter 'items' implicitly has an 'any' type.
+blocks/b09_402.ts(3,25): error TS7006: Parameter 'i' implicitly has an 'any' type.
+blocks/b09_456.ts(3,15): error TS7006: Parameter 'getDefault' implicitly has an 'any' type.
+blocks/b09_682.ts(3,12): error TS7006: Parameter '_a' implicitly has an 'any' type.
+blocks/b09_682.ts(3,16): error TS7006: Parameter 'api' implicitly has an 'any' type.
+blocks/b10_151.ts(3,51): error TS18046: 's' is of type 'unknown'.
+blocks/b10_151.ts(3,59): error TS18046: 's' is of type 'unknown'.
+blocks/b10_151.ts(4,44): error TS18046: 's' is of type 'unknown'.
+blocks/b10_151.ts(4,49): error TS18046: 's' is of type 'unknown'.
+blocks/b10_166.tsx(1,37): error TS7006: Parameter 'set' implicitly has an 'any' type.
+blocks/b10_392.tsx(5,4): error TS7006: Parameter 's' implicitly has an 'any' type.
+blocks/b10_392.tsx(6,4): error TS7006: Parameter 'len' implicitly has an 'any' type.
+blocks/b10_392.tsx(6,9): error TS7006: Parameter 'prevLen' implicitly has an 'any' type.
+blocks/b10_533.tsx(1,67): error TS7006: Parameter 'set' implicitly has an 'any' type.
+blocks/b10_533.tsx(1,106): error TS7006: Parameter 's' implicitly has an 'any' type.
+blocks/b10_533.tsx(2,27): error TS7006: Parameter 's' implicitly has an 'any' type.
+blocks/b10_533.tsx(3,27): error TS7006: Parameter 's' implicitly has an 'any' type.
+blocks/b10_540.ts(1,20): error TS7006: Parameter 's' implicitly has an 'any' type.
+blocks/b10_617.ts(4,33): error TS7006: Parameter 'version' implicitly has an 'any' type.
+blocks/b11_497.tsx(7,48): error TS7006: Parameter 'xs' implicitly has an 'any' type.
+blocks/b11_497.tsx(8,41): error TS7006: Parameter 'xs' implicitly has an 'any' type.
+blocks/b11_497.tsx(8,59): error TS7006: Parameter 'x' implicitly has an 'any' type.
+blocks/b12_266.tsx(7,44): error TS7006: Parameter 's' implicitly has an 'any' type.
+blocks/b12_266.tsx(8,45): error TS7006: Parameter 's' implicitly has an 'any' type.
+blocks/b12_266.tsx(9,40): error TS7006: Parameter 's' implicitly has an 'any' type.
+blocks/b12_266.tsx(10,39): error TS7006: Parameter 's' implicitly has an 'any' type.
+blocks/b12_328.ts(4,22): error TS7031: Binding element 'context' implicitly has an 'any' type.
+blocks/b12_651.ts(4,1): error TS2593: Cannot find name 'it'. Do you need to install type definitions for a test runner? Try `npm i --save-dev @types/jest` or `npm i --save-dev @types/mocha` and then add 'jest' or 'mocha' to the types field in your tsconfig.
+blocks/b13_35.tsx(1,27): error TS1108: A 'return' statement can only be used within a function body.
+blocks/b13_35.tsx(2,25): error TS1108: A 'return' statement can only be used within a function body.
+blocks/b13_35.tsx(3,1): error TS1108: A 'return' statement can only be used within a function body.
+blocks/b13_578.tsx(11,30): error TS7031: Binding element 'error' implicitly has an 'any' type.
+blocks/b13_578.tsx(11,37): error TS7031: Binding element 'resetErrorBoundary' implicitly has an 'any' type.
+blocks/b14_129.ts(3,39): error TS18004: No value exists in scope for the shorthand property 'reducer'. Either declare one or provide an initializer.
+blocks/b14_218.tsx(7,27): error TS7006: Parameter 'req' implicitly has an 'any' type.
+blocks/b14_218.tsx(7,32): error TS7006: Parameter 'res' implicitly has an 'any' type.
+blocks/b14_339.tsx(12,11): error TS2349: This expression is not callable.
+  Type 'string[]' has no call signatures.
+blocks/b14_339.tsx(23,1): error TS1108: A 'return' statement can only be used within a function body.
+blocks/b15_247.ts(8,12): error TS18046: 'error' is of type 'unknown'.
+blocks/b15_247.ts(8,36): error TS18046: 'error' is of type 'unknown'.
+blocks/b15_247.ts(8,60): error TS18046: 'error' is of type 'unknown'.
+blocks/b15_247.ts(8,84): error TS18046: 'error' is of type 'unknown'.
+blocks/b15_247.ts(8,108): error TS18046: 'error' is of type 'unknown'.
+blocks/b15_265.tsx(42,51): error TS18046: 'error' is of type 'unknown'.
+blocks/b15_326.tsx(10,49): error TS2339: Property 'retryAfterMs' does not exist on type 'Error'.
+blocks/b15_326.tsx(11,33): error TS2339: Property 'retryAfterMs' does not exist on type 'Error'.
+blocks/b15_368.tsx(34,47): error TS2339: Property 'status' does not exist on type 'Error'.
+blocks/b15_368.tsx(34,70): error TS2339: Property 'status' does not exist on type 'Error'.
+blocks/b16_257.tsx(20,15): error TS7006: Parameter 'key' implicitly has an 'any' type.
+blocks/b16_257.tsx(20,46): error TS7006: Parameter 'v' implicitly has an 'any' type.
+blocks/b16_257.tsx(21,15): error TS7006: Parameter 'key' implicitly has an 'any' type.
+blocks/b16_257.tsx(21,20): error TS7006: Parameter 'value' implicitly has an 'any' type.
+blocks/b16_257.tsx(22,18): error TS7006: Parameter 'key' implicitly has an 'any' type.
+blocks/b16_257.tsx(36,34): error TS7006: Parameter 'query' implicitly has an 'any' type.
+blocks/b16_312.tsx(4,17): error TS7031: Binding element 'signal' implicitly has an 'any' type.
+blocks/b16_323.tsx(6,7): error TS2367: This comparison appears to be unintentional because the types '"success" | "error"' and '"pending"' have no overlap.
+blocks/b16_323.tsx(7,14): error TS2339: Property 'fetchStatus' does not exist on type 'never'.
+blocks/b16_323.tsx(21,20): error TS2339: Property 'map' does not exist on type '{}'.
+blocks/b16_323.tsx(21,25): error TS7006: Parameter 'j' implicitly has an 'any' type.
+blocks/b16_354.tsx(21,11): error TS7006: Parameter 'db' implicitly has an 'any' type.
+blocks/b16_354.tsx(60,21): error TS7053: Element implicitly has an 'any' type because expression of type 'any' can't be used to index type 'Record<"COMPLETE_JOB" | "ADD_NOTE", (item: OutboxItem) => Promise<Response>>'.
+blocks/b16_713.tsx(5,45): error TS7006: Parameter 'jobs' implicitly has an 'any' type.
+blocks/b16_713.tsx(7,39): error TS7006: Parameter 'i' implicitly has an 'any' type.
+blocks/b16_713.tsx(7,75): error TS7006: Parameter 'i' implicitly has an 'any' type.
+blocks/b16_713.tsx(8,21): error TS7006: Parameter 'j' implicitly has an 'any' type.
+blocks/b17_213.tsx(14,26): error TS7006: Parameter 'o' implicitly has an 'any' type.
+blocks/b17_395.tsx(39,37): error TS7006: Parameter 'e' implicitly has an 'any' type.
+blocks/b17_447.tsx(9,34): error TS7006: Parameter 'ev' implicitly has an 'any' type.
+blocks/b19_263.tsx(12,79): error TS7006: Parameter 'set' implicitly has an 'any' type.
+blocks/b19_263.tsx(12,84): error TS7006: Parameter 'get' implicitly has an 'any' type.
+blocks/b19_362.tsx(34,55): error TS18046: 'r' is of type 'unknown'.
+blocks/b20_100.tsx(13,37): error TS7006: Parameter 's' implicitly has an 'any' type.
+blocks/b20_100.tsx(14,37): error TS7006: Parameter 's' implicitly has an 'any' type.
+blocks/b20_134.ts(5,15): error TS7006: Parameter 'todo' implicitly has an 'any' type.
+blocks/b20_187.tsx(11,29): error TS7006: Parameter 'm' implicitly has an 'any' type.
+blocks/b20_345.tsx(2,79): error TS7031: Binding element 'signal' implicitly has an 'any' type.
+blocks/b20_368.tsx(4,18): error TS7006: Parameter 'prev' implicitly has an 'any' type.
+blocks/b20_368.tsx(4,39): error TS7006: Parameter 'x' implicitly has an 'any' type.
+blocks/b20_368.tsx(6,56): error TS7006: Parameter 'ev' implicitly has an 'any' type.
+blocks/b20_408.tsx(6,22): error TS7006: Parameter 'v' implicitly has an 'any' type.
+blocks/b20_408.tsx(9,51): error TS7006: Parameter 'old' implicitly has an 'any' type.
+blocks/b20_408.tsx(9,69): error TS7006: Parameter 't' implicitly has an 'any' type.
+blocks/b20_408.tsx(12,15): error TS7006: Parameter '_err' implicitly has an 'any' type.
+blocks/b20_408.tsx(12,21): error TS7006: Parameter '_v' implicitly has an 'any' type.
+blocks/b20_408.tsx(12,25): error TS7006: Parameter 'ctx' implicitly has an 'any' type.

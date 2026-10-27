@@ -1,0 +1,1 @@
+{"name":"@acme/a","version":"1.0.0","dependencies":{"@acme/ui":"*"},"scripts":{"build":"echo build a"}}

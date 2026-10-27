@@ -1,0 +1,1 @@
+{"compilerOptions":{"strict":true,"noEmit":true,"target":"ES2021","lib":["ES2021","DOM","DOM.Iterable"]},"files":["a.ts"]}

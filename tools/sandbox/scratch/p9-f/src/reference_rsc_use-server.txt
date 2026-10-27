@@ -1,0 +1,175 @@
+ &#x27;use server&#x27; directive – React 
+ (function () {
+ try {
+ let logShown = false;
+ function setUwu(isUwu) {
+ try {
+ if (isUwu) {
+ localStorage.setItem('uwu', true);
+ document.documentElement.classList.add('uwu');
+ if (!logShown) {
+ console.log('uwu mode! turn off with ?uwu=0');
+ console.log('logo credit to @sawaratsuki1004 via https://github.com/SAWARATSUKI/KawaiiLogos');
+ logShown = true;
+ }
+ } else {
+ localStorage.removeItem('uwu');
+ document.documentElement.classList.remove('uwu');
+ console.log('uwu mode off. turn on with ?uwu');
+ }
+ } catch (err) { }
+ }
+ window.__setUwu = setUwu;
+ function checkQueryParam() {
+ const params = new URLSearchParams(window.location.search);
+ const value = params.get('uwu');
+ switch(value) {
+ case '':
+ case 'true':
+ case '1':
+ return true;
+ case 'false':
+ case '0':
+ return false;
+ default:
+ return null;
+ }
+ }
+ function checkLocalStorage() {
+ try {
+ return localStorage.getItem('uwu') === 'true';
+ } catch (err) {
+ return false;
+ }
+ }
+ const uwuQueryParam = checkQueryParam();
+ if (uwuQueryParam != null) {
+ setUwu(uwuQueryParam);
+ } else if (checkLocalStorage()) {
+ document.documentElement.classList.add('uwu');
+ }
+ } catch (err) { }
+ })();
+ 
+ (function () {
+ function setTheme(newTheme) {
+ window.__theme = newTheme;
+ if (newTheme === 'dark') {
+ document.documentElement.classList.add('dark');
+ } else if (newTheme === 'light') {
+ document.documentElement.classList.remove('dark');
+ }
+ }
+ var preferredTheme;
+ try {
+ preferredTheme = localStorage.getItem('theme');
+ } catch (err) { }
+ window.__setPreferredTheme = function(newTheme) {
+ preferredTheme = newTheme;
+ setTheme(newTheme);
+ try {
+ localStorage.setItem('theme', newTheme);
+ } catch (err) { }
+ };
+ var initialTheme = preferredTheme;
+ var darkQuery = window.matchMedia('(prefers-color-scheme: dark)');
+ if (!initialTheme) {
+ initialTheme = darkQuery.matches ? 'dark' : 'light';
+ }
+ setTheme(initialTheme);
+ darkQuery.addEventListener('change', function (e) {
+ if (!preferredTheme) {
+ setTheme(e.matches ? 'dark' : 'light');
+ }
+ });
+ // Detect whether the browser is Mac to display platform specific content
+ // An example of such content can be the keyboard shortcut displayed in the search bar
+ document.documentElement.classList.add(
+ window.navigator.platform.includes('Mac')
+ ? "platform-mac" 
+ : "platform-win"
+ );
+ })();
+ React v 19.3 Search ⌘ Ctrl K Learn Reference Community Blog react@19.3 Overview Hooks useActionState useCallback useContext useDebugValue useDeferredValue useEffect useEffectEvent useId useImperativeHandle useInsertionEffect useLayoutEffect useMemo useOptimistic useReducer useRef useState useSyncExternalStore useTransition Components &lt;Fragment&gt; (&lt;&gt;) &lt;Profiler&gt; &lt;StrictMode&gt; &lt;Suspense&gt; &lt;Activity&gt; &lt;ViewTransition&gt; APIs act addTransitionType cache cacheSignal captureOwnerStack createContext lazy memo startTransition use experimental_taintObjectReference - This feature is available in the latest Experimental version of React experimental_taintUniqueValue - This feature is available in the latest Experimental version of React react-dom@19.3 Hooks useFormStatus Components Common (e.g. &lt;div&gt;) &lt;form&gt; &lt;input&gt; &lt;option&gt; &lt;progress&gt; &lt;select&gt; &lt;textarea&gt; &lt;img&gt; &lt;link&gt; &lt;meta&gt; &lt;script&gt; &lt;style&gt; &lt;title&gt; APIs browser createPortal flushSync preconnect prefetchDNS preinit preinitModule preload preloadModule Client APIs createRoot hydrateRoot Server APIs renderToPipeableStream renderToReadableStream renderToStaticMarkup renderToString resume resumeToPipeableStream Static APIs prerender prerenderToNodeStream resumeAndPrerender resumeAndPrerenderToNodeStream React Compiler Configuration compilationMode gating logger panicThreshold target Directives &quot;use memo&quot; &quot;use no memo&quot; Compiling Libraries React DevTools React Performance tracks React DevTools for agents - This feature is available in the latest Experimental version of React eslint-plugin-react-hooks Lints exhaustive-deps rules-of-hooks component-hook-factories config error-boundaries gating globals immutability incompatible-library preserve-manual-memoization purity refs set-state-in-effect set-state-in-render static-components unsupported-syntax use-memo Rules of React Overview Components and Hooks must be pure React calls Components and Hooks Rules of Hooks React Server Components Server Components Server Functions Directives &#x27;use client&#x27; &#x27;use server&#x27; Legacy APIs Legacy React APIs Children cloneElement Component createElement createRef forwardRef isValidElement PureComponent API Reference Directives Copy page Copy &#x27;use server&#x27; React Server Components &#x27;use server&#x27; is for use with using React Server Components . 
+ &#x27;use server&#x27; marks server-side functions that can be called from client-side code. 
+ Reference &#x27;use server&#x27; Security considerations Serializable arguments and return values Usage Server Functions in forms Calling a Server Function outside of &lt;form&gt; 
+ 
+ Reference 
+ &#x27;use server&#x27; 
+ Add &#x27;use server&#x27; at the top of an async function body to mark the function as callable by the client. We call these functions Server Functions . 
+ async function addToCart ( data ) { &#x27;use server&#x27; ; // ... } 
+ When calling a Server Function on the client, it will make a network request to the server that includes a serialized copy of any arguments passed. If the Server Function returns a value, that value will be serialized and returned to the client. 
+ Instead of individually marking functions with &#x27;use server&#x27; , you can add the directive to the top of a file to mark all exports within that file as Server Functions that can be used anywhere, including imported in client code. 
+ Caveats 
+ 
+ &#x27;use server&#x27; must be at the very beginning of their function or module; above any other code including imports (comments above directives are OK). They must be written with single or double quotes, not backticks. 
+ &#x27;use server&#x27; can only be used in server-side files. The resulting Server Functions can be passed to Client Components through props. See supported types for serialization . 
+ To import a Server Functions from client code , the directive must be used on a module level. 
+ Because the underlying network calls are always asynchronous, &#x27;use server&#x27; can only be used on async functions. 
+ Always treat arguments to Server Functions as untrusted input and authorize any mutations. See security considerations . 
+ Server Functions should be called in a Transition . Server Functions passed to &lt;form action&gt; or formAction will automatically be called in a transition. 
+ Server Functions are designed for mutations that update server-side state; they are not recommended for data fetching. Accordingly, frameworks implementing Server Functions typically process one action at a time and do not have a way to cache the return value. 
+ 
+ Security considerations 
+ Arguments to Server Functions are fully client-controlled. For security, always treat them as untrusted input, and make sure to validate and escape arguments as appropriate. 
+ In any Server Function, make sure to validate that the logged-in user is allowed to perform that action. 
+ Under Construction To prevent sending sensitive data from a Server Function, there are experimental taint APIs to prevent unique values and objects from being passed to client code. See experimental_taintUniqueValue and experimental_taintObjectReference . 
+ Serializable arguments and return values 
+ Since client code calls the Server Function over the network, any arguments passed will need to be serializable. 
+ Here are supported types for Server Function arguments: 
+ 
+ Primitives 
+ 
+ string 
+ number 
+ bigint 
+ boolean 
+ undefined 
+ null 
+ symbol , only symbols registered in the global Symbol registry via Symbol.for 
+ 
+ 
+ Iterables containing serializable values 
+ 
+ String 
+ Array 
+ Map 
+ Set 
+ TypedArray and ArrayBuffer 
+ 
+ 
+ Date 
+ FormData instances 
+ Plain objects : those created with object initializers , with serializable properties 
+ Functions that are Server Functions 
+ Promises 
+ 
+ Notably, these are not supported: 
+ 
+ React elements, or JSX 
+ Functions, including component functions or any other function that is not a Server Function 
+ Classes 
+ Objects that are instances of any class (other than the built-ins mentioned) or objects with a null prototype 
+ Symbols not registered globally, ex. Symbol(&#x27;my new symbol&#x27;) 
+ Events from event handlers 
+ 
+ Supported serializable return values are the same as serializable props for a boundary Client Component. 
+ Usage 
+ Server Functions in forms 
+ The most common use case of Server Functions will be calling functions that mutate data. On the browser, the HTML form element is the traditional approach for a user to submit a mutation. With React Server Components, React introduces first-class support for Server Functions as Actions in forms . 
+ Here is a form that allows a user to request a username. 
+ // App.js async function requestUsername ( formData ) { &#x27;use server&#x27; ; const username = formData . get ( &#x27;username&#x27; ) ; // ... } export default function App ( ) { return ( &lt; form action = { requestUsername } &gt; &lt; input type = &quot;text&quot; name = &quot;username&quot; /&gt; &lt; button type = &quot;submit&quot; &gt; Request &lt;/ button &gt; &lt;/ form &gt; ) ; } 
+ In this example requestUsername is a Server Function passed to a &lt;form&gt; . When a user submits this form, there is a network request to the server function requestUsername . When calling a Server Function in a form, React will supply the form’s FormData as the first argument to the Server Function. 
+ By passing a Server Function to the form action , React can progressively enhance the form. This means that forms can be submitted before the JavaScript bundle is loaded. 
+ Handling return values in forms 
+ In the username request form, there might be the chance that a username is not available. requestUsername should tell us if it fails or not. 
+ To update the UI based on the result of a Server Function while supporting progressive enhancement, use useActionState . 
+ // requestUsername.js &#x27;use server&#x27; ; export default async function requestUsername ( formData ) { const username = formData . get ( &#x27;username&#x27; ) ; if ( canRequest ( username ) ) { // ... return &#x27;successful&#x27; ; } return &#x27;failed&#x27; ; } 
+ // UsernameForm.js &#x27;use client&#x27; ; import { useActionState } from &#x27;react&#x27; ; import requestUsername from &#x27;./requestUsername&#x27; ; function UsernameForm ( ) { const [ state , action ] = useActionState ( requestUsername , null , &#x27;n/a&#x27; ) ; return ( &lt; &gt; &lt; form action = { action } &gt; &lt; input type = &quot;text&quot; name = &quot;username&quot; /&gt; &lt; button type = &quot;submit&quot; &gt; Request &lt;/ button &gt; &lt;/ form &gt; &lt; p &gt; Last submission request returned: { state } &lt;/ p &gt; &lt;/ &gt; ) ; } 
+ Note that like most Hooks, useActionState can only be called in client code . 
+ Calling a Server Function outside of &lt;form&gt; 
+ Server Functions are exposed server endpoints and can be called anywhere in client code. 
+ When using a Server Function outside a form , call the Server Function in a Transition , which allows you to display a loading indicator, show optimistic state updates , and handle unexpected errors. Forms will automatically wrap Server Functions in transitions. 
+ import incrementLike from &#x27;./actions&#x27; ; import { useState , useTransition } from &#x27;react&#x27; ; function LikeButton ( ) { const [ isPending , startTransition ] = useTransition ( ) ; const [ likeCount , setLikeCount ] = useState ( 0 ) ; const onClick = ( ) =&gt; { startTransition ( async ( ) =&gt; { const currentCount = await incrementLike ( ) ; startTransition ( ( ) =&gt; { setLikeCount ( currentCount ) ; } ) ; } ) ; } ; return ( &lt; &gt; &lt; p &gt; Total Likes: { likeCount } &lt;/ p &gt; &lt; button onClick = { onClick } disabled = { isPending } &gt; Like &lt;/ button &gt; ; &lt;/ &gt; ) ; } 
+ // actions.js &#x27;use server&#x27; ; let likeCount = 0 ; export default async function incrementLike ( ) { likeCount ++ ; return likeCount ; } 
+ To read a Server Function return value, you’ll need to await the promise returned. Previous &#x27;use client&#x27; Copyright © Meta Platforms, Inc no uwu plz uwu? Logo by @sawaratsuki1004 Learn React Quick Start Installation Describing the UI Adding Interactivity Managing State Escape Hatches API Reference React APIs React DOM APIs Community Code of Conduct Meet the Team Docs Contributors Acknowledgements More Blog React Native Privacy Terms On this page Overview Reference &#x27;use server&#x27; Security considerations Serializable arguments and return values Usage Server Functions in forms Calling a Server Function outside of &lt;form&gt; 

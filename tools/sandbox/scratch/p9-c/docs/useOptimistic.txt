@@ -1,0 +1,3126 @@
+useOptimistic – React
+window.dataLayer = window.dataLayer || [];function gtag(){dataLayer.push(arguments);}gtag('js', new Date());gtag('config', 'G-B1E83PJ3RT');
+ (function () {
+ try {
+ let logShown = false;
+ function setUwu(isUwu) {
+ try {
+ if (isUwu) {
+ localStorage.setItem('uwu', true);
+ document.documentElement.classList.add('uwu');
+ if (!logShown) {
+ console.log('uwu mode! turn off with ?uwu=0');
+ console.log('logo credit to @sawaratsuki1004 via https://github.com/SAWARATSUKI/KawaiiLogos');
+ logShown = true;
+ }
+ } else {
+ localStorage.removeItem('uwu');
+ document.documentElement.classList.remove('uwu');
+ console.log('uwu mode off. turn on with ?uwu');
+ }
+ } catch (err) { }
+ }
+ window.__setUwu = setUwu;
+ function checkQueryParam() {
+ const params = new URLSearchParams(window.location.search);
+ const value = params.get('uwu');
+ switch(value) {
+ case '':
+ case 'true':
+ case '1':
+ return true;
+ case 'false':
+ case '0':
+ return false;
+ default:
+ return null;
+ }
+ }
+ function checkLocalStorage() {
+ try {
+ return localStorage.getItem('uwu') === 'true';
+ } catch (err) {
+ return false;
+ }
+ }
+ const uwuQueryParam = checkQueryParam();
+ if (uwuQueryParam != null) {
+ setUwu(uwuQueryParam);
+ } else if (checkLocalStorage()) {
+ document.documentElement.classList.add('uwu');
+ }
+ } catch (err) { }
+ })();
+ (function () {
+ function setTheme(newTheme) {
+ window.__theme = newTheme;
+ if (newTheme === 'dark') {
+ document.documentElement.classList.add('dark');
+ } else if (newTheme === 'light') {
+ document.documentElement.classList.remove('dark');
+ }
+ }
+ var preferredTheme;
+ try {
+ preferredTheme = localStorage.getItem('theme');
+ } catch (err) { }
+ window.__setPreferredTheme = function(newTheme) {
+ preferredTheme = newTheme;
+ setTheme(newTheme);
+ try {
+ localStorage.setItem('theme', newTheme);
+ } catch (err) { }
+ };
+ var initialTheme = preferredTheme;
+ var darkQuery = window.matchMedia('(prefers-color-scheme: dark)');
+ if (!initialTheme) {
+ initialTheme = darkQuery.matches ? 'dark' : 'light';
+ }
+ setTheme(initialTheme);
+ darkQuery.addEventListener('change', function (e) {
+ if (!preferredTheme) {
+ setTheme(e.matches ? 'dark' : 'light');
+ }
+ });
+ // Detect whether the browser is Mac to display platform specific content
+ // An example of such content can be the keyboard shortcut displayed in the search bar
+ document.documentElement.classList.add(
+ window.navigator.platform.includes('Mac')
+ ? "platform-mac" 
+ : "platform-win"
+ );
+ })();
+React
+v
+19.3
+Search
+⌘
+Ctrl
+K
+Learn
+Reference
+Community
+Blog
+react@19.3
+Overview
+Hooks
+useActionState
+useCallback
+useContext
+useDebugValue
+useDeferredValue
+useEffect
+useEffectEvent
+useId
+useImperativeHandle
+useInsertionEffect
+useLayoutEffect
+useMemo
+useOptimistic
+useReducer
+useRef
+useState
+useSyncExternalStore
+useTransition
+Components
+&lt;Fragment&gt; (&lt;&gt;)
+&lt;Profiler&gt;
+&lt;StrictMode&gt;
+&lt;Suspense&gt;
+&lt;Activity&gt;
+&lt;ViewTransition&gt;
+APIs
+act
+addTransitionType
+cache
+cacheSignal
+captureOwnerStack
+createContext
+lazy
+memo
+startTransition
+use
+experimental_taintObjectReference
+ - This feature is available in the latest Experimental version of React
+experimental_taintUniqueValue
+ - This feature is available in the latest Experimental version of React
+react-dom@19.3
+Hooks
+useFormStatus
+Components
+Common (e.g. &lt;div&gt;)
+&lt;form&gt;
+&lt;input&gt;
+&lt;option&gt;
+&lt;progress&gt;
+&lt;select&gt;
+&lt;textarea&gt;
+&lt;img&gt;
+&lt;link&gt;
+&lt;meta&gt;
+&lt;script&gt;
+&lt;style&gt;
+&lt;title&gt;
+APIs
+browser
+createPortal
+flushSync
+preconnect
+prefetchDNS
+preinit
+preinitModule
+preload
+preloadModule
+Client APIs
+createRoot
+hydrateRoot
+Server APIs
+renderToPipeableStream
+renderToReadableStream
+renderToStaticMarkup
+renderToString
+resume
+resumeToPipeableStream
+Static APIs
+prerender
+prerenderToNodeStream
+resumeAndPrerender
+resumeAndPrerenderToNodeStream
+React Compiler
+Configuration
+compilationMode
+gating
+logger
+panicThreshold
+target
+Directives
+&quot;use memo&quot;
+&quot;use no memo&quot;
+Compiling Libraries
+React DevTools
+React Performance tracks
+React DevTools for agents
+ - This feature is available in the latest Experimental version of React
+eslint-plugin-react-hooks
+Lints
+exhaustive-deps
+rules-of-hooks
+component-hook-factories
+config
+error-boundaries
+gating
+globals
+immutability
+incompatible-library
+preserve-manual-memoization
+purity
+refs
+set-state-in-effect
+set-state-in-render
+static-components
+unsupported-syntax
+use-memo
+Rules of React
+Overview
+Components and Hooks must be pure
+React calls Components and Hooks
+Rules of Hooks
+React Server Components
+Server Components
+Server Functions
+Directives
+&#x27;use client&#x27;
+&#x27;use server&#x27;
+Legacy APIs
+Legacy React APIs
+Children
+cloneElement
+Component
+createElement
+createRef
+forwardRef
+isValidElement
+PureComponent
+API Reference
+Hooks
+Copy page
+Copy
+useOptimistic
+useOptimistic
+ is a React Hook that lets you optimistically update the UI.
+const
+[
+optimisticState
+,
+setOptimistic
+]
+ = 
+useOptimistic
+(
+value
+,
+reducer
+?
+)
+;
+Reference 
+useOptimistic(value, reducer?)
+set
+ functions, like 
+setOptimistic(optimisticState)
+Usage 
+Adding optimistic state to a component 
+Using optimistic state in Action props 
+Adding optimistic state to Action props 
+Updating props or state optimistically 
+Updating multiple values together 
+Optimistically adding to a list 
+Handling multiple 
+action
+ types 
+Optimistic delete with error recovery 
+Troubleshooting 
+I’m getting an error: “An optimistic state update occurred outside a Transition or Action” 
+I’m getting an error: “Cannot update optimistic state while rendering” 
+My optimistic updates show stale values 
+I don’t know if my optimistic update is pending 
+Reference 
+useOptimistic(value, reducer?)
+Call 
+useOptimistic
+ at the top level of your component to create optimistic state for a value.
+import
+{
+useOptimistic
+}
+from
+&#x27;react&#x27;
+;
+function
+MyComponent
+(
+{
+name
+,
+todos
+}
+)
+{
+const
+[
+optimisticAge
+,
+setOptimisticAge
+]
+ = 
+useOptimistic
+(
+28
+)
+;
+const
+[
+optimisticName
+,
+setOptimisticName
+]
+ = 
+useOptimistic
+(
+name
+)
+;
+const
+[
+optimisticTodos
+,
+setOptimisticTodos
+]
+ = 
+useOptimistic
+(
+todos
+,
+todoReducer
+)
+;
+// ...
+}
+See more examples below.
+Parameters 
+value
+: The value returned when there are no pending Actions.
+optional
+reducer(currentState, action)
+: The reducer function that specifies how the optimistic state gets updated. It must be pure, should take the current state and reducer action arguments, and should return the next optimistic state.
+Returns 
+useOptimistic
+ returns an array with exactly two values:
+optimisticState
+: The current optimistic state. It is equal to 
+value
+ unless an Action is pending, in which case it is equal to the state returned by 
+reducer
+ (or the value passed to the set function if no 
+reducer
+ was provided).
+The 
+set
+ function
+ that lets you update the optimistic state to a different value inside an Action.
+set
+ functions, like 
+setOptimistic(optimisticState)
+The 
+set
+ function returned by 
+useOptimistic
+ lets you update the state for the duration of an 
+Action
+. You can pass the next state directly, or a function that calculates it from the previous state:
+const
+[
+optimisticLike
+,
+setOptimisticLike
+]
+ = 
+useOptimistic
+(
+false
+)
+;
+const
+[
+optimisticSubs
+,
+setOptimisticSubs
+]
+ = 
+useOptimistic
+(
+subs
+)
+;
+function
+handleClick
+(
+)
+{
+startTransition
+(
+async
+(
+)
+=&gt;
+{
+setOptimisticLike
+(
+true
+)
+;
+setOptimisticSubs
+(
+a
+=&gt;
+a
+ + 
+1
+)
+;
+await
+saveChanges
+(
+)
+;
+}
+)
+;
+}
+Parameters 
+optimisticState
+: The value that you want the optimistic state to be during an 
+Action
+. If you provided a 
+reducer
+ to 
+useOptimistic
+, this value will be passed as the second argument to your reducer. It can be a value of any type.
+If you pass a function as 
+optimisticState
+, it will be treated as an 
+updater function
+. It must be pure, should take the pending state as its only argument, and should return the next optimistic state. React will put your updater function in a queue and re-render your component. During the next render, React will calculate the next state by applying the queued updaters to the previous state similar to 
+useState
+ updaters
+.
+Returns 
+set
+ functions do not have a return value.
+Caveats 
+The 
+set
+ function must be called inside an 
+Action
+. If you call the setter outside an Action, 
+React will show a warning
+ and the optimistic state will briefly render.
+Deep Dive
+How optimistic state works 
+Show Details
+useOptimistic
+ lets you show a temporary value while an Action is in progress:
+const
+[
+value
+,
+setValue
+]
+ = 
+useState
+(
+&#x27;a&#x27;
+)
+;
+const
+[
+optimistic
+,
+setOptimistic
+]
+ = 
+useOptimistic
+(
+value
+)
+;
+startTransition
+(
+async
+(
+)
+=&gt;
+{
+setOptimistic
+(
+&#x27;b&#x27;
+)
+;
+const
+newValue
+ = 
+await
+saveChanges
+(
+&#x27;b&#x27;
+)
+;
+setValue
+(
+newValue
+)
+;
+}
+)
+;
+When the setter is called inside an Action, 
+useOptimistic
+ will trigger a re-render to show that state while the Action is in progress. Otherwise, the 
+value
+ passed to 
+useOptimistic
+ is returned.
+This state is called the “optimistic” because it is used to immediately present the user with the result of performing an Action, even though the Action actually takes time to complete.
+How the update flows
+Update immediately
+: When 
+setOptimistic(&#x27;b&#x27;)
+ is called, React immediately renders with 
+&#x27;b&#x27;
+.
+(Optional) await in Action
+: If you await in the Action, React continues showing 
+&#x27;b&#x27;
+.
+Transition scheduled
+: 
+setValue(newValue)
+ schedules an update to the real state.
+(Optional) wait for Suspense
+: If 
+newValue
+ suspends, React continues showing 
+&#x27;b&#x27;
+.
+Single render commit
+: Finally, the 
+newValue
+ commits for 
+value
+ and 
+optimistic
+.
+There’s no extra render to “clear” the optimistic state. The optimistic and real state converge in the same render when the Transition completes.
+Note
+Optimistic state is temporary 
+Optimistic state only renders while an Action is in progress, otherwise 
+value
+ is rendered.
+If 
+saveChanges
+ returned 
+&#x27;c&#x27;
+, then both 
+value
+ and 
+optimistic
+ will be 
+&#x27;c&#x27;
+, not 
+&#x27;b&#x27;
+.
+How the final state is determined
+The 
+value
+ argument to 
+useOptimistic
+ determines what displays after the Action finishes. How this works depends on the pattern you use:
+Hardcoded values
+ like 
+useOptimistic(false)
+: After the Action, 
+state
+ is still 
+false
+, so the UI shows 
+false
+. This is useful for pending states where you always start from 
+false
+.
+Props or state passed in
+ like 
+useOptimistic(isLiked)
+: If the parent updates 
+isLiked
+ during the Action, the new value is used after the Action completes. This is how the UI reflects the result of the Action.
+Reducer pattern
+ like 
+useOptimistic(items, fn)
+: If 
+items
+ changes while the Action is pending, React re-runs your 
+reducer
+ with the new 
+items
+ to recalculate the state. This keeps your optimistic additions on top of the latest data.
+What happens when the Action fails
+If the Action throws an error, the Transition still ends, and React renders with whatever 
+value
+ currently is. Since the parent typically only updates 
+value
+ on success, a failure means 
+value
+ hasn’t changed, so the UI shows what it showed before the optimistic update. You can catch the error to show a message to the user.
+Usage 
+Adding optimistic state to a component 
+Call 
+useOptimistic
+ at the top level of your component to declare one or more optimistic states.
+import
+{
+useOptimistic
+}
+from
+&#x27;react&#x27;
+;
+function
+MyComponent
+(
+{
+age
+,
+name
+,
+todos
+}
+)
+{
+const
+[
+optimisticAge
+,
+setOptimisticAge
+]
+ = 
+useOptimistic
+(
+age
+)
+;
+const
+[
+optimisticName
+,
+setOptimisticName
+]
+ = 
+useOptimistic
+(
+name
+)
+;
+const
+[
+optimisticTodos
+,
+setOptimisticTodos
+]
+ = 
+useOptimistic
+(
+todos
+,
+reducer
+)
+;
+// ...
+useOptimistic
+ returns an array with exactly two items:
+The 
+optimistic state
+, initially set to the 
+value
+ provided.
+The 
+set function
+ that lets you temporarily change the state during an 
+Action
+.
+If a 
+reducer
+ is provided, it will run before returning the optimistic state.
+To use the 
+optimistic state
+, call the 
+set
+ function inside an Action.
+Actions are functions called inside 
+startTransition
+:
+function
+onAgeChange
+(
+e
+)
+{
+startTransition
+(
+async
+(
+)
+=&gt;
+{
+setOptimisticAge
+(
+42
+)
+;
+const
+newAge
+ = 
+await
+postAge
+(
+42
+)
+;
+setAge
+(
+newAge
+)
+;
+}
+)
+;
+}
+React will render the optimistic state 
+42
+ first while the 
+age
+ remains the current age. The Action waits for POST, and then renders the 
+newAge
+ for both 
+age
+ and 
+optimisticAge
+.
+See 
+How optimistic state works
+ for a deep dive.
+Note
+When using 
+Action props
+, you can call the set function without 
+startTransition
+:
+async
+function
+submitAction
+(
+)
+{
+setOptimisticName
+(
+&#x27;Taylor&#x27;
+)
+;
+await
+updateName
+(
+&#x27;Taylor&#x27;
+)
+;
+}
+This works because Action props are already called inside 
+startTransition
+.
+For an example, see: 
+Using optimistic state in Action props
+.
+Using optimistic state in Action props 
+In an 
+Action prop
+, you can call the optimistic setter directly without 
+startTransition
+.
+This example sets optimistic state inside a 
+&lt;form&gt;
+submitAction
+ prop:
+App.js
+EditName.js
+EditName.js
+Reload
+Clear
+Fork
+import
+{
+useOptimistic
+,
+startTransition
+}
+from
+&#x27;react&#x27;
+;
+import
+{
+updateName
+}
+from
+&#x27;./actions.js&#x27;
+;
+export
+default
+function
+EditName
+(
+{
+name
+,
+action
+}
+)
+{
+const
+[
+optimisticName
+,
+setOptimisticName
+]
+ = 
+useOptimistic
+(
+name
+)
+;
+async
+function
+submitAction
+(
+formData
+)
+{
+const
+newName
+ = 
+formData
+.
+get
+(
+&#x27;name&#x27;
+)
+;
+setOptimisticName
+(
+newName
+)
+;
+const
+updatedName
+ = 
+await
+updateName
+(
+newName
+)
+;
+startTransition
+(
+(
+)
+=&gt;
+{
+action
+(
+updatedName
+)
+;
+}
+)
+}
+return
+(
+&lt;
+form
+action
+=
+{
+submitAction
+}
+&gt;
+&lt;
+p
+&gt;
+Your name is: 
+{
+optimisticName
+}
+&lt;/
+p
+&gt;
+&lt;
+p
+&gt;
+&lt;
+label
+&gt;
+Change it: 
+&lt;/
+label
+&gt;
+&lt;
+input
+type
+=
+&quot;text&quot;
+name
+=
+&quot;name&quot;
+disabled
+=
+{
+name
+ !== 
+optimisticName
+}
+/&gt;
+&lt;/
+p
+&gt;
+&lt;/
+form
+&gt;
+)
+;
+}
+Show more
+In this example, when the user submits the form, the 
+optimisticName
+ updates immediately to show the 
+newName
+ optimistically while the server request is in progress. When the request completes, 
+name
+ and 
+optimisticName
+ are rendered with the actual 
+updatedName
+ from the response.
+Deep Dive
+Why doesn’t this need 
+startTransition
+? 
+Show Details
+By convention, props called inside 
+startTransition
+ are named with “Action”.
+Since 
+submitAction
+ is named with “Action”, you know it’s already called inside 
+startTransition
+.
+See 
+Exposing 
+action
+ prop from components
+ for the Action prop pattern.
+Adding optimistic state to Action props 
+When creating an 
+Action prop
+, you can add 
+useOptimistic
+ to show immediate feedback.
+Here’s a button that shows “Submitting…” while the 
+action
+ is pending:
+App.js
+Button.js
+Button.js
+Reload
+Clear
+Fork
+import
+{
+useOptimistic
+,
+startTransition
+}
+from
+&#x27;react&#x27;
+;
+export
+default
+function
+Button
+(
+{
+action
+,
+children
+}
+)
+{
+const
+[
+isPending
+,
+setIsPending
+]
+ = 
+useOptimistic
+(
+false
+)
+;
+return
+(
+&lt;
+button
+disabled
+=
+{
+isPending
+}
+onClick
+=
+{
+(
+)
+=&gt;
+{
+startTransition
+(
+async
+(
+)
+=&gt;
+{
+setIsPending
+(
+true
+)
+;
+await
+action
+(
+)
+;
+}
+)
+;
+}
+}
+&gt;
+{
+isPending
+ ? 
+&#x27;Submitting...&#x27;
+ : 
+children
+}
+&lt;/
+button
+&gt;
+)
+;
+}
+Show more
+When the button is clicked, 
+setIsPending(true)
+ uses optimistic state to immediately show “Submitting…” and disable the button. When the Action is done, 
+isPending
+ is rendered as 
+false
+ automatically.
+This pattern automatically shows a pending state however 
+action
+ prop is used with 
+Button
+:
+// Show pending state for a state update
+&lt;
+Button
+action
+=
+{
+(
+)
+=&gt;
+{
+setState
+(
+c
+=&gt;
+c
+ + 
+1
+)
+}
+}
+/&gt;
+// Show pending state for a navigation
+&lt;
+Button 
+action
+=
+{
+(
+)
+=&gt;
+{
+navigate
+(
+&#x27;/done&#x27;
+)
+}
+}
+/&gt;
+// Show pending state for a POST
+&lt;
+Button 
+action
+=
+{
+async
+(
+)
+=&gt;
+{
+await
+fetch
+(
+/* ... */
+)
+}
+}
+ /&gt;
+// Show pending state for any combination
+&lt;
+Button
+action
+=
+{
+async
+(
+)
+=&gt;
+{
+setState
+(
+c
+=&gt;
+c
+ + 
+1
+)
+;
+await
+fetch
+(
+/* ... */
+)
+;
+navigate
+(
+&#x27;/done&#x27;
+)
+;
+}
+}
+/&gt;
+The pending state will be shown until everything in the 
+action
+ prop is finished.
+Note
+You can also use 
+useTransition
+ to get pending state via 
+isPending
+.
+The difference is that 
+useTransition
+ gives you the 
+startTransition
+ function, while 
+useOptimistic
+ works with any Transition. Use whichever fits your component’s needs.
+Updating props or state optimistically 
+You can wrap props or state in 
+useOptimistic
+ to update it immediately while an Action is in progress.
+In this example, 
+LikeButton
+ receives 
+isLiked
+ as a prop and immediately toggles it when clicked:
+App.js
+App.js
+Reload
+Clear
+Fork
+import
+{
+useState
+,
+useOptimistic
+,
+startTransition
+}
+from
+&#x27;react&#x27;
+;
+import
+{
+toggleLike
+}
+from
+&#x27;./actions.js&#x27;
+;
+export
+default
+function
+App
+(
+)
+{
+const
+[
+isLiked
+,
+setIsLiked
+]
+ = 
+useState
+(
+false
+)
+;
+const
+[
+optimisticIsLiked
+,
+setOptimisticIsLiked
+]
+ = 
+useOptimistic
+(
+isLiked
+)
+;
+function
+handleClick
+(
+)
+{
+startTransition
+(
+async
+(
+)
+=&gt;
+{
+const
+newValue
+ = !
+optimisticIsLiked
+console
+.
+log
+(
+&#x27;⏳ setting optimistic state: &#x27;
+ + 
+newValue
+)
+;
+setOptimisticIsLiked
+(
+newValue
+)
+;
+const
+updatedValue
+ = 
+await
+toggleLike
+(
+newValue
+)
+;
+startTransition
+(
+(
+)
+=&gt;
+{
+console
+.
+log
+(
+&#x27;⏳ setting real state: &#x27;
+ + 
+updatedValue
+)
+;
+setIsLiked
+(
+updatedValue
+)
+;
+}
+)
+;
+}
+)
+;
+}
+if
+(
+optimisticIsLiked
+ !== 
+isLiked
+)
+{
+console
+.
+log
+(
+&#x27;✅ rendering optimistic state: &#x27;
+ + 
+optimisticIsLiked
+)
+;
+}
+else
+{
+console
+.
+log
+(
+&#x27;✅ rendering real value: &#x27;
+ + 
+optimisticIsLiked
+)
+;
+}
+return
+(
+&lt;
+button
+onClick
+=
+{
+handleClick
+}
+&gt;
+{
+optimisticIsLiked
+ ? 
+&#x27;❤️ Unlike&#x27;
+ : 
+&#x27;🤍 Like&#x27;
+}
+&lt;/
+button
+&gt;
+)
+;
+}
+Show more
+When the button is clicked, 
+setOptimisticIsLiked
+ immediately updates the displayed state to show the heart as liked. Meanwhile, 
+await toggleLike
+ runs in the background. When the 
+await
+ completes, 
+setIsLiked
+ parent updates the “real” 
+isLiked
+ state, and the optimistic state is rendered to match this new value.
+Note
+This example reads from 
+optimisticIsLiked
+ to calculate the next value. This works when the base state won’t change, but if the base state might change while your Action is pending, you may want to use a state updater or the reducer.
+See 
+Updating state based on the current state
+ for an example.
+Updating multiple values together 
+When an optimistic update affects multiple related values, use a reducer to update them together. This ensures the UI stays consistent.
+Here’s a follow button that updates both the follow state and follower count:
+App.js
+FollowButton.js
+FollowButton.js
+Reload
+Clear
+Fork
+import
+{
+useOptimistic
+,
+startTransition
+}
+from
+&#x27;react&#x27;
+;
+export
+default
+function
+FollowButton
+(
+{
+user
+,
+followAction
+}
+)
+{
+const
+[
+optimisticState
+,
+updateOptimistic
+]
+ = 
+useOptimistic
+(
+{
+isFollowing
+:
+user
+.
+isFollowing
+,
+followerCount
+:
+user
+.
+followerCount
+}
+,
+(
+current
+,
+isFollowing
+)
+=&gt;
+(
+{
+isFollowing
+,
+followerCount
+:
+current
+.
+followerCount
+ + 
+(
+isFollowing
+ ? 
+1
+ : -
+1
+)
+}
+)
+)
+;
+function
+handleClick
+(
+)
+{
+const
+newFollowState
+ = !
+optimisticState
+.
+isFollowing
+;
+startTransition
+(
+async
+(
+)
+=&gt;
+{
+updateOptimistic
+(
+newFollowState
+)
+;
+await
+followAction
+(
+newFollowState
+)
+;
+}
+)
+;
+}
+return
+(
+&lt;
+div
+&gt;
+&lt;
+p
+&gt;
+&lt;
+strong
+&gt;
+{
+user
+.
+name
+}
+&lt;/
+strong
+&gt;
+&lt;/
+p
+&gt;
+&lt;
+p
+&gt;
+{
+optimisticState
+.
+followerCount
+}
+ followers
+&lt;/
+p
+&gt;
+&lt;
+button
+onClick
+=
+{
+handleClick
+}
+&gt;
+{
+optimisticState
+.
+isFollowing
+ ? 
+&#x27;Unfollow&#x27;
+ : 
+&#x27;Follow&#x27;
+}
+&lt;/
+button
+&gt;
+&lt;/
+div
+&gt;
+)
+;
+}
+Show more
+The reducer receives the new 
+isFollowing
+ value and calculates both the new follow state and the updated follower count in a single update. This ensures the button text and count always stay in sync.
+Deep Dive
+Choosing between updaters and reducers 
+Show Details
+useOptimistic
+ supports two patterns for calculating state based on current state:
+Updater functions
+ work like 
+useState updaters
+. Pass a function to the setter:
+const
+[
+optimistic
+,
+setOptimistic
+]
+ = 
+useOptimistic
+(
+value
+)
+;
+setOptimistic
+(
+current
+=&gt;
+ !
+current
+)
+;
+Reducers
+ separate the update logic from the setter call:
+const
+[
+optimistic
+,
+dispatch
+]
+ = 
+useOptimistic
+(
+value
+,
+(
+current
+,
+action
+)
+=&gt;
+{
+// Calculate next state based on current and action
+}
+)
+;
+dispatch
+(
+action
+)
+;
+Use updaters
+ for calculations where the setter call naturally describes the update. This is similar to using 
+setState(prev =&gt; ...)
+ with 
+useState
+.
+Use reducers
+ when you need to pass data to the update (like which item to add) or when handling multiple types of updates with a single hook.
+Why use a reducer?
+Reducers are essential when the base state might change while your Transition is pending. If 
+todos
+ changes while your add is pending (for example, another user added a todo), React will re-run your reducer with the new 
+todos
+ to recalculate what to show. This ensures your new todo is added to the latest list, not an outdated copy.
+An updater function like 
+setOptimistic(prev =&gt; [...prev, newItem])
+ would only see the state from when the Transition started, missing any updates that happened during the async work.
+Optimistically adding to a list 
+When you need to optimistically add items to a list, use a 
+reducer
+:
+App.js
+TodoList.js
+TodoList.js
+Reload
+Clear
+Fork
+import
+{
+useOptimistic
+,
+startTransition
+}
+from
+&#x27;react&#x27;
+;
+export
+default
+function
+TodoList
+(
+{
+todos
+,
+addTodoAction
+}
+)
+{
+const
+[
+optimisticTodos
+,
+addOptimisticTodo
+]
+ = 
+useOptimistic
+(
+todos
+,
+(
+currentTodos
+,
+newTodo
+)
+=&gt;
+[
+...
+currentTodos
+,
+{
+id
+:
+newTodo
+.
+id
+,
+text
+:
+newTodo
+.
+text
+,
+pending
+:
+true
+}
+]
+)
+;
+function
+handleAddTodo
+(
+text
+)
+{
+const
+newTodo
+ = 
+{
+id
+:
+crypto
+.
+randomUUID
+(
+)
+,
+text
+:
+text
+}
+;
+startTransition
+(
+async
+(
+)
+=&gt;
+{
+addOptimisticTodo
+(
+newTodo
+)
+;
+await
+addTodoAction
+(
+newTodo
+)
+;
+}
+)
+;
+}
+return
+(
+&lt;
+div
+&gt;
+&lt;
+button
+onClick
+=
+{
+(
+)
+=&gt;
+handleAddTodo
+(
+&#x27;New todo&#x27;
+)
+}
+&gt;
+Add Todo
+&lt;/
+button
+&gt;
+&lt;
+ul
+&gt;
+{
+optimisticTodos
+.
+map
+(
+todo
+=&gt;
+(
+&lt;
+li
+key
+=
+{
+todo
+.
+id
+}
+&gt;
+{
+todo
+.
+text
+}
+{
+todo
+.
+pending
+ &amp;&amp; 
+&quot;(Adding...)&quot;
+}
+&lt;/
+li
+&gt;
+)
+)
+}
+&lt;/
+ul
+&gt;
+&lt;/
+div
+&gt;
+)
+;
+}
+Show more
+The 
+reducer
+ receives the current list of todos and the new todo to add. This is important because if the 
+todos
+ prop changes while your add is pending (for example, another user added a todo), React will update your optimistic state by re-running the reducer with the updated list. This ensures your new todo is added to the latest list, not an outdated copy.
+Note
+Each optimistic item includes a 
+pending: true
+ flag so you can show loading state for individual items. When the server responds and the parent updates the canonical 
+todos
+ list with the saved item, the optimistic state updates to the confirmed item without the pending flag.
+Handling multiple 
+action
+ types 
+When you need to handle multiple types of optimistic updates (like adding and removing items), use a reducer pattern with 
+action
+ objects.
+This shopping cart example shows how to handle add and remove with a single reducer:
+App.js
+ShoppingCart.js
+ShoppingCart.js
+Reload
+Clear
+Fork
+import
+{
+useOptimistic
+,
+startTransition
+}
+from
+&#x27;react&#x27;
+;
+export
+default
+function
+ShoppingCart
+(
+{
+cart
+,
+cartActions
+}
+)
+{
+const
+[
+optimisticCart
+,
+dispatch
+]
+ = 
+useOptimistic
+(
+cart
+,
+(
+currentCart
+,
+action
+)
+=&gt;
+{
+switch
+(
+action
+.
+type
+)
+{
+case
+&#x27;add&#x27;
+:
+const
+exists
+ = 
+currentCart
+.
+find
+(
+item
+=&gt;
+item
+.
+id
+ === 
+action
+.
+item
+.
+id
+)
+;
+if
+(
+exists
+)
+{
+return
+currentCart
+.
+map
+(
+item
+=&gt;
+item
+.
+id
+ === 
+action
+.
+item
+.
+id
+ ? 
+{
+...
+item
+,
+quantity
+:
+item
+.
+quantity
+ + 
+1
+,
+pending
+:
+true
+}
+ : 
+item
+)
+;
+}
+return
+[
+...
+currentCart
+,
+{
+...
+action
+.
+item
+,
+quantity
+:
+1
+,
+pending
+:
+true
+}
+]
+;
+case
+&#x27;remove&#x27;
+:
+return
+currentCart
+.
+filter
+(
+item
+=&gt;
+item
+.
+id
+ !== 
+action
+.
+id
+)
+;
+case
+&#x27;update_quantity&#x27;
+:
+return
+currentCart
+.
+map
+(
+item
+=&gt;
+item
+.
+id
+ === 
+action
+.
+id
+ ? 
+{
+...
+item
+,
+quantity
+:
+action
+.
+quantity
+,
+pending
+:
+true
+}
+ : 
+item
+)
+;
+default
+:
+return
+currentCart
+;
+}
+}
+)
+;
+function
+handleAdd
+(
+item
+)
+{
+startTransition
+(
+async
+(
+)
+=&gt;
+{
+dispatch
+(
+{
+type
+:
+&#x27;add&#x27;
+,
+item
+}
+)
+;
+await
+cartActions
+.
+add
+(
+item
+)
+;
+}
+)
+;
+}
+function
+handleRemove
+(
+id
+)
+{
+startTransition
+(
+async
+(
+)
+=&gt;
+{
+dispatch
+(
+{
+type
+:
+&#x27;remove&#x27;
+,
+id
+}
+)
+;
+await
+cartActions
+.
+remove
+(
+id
+)
+;
+}
+)
+;
+}
+function
+handleUpdateQuantity
+(
+id
+,
+quantity
+)
+{
+startTransition
+(
+async
+(
+)
+=&gt;
+{
+dispatch
+(
+{
+type
+:
+&#x27;update_quantity&#x27;
+,
+id
+,
+quantity
+}
+)
+;
+await
+cartActions
+.
+updateQuantity
+(
+id
+,
+quantity
+)
+;
+}
+)
+;
+}
+const
+total
+ = 
+optimisticCart
+.
+reduce
+(
+(
+sum
+,
+item
+)
+=&gt;
+sum
+ + 
+item
+.
+price
+ * 
+item
+.
+quantity
+,
+0
+)
+;
+return
+(
+&lt;
+div
+&gt;
+&lt;
+h2
+&gt;
+Shopping Cart
+&lt;/
+h2
+&gt;
+&lt;
+div
+style
+=
+{
+{
+marginBottom
+:
+16
+}
+}
+&gt;
+&lt;
+button
+onClick
+=
+{
+(
+)
+=&gt;
+handleAdd
+(
+{
+id
+:
+1
+,
+name
+:
+&#x27;T-Shirt&#x27;
+,
+price
+:
+25
+}
+)
+}
+&gt;
+ Add T-Shirt ($25)
+&lt;/
+button
+&gt;
+{
+&#x27; &#x27;
+}
+&lt;
+button
+onClick
+=
+{
+(
+)
+=&gt;
+handleAdd
+(
+{
+id
+:
+2
+,
+name
+:
+&#x27;Mug&#x27;
+,
+price
+:
+15
+}
+)
+}
+&gt;
+ Add Mug ($15)
+&lt;/
+button
+&gt;
+&lt;/
+div
+&gt;
+{
+optimisticCart
+.
+length
+ === 
+0
+ ? 
+(
+&lt;
+p
+&gt;
+Your cart is empty
+&lt;/
+p
+&gt;
+)
+ : 
+(
+&lt;
+ul
+&gt;
+{
+optimisticCart
+.
+map
+(
+item
+=&gt;
+(
+&lt;
+li
+key
+=
+{
+item
+.
+id
+}
+&gt;
+{
+item
+.
+name
+}
+ - $
+{
+item
+.
+price
+}
+ ×
+{
+item
+.
+quantity
+}
+{
+&#x27; &#x27;
+}
+= $
+{
+item
+.
+price
+ * 
+item
+.
+quantity
+}
+&lt;
+button
+onClick
+=
+{
+(
+)
+=&gt;
+handleRemove
+(
+item
+.
+id
+)
+}
+style
+=
+{
+{
+marginLeft
+:
+8
+}
+}
+&gt;
+ Remove
+&lt;/
+button
+&gt;
+{
+item
+.
+pending
+ &amp;&amp; 
+&#x27; ...&#x27;
+}
+&lt;/
+li
+&gt;
+)
+)
+}
+&lt;/
+ul
+&gt;
+)
+}
+&lt;
+p
+&gt;
+&lt;
+strong
+&gt;
+Total: $
+{
+total
+}
+&lt;/
+strong
+&gt;
+&lt;/
+p
+&gt;
+&lt;/
+div
+&gt;
+)
+;
+}
+Show more
+The reducer handles three 
+action
+ types (
+add
+, 
+remove
+, 
+update_quantity
+) and returns the new optimistic state for each. Each 
+action
+ sets a 
+pending: true
+ flag so you can show visual feedback while the 
+Server Function
+ runs.
+Optimistic delete with error recovery 
+When deleting items optimistically, you should handle the case where the Action fails.
+This example shows how to display an error message when a delete fails, and the UI automatically rolls back to show the item again.
+App.js
+ItemList.js
+ItemList.js
+Reload
+Clear
+Fork
+import
+{
+useState
+,
+useOptimistic
+,
+startTransition
+}
+from
+&#x27;react&#x27;
+;
+export
+default
+function
+ItemList
+(
+{
+items
+,
+deleteAction
+}
+)
+{
+const
+[
+error
+,
+setError
+]
+ = 
+useState
+(
+null
+)
+;
+const
+[
+optimisticItems
+,
+removeItem
+]
+ = 
+useOptimistic
+(
+items
+,
+(
+currentItems
+,
+idToRemove
+)
+=&gt;
+currentItems
+.
+map
+(
+item
+=&gt;
+item
+.
+id
+ === 
+idToRemove
+ ? 
+{
+...
+item
+,
+deleting
+:
+true
+}
+ : 
+item
+)
+)
+;
+function
+handleDelete
+(
+id
+)
+{
+setError
+(
+null
+)
+;
+startTransition
+(
+async
+(
+)
+=&gt;
+{
+removeItem
+(
+id
+)
+;
+try
+{
+await
+deleteAction
+(
+id
+)
+;
+}
+catch
+(
+e
+)
+{
+setError
+(
+e
+.
+message
+)
+;
+}
+}
+)
+;
+}
+return
+(
+&lt;
+div
+&gt;
+&lt;
+h2
+&gt;
+Your Items
+&lt;/
+h2
+&gt;
+&lt;
+ul
+&gt;
+{
+optimisticItems
+.
+map
+(
+item
+=&gt;
+(
+&lt;
+li
+key
+=
+{
+item
+.
+id
+}
+style
+=
+{
+{
+opacity
+:
+item
+.
+deleting
+ ? 
+0.5
+ : 
+1
+,
+textDecoration
+:
+item
+.
+deleting
+ ? 
+&#x27;line-through&#x27;
+ : 
+&#x27;none&#x27;
+,
+transition
+:
+&#x27;opacity 0.2s&#x27;
+}
+}
+&gt;
+{
+item
+.
+name
+}
+&lt;
+button
+onClick
+=
+{
+(
+)
+=&gt;
+handleDelete
+(
+item
+.
+id
+)
+}
+disabled
+=
+{
+item
+.
+deleting
+}
+style
+=
+{
+{
+marginLeft
+:
+8
+}
+}
+&gt;
+{
+item
+.
+deleting
+ ? 
+&#x27;Deleting...&#x27;
+ : 
+&#x27;Delete&#x27;
+}
+&lt;/
+button
+&gt;
+&lt;/
+li
+&gt;
+)
+)
+}
+&lt;/
+ul
+&gt;
+{
+error
+ &amp;&amp; 
+(
+&lt;
+p
+style
+=
+{
+{
+color
+:
+&#x27;red&#x27;
+,
+padding
+:
+8
+,
+background
+:
+&#x27;#fee&#x27;
+}
+}
+&gt;
+{
+error
+}
+&lt;/
+p
+&gt;
+)
+}
+&lt;/
+div
+&gt;
+)
+;
+}
+Show more
+Try deleting ‘Deploy to production’. When the delete fails, the item automatically reappears in the list.
+Troubleshooting 
+I’m getting an error: “An optimistic state update occurred outside a Transition or Action” 
+You may see this error:
+Console
+An optimistic state update occurred outside a Transition or Action. To fix, move the update to an Action, or wrap with 
+startTransition
+.
+The optimistic setter function must be called inside 
+startTransition
+:
+// 🚩 Incorrect: outside a Transition
+function
+handleClick
+(
+)
+{
+setOptimistic
+(
+newValue
+)
+;
+// Warning!
+// ...
+}
+// ✅ Correct: inside a Transition
+function
+handleClick
+(
+)
+{
+startTransition
+(
+async
+(
+)
+=&gt;
+{
+setOptimistic
+(
+newValue
+)
+;
+// ...
+}
+)
+;
+}
+// ✅ Also correct: inside an Action prop
+function
+submitAction
+(
+formData
+)
+{
+setOptimistic
+(
+newValue
+)
+;
+// ...
+}
+When you call the setter outside an Action, the optimistic state will briefly appear and then immediately revert back to the original value. This happens because there’s no Transition to “hold” the optimistic state while your Action runs.
+I’m getting an error: “Cannot update optimistic state while rendering” 
+You may see this error:
+Console
+Cannot update optimistic state while rendering.
+This error occurs when you call the optimistic setter during the render phase of a component. You can only call it from event handlers, effects, or other callbacks:
+// 🚩 Incorrect: calling during render
+function
+MyComponent
+(
+{
+items
+}
+)
+{
+const
+[
+isPending
+,
+setPending
+]
+ = 
+useOptimistic
+(
+false
+)
+;
+// This runs during render - not allowed!
+setPending
+(
+true
+)
+;
+// ...
+}
+// ✅ Correct: calling inside startTransition
+function
+MyComponent
+(
+{
+items
+}
+)
+{
+const
+[
+isPending
+,
+setPending
+]
+ = 
+useOptimistic
+(
+false
+)
+;
+function
+handleClick
+(
+)
+{
+startTransition
+(
+(
+)
+=&gt;
+{
+setPending
+(
+true
+)
+;
+// ...
+}
+)
+;
+}
+// ...
+}
+// ✅ Also correct: calling from an Action
+function
+MyComponent
+(
+{
+items
+}
+)
+{
+const
+[
+isPending
+,
+setPending
+]
+ = 
+useOptimistic
+(
+false
+)
+;
+function
+action
+(
+)
+{
+setPending
+(
+true
+)
+;
+// ...
+}
+// ...
+}
+My optimistic updates show stale values 
+If your optimistic state seems to be based on old data, consider using an updater function or reducer to calculate the optimistic state relative to the current state.
+// May show stale data if state changes during Action
+const
+[
+optimistic
+,
+setOptimistic
+]
+ = 
+useOptimistic
+(
+count
+)
+;
+setOptimistic
+(
+5
+)
+;
+// Always sets to 5, even if count changed
+// Better: relative updates handle state changes correctly
+const
+[
+optimistic
+,
+adjust
+]
+ = 
+useOptimistic
+(
+count
+,
+(
+current
+,
+delta
+)
+=&gt;
+current
+ + 
+delta
+)
+;
+adjust
+(
+1
+)
+;
+// Always adds 1 to whatever the current count is
+See 
+Updating state based on the current state
+ for details.
+I don’t know if my optimistic update is pending 
+To know when 
+useOptimistic
+ is pending, you have three options:
+Check if 
+optimisticValue === value
+const
+[
+optimistic
+,
+setOptimistic
+]
+ = 
+useOptimistic
+(
+value
+)
+;
+const
+isPending
+ = 
+optimistic
+ !== 
+value
+;
+If the values are not equal, there’s a Transition in progress.
+Add a 
+useTransition
+const
+[
+isPending
+,
+startTransition
+]
+ = 
+useTransition
+(
+)
+;
+const
+[
+optimistic
+,
+setOptimistic
+]
+ = 
+useOptimistic
+(
+value
+)
+;
+//...
+startTransition
+(
+(
+)
+=&gt;
+{
+setOptimistic
+(
+state
+)
+;
+}
+)
+Since 
+useTransition
+ uses 
+useOptimistic
+ for 
+isPending
+ under the hood, this is equivalent to option 1.
+Add a 
+pending
+ flag in your reducer
+const
+[
+optimistic
+,
+addOptimistic
+]
+ = 
+useOptimistic
+(
+items
+,
+(
+state
+,
+newItem
+)
+=&gt;
+[
+...
+state
+,
+{
+...
+newItem
+,
+isPending
+:
+true
+}
+]
+)
+;
+Since each optimistic item has its own flag, you can show loading state for individual items.
+Previous
+useMemo
+Next
+useReducer
+Copyright © Meta Platforms, Inc
+no uwu plz
+uwu?
+Logo by
+@sawaratsuki1004
+Learn React
+Quick Start
+Installation
+Describing the UI
+Adding Interactivity
+Managing State
+Escape Hatches
+API Reference
+React APIs
+React DOM APIs
+Community
+Code of Conduct
+Meet the Team
+Docs Contributors
+Acknowledgements
+More
+Blog
+React Native
+Privacy
+Terms
+On this page
+Overview
+Reference 
+useOptimistic(value, reducer?)
+set
+ functions, like 
+setOptimistic(optimisticState)
+Usage 
+Adding optimistic state to a component 
+Using optimistic state in Action props 
+Adding optimistic state to Action props 
+Updating props or state optimistically 
+Updating multiple values together 
+Optimistically adding to a list 
+Handling multiple 
+action
+ types 
+Optimistic delete with error recovery 
+Troubleshooting 
+I’m getting an error: “An optimistic state update occurred outside a Transition or Action” 
+I’m getting an error: “Cannot update optimistic state while rendering” 
+My optimistic updates show stale values 
+I don’t know if my optimistic update is pending 
+{"props":{"pageProps":{"toc":"[{\"url\":\"#\",\"text\":\"Overview\",\"depth\":2},{\"url\":\"#reference\",\"depth\":2,\"text\":\"Reference \"},{\"url\":\"#useoptimistic\",\"depth\":3,\"text\":[[\"$r\",\"code\",null,{\"children\":\"useOptimistic(value, reducer?)\"}],\" \"]},{\"url\":\"#setoptimistic\",\"depth\":3,\"text\":[[\"$r\",\"code\",null,{\"children\":\"set\"}],\" functions, like \",[\"$r\",\"code\",null,{\"children\":\"setOptimistic(optimisticState)\"}],\" \"]},{\"url\":\"#usage\",\"depth\":2,\"text\":\"Usage \"},{\"url\":\"#adding-optimistic-state-to-a-component\",\"depth\":3,\"text\":\"Adding optimistic state to a component \"},{\"url\":\"#using-optimistic-state-in-action-props\",\"depth\":3,\"text\":\"Using optimistic state in Action props \"},{\"url\":\"#adding-optimistic-state-to-action-props\",\"depth\":3,\"text\":\"Adding optimistic state to Action props \"},{\"url\":\"#updating-props-or-state-optimistically\",\"depth\":3,\"text\":\"Updating props or state optimistically \"},{\"url\":\"#updating-multiple-values-together\",\"depth\":3,\"text\":\"Updating multiple values together \"},{\"url\":\"#optimistically-adding-to-a-list\",\"depth\":3,\"text\":\"Optimistically adding to a list \"},{\"url\":\"#handling-multiple-action-types\",\"depth\":3,\"text\":[\"Handling multiple \",[\"$r\",\"code\",null,{\"children\":\"action\"}],\" types \"]},{\"url\":\"#optimistic-delete-with-error-recovery\",\"depth\":3,\"text\":\"Optimistic delete with error recovery \"},{\"url\":\"#troubleshooting\",\"depth\":2,\"text\":\"Troubleshooting \"},{\"url\":\"#an-optimistic-state-update-occurred-outside-a-transition-or-action\",\"depth\":3,\"text\":\"I’m getting an error: “An optimistic state update occurred outside a Transition or Action” \"},{\"url\":\"#cannot-update-optimistic-state-while-rendering\",\"depth\":3,\"text\":\"I’m getting an error: “Cannot update optimistic state while rendering” \"},{\"url\":\"#my-optimistic-updates-show-stale-values\",\"depth\":3,\"text\":\"My optimistic updates show stale values \"},{\"url\":\"#i-dont-know-if-my-optimistic-update-is-pending\",\"depth\":3,\"text\":\"I don’t know if my optimistic update is pending \"}]","content":"[[\"$r\",\"MaxWidth\",\"82\",{\"children\":[[\"$r\",\"Intro\",null,{\"children\":[[\"$r\",\"p\",null,{\"children\":[[\"$r\",\"code\",null,{\"children\":\"useOptimistic\"}],\" is a React Hook that lets you optimistically update the UI.\"]}],[\"$r\",\"pre\",null,{\"children\":[\"$r\",\"code\",null,{\"className\":\"language-js\",\"children\":\"const [optimisticState, setOptimistic] = useOptimistic(value, reducer?);\\n\"}]}]]}],\"\\n\",[\"$r\",\"InlineToc\",null,{}],\"\\n\",[\"$r\",\"hr\",null,{}],\"\\n\",[\"$r\",\"h2\",null,{\"id\":\"reference\",\"children\":\"Reference \"}],\"\\n\",[\"$r\",\"h3\",null,{\"id\":\"useoptimistic\",\"children\":[[\"$r\",\"code\",null,{\"children\":\"useOptimistic(value, reducer?)\"}],\" \"]}],\"\\n\",[\"$r\",\"p\",null,{\"children\":[\"Call \",[\"$r\",\"code\",null,{\"children\":\"useOptimistic\"}],\" at the top level of your component to create optimistic state for a value.\"]}],\"\\n\",[\"$r\",\"pre\",null,{\"children\":[\"$r\",\"code\",null,{\"className\":\"language-js\",\"children\":\"import { useOptimistic } from 'react';\\n\\nfunction MyComponent({name, todos}) {\\n const [optimisticAge, setOptimisticAge] = useOptimistic(28);\\n const [optimisticName, setOptimisticName] = useOptimistic(name);\\n const [optimisticTodos, setOptimisticTodos] = useOptimistic(todos, todoReducer);\\n // ...\\n}\\n\"}]}],\"\\n\",[\"$r\",\"p\",null,{\"children\":[\"$r\",\"a\",null,{\"href\":\"#usage\",\"children\":\"See more examples below.\"}]}],\"\\n\",[\"$r\",\"h4\",null,{\"id\":\"parameters\",\"children\":\"Parameters \"}],\"\\n\",[\"$r\",\"ul\",null,{\"children\":[\"\\n\",[\"$r\",\"li\",null,{\"children\":[[\"$r\",\"code\",null,{\"children\":\"value\"}],\": The value returned when there are no pending Actions.\"]}],\"\\n\",[\"$r\",\"li\",null,{\"children\":[[\"$r\",\"strong\",null,{\"children\":\"optional\"}],\" \",[\"$r\",\"code\",null,{\"children\":\"reducer(currentState, action)\"}],\": The reducer function that specifies how the optimistic state gets updated. It must be pure, should take the current state and reducer action arguments, and should return the next optimistic state.\"]}],\"\\n\"]}],\"\\n\",[\"$r\",\"h4\",null,{\"id\":\"returns\",\"children\":\"Returns \"}],\"\\n\",[\"$r\",\"p\",null,{\"children\":[[\"$r\",\"code\",null,{\"children\":\"useOptimistic\"}],\" returns an array with exactly two values:\"]}],\"\\n\",[\"$r\",\"ol\",null,{\"children\":[\"\\n\",[\"$r\",\"li\",null,{\"children\":[[\"$r\",\"code\",null,{\"children\":\"optimisticState\"}],\": The current optimistic state. It is equal to \",[\"$r\",\"code\",null,{\"children\":\"value\"}],\" unless an Action is pending, in which case it is equal to the state returned by \",[\"$r\",\"code\",null,{\"children\":\"reducer\"}],\" (or the value passed to the set function if no \",[\"$r\",\"code\",null,{\"children\":\"reducer\"}],\" was provided).\"]}],\"\\n\",[\"$r\",\"li\",null,{\"children\":[\"The \",[\"$r\",\"a\",null,{\"href\":\"#setoptimistic\",\"children\":[[\"$r\",\"code\",null,{\"children\":\"set\"}],\" function\"]}],\" that lets you update the optimistic state to a different value inside an Action.\"]}],\"\\n\"]}],\"\\n\",[\"$r\",\"hr\",null,{}],\"\\n\",[\"$r\",\"h3\",null,{\"id\":\"setoptimistic\",\"children\":[[\"$r\",\"code\",null,{\"children\":\"set\"}],\" functions, like \",[\"$r\",\"code\",null,{\"children\":\"setOptimistic(optimisticState)\"}],\" \"]}],\"\\n\",[\"$r\",\"p\",null,{\"children\":[\"The \",[\"$r\",\"code\",null,{\"children\":\"set\"}],\" function returned by \",[\"$r\",\"code\",null,{\"children\":\"useOptimistic\"}],\" lets you update the state for the duration of an \",[\"$r\",\"a\",null,{\"href\":\"reference/react/useTransition#functions-called-in-starttransition-are-called-actions\",\"children\":\"Action\"}],\". You can pass the next state directly, or a function that calculates it from the previous state:\"]}],\"\\n\",[\"$r\",\"pre\",null,{\"children\":[\"$r\",\"code\",null,{\"className\":\"language-js\",\"children\":\"const [optimisticLike, setOptimisticLike] = useOptimistic(false);\\nconst [optimisticSubs, setOptimisticSubs] = useOptimistic(subs);\\n\\nfunction handleClick() {\\n startTransition(async () =\u003e {\\n setOptimisticLike(true);\\n setOptimisticSubs(a =\u003e a + 1);\\n await saveChanges();\\n });\\n}\\n\"}]}],\"\\n\",[\"$r\",\"h4\",null,{\"id\":\"setoptimistic-parameters\",\"children\":\"Parameters \"}],\"\\n\",[\"$r\",\"ul\",null,{\"children\":[\"\\n\",[\"$r\",\"li\",null,{\"children\":[[\"$r\",\"code\",null,{\"children\":\"optimisticState\"}],\": The value that you want the optimistic state to be during an \",[\"$r\",\"a\",null,{\"href\":\"reference/react/useTransition#functions-called-in-starttransition-are-called-actions\",\"children\":\"Action\"}],\". If you provided a \",[\"$r\",\"code\",null,{\"children\":\"reducer\"}],\" to \",[\"$r\",\"code\",null,{\"children\":\"useOptimistic\"}],\", this value will be passed as the second argument to your reducer. It can be a value of any type.\",\"\\n\",[\"$r\",\"ul\",null,{\"children\":[\"\\n\",[\"$r\",\"li\",null,{\"children\":[\"If you pass a function as \",[\"$r\",\"code\",null,{\"children\":\"optimisticState\"}],\", it will be treated as an \",[\"$r\",\"em\",null,{\"children\":\"updater function\"}],\". It must be pure, should take the pending state as its only argument, and should return the next optimistic state. React will put your updater function in a queue and re-render your component. During the next render, React will calculate the next state by applying the queued updaters to the previous state similar to \",[\"$r\",\"a\",null,{\"href\":\"/reference/react/useState#setstate-parameters\",\"children\":[[\"$r\",\"code\",null,{\"children\":\"useState\"}],\" updaters\"]}],\".\"]}],\"\\n\"]}],\"\\n\"]}],\"\\n\"]}],\"\\n\",[\"$r\",\"h4\",null,{\"id\":\"setoptimistic-returns\",\"children\":\"Returns \"}],\"\\n\",[\"$r\",\"p\",null,{\"children\":[[\"$r\",\"code\",null,{\"children\":\"set\"}],\" functions do not have a return value.\"]}],\"\\n\",[\"$r\",\"h4\",null,{\"id\":\"setoptimistic-caveats\",\"children\":\"Caveats \"}],\"\\n\",[\"$r\",\"ul\",null,{\"children\":[\"\\n\",[\"$r\",\"li\",null,{\"children\":[\"The \",[\"$r\",\"code\",null,{\"children\":\"set\"}],\" function must be called inside an \",[\"$r\",\"a\",null,{\"href\":\"reference/react/useTransition#functions-called-in-starttransition-are-called-actions\",\"children\":\"Action\"}],\". If you call the setter outside an Action, \",[\"$r\",\"a\",null,{\"href\":\"#an-optimistic-state-update-occurred-outside-a-transition-or-action\",\"children\":\"React will show a warning\"}],\" and the optimistic state will briefly render.\"]}],\"\\n\"]}],\"\\n\",[\"$r\",\"DeepDive\",null,{\"children\":[[\"$r\",\"h4\",null,{\"id\":\"how-optimistic-state-works\",\"children\":\"How optimistic state works \"}],[\"$r\",\"p\",null,{\"children\":[[\"$r\",\"code\",null,{\"children\":\"useOptimistic\"}],\" lets you show a temporary value while an Action is in progress:\"]}],[\"$r\",\"pre\",null,{\"children\":[\"$r\",\"code\",null,{\"className\":\"language-js\",\"children\":\"const [value, setValue] = useState('a');\\nconst [optimistic, setOptimistic] = useOptimistic(value);\\n\\nstartTransition(async () =\u003e {\\n setOptimistic('b');\\n const newValue = await saveChanges('b');\\n setValue(newValue);\\n});\\n\"}]}],[\"$r\",\"p\",null,{\"children\":[\"When the setter is called inside an Action, \",[\"$r\",\"code\",null,{\"children\":\"useOptimistic\"}],\" will trigger a re-render to show that state while the Action is in progress. Otherwise, the \",[\"$r\",\"code\",null,{\"children\":\"value\"}],\" passed to \",[\"$r\",\"code\",null,{\"children\":\"useOptimistic\"}],\" is returned.\"]}],[\"$r\",\"p\",null,{\"children\":\"This state is called the “optimistic” because it is used to immediately present the user with the result of performing an Action, even though the Action actually takes time to complete.\"}],[\"$r\",\"p\",null,{\"children\":[\"$r\",\"strong\",null,{\"children\":\"How the update flows\"}]}],[\"$r\",\"ol\",null,{\"children\":[\"\\n\",[\"$r\",\"li\",null,{\"children\":[\"\\n\",[\"$r\",\"p\",null,{\"children\":[[\"$r\",\"strong\",null,{\"children\":\"Update immediately\"}],\": When \",[\"$r\",\"code\",null,{\"children\":\"setOptimistic('b')\"}],\" is called, React immediately renders with \",[\"$r\",\"code\",null,{\"children\":\"'b'\"}],\".\"]}],\"\\n\"]}],\"\\n\",[\"$r\",\"li\",null,{\"children\":[\"\\n\",[\"$r\",\"p\",null,{\"children\":[[\"$r\",\"strong\",null,{\"children\":\"(Optional) await in Action\"}],\": If you await in the Action, React continues showing \",[\"$r\",\"code\",null,{\"children\":\"'b'\"}],\".\"]}],\"\\n\"]}],\"\\n\",[\"$r\",\"li\",null,{\"children\":[\"\\n\",[\"$r\",\"p\",null,{\"children\":[[\"$r\",\"strong\",null,{\"children\":\"Transition scheduled\"}],\": \",[\"$r\",\"code\",null,{\"children\":\"setValue(newValue)\"}],\" schedules an update to the real state.\"]}],\"\\n\"]}],\"\\n\",[\"$r\",\"li\",null,{\"children\":[\"\\n\",[\"$r\",\"p\",null,{\"children\":[[\"$r\",\"strong\",null,{\"children\":\"(Optional) wait for Suspense\"}],\": If \",[\"$r\",\"code\",null,{\"children\":\"newValue\"}],\" suspends, React continues showing \",[\"$r\",\"code\",null,{\"children\":\"'b'\"}],\".\"]}],\"\\n\"]}],\"\\n\",[\"$r\",\"li\",null,{\"children\":[\"\\n\",[\"$r\",\"p\",null,{\"children\":[[\"$r\",\"strong\",null,{\"children\":\"Single render commit\"}],\": Finally, the \",[\"$r\",\"code\",null,{\"children\":\"newValue\"}],\" commits for \",[\"$r\",\"code\",null,{\"children\":\"value\"}],\" and \",[\"$r\",\"code\",null,{\"children\":\"optimistic\"}],\".\"]}],\"\\n\"]}],\"\\n\"]}],[\"$r\",\"p\",null,{\"children\":\"There’s no extra render to “clear” the optimistic state. The optimistic and real state converge in the same render when the Transition completes.\"}],[\"$r\",\"Note\",null,{\"children\":[[\"$r\",\"h4\",null,{\"id\":\"optimistic-state-is-temporary\",\"children\":\"Optimistic state is temporary \"}],[\"$r\",\"p\",null,{\"children\":[\"Optimistic state only renders while an Action is in progress, otherwise \",[\"$r\",\"code\",null,{\"children\":\"value\"}],\" is rendered.\"]}],[\"$r\",\"p\",null,{\"children\":[\"If \",[\"$r\",\"code\",null,{\"children\":\"saveChanges\"}],\" returned \",[\"$r\",\"code\",null,{\"children\":\"'c'\"}],\", then both \",[\"$r\",\"code\",null,{\"children\":\"value\"}],\" and \",[\"$r\",\"code\",null,{\"children\":\"optimistic\"}],\" will be \",[\"$r\",\"code\",null,{\"children\":\"'c'\"}],\", not \",[\"$r\",\"code\",null,{\"children\":\"'b'\"}],\".\"]}]]}],[\"$r\",\"p\",null,{\"children\":[\"$r\",\"strong\",null,{\"children\":\"How the final state is determined\"}]}],[\"$r\",\"p\",null,{\"children\":[\"The \",[\"$r\",\"code\",null,{\"children\":\"value\"}],\" argument to \",[\"$r\",\"code\",null,{\"children\":\"useOptimistic\"}],\" determines what displays after the Action finishes. How this works depends on the pattern you use:\"]}],[\"$r\",\"ul\",null,{\"children\":[\"\\n\",[\"$r\",\"li\",null,{\"children\":[\"\\n\",[\"$r\",\"p\",null,{\"children\":[[\"$r\",\"strong\",null,{\"children\":\"Hardcoded values\"}],\" like \",[\"$r\",\"code\",null,{\"children\":\"useOptimistic(false)\"}],\": After the Action, \",[\"$r\",\"code\",null,{\"children\":\"state\"}],\" is still \",[\"$r\",\"code\",null,{\"children\":\"false\"}],\", so the UI shows \",[\"$r\",\"code\",null,{\"children\":\"false\"}],\". This is useful for pending states where you always start from \",[\"$r\",\"code\",null,{\"children\":\"false\"}],\".\"]}],\"\\n\"]}],\"\\n\",[\"$r\",\"li\",null,{\"children\":[\"\\n\",[\"$r\",\"p\",null,{\"children\":[[\"$r\",\"strong\",null,{\"children\":\"Props or state passed in\"}],\" like \",[\"$r\",\"code\",null,{\"children\":\"useOptimistic(isLiked)\"}],\": If the parent updates \",[\"$r\",\"code\",null,{\"children\":\"isLiked\"}],\" during the Action, the new value is used after the Action completes. This is how the UI reflects the result of the Action.\"]}],\"\\n\"]}],\"\\n\",[\"$r\",\"li\",null,{\"children\":[\"\\n\",[\"$r\",\"p\",null,{\"children\":[[\"$r\",\"strong\",null,{\"children\":\"Reducer pattern\"}],\" like \",[\"$r\",\"code\",null,{\"children\":\"useOptimistic(items, fn)\"}],\": If \",[\"$r\",\"code\",null,{\"children\":\"items\"}],\" changes while the Action is pending, React re-runs your \",[\"$r\",\"code\",null,{\"children\":\"reducer\"}],\" with the new \",[\"$r\",\"code\",null,{\"children\":\"items\"}],\" to recalculate the state. This keeps your optimistic additions on top of the latest data.\"]}],\"\\n\"]}],\"\\n\"]}],[\"$r\",\"p\",null,{\"children\":[\"$r\",\"strong\",null,{\"children\":\"What happens when the Action fails\"}]}],[\"$r\",\"p\",null,{\"children\":[\"If the Action throws an error, the Transition still ends, and React renders with whatever \",[\"$r\",\"code\",null,{\"children\":\"value\"}],\" currently is. Since the parent typically only updates \",[\"$r\",\"code\",null,{\"children\":\"value\"}],\" on success, a failure means \",[\"$r\",\"code\",null,{\"children\":\"value\"}],\" hasn’t changed, so the UI shows what it showed before the optimistic update. You can catch the error to show a message to the user.\"]}]]}],\"\\n\",[\"$r\",\"hr\",null,{}],\"\\n\",[\"$r\",\"h2\",null,{\"id\":\"usage\",\"children\":\"Usage \"}],\"\\n\",[\"$r\",\"h3\",null,{\"id\":\"adding-optimistic-state-to-a-component\",\"children\":\"Adding optimistic state to a component \"}],\"\\n\",[\"$r\",\"p\",null,{\"children\":[\"Call \",[\"$r\",\"code\",null,{\"children\":\"useOptimistic\"}],\" at the top level of your component to declare one or more optimistic states.\"]}],\"\\n\",[\"$r\",\"pre\",null,{\"children\":[\"$r\",\"code\",null,{\"className\":\"language-js\",\"meta\":\"[[1, 4, \\\"age\\\"], [1, 5, \\\"name\\\"], [1, 6, \\\"todos\\\"], [2, 4, \\\"optimisticAge\\\"], [2, 5, \\\"optimisticName\\\"], [2, 6, \\\"optimisticTodos\\\"], [3, 4, \\\"setOptimisticAge\\\"], [3, 5, \\\"setOptimisticName\\\"], [3, 6, \\\"setOptimisticTodos\\\"], [4, 6, \\\"reducer\\\"]]\",\"children\":\"import { useOptimistic } from 'react';\\n\\nfunction MyComponent({age, name, todos}) {\\n const [optimisticAge, setOptimisticAge] = useOptimistic(age);\\n const [optimisticName, setOptimisticName] = useOptimistic(name);\\n const [optimisticTodos, setOptimisticTodos] = useOptimistic(todos, reducer);\\n // ...\\n\"}]}],\"\\n\",[\"$r\",\"p\",null,{\"children\":[[\"$r\",\"code\",null,{\"children\":\"useOptimistic\"}],\" returns an array with exactly two items:\"]}],\"\\n\",[\"$r\",\"ol\",null,{\"children\":[\"\\n\",[\"$r\",\"li\",null,{\"children\":[\"The \",[\"$r\",\"CodeStep\",null,{\"step\":2,\"children\":\"optimistic state\"}],\", initially set to the \",[\"$r\",\"CodeStep\",null,{\"step\":1,\"children\":\"value\"}],\" provided.\"]}],\"\\n\",[\"$r\",\"li\",null,{\"children\":[\"The \",[\"$r\",\"CodeStep\",null,{\"step\":3,\"children\":\"set function\"}],\" that lets you temporarily change the state during an \",[\"$r\",\"a\",null,{\"href\":\"reference/react/useTransition#functions-called-in-starttransition-are-called-actions\",\"children\":\"Action\"}],\".\",\"\\n\",[\"$r\",\"ul\",null,{\"children\":[\"\\n\",[\"$r\",\"li\",null,{\"children\":[\"If a \",[\"$r\",\"CodeStep\",null,{\"step\":4,\"children\":\"reducer\"}],\" is provided, it will run before returning the optimistic state.\"]}],\"\\n\"]}],\"\\n\"]}],\"\\n\"]}],\"\\n\",[\"$r\",\"p\",null,{\"children\":[\"To use the \",[\"$r\",\"CodeStep\",null,{\"step\":2,\"children\":\"optimistic state\"}],\", call the \",[\"$r\",\"code\",null,{\"children\":\"set\"}],\" function inside an Action.\"]}],\"\\n\",[\"$r\",\"p\",null,{\"children\":[\"Actions are functions called inside \",[\"$r\",\"code\",null,{\"children\":\"startTransition\"}],\":\"]}],\"\\n\",[\"$r\",\"pre\",null,{\"children\":[\"$r\",\"code\",null,{\"className\":\"language-js\",\"meta\":\"{3}\",\"children\":\"function onAgeChange(e) {\\n startTransition(async () =\u003e {\\n setOptimisticAge(42);\\n const newAge = await postAge(42);\\n setAge(newAge);\\n });\\n}\\n\"}]}],\"\\n\",[\"$r\",\"p\",null,{\"children\":[\"React will render the optimistic state \",[\"$r\",\"code\",null,{\"children\":\"42\"}],\" first while the \",[\"$r\",\"code\",null,{\"children\":\"age\"}],\" remains the current age. The Action waits for POST, and then renders the \",[\"$r\",\"code\",null,{\"children\":\"newAge\"}],\" for both \",[\"$r\",\"code\",null,{\"children\":\"age\"}],\" and \",[\"$r\",\"code\",null,{\"children\":\"optimisticAge\"}],\".\"]}],\"\\n\",[\"$r\",\"p\",null,{\"children\":[\"See \",[\"$r\",\"a\",null,{\"href\":\"#how-optimistic-state-works\",\"children\":\"How optimistic state works\"}],\" for a deep dive.\"]}],\"\\n\",[\"$r\",\"Note\",null,{\"children\":[[\"$r\",\"p\",null,{\"children\":[\"When using \",[\"$r\",\"a\",null,{\"href\":\"/reference/react/useTransition#exposing-action-props-from-components\",\"children\":\"Action props\"}],\", you can call the set function without \",[\"$r\",\"code\",null,{\"children\":\"startTransition\"}],\":\"]}],[\"$r\",\"pre\",null,{\"children\":[\"$r\",\"code\",null,{\"className\":\"language-js\",\"meta\":\"[[3, 2, \\\"setOptimisticName\\\"]]\",\"children\":\"async function submitAction() {\\n setOptimisticName('Taylor');\\n await updateName('Taylor');\\n}\\n\"}]}],[\"$r\",\"p\",null,{\"children\":[\"This works because Action props are already called inside \",[\"$r\",\"code\",null,{\"children\":\"startTransition\"}],\".\"]}],[\"$r\",\"p\",null,{\"children\":[\"For an example, see: \",[\"$r\",\"a\",null,{\"href\":\"#using-optimistic-state-in-action-props\",\"children\":\"Using optimistic state in Action props\"}],\".\"]}]]}],\"\\n\",[\"$r\",\"hr\",null,{}],\"\\n\",[\"$r\",\"h3\",null,{\"id\":\"using-optimistic-state-in-action-props\",\"children\":\"Using optimistic state in Action props \"}],\"\\n\",[\"$r\",\"p\",null,{\"children\":[\"In an \",[\"$r\",\"a\",null,{\"href\":\"/reference/react/useTransition#exposing-action-props-from-components\",\"children\":\"Action prop\"}],\", you can call the optimistic setter directly without \",[\"$r\",\"code\",null,{\"children\":\"startTransition\"}],\".\"]}],\"\\n\",[\"$r\",\"p\",null,{\"children\":[\"This example sets optimistic state inside a \",[\"$r\",\"code\",null,{\"children\":\"\u003cform\u003e\"}],\" \",[\"$r\",\"code\",null,{\"children\":\"submitAction\"}],\" prop:\"]}],\"\\n\"]}],[\"$r\",\"Sandpack\",null,{\"children\":[[\"$r\",\"pre\",null,{\"children\":[\"$r\",\"code\",null,{\"className\":\"language-js\",\"meta\":\"src/App.js\",\"children\":\"import { useState, startTransition } from 'react';\\nimport EditName from './EditName';\\n\\nexport default function App() {\\n const [name, setName] = useState('Alice');\\n\\n return \u003cEditName name={name} action={setName} /\u003e;\\n}\\n\"}]}],[\"$r\",\"pre\",null,{\"children\":[\"$r\",\"code\",null,{\"className\":\"language-js\",\"meta\":\"src/EditName.js active\",\"children\":\"import { useOptimistic, startTransition } from 'react';\\nimport { updateName } from './actions.js';\\n\\nexport default function EditName({ name, action }) {\\n const [optimisticName, setOptimisticName] = useOptimistic(name);\\n\\n async function submitAction(formData) {\\n const newName = formData.get('name');\\n setOptimisticName(newName);\\n\\n const updatedName = await updateName(newName);\\n startTransition(() =\u003e {\\n action(updatedName);\\n })\\n }\\n\\n return (\\n \u003cform action={submitAction}\u003e\\n \u003cp\u003eYour name is: {optimisticName}\u003c/p\u003e\\n \u003cp\u003e\\n \u003clabel\u003eChange it: \u003c/label\u003e\\n \u003cinput\\n type=\\\"text\\\"\\n name=\\\"name\\\"\\n disabled={name !== optimisticName}\\n /\u003e\\n \u003c/p\u003e\\n \u003c/form\u003e\\n );\\n}\\n\"}]}],[\"$r\",\"pre\",null,{\"children\":[\"$r\",\"code\",null,{\"className\":\"language-js\",\"meta\":\"src/actions.js hidden\",\"children\":\"export async function updateName(name) {\\n await new Promise((res) =\u003e setTimeout(res, 1000));\\n return name;\\n}\\n\"}]}]]}],[\"$r\",\"MaxWidth\",\"96\",{\"children\":[\"\\n\",[\"$r\",\"p\",null,{\"children\":[\"In this example, when the user submits the form, the \",[\"$r\",\"code\",null,{\"children\":\"optimisticName\"}],\" updates immediately to show the \",[\"$r\",\"code\",null,{\"children\":\"newName\"}],\" optimistically while the server request is in progress. When the request completes, \",[\"$r\",\"code\",null,{\"children\":\"name\"}],\" and \",[\"$r\",\"code\",null,{\"children\":\"optimisticName\"}],\" are rendered with the actual \",[\"$r\",\"code\",null,{\"children\":\"updatedName\"}],\" from the response.\"]}],\"\\n\",[\"$r\",\"DeepDive\",null,{\"children\":[[\"$r\",\"h4\",null,{\"id\":\"why-doesnt-this-need-starttransition\",\"children\":[\"Why doesn’t this need \",[\"$r\",\"code\",null,{\"children\":\"startTransition\"}],\"? \"]}],[\"$r\",\"p\",null,{\"children\":[\"By convention, props called inside \",[\"$r\",\"code\",null,{\"children\":\"startTransition\"}],\" are named with “Action”.\"]}],[\"$r\",\"p\",null,{\"children\":[\"Since \",[\"$r\",\"code\",null,{\"children\":\"submitAction\"}],\" is named with “Action”, you know it’s already called inside \",[\"$r\",\"code\",null,{\"children\":\"startTransition\"}],\".\"]}],[\"$r\",\"p\",null,{\"children\":[\"See \",[\"$r\",\"a\",null,{\"href\":\"/reference/react/useTransition#exposing-action-props-from-components\",\"children\":[\"Exposing \",[\"$r\",\"code\",null,{\"children\":\"action\"}],\" prop from components\"]}],\" for the Action prop pattern.\"]}]]}],\"\\n\",[\"$r\",\"hr\",null,{}],\"\\n\",[\"$r\",\"h3\",null,{\"id\":\"adding-optimistic-state-to-action-props\",\"children\":\"Adding optimistic state to Action props \"}],\"\\n\",[\"$r\",\"p\",null,{\"children\":[\"When creating an \",[\"$r\",\"a\",null,{\"href\":\"/reference/react/useTransition#exposing-action-props-from-components\",\"children\":\"Action prop\"}],\", you can add \",[\"$r\",\"code\",null,{\"children\":\"useOptimistic\"}],\" to show immediate feedback.\"]}],\"\\n\",[\"$r\",\"p\",null,{\"children\":[\"Here’s a button that shows “Submitting…” while the \",[\"$r\",\"code\",null,{\"children\":\"action\"}],\" is pending:\"]}],\"\\n\"]}],[\"$r\",\"Sandpack\",null,{\"children\":[[\"$r\",\"pre\",null,{\"children\":[\"$r\",\"code\",null,{\"className\":\"language-js\",\"meta\":\"src/App.js\",\"children\":\"import { useState, startTransition } from 'react';\\nimport Button from './Button';\\nimport { submitForm } from './actions.js';\\n\\nexport default function App() {\\n const [count, setCount] = useState(0);\\n return (\\n \u003cdiv\u003e\\n \u003cButton action={async () =\u003e {\\n await submitForm();\\n startTransition(() =\u003e {\\n setCount(c =\u003e c + 1);\\n });\\n }}\u003eIncrement\u003c/Button\u003e\\n {count \u003e 0 \u0026\u0026 \u003cp\u003eSubmitted {count}!\u003c/p\u003e}\\n \u003c/div\u003e\\n );\\n}\\n\"}]}],[\"$r\",\"pre\",null,{\"children\":[\"$r\",\"code\",null,{\"className\":\"language-js\",\"meta\":\"src/Button.js active\",\"children\":\"import { useOptimistic, startTransition } from 'react';\\n\\nexport default function Button({ action, children }) {\\n const [isPending, setIsPending] = useOptimistic(false);\\n\\n return (\\n \u003cbutton\\n disabled={isPending}\\n onClick={() =\u003e {\\n startTransition(async () =\u003e {\\n setIsPending(true);\\n await action();\\n });\\n }}\\n \u003e\\n {isPending ? 'Submitting...' : children}\\n \u003c/button\u003e\\n );\\n}\\n\"}]}],[\"$r\",\"pre\",null,{\"children\":[\"$r\",\"code\",null,{\"className\":\"language-js\",\"meta\":\"src/actions.js hidden\",\"children\":\"export async function submitForm() {\\n await new Promise((res) =\u003e setTimeout(res, 1000));\\n}\\n\"}]}]]}],[\"$r\",\"MaxWidth\",\"116\",{\"children\":[\"\\n\",[\"$r\",\"p\",null,{\"children\":[\"When the button is clicked, \",[\"$r\",\"code\",null,{\"children\":\"setIsPending(true)\"}],\" uses optimistic state to immediately show “Submitting…” and disable the button. When the Action is done, \",[\"$r\",\"code\",null,{\"children\":\"isPending\"}],\" is rendered as \",[\"$r\",\"code\",null,{\"children\":\"false\"}],\" automatically.\"]}],\"\\n\",[\"$r\",\"p\",null,{\"children\":[\"This pattern automatically shows a pending state however \",[\"$r\",\"code\",null,{\"children\":\"action\"}],\" prop is used with \",[\"$r\",\"code\",null,{\"children\":\"Button\"}],\":\"]}],\"\\n\",[\"$r\",\"pre\",null,{\"children\":[\"$r\",\"code\",null,{\"className\":\"language-js\",\"children\":\"// Show pending state for a state update\\n\u003cButton action={() =\u003e { setState(c =\u003e c + 1) }} /\u003e\\n\\n// Show pending state for a navigation\\n\u003cButton action={() =\u003e { navigate('/done') }} /\u003e\\n\\n// Show pending state for a POST\\n\u003cButton action={async () =\u003e { await fetch(/* ... */) }} /\u003e\\n\\n// Show pending state for any combination\\n\u003cButton action={async () =\u003e {\\n setState(c =\u003e c + 1);\\n await fetch(/* ... */);\\n navigate('/done');\\n}} /\u003e\\n\"}]}],\"\\n\",[\"$r\",\"p\",null,{\"children\":[\"The pending state will be shown until everything in the \",[\"$r\",\"code\",null,{\"children\":\"action\"}],\" prop is finished.\"]}],\"\\n\",[\"$r\",\"Note\",null,{\"children\":[[\"$r\",\"p\",null,{\"children\":[\"You can also use \",[\"$r\",\"a\",null,{\"href\":\"/reference/react/useTransition\",\"children\":[\"$r\",\"code\",null,{\"children\":\"useTransition\"}]}],\" to get pending state via \",[\"$r\",\"code\",null,{\"children\":\"isPending\"}],\".\"]}],[\"$r\",\"p\",null,{\"children\":[\"The difference is that \",[\"$r\",\"code\",null,{\"children\":\"useTransition\"}],\" gives you the \",[\"$r\",\"code\",null,{\"children\":\"startTransition\"}],\" function, while \",[\"$r\",\"code\",null,{\"children\":\"useOptimistic\"}],\" works with any Transition. Use whichever fits your component’s needs.\"]}]]}],\"\\n\",[\"$r\",\"hr\",null,{}],\"\\n\",[\"$r\",\"h3\",null,{\"id\":\"updating-props-or-state-optimistically\",\"children\":\"Updating props or state optimistically \"}],\"\\n\",[\"$r\",\"p\",null,{\"children\":[\"You can wrap props or state in \",[\"$r\",\"code\",null,{\"children\":\"useOptimistic\"}],\" to update it immediately while an Action is in progress.\"]}],\"\\n\",[\"$r\",\"p\",null,{\"children\":[\"In this example, \",[\"$r\",\"code\",null,{\"children\":\"LikeButton\"}],\" receives \",[\"$r\",\"code\",null,{\"children\":\"isLiked\"}],\" as a prop and immediately toggles it when clicked:\"]}],\"\\n\"]}],[\"$r\",\"Sandpack\",null,{\"children\":[[\"$r\",\"pre\",null,{\"children\":[\"$r\",\"code\",null,{\"className\":\"language-js\",\"meta\":\"src/App.js\",\"children\":\"import { useState, useOptimistic, startTransition } from 'react';\\nimport { toggleLike } from './actions.js';\\n\\nexport default function App() {\\n const [isLiked, setIsLiked] = useState(false);\\n const [optimisticIsLiked, setOptimisticIsLiked] = useOptimistic(isLiked);\\n\\n function handleClick() {\\n startTransition(async () =\u003e {\\n const newValue = !optimisticIsLiked\\n console.log('⏳ setting optimistic state: ' + newValue);\\n\\n setOptimisticIsLiked(newValue);\\n const updatedValue = await toggleLike(newValue);\\n\\n startTransition(() =\u003e {\\n console.log('⏳ setting real state: ' + updatedValue );\\n setIsLiked(updatedValue);\\n });\\n });\\n }\\n\\n if (optimisticIsLiked !== isLiked) {\\n console.log('✅ rendering optimistic state: ' + optimisticIsLiked);\\n } else {\\n console.log('✅ rendering real value: ' + optimisticIsLiked);\\n }\\n\\n\\n return (\\n \u003cbutton onClick={handleClick}\u003e\\n {optimisticIsLiked ? '❤️ Unlike' : '🤍 Like'}\\n \u003c/button\u003e\\n );\\n}\\n\"}]}],[\"$r\",\"pre\",null,{\"children\":[\"$r\",\"code\",null,{\"className\":\"language-js\",\"meta\":\"src/actions.js hidden\",\"children\":\"export async function toggleLike(value) {\\n return await new Promise((res) =\u003e setTimeout(() =\u003e res(value), 1000));\\n // In a real app, this would update the server\\n}\\n\"}]}],[\"$r\",\"pre\",null,{\"children\":[\"$r\",\"code\",null,{\"className\":\"language-js\",\"meta\":\"src/index.js hidden\",\"children\":\"import React from 'react';\\nimport {createRoot} from 'react-dom/client';\\nimport './styles.css';\\n\\nimport App from './App';\\n\\nconst root = createRoot(document.getElementById('root'));\\n// Not using StrictMode so double render logs are not shown.\\nroot.render(\u003cApp /\u003e);\\n\"}]}]]}],[\"$r\",\"MaxWidth\",\"130\",{\"children\":[\"\\n\",[\"$r\",\"p\",null,{\"children\":[\"When the button is clicked, \",[\"$r\",\"code\",null,{\"children\":\"setOptimisticIsLiked\"}],\" immediately updates the displayed state to show the heart as liked. Meanwhile, \",[\"$r\",\"code\",null,{\"children\":\"await toggleLike\"}],\" runs in the background. When the \",[\"$r\",\"code\",null,{\"children\":\"await\"}],\" completes, \",[\"$r\",\"code\",null,{\"children\":\"setIsLiked\"}],\" parent updates the “real” \",[\"$r\",\"code\",null,{\"children\":\"isLiked\"}],\" state, and the optimistic state is rendered to match this new value.\"]}],\"\\n\",[\"$r\",\"Note\",null,{\"children\":[[\"$r\",\"p\",null,{\"children\":[\"This example reads from \",[\"$r\",\"code\",null,{\"children\":\"optimisticIsLiked\"}],\" to calculate the next value. This works when the base state won’t change, but if the base state might change while your Action is pending, you may want to use a state updater or the reducer.\"]}],[\"$r\",\"p\",null,{\"children\":[\"See \",[\"$r\",\"a\",null,{\"href\":\"#updating-state-based-on-current-state\",\"children\":\"Updating state based on the current state\"}],\" for an example.\"]}]]}],\"\\n\",[\"$r\",\"hr\",null,{}],\"\\n\",[\"$r\",\"h3\",null,{\"id\":\"updating-multiple-values-together\",\"children\":\"Updating multiple values together \"}],\"\\n\",[\"$r\",\"p\",null,{\"children\":\"When an optimistic update affects multiple related values, use a reducer to update them together. This ensures the UI stays consistent.\"}],\"\\n\",[\"$r\",\"p\",null,{\"children\":\"Here’s a follow button that updates both the follow state and follower count:\"}],\"\\n\"]}],[\"$r\",\"Sandpack\",null,{\"children\":[[\"$r\",\"pre\",null,{\"children\":[\"$r\",\"code\",null,{\"className\":\"language-js\",\"meta\":\"src/App.js\",\"children\":\"import { useState, startTransition } from 'react';\\nimport { followUser, unfollowUser } from './actions.js';\\nimport FollowButton from './FollowButton';\\n\\nexport default function App() {\\n const [user, setUser] = useState({\\n name: 'React',\\n isFollowing: false,\\n followerCount: 10500\\n });\\n\\n async function followAction(shouldFollow) {\\n if (shouldFollow) {\\n await followUser(user.name);\\n } else {\\n await unfollowUser(user.name);\\n }\\n startTransition(() =\u003e {\\n setUser(current =\u003e ({\\n ...current,\\n isFollowing: shouldFollow,\\n followerCount: current.followerCount + (shouldFollow ? 1 : -1)\\n }));\\n });\\n }\\n\\n return \u003cFollowButton user={user} followAction={followAction} /\u003e;\\n}\\n\"}]}],[\"$r\",\"pre\",null,{\"children\":[\"$r\",\"code\",null,{\"className\":\"language-js\",\"meta\":\"src/FollowButton.js active\",\"children\":\"import { useOptimistic, startTransition } from 'react';\\n\\nexport default function FollowButton({ user, followAction }) {\\n const [optimisticState, updateOptimistic] = useOptimistic(\\n { isFollowing: user.isFollowing, followerCount: user.followerCount },\\n (current, isFollowing) =\u003e ({\\n isFollowing,\\n followerCount: current.followerCount + (isFollowing ? 1 : -1)\\n })\\n );\\n\\n function handleClick() {\\n const newFollowState = !optimisticState.isFollowing;\\n startTransition(async () =\u003e {\\n updateOptimistic(newFollowState);\\n await followAction(newFollowState);\\n });\\n }\\n\\n return (\\n \u003cdiv\u003e\\n \u003cp\u003e\u003cstrong\u003e{user.name}\u003c/strong\u003e\u003c/p\u003e\\n \u003cp\u003e{optimisticState.followerCount} followers\u003c/p\u003e\\n \u003cbutton onClick={handleClick}\u003e\\n {optimisticState.isFollowing ? 'Unfollow' : 'Follow'}\\n \u003c/button\u003e\\n \u003c/div\u003e\\n );\\n}\\n\"}]}],[\"$r\",\"pre\",null,{\"children\":[\"$r\",\"code\",null,{\"className\":\"language-js\",\"meta\":\"src/actions.js hidden\",\"children\":\"export async function followUser(name) {\\n await new Promise((res) =\u003e setTimeout(res, 1000));\\n}\\n\\nexport async function unfollowUser(name) {\\n await new Promise((res) =\u003e setTimeout(res, 1000));\\n}\\n\"}]}]]}],[\"$r\",\"MaxWidth\",\"142\",{\"children\":[\"\\n\",[\"$r\",\"p\",null,{\"children\":[\"The reducer receives the new \",[\"$r\",\"code\",null,{\"children\":\"isFollowing\"}],\" value and calculates both the new follow state and the updated follower count in a single update. This ensures the button text and count always stay in sync.\"]}],\"\\n\",[\"$r\",\"DeepDive\",null,{\"children\":[[\"$r\",\"h4\",null,{\"id\":\"choosing-between-updaters-and-reducers\",\"children\":\"Choosing between updaters and reducers \"}],[\"$r\",\"p\",null,{\"children\":[[\"$r\",\"code\",null,{\"children\":\"useOptimistic\"}],\" supports two patterns for calculating state based on current state:\"]}],[\"$r\",\"p\",null,{\"children\":[[\"$r\",\"strong\",null,{\"children\":\"Updater functions\"}],\" work like \",[\"$r\",\"a\",null,{\"href\":\"/reference/react/useState#updating-state-based-on-the-previous-state\",\"children\":\"useState updaters\"}],\". Pass a function to the setter:\"]}],[\"$r\",\"pre\",null,{\"children\":[\"$r\",\"code\",null,{\"className\":\"language-js\",\"children\":\"const [optimistic, setOptimistic] = useOptimistic(value);\\nsetOptimistic(current =\u003e !current);\\n\"}]}],[\"$r\",\"p\",null,{\"children\":[[\"$r\",\"strong\",null,{\"children\":\"Reducers\"}],\" separate the update logic from the setter call:\"]}],[\"$r\",\"pre\",null,{\"children\":[\"$r\",\"code\",null,{\"className\":\"language-js\",\"children\":\"const [optimistic, dispatch] = useOptimistic(value, (current, action) =\u003e {\\n // Calculate next state based on current and action\\n});\\ndispatch(action);\\n\"}]}],[\"$r\",\"p\",null,{\"children\":[[\"$r\",\"strong\",null,{\"children\":\"Use updaters\"}],\" for calculations where the setter call naturally describes the update. This is similar to using \",[\"$r\",\"code\",null,{\"children\":\"setState(prev =\u003e ...)\"}],\" with \",[\"$r\",\"code\",null,{\"children\":\"useState\"}],\".\"]}],[\"$r\",\"p\",null,{\"children\":[[\"$r\",\"strong\",null,{\"children\":\"Use reducers\"}],\" when you need to pass data to the update (like which item to add) or when handling multiple types of updates with a single hook.\"]}],[\"$r\",\"p\",null,{\"children\":[\"$r\",\"strong\",null,{\"children\":\"Why use a reducer?\"}]}],[\"$r\",\"p\",null,{\"children\":[\"Reducers are essential when the base state might change while your Transition is pending. If \",[\"$r\",\"code\",null,{\"children\":\"todos\"}],\" changes while your add is pending (for example, another user added a todo), React will re-run your reducer with the new \",[\"$r\",\"code\",null,{\"children\":\"todos\"}],\" to recalculate what to show. This ensures your new todo is added to the latest list, not an outdated copy.\"]}],[\"$r\",\"p\",null,{\"children\":[\"An updater function like \",[\"$r\",\"code\",null,{\"children\":\"setOptimistic(prev =\u003e [...prev, newItem])\"}],\" would only see the state from when the Transition started, missing any updates that happened during the async work.\"]}]]}],\"\\n\",[\"$r\",\"hr\",null,{}],\"\\n\",[\"$r\",\"h3\",null,{\"id\":\"optimistically-adding-to-a-list\",\"children\":\"Optimistically adding to a list \"}],\"\\n\",[\"$r\",\"p\",null,{\"children\":[\"When you need to optimistically add items to a list, use a \",[\"$r\",\"code\",null,{\"children\":\"reducer\"}],\":\"]}],\"\\n\"]}],[\"$r\",\"Sandpack\",null,{\"children\":[[\"$r\",\"pre\",null,{\"children\":[\"$r\",\"code\",null,{\"className\":\"language-js\",\"meta\":\"src/App.js\",\"children\":\"import { useState, startTransition } from 'react';\\nimport { addTodo } from './actions.js';\\nimport TodoList from './TodoList';\\n\\nexport default function App() {\\n const [todos, setTodos] = useState([\\n { id: 1, text: 'Learn React' }\\n ]);\\n\\n async function addTodoAction(newTodo) {\\n const savedTodo = await addTodo(newTodo);\\n startTransition(() =\u003e {\\n setTodos(todos =\u003e [...todos, savedTodo]);\\n });\\n }\\n\\n return \u003cTodoList todos={todos} addTodoAction={addTodoAction} /\u003e;\\n}\\n\"}]}],[\"$r\",\"pre\",null,{\"children\":[\"$r\",\"code\",null,{\"className\":\"language-js\",\"meta\":\"src/TodoList.js active\",\"children\":\"import { useOptimistic, startTransition } from 'react';\\n\\nexport default function TodoList({ todos, addTodoAction }) {\\n const [optimisticTodos, addOptimisticTodo] = useOptimistic(\\n todos,\\n (currentTodos, newTodo) =\u003e [\\n ...currentTodos,\\n { id: newTodo.id, text: newTodo.text, pending: true }\\n ]\\n );\\n\\n function handleAddTodo(text) {\\n const newTodo = { id: crypto.randomUUID(), text: text };\\n startTransition(async () =\u003e {\\n addOptimisticTodo(newTodo);\\n await addTodoAction(newTodo);\\n });\\n }\\n\\n return (\\n \u003cdiv\u003e\\n \u003cbutton onClick={() =\u003e handleAddTodo('New todo')}\u003eAdd Todo\u003c/button\u003e\\n \u003cul\u003e\\n {optimisticTodos.map(todo =\u003e (\\n \u003cli key={todo.id}\u003e\\n {todo.text} {todo.pending \u0026\u0026 \\\"(Adding...)\\\"}\\n \u003c/li\u003e\\n ))}\\n \u003c/ul\u003e\\n \u003c/div\u003e\\n );\\n}\\n\"}]}],[\"$r\",\"pre\",null,{\"children\":[\"$r\",\"code\",null,{\"className\":\"language-js\",\"meta\":\"src/actions.js hidden\",\"children\":\"export async function addTodo(todo) {\\n await new Promise((res) =\u003e setTimeout(res, 1000));\\n // In a real app, this would save to the server\\n return { ...todo, pending: false };\\n}\\n\"}]}]]}],[\"$r\",\"MaxWidth\",\"156\",{\"children\":[\"\\n\",[\"$r\",\"p\",null,{\"children\":[\"The \",[\"$r\",\"code\",null,{\"children\":\"reducer\"}],\" receives the current list of todos and the new todo to add. This is important because if the \",[\"$r\",\"code\",null,{\"children\":\"todos\"}],\" prop changes while your add is pending (for example, another user added a todo), React will update your optimistic state by re-running the reducer with the updated list. This ensures your new todo is added to the latest list, not an outdated copy.\"]}],\"\\n\",[\"$r\",\"Note\",null,{\"children\":[\"$r\",\"p\",null,{\"children\":[\"Each optimistic item includes a \",[\"$r\",\"code\",null,{\"children\":\"pending: true\"}],\" flag so you can show loading state for individual items. When the server responds and the parent updates the canonical \",[\"$r\",\"code\",null,{\"children\":\"todos\"}],\" list with the saved item, the optimistic state updates to the confirmed item without the pending flag.\"]}]}],\"\\n\",[\"$r\",\"hr\",null,{}],\"\\n\",[\"$r\",\"h3\",null,{\"id\":\"handling-multiple-action-types\",\"children\":[\"Handling multiple \",[\"$r\",\"code\",null,{\"children\":\"action\"}],\" types \"]}],\"\\n\",[\"$r\",\"p\",null,{\"children\":[\"When you need to handle multiple types of optimistic updates (like adding and removing items), use a reducer pattern with \",[\"$r\",\"code\",null,{\"children\":\"action\"}],\" objects.\"]}],\"\\n\",[\"$r\",\"p\",null,{\"children\":\"This shopping cart example shows how to handle add and remove with a single reducer:\"}],\"\\n\"]}],[\"$r\",\"Sandpack\",null,{\"children\":[[\"$r\",\"pre\",null,{\"children\":[\"$r\",\"code\",null,{\"className\":\"language-js\",\"meta\":\"src/App.js\",\"children\":\"import { useState, startTransition } from 'react';\\nimport { addToCart, removeFromCart, updateQuantity } from './actions.js';\\nimport ShoppingCart from './ShoppingCart';\\n\\nexport default function App() {\\n const [cart, setCart] = useState([]);\\n\\n const cartActions = {\\n async add(item) {\\n await addToCart(item);\\n startTransition(() =\u003e {\\n setCart(current =\u003e {\\n const exists = current.find(i =\u003e i.id === item.id);\\n if (exists) {\\n return current.map(i =\u003e\\n i.id === item.id ? { ...i, quantity: i.quantity + 1 } : i\\n );\\n }\\n return [...current, { ...item, quantity: 1 }];\\n });\\n });\\n },\\n async remove(id) {\\n await removeFromCart(id);\\n startTransition(() =\u003e {\\n setCart(current =\u003e current.filter(item =\u003e item.id !== id));\\n });\\n },\\n async updateQuantity(id, quantity) {\\n await updateQuantity(id, quantity);\\n startTransition(() =\u003e {\\n setCart(current =\u003e\\n current.map(item =\u003e\\n item.id === id ? { ...item, quantity } : item\\n )\\n );\\n });\\n }\\n };\\n\\n return \u003cShoppingCart cart={cart} cartActions={cartActions} /\u003e;\\n}\\n\"}]}],[\"$r\",\"pre\",null,{\"children\":[\"$r\",\"code\",null,{\"className\":\"language-js\",\"meta\":\"src/ShoppingCart.js active\",\"children\":\"import { useOptimistic, startTransition } from 'react';\\n\\nexport default function ShoppingCart({ cart, cartActions }) {\\n const [optimisticCart, dispatch] = useOptimistic(\\n cart,\\n (currentCart, action) =\u003e {\\n switch (action.type) {\\n case 'add':\\n const exists = currentCart.find(item =\u003e item.id === action.item.id);\\n if (exists) {\\n return currentCart.map(item =\u003e\\n item.id === action.item.id\\n ? { ...item, quantity: item.quantity + 1, pending: true }\\n : item\\n );\\n }\\n return [...currentCart, { ...action.item, quantity: 1, pending: true }];\\n case 'remove':\\n return currentCart.filter(item =\u003e item.id !== action.id);\\n case 'update_quantity':\\n return currentCart.map(item =\u003e\\n item.id === action.id\\n ? { ...item, quantity: action.quantity, pending: true }\\n : item\\n );\\n default:\\n return currentCart;\\n }\\n }\\n );\\n\\n function handleAdd(item) {\\n startTransition(async () =\u003e {\\n dispatch({ type: 'add', item });\\n await cartActions.add(item);\\n });\\n }\\n\\n function handleRemove(id) {\\n startTransition(async () =\u003e {\\n dispatch({ type: 'remove', id });\\n await cartActions.remove(id);\\n });\\n }\\n\\n function handleUpdateQuantity(id, quantity) {\\n startTransition(async () =\u003e {\\n dispatch({ type: 'update_quantity', id, quantity });\\n await cartActions.updateQuantity(id, quantity);\\n });\\n }\\n\\n const total = optimisticCart.reduce(\\n (sum, item) =\u003e sum + item.price * item.quantity,\\n 0\\n );\\n\\n return (\\n \u003cdiv\u003e\\n \u003ch2\u003eShopping Cart\u003c/h2\u003e\\n \u003cdiv style={{ marginBottom: 16 }}\u003e\\n \u003cbutton onClick={() =\u003e handleAdd({\\n id: 1, name: 'T-Shirt', price: 25\\n })}\u003e\\n Add T-Shirt ($25)\\n \u003c/button\u003e{' '}\\n \u003cbutton onClick={() =\u003e handleAdd({\\n id: 2, name: 'Mug', price: 15\\n })}\u003e\\n Add Mug ($15)\\n \u003c/button\u003e\\n \u003c/div\u003e\\n {optimisticCart.length === 0 ? (\\n \u003cp\u003eYour cart is empty\u003c/p\u003e\\n ) : (\\n \u003cul\u003e\\n {optimisticCart.map(item =\u003e (\\n \u003cli key={item.id}\u003e\\n {item.name} - ${item.price} ×\\n {item.quantity}\\n {' '}= ${item.price * item.quantity}\\n \u003cbutton\\n onClick={() =\u003e handleRemove(item.id)}\\n style={{ marginLeft: 8 }}\\n \u003e\\n Remove\\n \u003c/button\u003e\\n {item.pending \u0026\u0026 ' ...'}\\n \u003c/li\u003e\\n ))}\\n \u003c/ul\u003e\\n )}\\n \u003cp\u003e\u003cstrong\u003eTotal: ${total}\u003c/strong\u003e\u003c/p\u003e\\n \u003c/div\u003e\\n );\\n}\\n\"}]}],[\"$r\",\"pre\",null,{\"children\":[\"$r\",\"code\",null,{\"className\":\"language-js\",\"meta\":\"src/actions.js hidden\",\"children\":\"export async function addToCart(item) {\\n await new Promise((res) =\u003e setTimeout(res, 800));\\n}\\n\\nexport async function removeFromCart(id) {\\n await new Promise((res) =\u003e setTimeout(res, 800));\\n}\\n\\nexport async function updateQuantity(id, quantity) {\\n await new Promise((res) =\u003e setTimeout(res, 800));\\n}\\n\"}]}]]}],[\"$r\",\"MaxWidth\",\"168\",{\"children\":[\"\\n\",[\"$r\",\"p\",null,{\"children\":[\"The reducer handles three \",[\"$r\",\"code\",null,{\"children\":\"action\"}],\" types (\",[\"$r\",\"code\",null,{\"children\":\"add\"}],\", \",[\"$r\",\"code\",null,{\"children\":\"remove\"}],\", \",[\"$r\",\"code\",null,{\"children\":\"update_quantity\"}],\") and returns the new optimistic state for each. Each \",[\"$r\",\"code\",null,{\"children\":\"action\"}],\" sets a \",[\"$r\",\"code\",null,{\"children\":\"pending: true\"}],\" flag so you can show visual feedback while the \",[\"$r\",\"a\",null,{\"href\":\"/reference/rsc/server-functions\",\"children\":\"Server Function\"}],\" runs.\"]}],\"\\n\",[\"$r\",\"hr\",null,{}],\"\\n\",[\"$r\",\"h3\",null,{\"id\":\"optimistic-delete-with-error-recovery\",\"children\":\"Optimistic delete with error recovery \"}],\"\\n\",[\"$r\",\"p\",null,{\"children\":\"When deleting items optimistically, you should handle the case where the Action fails.\"}],\"\\n\",[\"$r\",\"p\",null,{\"children\":\"This example shows how to display an error message when a delete fails, and the UI automatically rolls back to show the item again.\"}],\"\\n\"]}],[\"$r\",\"Sandpack\",null,{\"children\":[[\"$r\",\"pre\",null,{\"children\":[\"$r\",\"code\",null,{\"className\":\"language-js\",\"meta\":\"src/App.js\",\"children\":\"import { useState, startTransition } from 'react';\\nimport { deleteItem } from './actions.js';\\nimport ItemList from './ItemList';\\n\\nexport default function App() {\\n const [items, setItems] = useState([\\n { id: 1, name: 'Learn React' },\\n { id: 2, name: 'Build an app' },\\n { id: 3, name: 'Deploy to production' },\\n ]);\\n\\n async function deleteAction(id) {\\n await deleteItem(id);\\n startTransition(() =\u003e {\\n setItems(current =\u003e current.filter(item =\u003e item.id !== id));\\n });\\n }\\n\\n return \u003cItemList items={items} deleteAction={deleteAction} /\u003e;\\n}\\n\"}]}],[\"$r\",\"pre\",null,{\"children\":[\"$r\",\"code\",null,{\"className\":\"language-js\",\"meta\":\"src/ItemList.js active\",\"children\":\"import { useState, useOptimistic, startTransition } from 'react';\\n\\nexport default function ItemList({ items, deleteAction }) {\\n const [error, setError] = useState(null);\\n const [optimisticItems, removeItem] = useOptimistic(\\n items,\\n (currentItems, idToRemove) =\u003e\\n currentItems.map(item =\u003e\\n item.id === idToRemove\\n ? { ...item, deleting: true }\\n : item\\n )\\n );\\n\\n function handleDelete(id) {\\n setError(null);\\n startTransition(async () =\u003e {\\n removeItem(id);\\n try {\\n await deleteAction(id);\\n } catch (e) {\\n setError(e.message);\\n }\\n });\\n }\\n\\n return (\\n \u003cdiv\u003e\\n \u003ch2\u003eYour Items\u003c/h2\u003e\\n \u003cul\u003e\\n {optimisticItems.map(item =\u003e (\\n \u003cli\\n key={item.id}\\n style={{\\n opacity: item.deleting ? 0.5 : 1,\\n textDecoration: item.deleting ? 'line-through' : 'none',\\n transition: 'opacity 0.2s'\\n }}\\n \u003e\\n {item.name}\\n \u003cbutton\\n onClick={() =\u003e handleDelete(item.id)}\\n disabled={item.deleting}\\n style={{ marginLeft: 8 }}\\n \u003e\\n {item.deleting ? 'Deleting...' : 'Delete'}\\n \u003c/button\u003e\\n \u003c/li\u003e\\n ))}\\n \u003c/ul\u003e\\n {error \u0026\u0026 (\\n \u003cp style={{ color: 'red', padding: 8, background: '#fee' }}\u003e\\n {error}\\n \u003c/p\u003e\\n )}\\n \u003c/div\u003e\\n );\\n}\\n\"}]}],[\"$r\",\"pre\",null,{\"children\":[\"$r\",\"code\",null,{\"className\":\"language-js\",\"meta\":\"src/actions.js hidden\",\"children\":\"export async function deleteItem(id) {\\n await new Promise((res) =\u003e setTimeout(res, 1000));\\n // Item 3 always fails to demonstrate error recovery\\n if (id === 3) {\\n throw new Error('Cannot delete. Permission denied.');\\n }\\n}\\n\"}]}]]}],[\"$r\",\"MaxWidth\",\"last\",{\"children\":[\"\\n\",[\"$r\",\"p\",null,{\"children\":\"Try deleting ‘Deploy to production’. When the delete fails, the item automatically reappears in the list.\"}],\"\\n\",[\"$r\",\"hr\",null,{}],\"\\n\",[\"$r\",\"h2\",null,{\"id\":\"troubleshooting\",\"children\":\"Troubleshooting \"}],\"\\n\",[\"$r\",\"h3\",null,{\"id\":\"an-optimistic-state-update-occurred-outside-a-transition-or-action\",\"children\":\"I’m getting an error: “An optimistic state update occurred outside a Transition or Action” \"}],\"\\n\",[\"$r\",\"p\",null,{\"children\":\"You may see this error:\"}],\"\\n\",[\"$r\",\"ConsoleBlockMulti\",null,{\"children\":[\"$r\",\"ConsoleLogLine\",null,{\"level\":\"error\",\"children\":[\"$r\",\"p\",null,{\"children\":[\"An optimistic state update occurred outside a Transition or Action. To fix, move the update to an Action, or wrap with \",[\"$r\",\"code\",null,{\"children\":\"startTransition\"}],\".\"]}]}]}],\"\\n\",[\"$r\",\"p\",null,{\"children\":[\"The optimistic setter function must be called inside \",[\"$r\",\"code\",null,{\"children\":\"startTransition\"}],\":\"]}],\"\\n\",[\"$r\",\"pre\",null,{\"children\":[\"$r\",\"code\",null,{\"className\":\"language-js\",\"children\":\"// 🚩 Incorrect: outside a Transition\\nfunction handleClick() {\\n setOptimistic(newValue); // Warning!\\n // ...\\n}\\n\\n// ✅ Correct: inside a Transition\\nfunction handleClick() {\\n startTransition(async () =\u003e {\\n setOptimistic(newValue);\\n // ...\\n });\\n}\\n\\n// ✅ Also correct: inside an Action prop\\nfunction submitAction(formData) {\\n setOptimistic(newValue);\\n // ...\\n}\\n\"}]}],\"\\n\",[\"$r\",\"p\",null,{\"children\":\"When you call the setter outside an Action, the optimistic state will briefly appear and then immediately revert back to the original value. This happens because there’s no Transition to “hold” the optimistic state while your Action runs.\"}],\"\\n\",[\"$r\",\"h3\",null,{\"id\":\"cannot-update-optimistic-state-while-rendering\",\"children\":\"I’m getting an error: “Cannot update optimistic state while rendering” \"}],\"\\n\",[\"$r\",\"p\",null,{\"children\":\"You may see this error:\"}],\"\\n\",[\"$r\",\"ConsoleBlockMulti\",null,{\"children\":[\"$r\",\"ConsoleLogLine\",null,{\"level\":\"error\",\"children\":[\"$r\",\"p\",null,{\"children\":\"Cannot update optimistic state while rendering.\"}]}]}],\"\\n\",[\"$r\",\"p\",null,{\"children\":\"This error occurs when you call the optimistic setter during the render phase of a component. You can only call it from event handlers, effects, or other callbacks:\"}],\"\\n\",[\"$r\",\"pre\",null,{\"children\":[\"$r\",\"code\",null,{\"className\":\"language-js\",\"children\":\"// 🚩 Incorrect: calling during render\\nfunction MyComponent({ items }) {\\n const [isPending, setPending] = useOptimistic(false);\\n\\n // This runs during render - not allowed!\\n setPending(true);\\n\\n // ...\\n}\\n\\n// ✅ Correct: calling inside startTransition\\nfunction MyComponent({ items }) {\\n const [isPending, setPending] = useOptimistic(false);\\n\\n function handleClick() {\\n startTransition(() =\u003e {\\n setPending(true);\\n // ...\\n });\\n }\\n\\n // ...\\n}\\n\\n// ✅ Also correct: calling from an Action\\nfunction MyComponent({ items }) {\\n const [isPending, setPending] = useOptimistic(false);\\n\\n function action() {\\n setPending(true);\\n // ...\\n }\\n\\n // ...\\n}\\n\"}]}],\"\\n\",[\"$r\",\"h3\",null,{\"id\":\"my-optimistic-updates-show-stale-values\",\"children\":\"My optimistic updates show stale values \"}],\"\\n\",[\"$r\",\"p\",null,{\"children\":\"If your optimistic state seems to be based on old data, consider using an updater function or reducer to calculate the optimistic state relative to the current state.\"}],\"\\n\",[\"$r\",\"pre\",null,{\"children\":[\"$r\",\"code\",null,{\"className\":\"language-js\",\"children\":\"// May show stale data if state changes during Action\\nconst [optimistic, setOptimistic] = useOptimistic(count);\\nsetOptimistic(5); // Always sets to 5, even if count changed\\n\\n// Better: relative updates handle state changes correctly\\nconst [optimistic, adjust] = useOptimistic(count, (current, delta) =\u003e current + delta);\\nadjust(1); // Always adds 1 to whatever the current count is\\n\"}]}],\"\\n\",[\"$r\",\"p\",null,{\"children\":[\"See \",[\"$r\",\"a\",null,{\"href\":\"#updating-state-based-on-current-state\",\"children\":\"Updating state based on the current state\"}],\" for details.\"]}],\"\\n\",[\"$r\",\"h3\",null,{\"id\":\"i-dont-know-if-my-optimistic-update-is-pending\",\"children\":\"I don’t know if my optimistic update is pending \"}],\"\\n\",[\"$r\",\"p\",null,{\"children\":[\"To know when \",[\"$r\",\"code\",null,{\"children\":\"useOptimistic\"}],\" is pending, you have three options:\"]}],\"\\n\",[\"$r\",\"ol\",null,{\"children\":[\"\\n\",[\"$r\",\"li\",null,{\"children\":[\"$r\",\"strong\",null,{\"children\":[\"Check if \",[\"$r\",\"code\",null,{\"children\":\"optimisticValue === value\"}]]}]}],\"\\n\"]}],\"\\n\",[\"$r\",\"pre\",null,{\"children\":[\"$r\",\"code\",null,{\"className\":\"language-js\",\"children\":\"const [optimistic, setOptimistic] = useOptimistic(value);\\nconst isPending = optimistic !== value;\\n\"}]}],\"\\n\",[\"$r\",\"p\",null,{\"children\":\"If the values are not equal, there’s a Transition in progress.\"}],\"\\n\",[\"$r\",\"ol\",null,{\"start\":\"2\",\"children\":[\"\\n\",[\"$r\",\"li\",null,{\"children\":[\"$r\",\"strong\",null,{\"children\":[\"Add a \",[\"$r\",\"code\",null,{\"children\":\"useTransition\"}]]}]}],\"\\n\"]}],\"\\n\",[\"$r\",\"pre\",null,{\"children\":[\"$r\",\"code\",null,{\"className\":\"language-js\",\"children\":\"const [isPending, startTransition] = useTransition();\\nconst [optimistic, setOptimistic] = useOptimistic(value);\\n\\n//...\\nstartTransition(() =\u003e {\\n setOptimistic(state);\\n})\\n\"}]}],\"\\n\",[\"$r\",\"p\",null,{\"children\":[\"Since \",[\"$r\",\"code\",null,{\"children\":\"useTransition\"}],\" uses \",[\"$r\",\"code\",null,{\"children\":\"useOptimistic\"}],\" for \",[\"$r\",\"code\",null,{\"children\":\"isPending\"}],\" under the hood, this is equivalent to option 1.\"]}],\"\\n\",[\"$r\",\"ol\",null,{\"start\":\"3\",\"children\":[\"\\n\",[\"$r\",\"li\",null,{\"children\":[\"$r\",\"strong\",null,{\"children\":[\"Add a \",[\"$r\",\"code\",null,{\"children\":\"pending\"}],\" flag in your reducer\"]}]}],\"\\n\"]}],\"\\n\",[\"$r\",\"pre\",null,{\"children\":[\"$r\",\"code\",null,{\"className\":\"language-js\",\"children\":\"const [optimistic, addOptimistic] = useOptimistic(\\n items,\\n (state, newItem) =\u003e [...state, { ...newItem, isPending: true }]\\n);\\n\"}]}],\"\\n\",[\"$r\",\"p\",null,{\"children\":\"Since each optimistic item has its own flag, you can show loading state for individual items.\"}]]}]]","meta":{"title":"useOptimistic"},"languages":null},"__N_SSG":true},"page":"/[[...markdownPath]]","query":{"markdownPath":["reference","react","useOptimistic"]},"buildId":"iL-S_VcpSPApikCxaBjlp","isFallback":false,"gsp":true,"scriptLoader":[]}

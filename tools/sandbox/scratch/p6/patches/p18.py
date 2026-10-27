@@ -1,0 +1,14 @@
+from patchlib import apply
+apply('18',[
+("The **Navigation API** (`window.navigation`) is a newer, more complete model with an event for all navigations. ⚠ Support has been expanding; verify browser support before depending on it.","The **Navigation API** (`window.navigation`) is a newer, more complete model with an event for all navigations. MDN compat data (checked 2026-10-22) lists Chrome 102, Firefox 147 and Safari 26.2, so all three engines now ship it, but older browser versions in the wild do not; check your support matrix before depending on it."),
+("many routers wrap navigations in transitions internally (⚠ verify per router and version).","many routers wrap navigations in transitions internally (not checked per router and version)."),
+("successive calls in the same tick may not queue (each sees the same `prev`; ⚠ verify in your router's documentation).","successive calls in the same tick do not queue (each sees the same `prev`): the React Router `useSearchParams` documentation (checked in the 8.5 typings) warns that the function form \"does not support the queueing logic that React's `setState` implements. Multiple calls to `setSearchParams` in the same tick will not build on the prior value.\""),
+("// ⚠ package name differs by version: 'react-router-dom' (v6) vs 'react-router' (v7). Verify.","// 'react-router' in v7 and v8; 'react-router-dom' is the v6 name, kept as a compat re-export in v7 and removed in v8 (only RouterProvider/HydratedRouter move to 'react-router/dom')"),
+("(it does for unchanged location in current versions; verify)","(the React Router docs state `searchParams` is a stable reference)"),
+("(TanStack Query v5; verify)","(TanStack Query v5)"),
+("// TanStack Router style (⚠ illustrative; verify current API)","// TanStack Router style (illustrative; not executed here; recent versions accept Standard Schema validators such as Zod 4 directly)"),
+("for Next.js and other routers (verify current support).","for Next.js and other routers (2.x on npm at the time of checking; verify current support)."),
+("`useSearchParams`, navigation, data APIs (verify version)","`useSearchParams`, navigation, data APIs (v8.5 is current on npm; v7 APIs used here still exist)"),
+("Verify this with tests rather than trusting the reasoning;","This was verified with a test (typing \"ab\", then an external change to `?q=x` before the debounce fired: the input ended as `x`, no commit happened and the URL stayed `?q=x`); still add a test for your own router;"),
+("> ⚠ **Verify against current docs.** Router APIs","> **Checked 2026-10-22:** the History API facts and the §5.1 hook were run in jsdom (React 19.3); React Router claims were read from the `react-router` 8.5 typings and changelog; TanStack Router, Next.js and `nuqs` were not executed. Router APIs"),
+])

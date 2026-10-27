@@ -1,0 +1,1 @@
+export function DensityToggle({ value, onChange }: { value: "comfortable" | "compact"; onChange: (v: "comfortable" | "compact") => void }) { return <button onClick={() => onChange(value === "compact" ? "comfortable" : "compact")}>{value}</button>; }

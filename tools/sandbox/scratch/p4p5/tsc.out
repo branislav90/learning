@@ -1,0 +1,85 @@
+blocks/02-dr_05_L738.ts(1,96): error TS1127: Invalid character.
+blocks/05-co_05_L50.tsx(6,26): error TS1127: Invalid character.
+blocks/05-co_05_L50.tsx(6,27): error TS1003: Identifier expected.
+blocks/05-co_05_L50.tsx(7,26): error TS1127: Invalid character.
+blocks/05-co_05_L50.tsx(7,27): error TS1003: Identifier expected.
+blocks/06-cu_05_L426.ts(3,30): error TS1109: Expression expected.
+blocks/06-cu_05_L456.ts(14,3): error TS1127: Invalid character.
+blocks/06-cu_05_L781.ts(5,40): error TS1127: Invalid character.
+blocks/06-cu_05_L781.ts(6,40): error TS1127: Invalid character.
+blocks/06-cu_05_L795.tsx(1,270): error TS1127: Invalid character.
+blocks/07-he_05_L425.tsx(8,23): error TS1127: Invalid character.
+blocks/07-he_05_L425.tsx(8,24): error TS1003: Identifier expected.
+blocks/07-he_05_L425.tsx(12,11): error TS1127: Invalid character.
+blocks/07-he_05_L425.tsx(12,12): error TS1003: Identifier expected.
+blocks/07-he_05_L425.tsx(12,23): error TS1127: Invalid character.
+blocks/07-he_05_L425.tsx(12,24): error TS1003: Identifier expected.
+blocks/07-he_05_L425.tsx(12,42): error TS1127: Invalid character.
+blocks/07-he_05_L425.tsx(12,43): error TS1003: Identifier expected.
+blocks/07-mo_04_L474.ts(9,3): error TS1128: Declaration or statement expected.
+blocks/09-fe_04_L281.ts(9,14): error TS1005: ',' expected.
+blocks/09-fe_04_L281.ts(9,29): error TS1161: Unterminated regular expression literal.
+blocks/09-fe_04_L281.ts(10,26): error TS1005: ',' expected.
+blocks/09-fe_04_L281.ts(10,42): error TS1005: ',' expected.
+blocks/09-fe_04_L281.ts(10,51): error TS1005: ',' expected.
+blocks/09-fe_04_L281.ts(10,54): error TS1161: Unterminated regular expression literal.
+blocks/09-fe_04_L281.ts(11,14): error TS1005: ',' expected.
+blocks/09-fe_04_L281.ts(11,23): error TS1161: Unterminated regular expression literal.
+blocks/09-fe_04_L281.ts(12,21): error TS1161: Unterminated regular expression literal.
+blocks/09-fe_04_L281.ts(13,6): error TS1161: Unterminated regular expression literal.
+blocks/10-re_05_L33.tsx(1,1): error TS2657: JSX expressions must have one parent element.
+blocks/11-co_05_L260.tsx(1,1): error TS2657: JSX expressions must have one parent element.
+blocks/11-co_05_L324.tsx(1,1): error TS2657: JSX expressions must have one parent element.
+blocks/11-co_05_L352.tsx(3,26): error TS1109: Expression expected.
+blocks/11-co_05_L384.tsx(2,1): error TS2657: JSX expressions must have one parent element.
+blocks/11-co_05_L417.tsx(7,21): error TS1127: Invalid character.
+blocks/11-co_05_L417.tsx(7,22): error TS1003: Identifier expected.
+blocks/11-co_05_L417.tsx(7,23): error TS1109: Expression expected.
+blocks/11-co_05_L417.tsx(10,40): error TS1005: ';' expected.
+blocks/11-co_05_L417.tsx(11,5): error TS1128: Declaration or statement expected.
+blocks/11-co_05_L417.tsx(12,3): error TS1109: Expression expected.
+blocks/11-co_05_L417.tsx(13,1): error TS1128: Declaration or statement expected.
+blocks/11-co_05_L476.tsx(1,122): error TS1127: Invalid character.
+blocks/11-co_05_L733.tsx(1,96): error TS1127: Invalid character.
+blocks/12-re_05_L1047.ts(2,1): error TS1128: Declaration or statement expected.
+blocks/12-re_05_L1047.ts(2,25): error TS1005: ';' expected.
+blocks/12-re_05_L323.ts(1,1): error TS1128: Declaration or statement expected.
+blocks/12-re_05_L323.ts(1,17): error TS1005: ';' expected.
+blocks/12-re_05_L334.ts(1,1): error TS1128: Declaration or statement expected.
+blocks/12-re_05_L334.ts(1,19): error TS1005: ';' expected.
+blocks/12-re_05_L604.tsx(23,3): error TS1127: Invalid character.
+blocks/12-re_05_L895.ts(1,1): error TS1128: Declaration or statement expected.
+blocks/12-re_05_L895.ts(1,13): error TS1005: ';' expected.
+blocks/12-re_05_L919.ts(1,1): error TS1128: Declaration or statement expected.
+blocks/12-re_05_L919.ts(1,25): error TS1005: ';' expected.
+blocks/13-ap_04_L142.ts(2,25): error TS1003: Identifier expected.
+blocks/13-st_05_L69.ts(3,3): error TS1129: Statement expected.
+blocks/14-ap_04_L67.ts(2,44): error TS1127: Invalid character.
+blocks/14-ap_04_L67.ts(5,68): error TS1127: Invalid character.
+blocks/14-ob_05_L499.tsx(28,3): error TS1128: Declaration or statement expected.
+blocks/14-ob_05_L567.tsx(6,3): error TS1128: Declaration or statement expected.
+blocks/15-ad_05_L394.tsx(7,3): error TS1128: Declaration or statement expected.
+blocks/16-de_05_L396.tsx(8,3): error TS1128: Declaration or statement expected.
+blocks/18-be_05_L74.tsx(1,1): error TS2657: JSX expressions must have one parent element.
+blocks/19-er_04_L437.tsx(2,1): error TS2657: JSX expressions must have one parent element.
+blocks/19-po_05_L336.tsx(1,1): error TS2657: JSX expressions must have one parent element.
+blocks/19-po_05_L395.tsx(8,1): error TS2657: JSX expressions must have one parent element.
+blocks/21-co_04_L54.tsx(2,1): error TS2657: JSX expressions must have one parent element.
+blocks/21-co_04_L54.tsx(10,34): error TS1127: Invalid character.
+blocks/21-co_04_L54.tsx(10,35): error TS1381: Unexpected token. Did you mean `{'}'}` or `&rbrace;`?
+blocks/21-co_04_L54.tsx(10,36): error TS1382: Unexpected token. Did you mean `{'>'}` or `&gt;`?
+blocks/21-co_04_L54.tsx(10,43): error TS17002: Expected corresponding JSX closing tag for 'Card.Actions'.
+blocks/21-co_04_L54.tsx(10,52): error TS17002: Expected corresponding JSX closing tag for 'Card'.
+blocks/21-co_04_L54.tsx(11,1): error TS1128: Declaration or statement expected.
+blocks/21-co_04_L54.tsx(12,1): error TS1109: Expression expected.
+blocks/21-er_05_L102.ts(1,1): error TS1128: Declaration or statement expected.
+blocks/21-er_05_L102.ts(1,38): error TS1005: ',' expected.
+blocks/21-er_05_L102.ts(1,48): error TS1005: ';' expected.
+blocks/21-er_05_L102.ts(2,24): error TS1005: ',' expected.
+blocks/21-er_05_L102.ts(2,39): error TS1005: ',' expected.
+blocks/21-er_05_L102.ts(2,57): error TS1005: ';' expected.
+blocks/21-er_05_L102.ts(3,1): error TS1109: Expression expected.
+blocks/26-ph_04_L474.ts(46,8): error TS1005: '>' expected.
+blocks/26-ph_04_L474.ts(46,13): error TS1005: ',' expected.
+blocks/26-ph_04_L474.ts(46,23): error TS1005: ',' expected.
+blocks/26-ph_04_L474.ts(46,35): error TS1161: Unterminated regular expression literal.

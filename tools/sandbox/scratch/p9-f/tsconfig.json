@@ -1,0 +1,1 @@
+{"compilerOptions":{"jsx":"react-jsx","strict":true,"noEmit":true,"moduleResolution":"bundler","module":"esnext","target":"es2022","skipLibCheck":true,"types":[]},"include":["inert.tsx"]}

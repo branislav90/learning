@@ -1,0 +1,21 @@
+from apply import apply
+apply('29-reasoning-about-unnecessary-renders.md', [
+("React Compiler as a mitigating factor (⚠ verify)","React Compiler as a mitigating factor"),
+("⚠ The exact conditions (whether the render is eager-bailed before scheduling) are an implementation detail that has varied; treat \"at most one extra call, no child renders, no DOM work\" as the guarantee.",
+ "Executed on react 19.3.1 (jsdom, `act`): `setState(sameValue)` on a freshly mounted component called nothing; after a *real* update, a later `setState(sameValue)` called the component function once more (`P render n=1`) and did **not** render its child or commit; a further identical `setState` called nothing. The exact conditions (eager bailout before scheduling) are an implementation detail; treat \"at most one extra call, no child renders, no DOM work\" as the guarantee."),
+("**5. React Compiler (⚠ verify against current docs).** The React Compiler is a build-time tool that automatically memoizes values and components so that many manual `memo`/`useMemo`/`useCallback` calls become unnecessary. It does not change *semantics* (it relies on the rules of React being followed), and its availability, configuration, and coverage change between releases.",
+ "**5. React Compiler.** The React Compiler is a build-time tool that automatically memoizes values and components so that many manual `memo`/`useMemo`/`useCallback` calls become unnecessary. It does not change *semantics* (it relies on the rules of React being followed). As of 2026-10-22 `babel-plugin-react-compiler` is at 1.0.0 on npm (dist-tag `latest`) and react.dev has a [React Compiler](https://react.dev/learn/react-compiler) section; configuration and coverage still evolve between releases, so check the docs for your version."),
+("verify in source |","check the source |") if False else ("**Implementation detail** — see [31](./31-reading-react-source.md), verify in source |","**Implementation detail** — see [31](./31-reading-react-source.md), check the source |"),
+("⚠ The names and layout of these fields (lanes, child lanes, flags) are implementation details;","The names and layout of these fields (lanes, child lanes, flags) are implementation details;"),
+("⚠ Verify the exact callback parameter list for your React version in the [`Profiler` reference](https://react.dev/reference/react/Profiler).","The callback signature in React 19.3 is `onRender(id, phase, actualDuration, baseDuration, startTime, commitTime)` (checked in the [`Profiler` reference](https://react.dev/reference/react/Profiler) on 2026-10-22; a mount-then-update run on 19.3.1 reported phases `mount` then `update`)."),
+("    prev.current = props; // ⚠ mutating a ref during render: dev diagnostics only","    prev.current = props; // mutating a ref during render breaks the rules of React: dev diagnostics only"),
+("(Hint: `useEffectEvent` is the React-supplied variant ⚠ verify availability in your version.)","(Hint: `useEffectEvent`, stable since React 19.2, is the React-supplied variant.)"),
+("(`useEffectEvent` ⚠ verify) restricts","(`useEffectEvent`) restricts"),
+("that the Compiler (⚠ verify) automates","that the Compiler automates"),
+("**Q6. \"How does the React Compiler change this advice?\"** ⚠","**Q6. \"How does the React Compiler change this advice?\"**"),
+("I'd verify the version and coverage in current docs and check compiled components in DevTools.","I'd check the version and coverage in current docs and look for the compiler badge on components in React DevTools."),
+("Automatic memoization ⚠ verify current status |","Automatic memoization (1.0 as of 2026-10-22) |"),
+("| Source to verify bailout logic |","| Source for the bailout logic |"),
+("Verify coverage/version; not a substitute","Check coverage/version; not a substitute"),
+("| **React Compiler** ⚠ |","| **React Compiler** |"),
+])

@@ -1,0 +1,128 @@
+ experimental_taintObjectReference – React 
+ (function () {
+ try {
+ let logShown = false;
+ function setUwu(isUwu) {
+ try {
+ if (isUwu) {
+ localStorage.setItem('uwu', true);
+ document.documentElement.classList.add('uwu');
+ if (!logShown) {
+ console.log('uwu mode! turn off with ?uwu=0');
+ console.log('logo credit to @sawaratsuki1004 via https://github.com/SAWARATSUKI/KawaiiLogos');
+ logShown = true;
+ }
+ } else {
+ localStorage.removeItem('uwu');
+ document.documentElement.classList.remove('uwu');
+ console.log('uwu mode off. turn on with ?uwu');
+ }
+ } catch (err) { }
+ }
+ window.__setUwu = setUwu;
+ function checkQueryParam() {
+ const params = new URLSearchParams(window.location.search);
+ const value = params.get('uwu');
+ switch(value) {
+ case '':
+ case 'true':
+ case '1':
+ return true;
+ case 'false':
+ case '0':
+ return false;
+ default:
+ return null;
+ }
+ }
+ function checkLocalStorage() {
+ try {
+ return localStorage.getItem('uwu') === 'true';
+ } catch (err) {
+ return false;
+ }
+ }
+ const uwuQueryParam = checkQueryParam();
+ if (uwuQueryParam != null) {
+ setUwu(uwuQueryParam);
+ } else if (checkLocalStorage()) {
+ document.documentElement.classList.add('uwu');
+ }
+ } catch (err) { }
+ })();
+ 
+ (function () {
+ function setTheme(newTheme) {
+ window.__theme = newTheme;
+ if (newTheme === 'dark') {
+ document.documentElement.classList.add('dark');
+ } else if (newTheme === 'light') {
+ document.documentElement.classList.remove('dark');
+ }
+ }
+ var preferredTheme;
+ try {
+ preferredTheme = localStorage.getItem('theme');
+ } catch (err) { }
+ window.__setPreferredTheme = function(newTheme) {
+ preferredTheme = newTheme;
+ setTheme(newTheme);
+ try {
+ localStorage.setItem('theme', newTheme);
+ } catch (err) { }
+ };
+ var initialTheme = preferredTheme;
+ var darkQuery = window.matchMedia('(prefers-color-scheme: dark)');
+ if (!initialTheme) {
+ initialTheme = darkQuery.matches ? 'dark' : 'light';
+ }
+ setTheme(initialTheme);
+ darkQuery.addEventListener('change', function (e) {
+ if (!preferredTheme) {
+ setTheme(e.matches ? 'dark' : 'light');
+ }
+ });
+ // Detect whether the browser is Mac to display platform specific content
+ // An example of such content can be the keyboard shortcut displayed in the search bar
+ document.documentElement.classList.add(
+ window.navigator.platform.includes('Mac')
+ ? "platform-mac" 
+ : "platform-win"
+ );
+ })();
+ React v 19.3 Search ⌘ Ctrl K Learn Reference Community Blog react@19.3 Overview Hooks useActionState useCallback useContext useDebugValue useDeferredValue useEffect useEffectEvent useId useImperativeHandle useInsertionEffect useLayoutEffect useMemo useOptimistic useReducer useRef useState useSyncExternalStore useTransition Components &lt;Fragment&gt; (&lt;&gt;) &lt;Profiler&gt; &lt;StrictMode&gt; &lt;Suspense&gt; &lt;Activity&gt; &lt;ViewTransition&gt; APIs act addTransitionType cache cacheSignal captureOwnerStack createContext lazy memo startTransition use experimental_taintObjectReference - This feature is available in the latest Experimental version of React experimental_taintUniqueValue - This feature is available in the latest Experimental version of React react-dom@19.3 Hooks useFormStatus Components Common (e.g. &lt;div&gt;) &lt;form&gt; &lt;input&gt; &lt;option&gt; &lt;progress&gt; &lt;select&gt; &lt;textarea&gt; &lt;img&gt; &lt;link&gt; &lt;meta&gt; &lt;script&gt; &lt;style&gt; &lt;title&gt; APIs browser createPortal flushSync preconnect prefetchDNS preinit preinitModule preload preloadModule Client APIs createRoot hydrateRoot Server APIs renderToPipeableStream renderToReadableStream renderToStaticMarkup renderToString resume resumeToPipeableStream Static APIs prerender prerenderToNodeStream resumeAndPrerender resumeAndPrerenderToNodeStream React Compiler Configuration compilationMode gating logger panicThreshold target Directives &quot;use memo&quot; &quot;use no memo&quot; Compiling Libraries React DevTools React Performance tracks React DevTools for agents - This feature is available in the latest Experimental version of React eslint-plugin-react-hooks Lints exhaustive-deps rules-of-hooks component-hook-factories config error-boundaries gating globals immutability incompatible-library preserve-manual-memoization purity refs set-state-in-effect set-state-in-render static-components unsupported-syntax use-memo Rules of React Overview Components and Hooks must be pure React calls Components and Hooks Rules of Hooks React Server Components Server Components Server Functions Directives &#x27;use client&#x27; &#x27;use server&#x27; Legacy APIs Legacy React APIs Children cloneElement Component createElement createRef forwardRef isValidElement PureComponent API Reference APIs Copy page Copy experimental_taintObjectReference - This feature is available in the latest Experimental version of React Experimental Feature This API is experimental and is not available in a stable version of React yet. You can try it by upgrading React packages to the most recent experimental version: 
+ react@experimental 
+ react-dom@experimental 
+ eslint-plugin-react-hooks@experimental 
+ Experimental versions of React may contain bugs. Don’t use them in production. This API is only available inside React Server Components. 
+ taintObjectReference lets you prevent a specific object instance from being passed to a Client Component like a user object. experimental_taintObjectReference ( message , object ) ; To prevent passing a key, hash or token, see taintUniqueValue . 
+ Reference taintObjectReference(message, object) Usage Prevent user data from unintentionally reaching the client 
+ 
+ Reference 
+ taintObjectReference(message, object) 
+ Call taintObjectReference with an object to register it with React as something that should not be allowed to be passed to the Client as is: 
+ import { experimental_taintObjectReference } from &#x27;react&#x27; ; experimental_taintObjectReference ( &#x27;Do not pass ALL environment variables to the client.&#x27; , process . env ) ; 
+ See more examples below. 
+ Parameters 
+ 
+ 
+ message : The message you want to display if the object gets passed to a Client Component. This message will be displayed as a part of the Error that will be thrown if the object gets passed to a Client Component. 
+ 
+ 
+ object : The object to be tainted. Functions and class instances can be passed to taintObjectReference as object . Functions and classes are already blocked from being passed to Client Components but the React’s default error message will be replaced by what you defined in message . When a specific instance of a Typed Array is passed to taintObjectReference as object , any other copies of the Typed Array will not be tainted. 
+ 
+ 
+ Returns 
+ experimental_taintObjectReference returns undefined . 
+ Caveats 
+ 
+ Recreating or cloning a tainted object creates a new untainted object which may contain sensitive data. For example, if you have a tainted user object, const userInfo = {name: user.name, ssn: user.ssn} or {...user} will create new objects which are not tainted. taintObjectReference only protects against simple mistakes when the object is passed through to a Client Component unchanged. 
+ 
+ Pitfall Do not rely on just tainting for security. Tainting an object doesn’t prevent leaking of every possible derived value. For example, the clone of a tainted object will create a new untainted object. Using data from a tainted object (e.g. {secret: taintedObj.secret} ) will create a new value or object that is not tainted. Tainting is a layer of protection; a secure app will have multiple layers of protection, well designed APIs, and isolation patterns. 
+ 
+ Usage 
+ Prevent user data from unintentionally reaching the client 
+ A Client Component should never accept objects that carry sensitive data. Ideally, the data fetching functions should not expose data that the current user should not have access to. Sometimes mistakes happen during refactoring. To protect against these mistakes happening down the line we can “taint” the user object in our data API. 
+ import { experimental_taintObjectReference } from &#x27;react&#x27; ; export async function getUser ( id ) { const user = await db `SELECT * FROM users WHERE id = ${ id } ` ; experimental_taintObjectReference ( &#x27;Do not pass the entire user object to the client. &#x27; + &#x27;Instead, pick off the specific properties you need for this use case.&#x27; , user , ) ; return user ; } 
+ Now whenever anyone tries to pass this object to a Client Component, an error will be thrown with the passed in error message instead. 
+ Deep Dive Protecting against leaks in data fetching Show Details If you’re running a Server Components environment that has access to sensitive data, you have to be careful not to pass objects straight through: // api.js export async function getUser ( id ) { const user = await db `SELECT * FROM users WHERE id = ${ id } ` ; return user ; } import { getUser } from &#x27;api.js&#x27; ; import { InfoCard } from &#x27;components.js&#x27; ; export async function Profile ( props ) { const user = await getUser ( props . userId ) ; // DO NOT DO THIS return &lt; InfoCard user = { user } /&gt; ; } // components.js &quot;use client&quot; ; export async function InfoCard ( { user } ) { return &lt; div &gt; { user . name } &lt;/ div &gt; ; } Ideally, the getUser should not expose data that the current user should not have access to. To prevent passing the user object to a Client Component down the line we can “taint” the user object: // api.js import { experimental_taintObjectReference } from &#x27;react&#x27; ; export async function getUser ( id ) { const user = await db `SELECT * FROM users WHERE id = ${ id } ` ; experimental_taintObjectReference ( &#x27;Do not pass the entire user object to the client. &#x27; + &#x27;Instead, pick off the specific properties you need for this use case.&#x27; , user , ) ; return user ; } Now if anyone tries to pass the user object to a Client Component, an error will be thrown with the passed in error message. Previous use Next experimental_taintUniqueValue Copyright © Meta Platforms, Inc no uwu plz uwu? Logo by @sawaratsuki1004 Learn React Quick Start Installation Describing the UI Adding Interactivity Managing State Escape Hatches API Reference React APIs React DOM APIs Community Code of Conduct Meet the Team Docs Contributors Acknowledgements More Blog React Native Privacy Terms On this page Overview Reference taintObjectReference(message, object) Usage Prevent user data from unintentionally reaching the client 

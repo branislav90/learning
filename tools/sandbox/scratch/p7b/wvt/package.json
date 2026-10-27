@@ -1,0 +1,21 @@
+{
+  "name": "wvt",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "dependencies": {
+    "@tanstack/react-virtual": "^3.14.21",
+    "@types/react": "^19.3.0",
+    "@types/react-dom": "^19.3.0",
+    "react": "^19.3.1",
+    "react-window": "^2.5.0",
+    "web-vitals": "^6.2.3"
+  }
+}

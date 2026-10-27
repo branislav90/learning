@@ -1,0 +1,20 @@
+# Review p9-b: lessons 09/03 and 09/04 (2026-10-22)
+
+Method: react.dev reference pages (use-client, use-server, server-functions, server-components, cache, experimental_taintObjectReference, directives), nextjs.org docs (revalidateTag, use-cache, page, Server Actions guide; docs show Next.js 16.4.2), and execution with react-server-dom-webpack@19.2.7 in /Users/todorbra/Projects/ReactLearning/tools/sandbox/scratch/p9-b/ (srv.js, srv2.js, cli.js; run with `node --conditions react-server`; renderToPipeableStream, createFromNodeStream, encodeReply/decodeReply). Note: 19.3 packages were not installed; 19.2.7 is the latest 19.2 patch.
+
+## Lesson 04 (serialization)
+Executed (server to client): CONFIRMED Date (arrives as Date; invalid Date becomes null), Map, Set, bigint, NaN/Infinity/-Infinity/-0, undefined (also sparse array holes), Symbol.for, typed arrays, ArrayBuffer, promises, circular refs (identity kept), shared refs (sent once), iterables.
+CORRECTED: null-prototype objects are REJECTED ("Classes or null prototypes are not supported"); lesson's table listed them as plain/possibly OK. Also rejected: RegExp, URL, WeakMap, Symbol.iterator, class with toJSON (explicit error, toJSON not called).
+HEDGED/added (undocumented, observed in 19.2.7): FormData, Blob, URLSearchParams (lossy array), Error objects are accepted by the serializer; not on react.dev's list, so marked implementation behaviour.
+ADDED: client-to-server (reply) direction is narrower: Date/Map/Set/bigint/NaN/undefined/FormData/Blob(File) ok; class, null-proto, Error, client functions throw; Symbol.for throws without a temporary reference set.
+Confirmed vs react.dev 'use client' serializable list (matches the lesson's table). toJSON claim confirmed (error text). Taint APIs: still experimental per react.dev (confirmed). Bound args/closure encryption: Next.js docs confirm encryption (framework-specific, hedged). B1 answer key confirmed.
+Changed: volatility notice, misconceptions rows, 3.1 tables and trailing paragraph, 3.3 (cycles/shared refs confirmed), removed ⚠ markers (only the "Labels" legend one remains).
+Unresolved: whether every framework compiler accepts a wrapper-returned function from a 'use server' module (kept as a labelled caveat; the Next.js "async function exports only" remark is from memory); skew behaviour per framework.
+
+## Lesson 03 (RSC in depth)
+CONFIRMED: async Server Components not supported on client (react.dev server-components); `react-server` condition (executed); `cache` keyed by argument identity, memoizes errors, separate cache per cache() call (react.dev cache page); taint APIs experimental only; use server args fully client-controlled; Next.js: params is a Promise (page docs), closure encryption, dead-code elimination of unused actions, Origin vs Host check + serverActions.allowedOrigins, sequential client dispatch (Next Server Actions guide).
+CORRECTED/hedged: "React documents Server Functions run sequentially" is NOT on react.dev; reworded as Next.js behaviour. cacheSignal confirmed (19.2, RSC only) and described.
+ADDED: currency/security note (19.3 Context from 'use client' modules, Flight <Activity>, Error.cause transport; CVE-2025-55182 and follow-ups with fixed versions, from the context supplied by the orchestrator, not independently re-fetched).
+Remaining ⚠ (about 20) are intentionally hedged framework/wire-format specifics (payload row format, manifests, forms of skew, etc.); the notice now says so.
+Not checked: Next.js 16 `use cache` / revalidateTag details beyond docs skim: revalidateTag(tag) single-argument is deprecated in favour of revalidateTag(tag, profile) / updateTag (confirmed on docs); `use cache` needs `cacheComponents` (confirmed). Lessons do not appear to depend on these.
+Unresolved: wire-format description (3.4) not re-verified beyond observed `$D`/`$Q`/`$W`/`$n`/`$@` tags, which are consistent with the lesson's general description; server-only package behaviour taken from known package design (npm latest 0.0.1) not executed.

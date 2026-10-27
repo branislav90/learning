@@ -1,0 +1,4030 @@
+{
+ "https://a.com": {
+  "status": 0,
+  "err": "ENOTFOUND"
+ },
+ "https://b.com": {
+  "status": 0,
+  "err": "ENOTFOUND"
+ },
+ "https://developer.mozilla.org/en-US/docs/Web/API/Document_Object_Model": {
+  "status": 200,
+  "final": "https://developer.mozilla.org/en-US/docs/Web/API/Document_Object_Model"
+ },
+ "https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/script": {
+  "status": 200,
+  "final": "https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/script"
+ },
+ "https://developer.mozilla.org/en-US/docs/Web/Performance/Guides/How_browsers_work": {
+  "status": 200,
+  "final": "https://developer.mozilla.org/en-US/docs/Web/Performance/Guides/How_browsers_work"
+ },
+ "https://developer.mozilla.org/en-US/docs/Learn_web_development/Core/Styling_basics": {
+  "status": 200,
+  "final": "https://developer.mozilla.org/en-US/docs/Learn_web_development/Core/Styling_basics"
+ },
+ "https://developer.mozilla.org/en-US/docs/Web/Performance/How_browsers_work": {
+  "status": 200,
+  "final": "https://developer.mozilla.org/en-US/docs/Web/Performance/Guides/How_browsers_work"
+ },
+ "https://react.dev/reference/react-dom/components": {
+  "status": 200,
+  "final": "https://react.dev/reference/react-dom/components"
+ },
+ "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Event_loop": {
+  "status": 200,
+  "final": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Execution_model"
+ },
+ "https://developer.mozilla.org/en-US/docs/Web/API/Window/requestAnimationFrame": {
+  "status": 200,
+  "final": "https://developer.mozilla.org/en-US/docs/Web/API/Window/requestAnimationFrame"
+ },
+ "https://react.dev/": {
+  "status": 200,
+  "final": "https://react.dev/"
+ },
+ "https://react.dev/reference/react-dom/client/hydrateRoot": {
+  "status": 200,
+  "final": "https://react.dev/reference/react-dom/client/hydrateRoot"
+ },
+ "https://react.dev/reference/react-dom/client/createRoot": {
+  "status": 200,
+  "final": "https://react.dev/reference/react-dom/client/createRoot"
+ },
+ "https://developer.mozilla.org/en-US/docs/Web/API/Node": {
+  "status": 200,
+  "final": "https://developer.mozilla.org/en-US/docs/Web/API/Node"
+ },
+ "https://react.dev/reference/react/useLayoutEffect": {
+  "status": 200,
+  "final": "https://react.dev/reference/react/useLayoutEffect"
+ },
+ "https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_containment": {
+  "status": 200,
+  "final": "https://developer.mozilla.org/en-US/docs/Web/CSS/Guides/Containment"
+ },
+ "https://developer.mozilla.org/en-US/docs/Web/CSS/will-change": {
+  "status": 200,
+  "final": "https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Properties/will-change"
+ },
+ "https://react.dev/reference/react/useEffect": {
+  "status": 200,
+  "final": "https://react.dev/reference/react/useEffect"
+ },
+ "https://developer.mozilla.org/en-US/docs/Web/API/MutationObserver": {
+  "status": 200,
+  "final": "https://developer.mozilla.org/en-US/docs/Web/API/MutationObserver"
+ },
+ "https://react.dev/reference/react-dom/createPortal": {
+  "status": 200,
+  "final": "https://react.dev/reference/react-dom/createPortal"
+ },
+ "https://react.dev/learn/preserving-and-resetting-state": {
+  "status": 200,
+  "final": "https://react.dev/learn/preserving-and-resetting-state"
+ },
+ "https://react.dev/learn/rendering-lists": {
+  "status": 200,
+  "final": "https://react.dev/learn/rendering-lists"
+ },
+ "https://react.dev/learn/manipulating-the-dom-with-refs": {
+  "status": 200,
+  "final": "https://react.dev/learn/manipulating-the-dom-with-refs"
+ },
+ "https://tc39.es/ecma262/#sec-functiondeclarationinstantiation": {
+  "status": 200,
+  "final": "https://tc39.es/ecma262/"
+ },
+ "https://developer.mozilla.org/en-US/docs/Web/API/Element/replaceChildren": {
+  "status": 200,
+  "final": "https://developer.mozilla.org/en-US/docs/Web/API/Element/replaceChildren"
+ },
+ "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/let": {
+  "status": 200,
+  "final": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/let"
+ },
+ "https://web.dev/learn/performance": {
+  "status": 200,
+  "final": "https://web.dev/learn/performance"
+ },
+ "https://developer.mozilla.org/en-US/docs/Web/API/HTMLTemplateElement": {
+  "status": 200,
+  "final": "https://developer.mozilla.org/en-US/docs/Web/API/HTMLTemplateElement"
+ },
+ "https://tc39.es/ecma262/#sec-executable-code-and-execution-contexts": {
+  "status": 200,
+  "final": "https://tc39.es/ecma262/"
+ },
+ "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Errors/Too_much_recursion": {
+  "status": 200,
+  "final": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Errors/Too_much_recursion"
+ },
+ "https://react.dev/reference/rules/rules-of-hooks": {
+  "status": 200,
+  "final": "https://react.dev/reference/rules/rules-of-hooks"
+ },
+ "https://developer.mozilla.org/en-US/docs/Glossary/Hoisting": {
+  "status": 200,
+  "final": "https://developer.mozilla.org/en-US/docs/Glossary/Hoisting"
+ },
+ "https://react.dev/learn/state-as-a-snapshot": {
+  "status": 200,
+  "final": "https://react.dev/learn/state-as-a-snapshot"
+ },
+ "https://html.spec.whatwg.org/multipage/parsing.html": {
+  "status": 200,
+  "final": "https://html.spec.whatwg.org/multipage/parsing.html"
+ },
+ "https://dom.spec.whatwg.org/": {
+  "status": 200,
+  "final": "https://dom.spec.whatwg.org/"
+ },
+ "https://html.spec.whatwg.org/multipage/scripting.html": {
+  "status": 200,
+  "final": "https://html.spec.whatwg.org/multipage/scripting.html"
+ },
+ "https://html.spec.whatwg.org/multipage/webappapis.html#event-loops": {
+  "status": 200,
+  "final": "https://html.spec.whatwg.org/multipage/webappapis.html"
+ },
+ "https://html.spec.whatwg.org/multipage/webappapis.html#update-the-rendering": {
+  "status": 200,
+  "final": "https://html.spec.whatwg.org/multipage/webappapis.html"
+ },
+ "https://developer.mozilla.org/en-US/docs/Glossary/Scope": {
+  "status": 200,
+  "final": "https://developer.mozilla.org/en-US/docs/Glossary/Scope"
+ },
+ "https://developer.mozilla.org/en-US/docs/Glossary/Call_stack": {
+  "status": 200,
+  "final": "https://developer.mozilla.org/en-US/docs/Glossary/Call_stack"
+ },
+ "https://tc39.es/ecma262/#sec-environment-records": {
+  "status": 200,
+  "final": "https://tc39.es/ecma262/"
+ },
+ "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Closures": {
+  "status": 200,
+  "final": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Closures"
+ },
+ "https://react.dev/learn/separating-events-from-effects": {
+  "status": 200,
+  "final": "https://react.dev/learn/separating-events-from-effects"
+ },
+ "https://react.dev/learn/lifecycle-of-reactive-effects": {
+  "status": 200,
+  "final": "https://react.dev/learn/lifecycle-of-reactive-effects"
+ },
+ "https://react.dev/learn/synchronizing-with-effects": {
+  "status": 200,
+  "final": "https://react.dev/learn/synchronizing-with-effects"
+ },
+ "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/is": {
+  "status": 200,
+  "final": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/is"
+ },
+ "https://tc39.es/ecma262/#sec-samevalue": {
+  "status": 200,
+  "final": "https://tc39.es/ecma262/"
+ },
+ "https://react.dev/reference/react/useMemo": {
+  "status": 200,
+  "final": "https://react.dev/reference/react/useMemo"
+ },
+ "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Functions": {
+  "status": 200,
+  "final": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Functions"
+ },
+ "https://react.dev/reference/react/memo": {
+  "status": 200,
+  "final": "https://react.dev/reference/react/memo"
+ },
+ "https://react.dev/learn/removing-effect-dependencies": {
+  "status": 200,
+  "final": "https://react.dev/learn/removing-effect-dependencies"
+ },
+ "https://react.dev/reference/react/useCallback": {
+  "status": 200,
+  "final": "https://react.dev/reference/react/useCallback"
+ },
+ "https://react.dev/learn/react-compiler": {
+  "status": 200,
+  "final": "https://react.dev/learn/react-compiler"
+ },
+ "https://react.dev/learn/updating-objects-in-state": {
+  "status": 200,
+  "final": "https://react.dev/learn/updating-objects-in-state"
+ },
+ "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Equality_comparisons_and_sameness": {
+  "status": 200,
+  "final": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Equality_comparisons_and_sameness"
+ },
+ "https://developer.mozilla.org/en-US/docs/Web/API/Window/structuredClone": {
+  "status": 200,
+  "final": "https://developer.mozilla.org/en-US/docs/Web/API/Window/structuredClone"
+ },
+ "https://react.dev/learn/updating-arrays-in-state": {
+  "status": 200,
+  "final": "https://react.dev/learn/updating-arrays-in-state"
+ },
+ "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/freeze": {
+  "status": 200,
+  "final": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/freeze"
+ },
+ "https://react.dev/learn/keeping-components-pure": {
+  "status": 200,
+  "final": "https://react.dev/learn/keeping-components-pure"
+ },
+ "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/toSorted": {
+  "status": 200,
+  "final": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/toSorted"
+ },
+ "https://react.dev/learn/choosing-the-state-structure": {
+  "status": 200,
+  "final": "https://react.dev/learn/choosing-the-state-structure"
+ },
+ "https://react.dev/reference/rules": {
+  "status": 200,
+  "final": "https://react.dev/reference/rules"
+ },
+ "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/Arrow_functions": {
+  "status": 200,
+  "final": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/Arrow_functions"
+ },
+ "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Classes": {
+  "status": 200,
+  "final": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Classes"
+ },
+ "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/this": {
+  "status": 200,
+  "final": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/this"
+ },
+ "https://web.dev/articles/optimize-inp": {
+  "status": 200,
+  "final": "https://web.dev/articles/optimize-inp?hl=pt-br"
+ },
+ "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/hasOwn": {
+  "status": 200,
+  "final": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/hasOwn"
+ },
+ "https://tc39.es/ecma262/": {
+  "status": 200,
+  "final": "https://tc39.es/ecma262/"
+ },
+ "https://react.dev/reference/react/Component": {
+  "status": 200,
+  "final": "https://react.dev/reference/react/Component"
+ },
+ "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/import": {
+  "status": 200,
+  "final": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/import"
+ },
+ "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Modules": {
+  "status": 200,
+  "final": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Modules"
+ },
+ "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Inheritance_and_the_prototype_chain": {
+  "status": 200,
+  "final": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Inheritance_and_the_prototype_chain"
+ },
+ "https://react.dev/reference/react/legacy": {
+  "status": 200,
+  "final": "https://react.dev/reference/react/legacy"
+ },
+ "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/export": {
+  "status": 200,
+  "final": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/export"
+ },
+ "https://immerjs.github.io/immer/": {
+  "status": 200,
+  "final": "https://immerjs.github.io/immer/"
+ },
+ "https://www.typescriptlang.org/docs/handbook/2/objects.html": {
+  "status": 200,
+  "final": "https://www.typescriptlang.org/docs/handbook/2/objects.html"
+ },
+ "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Spread_syntax": {
+  "status": 200,
+  "final": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Spread_syntax"
+ },
+ "https://developer.chrome.com/blog/inside-browser-part1": {
+  "status": 200,
+  "final": "https://developer.chrome.com/blog/inside-browser-part1?hl=fa"
+ },
+ "https://developer.mozilla.org/en-US/docs/Glossary/Tree_shaking": {
+  "status": 200,
+  "final": "https://developer.mozilla.org/en-US/docs/Glossary/Tree_shaking"
+ },
+ "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/import": {
+  "status": 200,
+  "final": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/import"
+ },
+ "https://tc39.es/ecma262/#sec-modules": {
+  "status": 200,
+  "final": "https://tc39.es/ecma262/"
+ },
+ "https://react.dev/reference/react/Suspense": {
+  "status": 200,
+  "final": "https://react.dev/reference/react/Suspense"
+ },
+ "https://www.typescriptlang.org/docs/handbook/2/classes.html": {
+  "status": 200,
+  "final": "https://www.typescriptlang.org/docs/handbook/2/classes.html"
+ },
+ "https://react.dev/reference/react/lazy": {
+  "status": 200,
+  "final": "https://react.dev/reference/react/lazy"
+ },
+ "https://web.dev/articles/avoid-large-complex-layouts-and-layout-thrashing": {
+  "status": 200,
+  "final": "https://web.dev/articles/avoid-large-complex-layouts-and-layout-thrashing?hl=ko"
+ },
+ "https://web.dev/articles/stick-to-compositor-only-properties-and-manage-layer-count": {
+  "status": 200,
+  "final": "https://web.dev/articles/stick-to-compositor-only-properties-and-manage-layer-count?hl=it"
+ },
+ "https://webpack.js.org/guides/tree-shaking/": {
+  "status": 200,
+  "final": "https://webpack.js.org/guides/tree-shaking/"
+ },
+ "https://developer.mozilla.org/en-US/docs/Web/API/Window/setTimeout": {
+  "status": 200,
+  "final": "https://developer.mozilla.org/en-US/docs/Web/API/Window/setTimeout"
+ },
+ "https://developer.chrome.com/docs/devtools/performance/reference": {
+  "status": 200,
+  "final": "https://developer.chrome.com/docs/devtools/performance/reference?hl=es-419"
+ },
+ "https://cheatsheetseries.owasp.org/cheatsheets/Prototype_Pollution_Prevention_Cheat_Sheet.html": {
+  "status": 200,
+  "final": "https://cheatsheetseries.owasp.org/cheatsheets/Prototype_Pollution_Prevention_Cheat_Sheet.html"
+ },
+ "https://react.dev/reference/react-dom/flushSync": {
+  "status": 200,
+  "final": "https://react.dev/reference/react-dom/flushSync"
+ },
+ "https://react.dev/reference/react/useTransition": {
+  "status": 200,
+  "final": "https://react.dev/reference/react/useTransition"
+ },
+ "https://nodejs.org/api/esm.html": {
+  "status": 200,
+  "final": "https://nodejs.org/api/esm.html"
+ },
+ "https://jakearchibald.com/2015/tasks-microtasks-queues-and-schedules/": {
+  "status": 200,
+  "final": "https://jakearchibald.com/2015/tasks-microtasks-queues-and-schedules/"
+ },
+ "https://github.com/facebook/react": {
+  "status": 200,
+  "final": "https://github.com/react/react"
+ },
+ "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Using_promises": {
+  "status": 200,
+  "final": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Using_promises"
+ },
+ "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise": {
+  "status": 200,
+  "final": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise"
+ },
+ "https://developer.mozilla.org/en-US/docs/Web/API/AbortSignal": {
+  "status": 200,
+  "final": "https://developer.mozilla.org/en-US/docs/Web/API/AbortSignal"
+ },
+ "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/async_function": {
+  "status": 200,
+  "final": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/async_function"
+ },
+ "https://tc39.es/ecma262/#sec-promise-objects": {
+  "status": 200,
+  "final": "https://tc39.es/ecma262/"
+ },
+ "https://react.dev/reference/react/use": {
+  "status": 200,
+  "final": "https://react.dev/reference/react/use"
+ },
+ "https://developer.mozilla.org/en-US/docs/Web/API/EventTarget/addEventListener": {
+  "status": 200,
+  "final": "https://developer.mozilla.org/en-US/docs/Web/API/EventTarget/addEventListener"
+ },
+ "https://developer.mozilla.org/en-US/docs/Learn_web_development/Core/Scripting/Events": {
+  "status": 200,
+  "final": "https://developer.mozilla.org/en-US/docs/Learn_web_development/Core/Scripting/Events"
+ },
+ "https://developer.mozilla.org/en-US/docs/Learn_web_development/Core/Scripting/Event_bubbling": {
+  "status": 200,
+  "final": "https://developer.mozilla.org/en-US/docs/Learn_web_development/Core/Scripting/Event_bubbling"
+ },
+ "https://shop.example:443": {
+  "status": 0,
+  "err": "ENOTFOUND"
+ },
+ "https://app.example": {
+  "status": 0,
+  "err": "ENOTFOUND"
+ },
+ "http://localhost:1/unreachable": {
+  "status": 0,
+  "err": "fetch failed"
+ },
+ "https://api.example": {
+  "status": 0,
+  "err": "ENOTFOUND"
+ },
+ "https://app.example/a": {
+  "status": 0,
+  "err": "ENOTFOUND"
+ },
+ "https://app.example:443/b": {
+  "status": 0,
+  "err": "ENOTFOUND"
+ },
+ "http://app.example/a": {
+  "status": 0,
+  "err": "ENOTFOUND"
+ },
+ "https://api.app.example/a": {
+  "status": 0,
+  "err": "ENOTFOUND"
+ },
+ "https://app.example:8443/a": {
+  "status": 0,
+  "err": "ENOTFOUND"
+ },
+ "https://developer.mozilla.org/en-US/docs/Web/API/Event": {
+  "status": 200,
+  "final": "https://developer.mozilla.org/en-US/docs/Web/API/Event"
+ },
+ "https://github.com/facebook/react/tree/main/packages/eslint-plugin-react-hooks": {
+  "status": 200,
+  "final": "https://github.com/react/react/tree/main/packages/eslint-plugin-react-hooks"
+ },
+ "https://developer.mozilla.org/en-US/docs/Web/API/Pointer_events": {
+  "status": 200,
+  "final": "https://developer.mozilla.org/en-US/docs/Web/API/Pointer_events"
+ },
+ "https://developer.mozilla.org/en-US/docs/Web/API/Prioritized_Task_Scheduling_API": {
+  "status": 200,
+  "final": "https://developer.mozilla.org/en-US/docs/Web/API/Prioritized_Task_Scheduling_API"
+ },
+ "https://react.dev/learn/responding-to-events": {
+  "status": 200,
+  "final": "https://react.dev/learn/responding-to-events"
+ },
+ "https://nodejs.org/en/learn/asynchronous-work/event-loop-timers-and-nexttick": {
+  "status": 200,
+  "final": "https://nodejs.org/learn/asynchronous-work/event-loop-timers-and-nexttick"
+ },
+ "https://developer.mozilla.org/en-US/docs/Web/API/HTML_DOM_API/Microtask_guide": {
+  "status": 200,
+  "final": "https://developer.mozilla.org/en-US/docs/Web/API/HTML_DOM_API/Microtask_guide"
+ },
+ "https://legacy.reactjs.org/blog/2020/08/10/react-v17-rc.html": {
+  "status": 200,
+  "final": "https://legacy.reactjs.org/blog/2020/08/10/react-v17-rc.html"
+ },
+ "https://react.dev/reference/react-dom/components/common": {
+  "status": 200,
+  "final": "https://react.dev/reference/react-dom/components/common"
+ },
+ "https://developer.mozilla.org/en-US/docs/Web/API/AbortController": {
+  "status": 200,
+  "final": "https://developer.mozilla.org/en-US/docs/Web/API/AbortController"
+ },
+ "https://typescript-eslint.io/rules/no-floating-promises/": {
+  "status": 200,
+  "final": "https://typescript-eslint.io/rules/no-floating-promises/"
+ },
+ "https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API": {
+  "status": 200,
+  "final": "https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API"
+ },
+ "https://user@shop.example:8443/orders/42?tab=items&sort=asc#reviews": {
+  "status": 0,
+  "err": "Request cannot be constructed from a URL that includes credentials: https://user@shop.example:8443/orders/42?tab=items&sort=asc"
+ },
+ "https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API/Using_Fetch": {
+  "status": 200,
+  "final": "https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API/Using_Fetch"
+ },
+ "https://developer.mozilla.org/en-US/docs/Web/API/Intersection_Observer_API": {
+  "status": 200,
+  "final": "https://developer.mozilla.org/en-US/docs/Web/API/Intersection_Observer_API"
+ },
+ "https://developer.chrome.com/docs/devtools/performance": {
+  "status": 200,
+  "final": "https://developer.chrome.com/docs/devtools/performance?hl=fa"
+ },
+ "https://developer.mozilla.org/en-US/docs/Web/API/Web_Storage_API": {
+  "status": 200,
+  "final": "https://developer.mozilla.org/en-US/docs/Web/API/Web_Storage_API"
+ },
+ "https://api.other.com/items": {
+  "status": 0,
+  "err": "ENOTFOUND"
+ },
+ "https://api.shop.example": {
+  "status": 0,
+  "err": "ENOTFOUND"
+ },
+ "https://site/": {
+  "status": 0,
+  "err": "ENOTFOUND"
+ },
+ "https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS": {
+  "status": 200,
+  "final": "https://developer.mozilla.org/en-US/docs/Web/HTTP/Guides/CORS"
+ },
+ "https://react.dev/reference/react/useSyncExternalStore": {
+  "status": 200,
+  "final": "https://react.dev/reference/react/useSyncExternalStore"
+ },
+ "https://developer.mozilla.org/en-US/docs/Web/Security/Same-origin_policy": {
+  "status": 200,
+  "final": "https://developer.mozilla.org/en-US/docs/Web/Security/Defenses/Same-origin_policy"
+ },
+ "https://www.w3.org/WAI/WCAG21/Understanding/character-key-shortcuts.html": {
+  "status": 200,
+  "final": "https://www.w3.org/WAI/WCAG21/Understanding/character-key-shortcuts.html"
+ },
+ "https://html.spec.whatwg.org/multipage/webappapis.html#scripting": {
+  "status": 200,
+  "final": "https://html.spec.whatwg.org/multipage/webappapis.html"
+ },
+ "https://redux-toolkit.js.org/usage/immer-reducers": {
+  "status": 200,
+  "final": "https://redux.js.org/toolkit/usage/immer-reducers"
+ },
+ "https://github.com/import-js/eslint-plugin-import": {
+  "status": 200,
+  "final": "https://github.com/import-js/eslint-plugin-import"
+ },
+ "https://promisesaplus.com/": {
+  "status": 200,
+  "final": "https://promisesaplus.com/"
+ },
+ "https://developer.mozilla.org/en-US/docs/Web/API/History_API": {
+  "status": 200,
+  "final": "https://developer.mozilla.org/en-US/docs/Web/API/History_API"
+ },
+ "https://developer.mozilla.org/en-US/docs/Web/API/Navigation_API": {
+  "status": 200,
+  "final": "https://developer.mozilla.org/en-US/docs/Web/API/Navigation_API"
+ },
+ "https://developer.mozilla.org/en-US/docs/Web/API/BroadcastChannel": {
+  "status": 200,
+  "final": "https://developer.mozilla.org/en-US/docs/Web/API/BroadcastChannel"
+ },
+ "https://vite.dev/guide/features.html": {
+  "status": 200,
+  "final": "https://vite.dev/guide/features.html"
+ },
+ "https://tanstack.com/query/latest/docs/framework/react/guides/query-cancellation": {
+  "status": 200,
+  "final": "https://tanstack.com/query/latest/docs/framework/react/guides/query-cancellation"
+ },
+ "https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Cache-Control": {
+  "status": 200,
+  "final": "https://developer.mozilla.org/en-US/docs/Web/HTTP/Reference/Headers/Cache-Control"
+ },
+ "https://developer.mozilla.org/en-US/docs/Web/HTTP/Status": {
+  "status": 200,
+  "final": "https://developer.mozilla.org/en-US/docs/Web/HTTP/Reference/Status"
+ },
+ "https://reactrouter.com/": {
+  "status": 200,
+  "final": "https://reactrouter.com/"
+ },
+ "https://developer.mozilla.org/en-US/docs/Web/HTTP/Overview": {
+  "status": 200,
+  "final": "https://developer.mozilla.org/en-US/docs/Web/HTTP/Guides/Overview"
+ },
+ "https://developer.mozilla.org/en-US/docs/Web/HTTP/Conditional_requests": {
+  "status": 200,
+  "final": "https://developer.mozilla.org/en-US/docs/Web/HTTP/Guides/Conditional_requests"
+ },
+ "https://developer.mozilla.org/en-US/docs/Web/HTTP/Caching": {
+  "status": 200,
+  "final": "https://developer.mozilla.org/en-US/docs/Web/HTTP/Guides/Caching"
+ },
+ "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/WeakRef": {
+  "status": 200,
+  "final": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/WeakRef"
+ },
+ "https://mswjs.io/": {
+  "status": 200,
+  "final": "https://mswjs.io/"
+ },
+ "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/WeakMap": {
+  "status": 200,
+  "final": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/WeakMap"
+ },
+ "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/FinalizationRegistry": {
+  "status": 200,
+  "final": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/FinalizationRegistry"
+ },
+ "https://developer.mozilla.org/en-US/docs/Web/API/Performance_API": {
+  "status": 200,
+  "final": "https://developer.mozilla.org/en-US/docs/Web/API/Performance_API"
+ },
+ "https://v8.dev/blog/trash-talk": {
+  "status": 200,
+  "final": "https://v8.dev/blog/trash-talk"
+ },
+ "https://dom.spec.whatwg.org/#dispatching-events": {
+  "status": 200,
+  "final": "https://dom.spec.whatwg.org/"
+ },
+ "https://github.com/facebook/react/tree/main/packages/scheduler": {
+  "status": 200,
+  "final": "https://github.com/react/react/tree/main/packages/scheduler"
+ },
+ "https://tanstack.com/query/latest": {
+  "status": 200,
+  "final": "https://tanstack.com/query/latest"
+ },
+ "https://v8.dev/blog": {
+  "status": 200,
+  "final": "https://v8.dev/blog"
+ },
+ "https://developer.mozilla.org/en-US/docs/Web/API/Web_Workers_API": {
+  "status": 200,
+  "final": "https://developer.mozilla.org/en-US/docs/Web/API/Web_Workers_API"
+ },
+ "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Memory_management": {
+  "status": 200,
+  "final": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Memory_management"
+ },
+ "https://react.dev/reference/react/Profiler": {
+  "status": 200,
+  "final": "https://react.dev/reference/react/Profiler"
+ },
+ "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/typeof": {
+  "status": 200,
+  "final": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/typeof"
+ },
+ "https://fetch.spec.whatwg.org/": {
+  "status": 200,
+  "final": "https://fetch.spec.whatwg.org/"
+ },
+ "https://web.dev/articles/optimize-long-tasks": {
+  "status": 200,
+  "final": "https://web.dev/articles/optimize-long-tasks?hl=vi"
+ },
+ "https://www.typescriptlang.org/docs/handbook/2/generics.html": {
+  "status": 200,
+  "final": "https://www.typescriptlang.org/docs/handbook/2/generics.html"
+ },
+ "https://react.dev/learn/typescript": {
+  "status": 200,
+  "final": "https://react.dev/learn/typescript"
+ },
+ "https://www.typescriptlang.org/docs/handbook/utility-types.html": {
+  "status": 200,
+  "final": "https://www.typescriptlang.org/docs/handbook/utility-types.html"
+ },
+ "http://localhost:5173": {
+  "status": 0,
+  "err": "ECONNREFUSED"
+ },
+ "https://www.typescriptlang.org/docs/handbook/intro.html": {
+  "status": 200,
+  "final": "https://www.typescriptlang.org/docs/handbook/intro.html"
+ },
+ "http://localhost:8080": {
+  "status": 0,
+  "err": "ECONNREFUSED"
+ },
+ "http://localhost:3000": {
+  "status": 0,
+  "err": "ECONNREFUSED"
+ },
+ "https://www.typescriptlang.org/docs/handbook/2/narrowing.html": {
+  "status": 200,
+  "final": "https://www.typescriptlang.org/docs/handbook/2/narrowing.html"
+ },
+ "https://vite.dev/guide/static-deploy.html": {
+  "status": 200,
+  "final": "https://vite.dev/guide/static-deploy.html"
+ },
+ "https://www.typescriptlang.org/docs/handbook/release-notes/overview.html": {
+  "status": 200,
+  "final": "https://www.typescriptlang.org/docs/handbook/release-notes/overview.html"
+ },
+ "https://react.dev/blog/2024/04/25/react-19-upgrade-guide": {
+  "status": 200,
+  "final": "https://react.dev/blog/2024/04/25/react-19-upgrade-guide"
+ },
+ "https://developer.mozilla.org/en-US/docs/Web/API/PerformanceObserver": {
+  "status": 200,
+  "final": "https://developer.mozilla.org/en-US/docs/Web/API/PerformanceObserver"
+ },
+ "https://www.typescriptlang.org/docs/handbook/2/mapped-types.html": {
+  "status": 200,
+  "final": "https://www.typescriptlang.org/docs/handbook/2/mapped-types.html"
+ },
+ "https://www.typescriptlang.org/docs/handbook/2/keyof-types.html": {
+  "status": 200,
+  "final": "https://www.typescriptlang.org/docs/handbook/2/keyof-types.html"
+ },
+ "https://api.example.com": {
+  "status": 0,
+  "err": "ENOTFOUND"
+ },
+ "https://www.typescriptlang.org/docs/handbook/2/conditional-types.html": {
+  "status": 200,
+  "final": "https://www.typescriptlang.org/docs/handbook/2/conditional-types.html"
+ },
+ "https://react-typescript-cheatsheet.netlify.app/": {
+  "status": 0,
+  "err": "UNABLE_TO_GET_ISSUER_CERT_LOCALLY"
+ },
+ "https://github.com/facebook/react/tree/main/packages/react-dom-bindings/src/events": {
+  "status": 200,
+  "final": "https://github.com/react/react/tree/main/packages/react-dom-bindings/src/events"
+ },
+ "https://web.dev/articles/http-cache": {
+  "status": 200,
+  "final": "https://web.dev/articles/http-cache"
+ },
+ "https://www.typescriptlang.org/tsconfig": {
+  "status": 200,
+  "final": "https://www.typescriptlang.org/tsconfig/"
+ },
+ "https://www.typescriptlang.org/play": {
+  "status": 200,
+  "final": "https://www.typescriptlang.org/play/"
+ },
+ "https://vite.dev/guide/": {
+  "status": 200,
+  "final": "https://vite.dev/guide/"
+ },
+ "https://vite.dev/guide/env-and-mode": {
+  "status": 200,
+  "final": "https://vite.dev/guide/env-and-mode"
+ },
+ "https://legacy.reactjs.org/blog/2020/09/22/introducing-the-new-jsx-transform.html": {
+  "status": 200,
+  "final": "https://legacy.reactjs.org/blog/2020/09/22/introducing-the-new-jsx-transform.html"
+ },
+ "https://react.dev/learn/build-a-react-app-from-scratch": {
+  "status": 200,
+  "final": "https://react.dev/learn/build-a-react-app-from-scratch"
+ },
+ "https://rollupjs.org/": {
+  "status": 200,
+  "final": "https://rollupjs.org/"
+ },
+ "https://developer.chrome.com/docs/devtools/memory-problems": {
+  "status": 200,
+  "final": "https://developer.chrome.com/docs/devtools/memory-problems"
+ },
+ "https://vite.dev/guide/dep-pre-bundling": {
+  "status": 200,
+  "final": "https://vite.dev/guide/dep-pre-bundling"
+ },
+ "https://react.dev/learn/thinking-in-react": {
+  "status": 200,
+  "final": "https://react.dev/learn/thinking-in-react"
+ },
+ "https://react.dev/learn": {
+  "status": 200,
+  "final": "https://react.dev/learn"
+ },
+ "https://react.dev/learn/escape-hatches": {
+  "status": 200,
+  "final": "https://react.dev/learn/escape-hatches"
+ },
+ "https://react.dev/learn/reacting-to-input-with-state": {
+  "status": 200,
+  "final": "https://react.dev/learn/reacting-to-input-with-state"
+ },
+ "https://react.dev/versions": {
+  "status": 200,
+  "final": "https://react.dev/versions"
+ },
+ "https://esbuild.github.io/": {
+  "status": 200,
+  "final": "https://esbuild.github.io/"
+ },
+ "https://react.dev/learn/state-a-components-memory": {
+  "status": 200,
+  "final": "https://react.dev/learn/state-a-components-memory"
+ },
+ "https://tc39.es/ecma426/": {
+  "status": 200,
+  "final": "https://tc39.es/ecma426/"
+ },
+ "https://react.dev/learn/sharing-state-between-components": {
+  "status": 200,
+  "final": "https://react.dev/learn/sharing-state-between-components"
+ },
+ "https://evil/?": {
+  "status": 0,
+  "err": "ENOTFOUND"
+ },
+ "https://github.com/GoogleChrome/web-vitals": {
+  "status": 200,
+  "final": "https://github.com/GoogleChrome/web-vitals"
+ },
+ "https://react.dev/reference/react/useState": {
+  "status": 200,
+  "final": "https://react.dev/reference/react/useState"
+ },
+ "https://react.dev/learn/start-a-new-react-project": {
+  "status": 200,
+  "final": "https://react.dev/learn/creating-a-react-app"
+ },
+ "https://github.com/DefinitelyTyped/DefinitelyTyped/tree/master/types/react": {
+  "status": 200,
+  "final": "https://github.com/DefinitelyTyped/DefinitelyTyped/tree/master/types/react"
+ },
+ "https://vite.dev/blog/announcing-vite8": {
+  "status": 200,
+  "final": "https://vite.dev/blog/announcing-vite8"
+ },
+ "https://developer.mozilla.org/en-US/docs/Web/HTML/Element/details": {
+  "status": 200,
+  "final": "https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/details"
+ },
+ "https://react.dev/learn/you-might-not-need-an-effect": {
+  "status": 200,
+  "final": "https://react.dev/learn/you-might-not-need-an-effect"
+ },
+ "https://www.w3.org/WAI/ARIA/apg/patterns/tabs/": {
+  "status": 200,
+  "final": "https://www.w3.org/WAI/ARIA/apg/patterns/tabs/"
+ },
+ "https://react.dev/reference/react/isValidElement": {
+  "status": 200,
+  "final": "https://react.dev/reference/react/isValidElement"
+ },
+ "https://react.dev/learn/importing-and-exporting-components": {
+  "status": 200,
+  "final": "https://react.dev/learn/importing-and-exporting-components"
+ },
+ "https://legacy.reactjs.org/blog/2015/12/18/react-components-elements-and-instances.html": {
+  "status": 200,
+  "final": "https://legacy.reactjs.org/blog/2015/12/18/react-components-elements-and-instances.html"
+ },
+ "https://react.dev/reference/react/Children": {
+  "status": 200,
+  "final": "https://react.dev/reference/react/Children"
+ },
+ "https://www.typescriptlang.org/tsconfig/#jsx": {
+  "status": 200,
+  "final": "https://www.typescriptlang.org/tsconfig/"
+ },
+ "https://react.dev/reference/react/createElement": {
+  "status": 200,
+  "final": "https://react.dev/reference/react/createElement"
+ },
+ "https://react.dev/learn/writing-markup-with-jsx": {
+  "status": 200,
+  "final": "https://react.dev/learn/writing-markup-with-jsx"
+ },
+ "https://react.dev/reference/react/Fragment": {
+  "status": 200,
+  "final": "https://react.dev/reference/react/Fragment"
+ },
+ "https://react.dev/learn/javascript-in-jsx-with-curly-braces": {
+  "status": 200,
+  "final": "https://react.dev/learn/javascript-in-jsx-with-curly-braces"
+ },
+ "https://react.dev/learn/conditional-rendering": {
+  "status": 200,
+  "final": "https://react.dev/learn/conditional-rendering"
+ },
+ "https://web.dev/articles/inp": {
+  "status": 200,
+  "final": "https://web.dev/articles/inp?hl=ar"
+ },
+ "https://www.typescriptlang.org/docs/handbook/jsx.html": {
+  "status": 200,
+  "final": "https://www.typescriptlang.org/docs/handbook/jsx.html"
+ },
+ "https://react.dev/learn/your-first-component": {
+  "status": 200,
+  "final": "https://react.dev/learn/your-first-component"
+ },
+ "https://react.dev/learn/passing-props-to-a-component": {
+  "status": 200,
+  "final": "https://react.dev/learn/passing-props-to-a-component"
+ },
+ "https://react.dev/learn/passing-data-deeply-with-context": {
+  "status": 200,
+  "final": "https://react.dev/learn/passing-data-deeply-with-context"
+ },
+ "https://react.dev/reference/react/cloneElement": {
+  "status": 200,
+  "final": "https://react.dev/reference/react/cloneElement"
+ },
+ "https://web.dev/articles/bfcache": {
+  "status": 200,
+  "final": "https://web.dev/articles/bfcache?hl=ja"
+ },
+ "https://web.dev/articles/preload-critical-assets": {
+  "status": 200,
+  "final": "https://web.dev/articles/preload-critical-assets?hl=hi"
+ },
+ "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/map": {
+  "status": 200,
+  "final": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/map"
+ },
+ "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Logical_AND": {
+  "status": 200,
+  "final": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Logical_AND"
+ },
+ "https://www.radix-ui.com/primitives/docs/guides/composition": {
+  "status": 200,
+  "final": "https://www.radix-ui.com/primitives/docs/guides/composition"
+ },
+ "https://react.dev/reference/react/Activity": {
+  "status": 200,
+  "final": "https://react.dev/reference/react/Activity"
+ },
+ "https://developer.mozilla.org/en-US/docs/Web/HTML/Element/dialog": {
+  "status": 200,
+  "final": "https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/dialog"
+ },
+ "https://developer.mozilla.org/en-US/docs/Web/API/Event/stopPropagation": {
+  "status": 200,
+  "final": "https://developer.mozilla.org/en-US/docs/Web/API/Event/stopPropagation"
+ },
+ "https://developer.mozilla.org/en-US/docs/Web/API/Crypto/randomUUID": {
+  "status": 200,
+  "final": "https://developer.mozilla.org/en-US/docs/Web/API/Crypto/randomUUID"
+ },
+ "https://react.dev/reference/react-dom/components/common#react-event-object": {
+  "status": 200,
+  "final": "https://react.dev/reference/react-dom/components/common"
+ },
+ "https://babeljs.io/docs/babel-preset-react": {
+  "status": 200,
+  "final": "https://babeljs.io/docs/babel-preset-react"
+ },
+ "https://react.dev/reference/react-dom/components/form": {
+  "status": 200,
+  "final": "https://react.dev/reference/react-dom/components/form"
+ },
+ "https://www.w3.org/WAI/ARIA/apg/": {
+  "status": 200,
+  "final": "https://www.w3.org/WAI/ARIA/apg/"
+ },
+ "https://developer.mozilla.org/en-US/docs/Learn_web_development/Extensions/Forms/Form_validation": {
+  "status": 200,
+  "final": "https://developer.mozilla.org/en-US/docs/Learn_web_development/Extensions/Forms/Form_validation"
+ },
+ "https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/hidden": {
+  "status": 200,
+  "final": "https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Global_attributes/hidden"
+ },
+ "https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/ARIA_Live_Regions": {
+  "status": 200,
+  "final": "https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Guides/Live_regions"
+ },
+ "https://www.w3.org/WAI/tutorials/forms/": {
+  "status": 200,
+  "final": "https://www.w3.org/WAI/tutorials/forms/"
+ },
+ "https://react.dev/reference/react-dom/components/input": {
+  "status": 200,
+  "final": "https://react.dev/reference/react-dom/components/input"
+ },
+ "https://developer.mozilla.org/en-US/docs/Web/API/FormData": {
+  "status": 200,
+  "final": "https://developer.mozilla.org/en-US/docs/Web/API/FormData"
+ },
+ "https://react.dev/reference/react-dom/components/textarea": {
+  "status": 200,
+  "final": "https://react.dev/reference/react-dom/components/textarea"
+ },
+ "https://react.dev/reference/react-dom/components/select": {
+  "status": 200,
+  "final": "https://react.dev/reference/react-dom/components/select"
+ },
+ "https://developer.mozilla.org/en-US/docs/Web/API/Element/compositionstart_event": {
+  "status": 200,
+  "final": "https://developer.mozilla.org/en-US/docs/Web/API/Element/compositionstart_event"
+ },
+ "https://vite.dev/guide/build": {
+  "status": 200,
+  "final": "https://vite.dev/guide/build"
+ },
+ "https://react.dev/reference/react/StrictMode": {
+  "status": 200,
+  "final": "https://react.dev/reference/react/StrictMode"
+ },
+ "https://react.dev/reference/rules/components-and-hooks-must-be-pure": {
+  "status": 200,
+  "final": "https://react.dev/reference/rules/components-and-hooks-must-be-pure"
+ },
+ "https://www.w3.org/WAI/WCAG22/Understanding/character-key-shortcuts.html": {
+  "status": 200,
+  "final": "https://www.w3.org/WAI/WCAG22/Understanding/character-key-shortcuts.html"
+ },
+ "https://react.dev/reference/react/useId": {
+  "status": 200,
+  "final": "https://react.dev/reference/react/useId"
+ },
+ "https://react.dev/learn/render-and-commit": {
+  "status": 200,
+  "final": "https://react.dev/learn/render-and-commit"
+ },
+ "https://react.dev/learn/queueing-a-series-of-state-updates": {
+  "status": 200,
+  "final": "https://react.dev/learn/queueing-a-series-of-state-updates"
+ },
+ "https://react.dev/learn/react-developer-tools": {
+  "status": 200,
+  "final": "https://react.dev/learn/react-developer-tools"
+ },
+ "https://react.dev/learn/referencing-values-with-refs": {
+  "status": 200,
+  "final": "https://react.dev/learn/referencing-values-with-refs"
+ },
+ "https://react.dev/reference/react/useActionState": {
+  "status": 200,
+  "final": "https://react.dev/reference/react/useActionState"
+ },
+ "https://react.dev/reference/react/useEffectEvent": {
+  "status": 200,
+  "final": "https://react.dev/reference/react/useEffectEvent"
+ },
+ "https://legacy.reactjs.org/docs/reconciliation.html": {
+  "status": 200,
+  "final": "https://legacy.reactjs.org/docs/reconciliation.html"
+ },
+ "https://react.dev/blog/2022/03/29/react-v18": {
+  "status": 200,
+  "final": "https://react.dev/blog/2022/03/29/react-v18"
+ },
+ "https://legacy.reactjs.org/blog/2018/03/27/update-on-async-rendering.html": {
+  "status": 200,
+  "final": "https://legacy.reactjs.org/blog/2018/03/27/update-on-async-rendering.html"
+ },
+ "https://react.dev/reference/react/useDebugValue": {
+  "status": 200,
+  "final": "https://react.dev/reference/react/useDebugValue"
+ },
+ "https://react.dev/blog": {
+  "status": 200,
+  "final": "https://react.dev/blog"
+ },
+ "https://firefox-source-docs.mozilla.org/devtools-user/": {
+  "status": 200,
+  "final": "https://firefox-source-docs.mozilla.org/devtools-user/"
+ },
+ "https://vite.dev/guide/env-and-mode.html": {
+  "status": 200,
+  "final": "https://vite.dev/guide/env-and-mode.html"
+ },
+ "https://vite.dev/guide/build.html": {
+  "status": 200,
+  "final": "https://vite.dev/guide/build.html"
+ },
+ "https://typescript-eslint.io/": {
+  "status": 200,
+  "final": "https://typescript-eslint.io/"
+ },
+ "https://github.com/jsx-eslint/eslint-plugin-jsx-a11y": {
+  "status": 200,
+  "final": "https://github.com/jsx-eslint/eslint-plugin-jsx-a11y"
+ },
+ "https://legacy.reactjs.org/docs/faq-internals.html": {
+  "status": 200,
+  "final": "https://legacy.reactjs.org/docs/faq-internals.html"
+ },
+ "https://react.dev/learn/understanding-your-ui-as-a-tree": {
+  "status": 200,
+  "final": "https://react.dev/learn/understanding-your-ui-as-a-tree"
+ },
+ "https://www.rfc-editor.org/rfc/rfc9111": {
+  "status": 200,
+  "final": "https://www.rfc-editor.org/info/rfc9111/"
+ },
+ "https://eslint.org/docs/latest/use/configure/configuration-files": {
+  "status": 200,
+  "final": "https://eslint.org/docs/latest/use/configure/configuration-files"
+ },
+ "https://svelte.dev/blog/virtual-dom-is-pure-overhead": {
+  "status": 200,
+  "final": "https://svelte.dev/blog/virtual-dom-is-pure-overhead"
+ },
+ "https://react.dev/blog/2025/02/14/sunsetting-create-react-app": {
+  "status": 200,
+  "final": "https://react.dev/blog/2025/02/14/sunsetting-create-react-app"
+ },
+ "https://developer.mozilla.org/en-US/docs/Web/API/Element": {
+  "status": 200,
+  "final": "https://developer.mozilla.org/en-US/docs/Web/API/Element"
+ },
+ "https://www.npmjs.com/package/eslint-plugin-react-hooks": {
+  "status": 403,
+  "final": "https://www.npmjs.com/package/eslint-plugin-react-hooks"
+ },
+ "https://developer.mozilla.org/en-US/docs/Web/API/Node/insertBefore": {
+  "status": 200,
+  "final": "https://developer.mozilla.org/en-US/docs/Web/API/Node/insertBefore"
+ },
+ "https://react.dev/reference/react/useOptimistic": {
+  "status": 200,
+  "final": "https://react.dev/reference/react/useOptimistic"
+ },
+ "https://vuejs.org/guide/extras/rendering-mechanism": {
+  "status": 200,
+  "final": "https://vuejs.org/guide/extras/rendering-mechanism"
+ },
+ "https://github.com/jsx-eslint/eslint-plugin-react": {
+  "status": 200,
+  "final": "https://github.com/jsx-eslint/eslint-plugin-react"
+ },
+ "https://react.dev": {
+  "status": 200,
+  "final": "https://react.dev/"
+ },
+ "https://react.dev/reference/react/startTransition": {
+  "status": 200,
+  "final": "https://react.dev/reference/react/startTransition"
+ },
+ "https://www.solidjs.com/docs/latest": {
+  "status": 200,
+  "final": "https://www.solidjs.com/docs/latest"
+ },
+ "https://react.dev/reference/react/useDeferredValue": {
+  "status": 200,
+  "final": "https://react.dev/reference/react/useDeferredValue"
+ },
+ "https://react.dev/reference/react/useRef": {
+  "status": 200,
+  "final": "https://react.dev/reference/react/useRef"
+ },
+ "https://react.dev/reference/react/cache": {
+  "status": 200,
+  "final": "https://react.dev/reference/react/cache"
+ },
+ "https://react.dev/learn/you-might-not-need-an-effect#adjusting-some-state-when-a-prop-changes": {
+  "status": 200,
+  "final": "https://react.dev/learn/you-might-not-need-an-effect"
+ },
+ "https://web.dev/": {
+  "status": 200,
+  "final": "https://web.dev/?hl=zh-cn"
+ },
+ "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Bitwise_AND": {
+  "status": 200,
+  "final": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Bitwise_AND"
+ },
+ "https://overreacted.io/react-as-a-ui-runtime/": {
+  "status": 200,
+  "final": "https://overreacted.io/react-as-a-ui-runtime/"
+ },
+ "https://react.dev/blog/2024/12/05/react-19": {
+  "status": 200,
+  "final": "https://react.dev/blog/2024/12/05/react-19"
+ },
+ "https://react.dev/reference/eslint-plugin-react-hooks": {
+  "status": 200,
+  "final": "https://react.dev/reference/eslint-plugin-react-hooks"
+ },
+ "https://react.dev/reference/react/useState#updating-state-based-on-the-previous-state": {
+  "status": 200,
+  "final": "https://react.dev/reference/react/useState"
+ },
+ "https://developer.chrome.com/docs/devtools": {
+  "status": 200,
+  "final": "https://developer.chrome.com/docs/devtools"
+ },
+ "https://react.dev/reference/react/useContext": {
+  "status": 200,
+  "final": "https://react.dev/reference/react/useContext"
+ },
+ "https://react.dev/reference/react/useReducer": {
+  "status": 200,
+  "final": "https://react.dev/reference/react/useReducer"
+ },
+ "https://developer.mozilla.org/en-US/docs/Web/API/MessageChannel": {
+  "status": 200,
+  "final": "https://developer.mozilla.org/en-US/docs/Web/API/MessageChannel"
+ },
+ "https://developer.mozilla.org/en-US/docs/Web/API/PerformanceEventTiming": {
+  "status": 200,
+  "final": "https://developer.mozilla.org/en-US/docs/Web/API/PerformanceEventTiming"
+ },
+ "https://react.dev/blog/2025/10/01/react-19-2": {
+  "status": 200,
+  "final": "https://react.dev/blog/2025/10/01/react-19-2"
+ },
+ "https://developer.mozilla.org/en-US/docs/Web/API/Element/getBoundingClientRect": {
+  "status": 200,
+  "final": "https://developer.mozilla.org/en-US/docs/Web/API/Element/getBoundingClientRect"
+ },
+ "https://developer.mozilla.org/en-US/docs/Web/API/Element/animate": {
+  "status": 200,
+  "final": "https://developer.mozilla.org/en-US/docs/Web/API/Element/animate"
+ },
+ "https://developer.mozilla.org/en-US/docs/Web/API/ResizeObserver": {
+  "status": 200,
+  "final": "https://developer.mozilla.org/en-US/docs/Web/API/ResizeObserver"
+ },
+ "https://react.dev/blog/2026/09/09/react-19-3": {
+  "status": 200,
+  "final": "https://react.dev/blog/2026/09/09/react-19-3"
+ },
+ "https://react.dev/reference/react/hooks": {
+  "status": 200,
+  "final": "https://react.dev/reference/react/hooks"
+ },
+ "https://legacy.reactjs.org/docs/hooks-faq.html": {
+  "status": 200,
+  "final": "https://legacy.reactjs.org/docs/hooks-faq.html"
+ },
+ "https://github.com/acdlite/react-fiber-architecture": {
+  "status": 200,
+  "final": "https://github.com/acdlite/react-fiber-architecture"
+ },
+ "https://react.dev/reference/react/useInsertionEffect": {
+  "status": 200,
+  "final": "https://react.dev/reference/react/useInsertionEffect"
+ },
+ "https://overreacted.io/why-do-hooks-rely-on-call-order/": {
+  "status": 200,
+  "final": "https://overreacted.io/why-do-hooks-rely-on-call-order/"
+ },
+ "https://react.dev/blog/2022/03/08/react-18-upgrade-guide": {
+  "status": 200,
+  "final": "https://react.dev/blog/2022/03/08/react-18-upgrade-guide"
+ },
+ "https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/translate": {
+  "status": 200,
+  "final": "https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Global_attributes/translate"
+ },
+ "https://react.dev/reference/dev-tools/react-performance-tracks": {
+  "status": 200,
+  "final": "https://react.dev/reference/dev-tools/react-performance-tracks"
+ },
+ "https://github.com/facebook/react/tree/main/packages/react-devtools": {
+  "status": 200,
+  "final": "https://github.com/react/react/tree/main/packages/react-devtools"
+ },
+ "https://github.com/reactwg/react-18": {
+  "status": 200,
+  "final": "https://github.com/reactwg/react-18"
+ },
+ "https://react.dev/reference/react-dom/server/renderToPipeableStream": {
+  "status": 200,
+  "final": "https://react.dev/reference/react-dom/server/renderToPipeableStream"
+ },
+ "https://github.com/reactwg": {
+  "status": 200,
+  "final": "https://github.com/reactwg"
+ },
+ "https://developer.mozilla.org/en-US/docs/Web/API/Web_Animations_API": {
+  "status": 200,
+  "final": "https://developer.mozilla.org/en-US/docs/Web/API/Web_Animations_API"
+ },
+ "https://react.dev/reference/react-dom/server/renderToString": {
+  "status": 200,
+  "final": "https://react.dev/reference/react-dom/server/renderToString"
+ },
+ "https://react.dev/reference/react-dom/static/prerender": {
+  "status": 200,
+  "final": "https://react.dev/reference/react-dom/static/prerender"
+ },
+ "https://github.com/facebook/react/tree/main/packages/react-reconciler": {
+  "status": 200,
+  "final": "https://github.com/react/react/tree/main/packages/react-reconciler"
+ },
+ "https://github.com/reactwg/react-18/discussions/21": {
+  "status": 200,
+  "final": "https://github.com/reactwg/react-18/discussions/21"
+ },
+ "https://github.com/WICG/scheduling-apis": {
+  "status": 200,
+  "final": "https://github.com/WICG/scheduling-apis"
+ },
+ "https://react.dev/reference/rsc/server-components": {
+  "status": 200,
+  "final": "https://react.dev/reference/rsc/server-components"
+ },
+ "https://react.dev/reference/rsc/server-functions": {
+  "status": 200,
+  "final": "https://react.dev/reference/rsc/server-functions"
+ },
+ "https://react.dev/reference/rsc/use-client": {
+  "status": 200,
+  "final": "https://react.dev/reference/rsc/use-client"
+ },
+ "https://developer.mozilla.org/en-US/docs/Web/API/Node/nodeValue": {
+  "status": 200,
+  "final": "https://developer.mozilla.org/en-US/docs/Web/API/Node/nodeValue"
+ },
+ "https://www.npmjs.com/package/react-reconciler": {
+  "status": 403,
+  "final": "https://www.npmjs.com/package/react-reconciler"
+ },
+ "https://developer.mozilla.org/en-US/docs/Web/API/Node/textContent": {
+  "status": 200,
+  "final": "https://developer.mozilla.org/en-US/docs/Web/API/Node/textContent"
+ },
+ "https://html.spec.whatwg.org/multipage/timers-and-user-prompts.html": {
+  "status": 200,
+  "final": "https://html.spec.whatwg.org/multipage/timers-and-user-prompts.html"
+ },
+ "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/DateTimeFormat": {
+  "status": 200,
+  "final": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/DateTimeFormat"
+ },
+ "https://react.dev/community/versioning-policy": {
+  "status": 200,
+  "final": "https://react.dev/community/versioning-policy"
+ },
+ "https://x.test": {
+  "status": 0,
+  "err": "ENOTFOUND"
+ },
+ "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/reduce": {
+  "status": 200,
+  "final": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/reduce"
+ },
+ "https://github.com/facebook/react/blob/main/CHANGELOG.md": {
+  "status": 200,
+  "final": "https://github.com/react/react/blob/main/CHANGELOG.md"
+ },
+ "https://www.rfc-editor.org/rfc/rfc9110": {
+  "status": 200,
+  "final": "https://www.rfc-editor.org/info/rfc9110/"
+ },
+ "https://web.dev/articles/rendering-on-the-web": {
+  "status": 200,
+  "final": "https://web.dev/articles/rendering-on-the-web"
+ },
+ "https://developer.mozilla.org/en-US/docs/Web/API/IntersectionObserver": {
+  "status": 200,
+  "final": "https://developer.mozilla.org/en-US/docs/Web/API/IntersectionObserver"
+ },
+ "https://developer.mozilla.org/en-US/docs/Web/HTML/Element/p": {
+  "status": 200,
+  "final": "https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/p"
+ },
+ "https://react.dev/learn/scaling-up-with-reducer-and-context": {
+  "status": 200,
+  "final": "https://react.dev/learn/scaling-up-with-reducer-and-context"
+ },
+ "https://react.dev/learn/extracting-state-logic-into-a-reducer": {
+  "status": 200,
+  "final": "https://react.dev/learn/extracting-state-logic-into-a-reducer"
+ },
+ "https://overreacted.io/a-complete-guide-to-useeffect/": {
+  "status": 200,
+  "final": "https://overreacted.io/a-complete-guide-to-useeffect/"
+ },
+ "https://developer.mozilla.org/en-US/docs/Web/CSS/overflow-anchor": {
+  "status": 200,
+  "final": "https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Properties/overflow-anchor"
+ },
+ "https://developer.mozilla.org/en-US/docs/Web/API/CSSStyleSheet/insertRule": {
+  "status": 200,
+  "final": "https://developer.mozilla.org/en-US/docs/Web/API/CSSStyleSheet/insertRule"
+ },
+ "https://react.dev/reference/react-dom/components/style": {
+  "status": 200,
+  "final": "https://react.dev/reference/react-dom/components/style"
+ },
+ "https://html.spec.whatwg.org/multipage/webappapis.html#event-loop-processing-model": {
+  "status": 200,
+  "final": "https://html.spec.whatwg.org/multipage/webappapis.html"
+ },
+ "https://react.dev/reference/react-dom/components/link": {
+  "status": 200,
+  "final": "https://react.dev/reference/react-dom/components/link"
+ },
+ "https://web.dev/articles/vitals": {
+  "status": 200,
+  "final": "https://web.dev/articles/vitals"
+ },
+ "https://github.com/reactwg/react-18/discussions": {
+  "status": 200,
+  "final": "https://github.com/reactwg/react-18/discussions"
+ },
+ "https://html.spec.whatwg.org/multipage/parsing.html#tree-construction": {
+  "status": 200,
+  "final": "https://html.spec.whatwg.org/multipage/parsing.html"
+ },
+ "https://github.com/facebook/react/tree/main/packages": {
+  "status": 200,
+  "final": "https://github.com/react/react/tree/main/packages"
+ },
+ "https://tanstack.com/query": {
+  "status": 200,
+  "final": "https://tanstack.com/query/latest"
+ },
+ "https://developer.mozilla.org/en-US/docs/Web/API/Element/scrollIntoView": {
+  "status": 200,
+  "final": "https://developer.mozilla.org/en-US/docs/Web/API/Element/scrollIntoView"
+ },
+ "https://react.dev/reference/react/useImperativeHandle": {
+  "status": 200,
+  "final": "https://react.dev/reference/react/useImperativeHandle"
+ },
+ "https://developer.mozilla.org/en-US/docs/Web/CSS/@layer": {
+  "status": 200,
+  "final": "https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/At-rules/@layer"
+ },
+ "https://react.dev/blog/2025/10/07/react-compiler-1": {
+  "status": 200,
+  "final": "https://react.dev/blog/2025/10/07/react-compiler-1"
+ },
+ "https://github.com/reactwg/react-18/discussions/37": {
+  "status": 200,
+  "final": "https://github.com/reactwg/react-18/discussions/37"
+ },
+ "https://developer.mozilla.org/en-US/docs/Web/CSS/Using_CSS_custom_properties": {
+  "status": 200,
+  "final": "https://developer.mozilla.org/en-US/docs/Web/CSS/Guides/Cascading_variables/Using_custom_properties"
+ },
+ "https://github.com/facebook/react/issues": {
+  "status": 200,
+  "final": "https://github.com/react/react/issues"
+ },
+ "https://react.dev/reference/react/createContext": {
+  "status": 200,
+  "final": "https://react.dev/reference/react/createContext"
+ },
+ "https://guide.elm-lang.org/architecture/": {
+  "status": 200,
+  "final": "https://guide.elm-lang.org/architecture/"
+ },
+ "https://react.dev/learn/react-compiler/introduction": {
+  "status": 200,
+  "final": "https://react.dev/learn/react-compiler/introduction"
+ },
+ "https://github.com/reactwg/server-components": {
+  "status": 200,
+  "final": "https://github.com/reactwg/server-components"
+ },
+ "https://redux-toolkit.js.org/": {
+  "status": 200,
+  "final": "https://redux.js.org/toolkit/"
+ },
+ "https://react.dev/warnings/invalid-hook-call-warning": {
+  "status": 200,
+  "final": "https://react.dev/warnings/invalid-hook-call-warning"
+ },
+ "https://developer.mozilla.org/en-US/docs/Web/API/URLSearchParams": {
+  "status": 200,
+  "final": "https://developer.mozilla.org/en-US/docs/Web/API/URLSearchParams"
+ },
+ "https://overreacted.io/before-you-memo/": {
+  "status": 200,
+  "final": "https://overreacted.io/before-you-memo/"
+ },
+ "https://developer.mozilla.org/en-US/docs/Web/API/Window/storage_event": {
+  "status": 200,
+  "final": "https://developer.mozilla.org/en-US/docs/Web/API/Window/storage_event"
+ },
+ "https://developer.mozilla.org/en-US/docs/Web/API/Window/matchMedia": {
+  "status": 200,
+  "final": "https://developer.mozilla.org/en-US/docs/Web/API/Window/matchMedia"
+ },
+ "https://react.dev/reference/react-dom/hooks/useFormStatus": {
+  "status": 200,
+  "final": "https://react.dev/reference/react-dom/hooks/useFormStatus"
+ },
+ "https://floating-ui.com/": {
+  "status": 200,
+  "final": "https://floating-ui.com/"
+ },
+ "https://eslint.org/docs/latest/rules/no-restricted-imports": {
+  "status": 200,
+  "final": "https://eslint.org/docs/latest/rules/no-restricted-imports"
+ },
+ "https://zustand.docs.pmnd.rs/": {
+  "status": 200,
+  "final": "https://zustand.docs.pmnd.rs/"
+ },
+ "https://react.dev/learn/reusing-logic-with-custom-hooks": {
+  "status": 200,
+  "final": "https://react.dev/learn/reusing-logic-with-custom-hooks"
+ },
+ "https://developer.mozilla.org/en-US/docs/Learn/Forms/Form_validation": {
+  "status": 200,
+  "final": "https://developer.mozilla.org/en-US/docs/Learn_web_development/Extensions/Forms/Form_validation"
+ },
+ "https://kentcdodds.com/blog/state-colocation-will-make-your-react-app-faster": {
+  "status": 200,
+  "final": "https://kentcdodds.com/blog/state-colocation-will-make-your-react-app-faster"
+ },
+ "https://github.com/facebook/react/blob/main/CONTRIBUTING.md": {
+  "status": 200,
+  "final": "https://github.com/react/react/blob/main/CONTRIBUTING.md"
+ },
+ "https://react-hook-form.com/": {
+  "status": 200,
+  "final": "https://react-hook-form.com/"
+ },
+ "https://medium.com/@dan_abramov/smart-and-dumb-components-7ca2f9a7c7d0": {
+  "status": 403,
+  "final": "https://medium.com/@dan_abramov/smart-and-dumb-components-7ca2f9a7c7d0"
+ },
+ "https://testing-library.com/docs/react-testing-library/intro/": {
+  "status": 200,
+  "final": "https://testing-library.com/docs/react-testing-library/intro/"
+ },
+ "https://gist.github.com/paulirish/5d52fb081b3570c81e3a": {
+  "status": 200,
+  "final": "https://gist.github.com/paulirish/5d52fb081b3570c81e3a"
+ },
+ "https://www.typescriptlang.org/docs/handbook/project-references.html": {
+  "status": 200,
+  "final": "https://www.typescriptlang.org/docs/handbook/project-references.html"
+ },
+ "https://storybook.js.org/docs": {
+  "status": 200,
+  "final": "https://storybook.js.org/docs"
+ },
+ "https://mswjs.io/docs/": {
+  "status": 200,
+  "final": "https://mswjs.io/docs/"
+ },
+ "https://nodejs.org/api/packages.html": {
+  "status": 200,
+  "final": "https://nodejs.org/api/packages.html"
+ },
+ "https://github.com/reactwg/react-compiler": {
+  "status": 200,
+  "final": "https://github.com/reactwg/react-compiler"
+ },
+ "https://docs.github.com/en/repositories/managing-your-repositorys-settings-and-features/customizing-your-repository/about-code-owners": {
+  "status": 200,
+  "final": "https://docs.github.com/en/repositories/managing-your-repositorys-settings-and-features/customizing-your-repository/about-code-owners"
+ },
+ "https://testing-library.com/docs/react-testing-library/api/#renderhook": {
+  "status": 200,
+  "final": "https://testing-library.com/docs/react-testing-library/api/"
+ },
+ "https://www.typescriptlang.org/docs/handbook/modules/reference.html": {
+  "status": 200,
+  "final": "https://www.typescriptlang.org/docs/handbook/modules/reference.html"
+ },
+ "https://dl.acm.org/doi/10.1145/361598.361623": {
+  "status": 403,
+  "final": "https://dl.acm.org/doi/10.1145/361598.361623"
+ },
+ "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/NumberFormat": {
+  "status": 200,
+  "final": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/NumberFormat"
+ },
+ "https://module-federation.io/": {
+  "status": 200,
+  "final": "https://module-federation.io/"
+ },
+ "https://github.com/sverweij/dependency-cruiser": {
+  "status": 200,
+  "final": "https://github.com/sverweij/dependency-cruiser"
+ },
+ "https://react-redux.js.org/api/hooks": {
+  "status": 200,
+  "final": "https://redux.js.org/react-redux/api/hooks"
+ },
+ "https://atomicdesign.bradfrost.com/": {
+  "status": 200,
+  "final": "https://atomicdesign.bradfrost.com/"
+ },
+ "https://github.com/pahen/madge": {
+  "status": 200,
+  "final": "https://github.com/pahen/madge"
+ },
+ "https://feature-sliced.design/": {
+  "status": 200,
+  "final": "https://feature-sliced.design/"
+ },
+ "https://www.typescriptlang.org/docs/": {
+  "status": 200,
+  "final": "https://www.typescriptlang.org/docs/"
+ },
+ "https://jeffreypalermo.com/2008/07/the-onion-architecture-part-1/": {
+  "status": 200,
+  "final": "https://jeffreypalermo.com/2008/07/the-onion-architecture-part-1/"
+ },
+ "https://martinfowler.com/bliki/AnemicDomainModel.html": {
+  "status": 200,
+  "final": "https://martinfowler.com/bliki/AnemicDomainModel.html"
+ },
+ "https://martinfowler.com/bliki/BoundedContext.html": {
+  "status": 200,
+  "final": "https://martinfowler.com/bliki/BoundedContext.html"
+ },
+ "https://martinfowler.com/articles/micro-frontends.html": {
+  "status": 200,
+  "final": "https://martinfowler.com/articles/micro-frontends.html"
+ },
+ "https://github.com/javierbrea/eslint-plugin-boundaries": {
+  "status": 200,
+  "final": "https://github.com/javierbrea/eslint-plugin-boundaries"
+ },
+ "https://github.com/facebook/react/tree/main/packages/use-sync-external-store": {
+  "status": 200,
+  "final": "https://github.com/react/react/tree/main/packages/use-sync-external-store"
+ },
+ "https://vite.dev/config/shared-options.html#resolve-alias": {
+  "status": 200,
+  "final": "https://vite.dev/config/shared-options.html"
+ },
+ "https://tanstack.com/form": {
+  "status": 200,
+  "final": "https://tanstack.com/form/latest"
+ },
+ "https://github.com/dsherret/ts-morph": {
+  "status": 200,
+  "final": "https://github.com/dsherret/ts-morph"
+ },
+ "https://blog.cleancoder.com/uncle-bob/2012/08/13/the-clean-architecture.html": {
+  "status": 200,
+  "final": "https://blog.cleancoder.com/uncle-bob/2012/08/13/the-clean-architecture.html"
+ },
+ "https://github.com/changesets/changesets": {
+  "status": 200,
+  "final": "https://github.com/changesets/changesets"
+ },
+ "https://graphql.org/learn/": {
+  "status": 200,
+  "final": "https://graphql.org/learn/"
+ },
+ "https://zod.dev/": {
+  "status": 200,
+  "final": "https://zod.dev/"
+ },
+ "https://feature-sliced.design": {
+  "status": 200,
+  "final": "https://feature-sliced.design/"
+ },
+ "https://vitest.dev/guide/": {
+  "status": 200,
+  "final": "https://vitest.dev/guide/"
+ },
+ "https://tanstack.com/query/latest/docs/framework/react/overview": {
+  "status": 200,
+  "final": "https://tanstack.com/query/latest/docs/framework/react/overview"
+ },
+ "https://feature-sliced.design/docs/reference/layers": {
+  "status": 200,
+  "final": "https://feature-sliced.design/docs/reference/layers"
+ },
+ "https://spec.openapis.org/oas/latest.html": {
+  "status": 200,
+  "final": "https://spec.openapis.org/oas/latest.html"
+ },
+ "https://app.example.com/orders/42/items?status=open&sort=date#notes": {
+  "status": 0,
+  "err": "ENOTFOUND"
+ },
+ "https://lexi-lambda.github.io/blog/2019/11/05/parse-don-t-validate/": {
+  "status": 200,
+  "final": "https://lexi-lambda.github.io/blog/2019/11/05/parse-don-t-validate/"
+ },
+ "https://evil.example": {
+  "status": 0,
+  "err": "ENOTFOUND"
+ },
+ "http://placeholder.invalid": {
+  "status": 0,
+  "err": "ENOTFOUND"
+ },
+ "https://github.com/feature-sliced/steiger": {
+  "status": 200,
+  "final": "https://github.com/feature-sliced/steiger"
+ },
+ "https://reactrouter.com": {
+  "status": 200,
+  "final": "https://reactrouter.com/"
+ },
+ "https://martinfowler.com/eaaCatalog/serviceLayer.html": {
+  "status": 200,
+  "final": "https://martinfowler.com/eaaCatalog/serviceLayer.html"
+ },
+ "https://martinfowler.com/bliki/PresentationDomainDataLayering.html": {
+  "status": 200,
+  "final": "https://martinfowler.com/bliki/PresentationDomainDataLayering.html"
+ },
+ "https://martinfowler.com/bliki/InversionOfControl.html": {
+  "status": 200,
+  "final": "https://martinfowler.com/bliki/InversionOfControl.html"
+ },
+ "https://martinfowler.com/articles/injection.html": {
+  "status": 200,
+  "final": "https://martinfowler.com/articles/injection.html"
+ },
+ "https://github.com/facebook/react/blob/main/packages/react-reconciler/src/ReactFiberHooks.js": {
+  "status": 200,
+  "final": "https://github.com/react/react/blob/main/packages/react-reconciler/src/ReactFiberHooks.js"
+ },
+ "https://developer.mozilla.org/en-US/docs/Web/API/URL": {
+  "status": 200,
+  "final": "https://developer.mozilla.org/en-US/docs/Web/API/URL"
+ },
+ "https://github.com/feature-sliced": {
+  "status": 200,
+  "final": "https://github.com/feature-sliced"
+ },
+ "https://redux.js.org/": {
+  "status": 200,
+  "final": "https://redux.js.org/"
+ },
+ "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Error": {
+  "status": 200,
+  "final": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Error"
+ },
+ "https://developer.mozilla.org/en-US/docs/Web/API/Window/unhandledrejection_event": {
+  "status": 200,
+  "final": "https://developer.mozilla.org/en-US/docs/Web/API/Window/unhandledrejection_event"
+ },
+ "https://alistair.cockburn.us/hexagonal-architecture/": {
+  "status": 200,
+  "final": "https://alistair.cockburn.us/hexagonal-architecture/"
+ },
+ "https://developer.mozilla.org/en-US/docs/Web/API/Window/reportError": {
+  "status": 200,
+  "final": "https://developer.mozilla.org/en-US/docs/Web/API/Window/reportError"
+ },
+ "https://martinfowler.com/bliki/TolerantReader.html": {
+  "status": 200,
+  "final": "https://martinfowler.com/bliki/TolerantReader.html"
+ },
+ "https://www.radix-ui.com/primitives": {
+  "status": 200,
+  "final": "https://www.radix-ui.com/primitives"
+ },
+ "https://docs.pact.io/": {
+  "status": 200,
+  "final": "https://docs.pact.io/"
+ },
+ "https://styledictionary.com/": {
+  "status": 200,
+  "final": "https://styledictionary.com/"
+ },
+ "https://redux-toolkit.js.org/rtk-query/overview": {
+  "status": 200,
+  "final": "https://redux.js.org/toolkit/rtk-query/overview"
+ },
+ "https://redux.js.org/style-guide/": {
+  "status": 200,
+  "final": "https://redux.js.org/style-guide/"
+ },
+ "https://developer.mozilla.org/en-US/docs/Web/CSS/@media/prefers-color-scheme": {
+  "status": 200,
+  "final": "https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/At-rules/@media/prefers-color-scheme"
+ },
+ "https://publint.dev/": {
+  "status": 200,
+  "final": "https://publint.dev/"
+ },
+ "https://www.typescriptlang.org/tsconfig/#moduleResolution": {
+  "status": 200,
+  "final": "https://www.typescriptlang.org/tsconfig/"
+ },
+ "https://swr.vercel.app": {
+  "status": 200,
+  "final": "https://vercel.com/oss/swr"
+ },
+ "https://turborepo.dev/schema.json": {
+  "status": 200,
+  "final": "https://turborepo.dev/schema.json"
+ },
+ "https://dddcommunity.org/": {
+  "status": 200,
+  "final": "https://www.dddcommunity.org/"
+ },
+ "https://redux-toolkit.js.org/api/createListenerMiddleware": {
+  "status": 200,
+  "final": "https://redux.js.org/toolkit/api/createListenerMiddleware"
+ },
+ "https://www.w3.org/community/design-tokens/": {
+  "status": 200,
+  "final": "https://www.w3.org/community/design-tokens/"
+ },
+ "https://react-spectrum.adobe.com/react-aria/": {
+  "status": 200,
+  "final": "https://react-aria.adobe.com/"
+ },
+ "https://pnpm.io/catalogs": {
+  "status": 200,
+  "final": "https://pnpm.io/catalogs"
+ },
+ "https://arethetypeswrong.github.io/": {
+  "status": 200,
+  "final": "https://arethetypeswrong.github.io/"
+ },
+ "https://vite.dev/guide/build.html#library-mode": {
+  "status": 200,
+  "final": "https://vite.dev/guide/build.html"
+ },
+ "https://semver.org/": {
+  "status": 200,
+  "final": "https://semver.org/"
+ },
+ "https://github.com/reactjs/rfcs/pull/188": {
+  "status": 200,
+  "final": "https://github.com/reactjs/rfcs/pull/188"
+ },
+ "https://teamtopologies.com/": {
+  "status": 200,
+  "final": "https://teamtopologies.com/"
+ },
+ "https://github.com/bvaughn/react-error-boundary": {
+  "status": 200,
+  "final": "https://github.com/bvaughn/react-error-boundary"
+ },
+ "https://pnpm.io/workspaces": {
+  "status": 200,
+  "final": "https://pnpm.io/workspaces"
+ },
+ "https://vite.dev/config/shared-options.html": {
+  "status": 200,
+  "final": "https://vite.dev/config/shared-options.html"
+ },
+ "https://eslint.org/docs/latest/integrate/nodejs-api": {
+  "status": 200,
+  "final": "https://eslint.org/docs/latest/integrate/nodejs-api"
+ },
+ "http://www.melconway.com/Home/Committees_Paper.html": {
+  "status": 200,
+  "final": "http://www.melconway.com/Home/Committees_Paper.html"
+ },
+ "https://github.com/pmndrs/zustand": {
+  "status": 200,
+  "final": "https://github.com/pmndrs/zustand"
+ },
+ "https://tanstack.com/router": {
+  "status": 200,
+  "final": "https://tanstack.com/router/latest"
+ },
+ "https://www.typescriptlang.org/docs/handbook/migrating-from-javascript.html": {
+  "status": 200,
+  "final": "https://www.typescriptlang.org/docs/handbook/migrating-from-javascript.html"
+ },
+ "https://knip.dev/": {
+  "status": 200,
+  "final": "https://knip.dev/"
+ },
+ "https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_cascade": {
+  "status": 200,
+  "final": "https://developer.mozilla.org/en-US/docs/Web/CSS/Guides/Cascade"
+ },
+ "https://martinfowler.com/bliki/ParallelChange.html": {
+  "status": 200,
+  "final": "https://martinfowler.com/bliki/ParallelChange.html"
+ },
+ "https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_logical_properties_and_values": {
+  "status": 200,
+  "final": "https://developer.mozilla.org/en-US/docs/Web/CSS/Guides/Logical_properties_and_values"
+ },
+ "https://martinfowler.com/bliki/StranglerFigApplication.html": {
+  "status": 200,
+  "final": "https://martinfowler.com/bliki/StranglerFigApplication.html"
+ },
+ "https://martinfowler.com/articles/feature-toggles.html": {
+  "status": 200,
+  "final": "https://martinfowler.com/articles/feature-toggles.html"
+ },
+ "https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Content-Security-Policy/style-src": {
+  "status": 200,
+  "final": "https://developer.mozilla.org/en-US/docs/Web/HTTP/Reference/Headers/Content-Security-Policy/style-src"
+ },
+ "https://styled-components.com/docs": {
+  "status": 200,
+  "final": "https://styled-components.com/docs"
+ },
+ "https://www.w3.org/WAI/ARIA/apg/practices/read-me-first/": {
+  "status": 200,
+  "final": "https://www.w3.org/WAI/ARIA/apg/practices/read-me-first/"
+ },
+ "https://sandimetz.com/blog/2016/1/20/the-wrong-abstraction": {
+  "status": 200,
+  "final": "https://sandimetz.com/blog/2016/1/20/the-wrong-abstraction"
+ },
+ "https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA": {
+  "status": 200,
+  "final": "https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA"
+ },
+ "https://legacy.reactjs.org/docs/composition-vs-inheritance.html": {
+  "status": 200,
+  "final": "https://legacy.reactjs.org/docs/composition-vs-inheritance.html"
+ },
+ "https://kentcdodds.com/blog/aha-programming": {
+  "status": 200,
+  "final": "https://kentcdodds.com/blog/aha-programming"
+ },
+ "https://legacy.reactjs.org/blog/2016/07/13/mixins-considered-harmful.html": {
+  "status": 200,
+  "final": "https://legacy.reactjs.org/blog/2016/07/13/mixins-considered-harmful.html"
+ },
+ "https://developer.mozilla.org/en-US/docs/Web/CSS/:where": {
+  "status": 200,
+  "final": "https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Selectors/:where"
+ },
+ "https://www.typescriptlang.org/docs/handbook/release-notes/typescript-4-9.html": {
+  "status": 200,
+  "final": "https://www.typescriptlang.org/docs/handbook/release-notes/typescript-4-9.html"
+ },
+ "https://refactoring.com/catalog/": {
+  "status": 200,
+  "final": "https://refactoring.com/catalog/"
+ },
+ "https://tanstack.com/query/latest/docs/framework/react/guides/mutations": {
+  "status": 200,
+  "final": "https://tanstack.com/query/latest/docs/framework/react/guides/mutations"
+ },
+ "https://developer.mozilla.org/en-US/docs/Web/API/Popover_API": {
+  "status": 200,
+  "final": "https://developer.mozilla.org/en-US/docs/Web/API/Popover_API"
+ },
+ "https://tailwindcss.com/docs": {
+  "status": 200,
+  "final": "https://tailwindcss.com/docs/installation/using-vite"
+ },
+ "https://web.dev": {
+  "status": 200,
+  "final": "https://web.dev/?hl=vi"
+ },
+ "https://web.dev/articles/performance-budgets-101": {
+  "status": 200,
+  "final": "https://web.dev/articles/performance-budgets-101"
+ },
+ "https://vanilla-extract.style/": {
+  "status": 200,
+  "final": "https://vanilla-extract.style/"
+ },
+ "https://headlessui.com": {
+  "status": 200,
+  "final": "https://headlessui.com/"
+ },
+ "https://github.com/css-modules/css-modules": {
+  "status": 200,
+  "final": "https://github.com/css-modules/css-modules"
+ },
+ "https://github.com/reactjs/rfcs/pull/68": {
+  "status": 200,
+  "final": "https://github.com/reactjs/rfcs/pull/68"
+ },
+ "https://react.dev/reference/react/forwardRef": {
+  "status": 200,
+  "final": "https://react.dev/reference/react/forwardRef"
+ },
+ "https://legacy.reactjs.org/docs/higher-order-components.html": {
+  "status": 200,
+  "final": "https://legacy.reactjs.org/docs/higher-order-components.html"
+ },
+ "https://developer.mozilla.org/en-US/docs/Web/API/CompositionEvent": {
+  "status": 200,
+  "final": "https://developer.mozilla.org/en-US/docs/Web/API/CompositionEvent"
+ },
+ "https://react.dev/reference/react/Component#catching-rendering-errors-with-an-error-boundary": {
+  "status": 200,
+  "final": "https://react.dev/reference/react/Component"
+ },
+ "https://kentcdodds.com/blog/how-to-use-react-context-effectively": {
+  "status": 200,
+  "final": "https://kentcdodds.com/blog/how-to-use-react-context-effectively"
+ },
+ "https://martinfowler.com/bliki/Yagni.html": {
+  "status": 200,
+  "final": "https://martinfowler.com/bliki/Yagni.html"
+ },
+ "https://github.com/facebook/jscodeshift": {
+  "status": 200,
+  "final": "https://github.com/facebook/jscodeshift"
+ },
+ "https://legacy.reactjs.org/docs/render-props.html": {
+  "status": 200,
+  "final": "https://legacy.reactjs.org/docs/render-props.html"
+ },
+ "https://react-hook-form.com": {
+  "status": 200,
+  "final": "https://react-hook-form.com/"
+ },
+ "https://react-hook-form.com/docs/usecontroller/controller": {
+  "status": 200,
+  "final": "https://react-hook-form.com/docs/usecontroller/controller"
+ },
+ "https://nx.dev/docs": {
+  "status": 200,
+  "final": "https://nx.dev/docs/getting-started/intro"
+ },
+ "https://rxjs.dev/": {
+  "status": 200,
+  "final": "https://rxjs.dev/"
+ },
+ "https://developer.mozilla.org/en-US/docs/Web/API/KeyboardEvent": {
+  "status": 200,
+  "final": "https://developer.mozilla.org/en-US/docs/Web/API/KeyboardEvent"
+ },
+ "https://vitest.dev/guide/mocking": {
+  "status": 200,
+  "final": "https://vitest.dev/guide/mocking"
+ },
+ "https://developer.mozilla.org/en-US/docs/Web/API/Navigator/sendBeacon": {
+  "status": 200,
+  "final": "https://developer.mozilla.org/en-US/docs/Web/API/Navigator/sendBeacon"
+ },
+ "https://redux-toolkit.js.org": {
+  "status": 200,
+  "final": "https://redux.js.org/toolkit/"
+ },
+ "https://www.w3.org/WAI/ARIA/apg/patterns/button/": {
+  "status": 200,
+  "final": "https://www.w3.org/WAI/ARIA/apg/patterns/button/"
+ },
+ "https://stately.ai/docs": {
+  "status": 200,
+  "final": "https://stately.ai/docs"
+ },
+ "https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_scroll-driven_animations": {
+  "status": 200,
+  "final": "https://developer.mozilla.org/en-US/docs/Web/CSS/Guides/Scroll-driven_animations"
+ },
+ "https://storybook.js.org/docs/writing-stories/decorators": {
+  "status": 200,
+  "final": "https://storybook.js.org/docs/writing-stories/decorators"
+ },
+ "https://tanstack.com/query/latest/docs/framework/react/guides/query-functions": {
+  "status": 200,
+  "final": "https://tanstack.com/query/latest/docs/framework/react/guides/query-functions"
+ },
+ "https://nx.dev/features/enforce-module-boundaries": {
+  "status": 200,
+  "final": "https://nx.dev/docs/features/enforce-module-boundaries"
+ },
+ "https://www.typescriptlang.org/tsconfig/#useUnknownInCatchVariables": {
+  "status": 200,
+  "final": "https://www.typescriptlang.org/tsconfig/"
+ },
+ "https://…": {
+  "status": 0,
+  "err": "ERR_INVALID_URL"
+ },
+ "https://developer.mozilla.org/en-US/docs/Web/HTML/Element/a": {
+  "status": 200,
+  "final": "https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/a"
+ },
+ "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Classes/Private_elements": {
+  "status": 200,
+  "final": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Classes/Private_elements"
+ },
+ "https://headlessui.com/": {
+  "status": 200,
+  "final": "https://headlessui.com/"
+ },
+ "https://developer.mozilla.org/en-US/docs/Web/HTML/Element/button": {
+  "status": 200,
+  "final": "https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/button"
+ },
+ "https://www.downshift-js.com/": {
+  "status": 200,
+  "final": "https://www.downshift-js.com/"
+ },
+ "https://api/x?cursor=abc": {
+  "status": 0,
+  "err": "ENOTFOUND"
+ },
+ "https://tanstack.com/query/latest/docs/framework/react/guides/suspense": {
+  "status": 200,
+  "final": "https://tanstack.com/query/latest/docs/framework/react/guides/suspense"
+ },
+ "https://emotion.sh/docs/introduction": {
+  "status": 200,
+  "final": "https://emotion.sh/docs/introduction"
+ },
+ "https://developer.mozilla.org/en-US/docs/Web/HTML/Element/slot": {
+  "status": 200,
+  "final": "https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/slot"
+ },
+ "https://www.radix-ui.com/primitives/docs/overview/introduction": {
+  "status": 200,
+  "final": "https://www.radix-ui.com/primitives/docs/overview/introduction"
+ },
+ "https://vitest.dev/guide/testing-types": {
+  "status": 200,
+  "final": "https://vitest.dev/guide/testing-types"
+ },
+ "https://statecharts.dev/": {
+  "status": 200,
+  "final": "https://statecharts.dev/"
+ },
+ "https://refactoring.guru/design-patterns": {
+  "status": 200,
+  "final": "https://refactoring.guru/design-patterns"
+ },
+ "https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Roles/alert_role": {
+  "status": 200,
+  "final": "https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Reference/Roles/alert_role"
+ },
+ "https://github.com/mridgway/hoist-non-react-statics": {
+  "status": 200,
+  "final": "https://github.com/mridgway/hoist-non-react-statics"
+ },
+ "https://turbo.build/repo/docs": {
+  "status": 200,
+  "final": "https://turborepo.dev/docs"
+ },
+ "https://testing-library.com/docs/guiding-principles/": {
+  "status": 200,
+  "final": "https://testing-library.com/docs/guiding-principles/"
+ },
+ "https://www.typescriptlang.org/docs/handbook/declaration-files/publishing.html": {
+  "status": 200,
+  "final": "https://www.typescriptlang.org/docs/handbook/declaration-files/publishing.html"
+ },
+ "https://github.com/downshift-js/downshift": {
+  "status": 200,
+  "final": "https://github.com/downshift-js/downshift"
+ },
+ "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number/MAX_SAFE_INTEGER": {
+  "status": 200,
+  "final": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number/MAX_SAFE_INTEGER"
+ },
+ "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date": {
+  "status": 200,
+  "final": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date"
+ },
+ "https://developer.mozilla.org/en-US/docs/Glossary/Idempotent": {
+  "status": 200,
+  "final": "https://developer.mozilla.org/en-US/docs/Glossary/Idempotent"
+ },
+ "https://testing-library.com/docs/react-testing-library/setup": {
+  "status": 200,
+  "final": "https://testing-library.com/docs/react-testing-library/setup/"
+ },
+ "https://developer.mozilla.org/en-US/docs/Web/API/Request/cache": {
+  "status": 200,
+  "final": "https://developer.mozilla.org/en-US/docs/Web/API/Request/cache"
+ },
+ "https://tanstack.com/table": {
+  "status": 200,
+  "final": "https://tanstack.com/table/latest"
+ },
+ "https://immerjs.github.io/immer/patches": {
+  "status": 200,
+  "final": "https://immerjs.github.io/immer/patches/"
+ },
+ "https://zod.dev": {
+  "status": 200,
+  "final": "https://zod.dev/"
+ },
+ "https://tanstack.com/query/latest/docs/framework/react/guides/important-defaults": {
+  "status": 200,
+  "final": "https://tanstack.com/query/latest/docs/framework/react/guides/important-defaults"
+ },
+ "https://developer.mozilla.org/en-US/docs/Web/API/Network_Information_API": {
+  "status": 200,
+  "final": "https://developer.mozilla.org/en-US/docs/Web/API/Network_Information_API"
+ },
+ "https://tanstack.com/query/latest/docs/framework/react/guides/query-keys": {
+  "status": 200,
+  "final": "https://tanstack.com/query/latest/docs/framework/react/guides/query-keys"
+ },
+ "https://tc39.es/proposal-temporal/docs/": {
+  "status": 200,
+  "final": "https://tc39.es/proposal-temporal/docs/"
+ },
+ "https://github.com/typescript-cheatsheets/react": {
+  "status": 200,
+  "final": "https://github.com/typescript-cheatsheets/react"
+ },
+ "https://redux.js.org/usage/structuring-reducers/normalizing-state-shape": {
+  "status": 200,
+  "final": "https://redux.js.org/usage/structuring-reducers/normalizing-state-shape"
+ },
+ "https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-busy": {
+  "status": 200,
+  "final": "https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Reference/Attributes/aria-busy"
+ },
+ "https://zustand.docs.pmnd.rs": {
+  "status": 200,
+  "final": "https://zustand.docs.pmnd.rs/"
+ },
+ "https://dom.spec.whatwg.org/#aborting-ongoing-activities": {
+  "status": 200,
+  "final": "https://dom.spec.whatwg.org/"
+ },
+ "https://www.rfc-editor.org/rfc/rfc8259": {
+  "status": 200,
+  "final": "https://www.rfc-editor.org/info/rfc8259/"
+ },
+ "https://redux-toolkit.js.org/api/createEntityAdapter": {
+  "status": 200,
+  "final": "https://redux.js.org/toolkit/api/createEntityAdapter"
+ },
+ "https://redux.js.org": {
+  "status": 200,
+  "final": "https://redux.js.org/"
+ },
+ "https://zustand.docs.pmnd.rs/reference/migrations/migrating-to-v5": {
+  "status": 200,
+  "final": "https://zustand.docs.pmnd.rs/reference/migrations/migrating-to-v5"
+ },
+ "https://redux-toolkit.js.org/rtk-query/usage/automated-refetching": {
+  "status": 200,
+  "final": "https://redux.js.org/toolkit/rtk-query/usage/automated-refetching"
+ },
+ "https://www.apollographql.com/docs/react/caching/overview": {
+  "status": 200,
+  "final": "https://www.apollographql.com/docs/react/caching/overview"
+ },
+ "https://stately.ai/docs/migration": {
+  "status": 200,
+  "final": "https://stately.ai/docs/migration"
+ },
+ "https://nextjs.org/docs": {
+  "status": 200,
+  "final": "https://nextjs.org/docs"
+ },
+ "https://www.rfc-editor.org/rfc/rfc5861": {
+  "status": 200,
+  "final": "https://www.rfc-editor.org/info/rfc5861/"
+ },
+ "https://tanstack.com/query/latest/docs/framework/react/guides/ssr": {
+  "status": 200,
+  "final": "https://tanstack.com/query/latest/docs/framework/react/guides/ssr"
+ },
+ "https://github.com/TanStack/query": {
+  "status": 200,
+  "final": "https://github.com/TanStack/query"
+ },
+ "https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Vary": {
+  "status": 200,
+  "final": "https://developer.mozilla.org/en-US/docs/Web/HTTP/Reference/Headers/Vary"
+ },
+ "https://github.com/reduxjs/redux-toolkit": {
+  "status": 200,
+  "final": "https://github.com/reduxjs/redux-toolkit"
+ },
+ "https://developer.mozilla.org/en-US/docs/Web/API/Service_Worker_API": {
+  "status": 200,
+  "final": "https://developer.mozilla.org/en-US/docs/Web/API/Service_Worker_API"
+ },
+ "https://developer.mozilla.org/en-US/docs/Web/API/Navigator/onLine": {
+  "status": 200,
+  "final": "https://developer.mozilla.org/en-US/docs/Web/API/Navigator/onLine"
+ },
+ "https://developer.mozilla.org/en-US/docs/Web/API/Cache": {
+  "status": 200,
+  "final": "https://developer.mozilla.org/en-US/docs/Web/API/Cache"
+ },
+ "https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Retry-After": {
+  "status": 200,
+  "final": "https://developer.mozilla.org/en-US/docs/Web/HTTP/Reference/Headers/Retry-After"
+ },
+ "https://developer.mozilla.org/en-US/docs/Web/API/IndexedDB_API": {
+  "status": 200,
+  "final": "https://developer.mozilla.org/en-US/docs/Web/API/IndexedDB_API"
+ },
+ "https://react-redux.js.org": {
+  "status": 200,
+  "final": "https://redux.js.org/react-redux/"
+ },
+ "https://github.com/reduxjs/reselect": {
+  "status": 200,
+  "final": "https://github.com/reduxjs/reselect"
+ },
+ "https://developer.mozilla.org/en-US/docs/Web/API/Storage_API/Storage_quotas_and_eviction_criteria": {
+  "status": 200,
+  "final": "https://developer.mozilla.org/en-US/docs/Web/API/Storage_API/Storage_quotas_and_eviction_criteria"
+ },
+ "https://developer.mozilla.org/en-US/docs/Web/API/WebSocket": {
+  "status": 200,
+  "final": "https://developer.mozilla.org/en-US/docs/Web/API/WebSocket"
+ },
+ "https://developer.mozilla.org/en-US/docs/Web/API/CloseEvent": {
+  "status": 200,
+  "final": "https://developer.mozilla.org/en-US/docs/Web/API/CloseEvent"
+ },
+ "https://developer.mozilla.org/en-US/docs/Web/Progressive_web_apps": {
+  "status": 200,
+  "final": "https://developer.mozilla.org/en-US/docs/Web/Progressive_web_apps"
+ },
+ "https://stately.ai/editor": {
+  "status": 200,
+  "final": "https://stately.ai/registry/new"
+ },
+ "https://github.com/dai-shi/use-context-selector": {
+  "status": 200,
+  "final": "https://github.com/dai-shi/use-context-selector"
+ },
+ "https://developer.mozilla.org/en-US/docs/Web/API/WebSockets_API": {
+  "status": 200,
+  "final": "https://developer.mozilla.org/en-US/docs/Web/API/WebSockets_API"
+ },
+ "https://developer.mozilla.org/en-US/docs/Web/API/Server-sent_events": {
+  "status": 200,
+  "final": "https://developer.mozilla.org/en-US/docs/Web/API/Server-sent_events"
+ },
+ "https://www.rfc-editor.org/rfc/rfc9457": {
+  "status": 200,
+  "final": "https://www.rfc-editor.org/info/rfc9457/"
+ },
+ "https://web.dev/articles/cls": {
+  "status": 200,
+  "final": "https://web.dev/articles/cls?hl=he"
+ },
+ "https://github.com/statelyai/xstate": {
+  "status": 200,
+  "final": "https://github.com/statelyai/xstate"
+ },
+ "https://tanstack.com/query/latest/docs/framework/react/guides/dependent-queries": {
+  "status": 200,
+  "final": "https://tanstack.com/query/latest/docs/framework/react/guides/dependent-queries"
+ },
+ "https://tanstack.com/query/latest/docs/framework/react/guides/migrating-to-v5": {
+  "status": 200,
+  "final": "https://tanstack.com/query/latest/docs/framework/react/guides/migrating-to-v5"
+ },
+ "https://aws.amazon.com/blogs/architecture/exponential-backoff-and-jitter/": {
+  "status": 200,
+  "final": "https://aws.amazon.com/blogs/architecture/exponential-backoff-and-jitter/"
+ },
+ "https://developer.mozilla.org/en-US/docs/Web/API/Window/popstate_event": {
+  "status": 200,
+  "final": "https://developer.mozilla.org/en-US/docs/Web/API/Window/popstate_event"
+ },
+ "http://localhost:4173/products?seed=5000": {
+  "status": 0,
+  "err": "ECONNREFUSED"
+ },
+ "https://tanstack.com/query/latest/docs/framework/react/guides/prefetching": {
+  "status": 200,
+  "final": "https://tanstack.com/query/latest/docs/framework/react/guides/prefetching"
+ },
+ "https://react.dev/learn/managing-state": {
+  "status": 200,
+  "final": "https://react.dev/learn/managing-state"
+ },
+ "https://developer.mozilla.org/en-US/docs/Web/API/Performance/measure": {
+  "status": 200,
+  "final": "https://developer.mozilla.org/en-US/docs/Web/API/Performance/measure"
+ },
+ "https://profiler.firefox.com/": {
+  "status": 200,
+  "final": "https://profiler.firefox.com/"
+ },
+ "https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Referrer-Policy": {
+  "status": 200,
+  "final": "https://developer.mozilla.org/en-US/docs/Web/HTTP/Reference/Headers/Referrer-Policy"
+ },
+ "https://tanstack.com/query/latest/docs/framework/react/guides/query-invalidation": {
+  "status": 200,
+  "final": "https://tanstack.com/query/latest/docs/framework/react/guides/query-invalidation"
+ },
+ "https://www.w3.org/WAI/ARIA/apg/patterns/grid/": {
+  "status": 200,
+  "final": "https://www.w3.org/WAI/ARIA/apg/patterns/grid/"
+ },
+ "https://playwright.dev/docs/intro": {
+  "status": 200,
+  "final": "https://playwright.dev/docs/intro"
+ },
+ "https://developer.mozilla.org/en-US/docs/Web/CSS/contain-intrinsic-size": {
+  "status": 200,
+  "final": "https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Properties/contain-intrinsic-size"
+ },
+ "https://developer.chrome.com/docs/workbox": {
+  "status": 200,
+  "final": "https://developer.chrome.com/docs/workbox"
+ },
+ "https://developer.mozilla.org/en-US/docs/Web/CSS/content-visibility": {
+  "status": 200,
+  "final": "https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Properties/content-visibility"
+ },
+ "https://tanstack.com/virtual": {
+  "status": 200,
+  "final": "https://tanstack.com/virtual/latest"
+ },
+ "https://web.dev/learn/pwa": {
+  "status": 200,
+  "final": "https://web.dev/learn/pwa"
+ },
+ "https://developer.mozilla.org/en-US/docs/Web/API/Web_Workers_API/Structured_clone_algorithm": {
+  "status": 200,
+  "final": "https://developer.mozilla.org/en-US/docs/Web/API/Web_Workers_API/Structured_clone_algorithm"
+ },
+ "https://tanstack.com/query/latest/docs/framework/react/guides/query-retries": {
+  "status": 200,
+  "final": "https://tanstack.com/query/latest/docs/framework/react/guides/query-retries"
+ },
+ "https://github.com/yahoo/serialize-javascript": {
+  "status": 200,
+  "final": "https://github.com/yahoo/serialize-javascript"
+ },
+ "https://developer.mozilla.org/en-US/docs/Web/API/Performance_API/User_timing": {
+  "status": 200,
+  "final": "https://developer.mozilla.org/en-US/docs/Web/API/Performance_API/User_timing"
+ },
+ "https://commerce.nearform.com/open-source/urql/docs/": {
+  "status": 200,
+  "final": "https://nearform.com/open-source/urql/docs/"
+ },
+ "https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-rowcount": {
+  "status": 200,
+  "final": "https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Reference/Attributes/aria-rowcount"
+ },
+ "https://developer.mozilla.org/en-US/docs/Web/API/PerformanceLongTaskTiming": {
+  "status": 200,
+  "final": "https://developer.mozilla.org/en-US/docs/Web/API/PerformanceLongTaskTiming"
+ },
+ "https://app/assets/settings-9fa2.js": {
+  "status": 0,
+  "err": "ENOTFOUND"
+ },
+ "https://developer.mozilla.org/en-US/docs/Web/API/Window/requestIdleCallback": {
+  "status": 200,
+  "final": "https://developer.mozilla.org/en-US/docs/Web/API/Window/requestIdleCallback"
+ },
+ "https://developer.mozilla.org/en-US/docs/Web/API/Scheduler": {
+  "status": 200,
+  "final": "https://developer.mozilla.org/en-US/docs/Web/API/Scheduler"
+ },
+ "https://cdn.example/react.production.min.js": {
+  "status": 0,
+  "err": "ENOTFOUND"
+ },
+ "https://www.apollographql.com/docs/react": {
+  "status": 200,
+  "final": "https://www.apollographql.com/docs/react"
+ },
+ "https://lodash.com/docs": {
+  "status": 200,
+  "final": "https://lodash.com/docs"
+ },
+ "https://cognitect.com/blog/2011/11/15/documenting-architecture-decisions": {
+  "status": 200,
+  "final": "https://cognitect.com/blog/2011/11/15/documenting-architecture-decisions"
+ },
+ "https://testing-library.com/docs/dom-testing-library/api-async/": {
+  "status": 200,
+  "final": "https://testing-library.com/docs/dom-testing-library/api-async/"
+ },
+ "https://html.spec.whatwg.org/multipage/server-sent-events.html": {
+  "status": 200,
+  "final": "https://html.spec.whatwg.org/multipage/server-sent-events.html"
+ },
+ "https://html.spec.whatwg.org/multipage/nav-history-apis.html": {
+  "status": 200,
+  "final": "https://html.spec.whatwg.org/multipage/nav-history-apis.html"
+ },
+ "https://vitest.dev/guide/mocking/timers": {
+  "status": 200,
+  "final": "https://vitest.dev/guide/mocking/timers"
+ },
+ "https://webpack.js.org/guides/code-splitting/": {
+  "status": 200,
+  "final": "https://webpack.js.org/guides/code-splitting/"
+ },
+ "https://rollupjs.org/introduction/#tree-shaking": {
+  "status": 200,
+  "final": "https://rollupjs.org/introduction/"
+ },
+ "https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/rel/prefetch": {
+  "status": 200,
+  "final": "https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Attributes/rel/prefetch"
+ },
+ "https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/rel/modulepreload": {
+  "status": 200,
+  "final": "https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Attributes/rel/modulepreload"
+ },
+ "https://esbuild.github.io/analyze/": {
+  "status": 200,
+  "final": "https://esbuild.github.io/analyze/"
+ },
+ "https://tanstack.com/query/latest/docs/framework/react/guides/optimistic-updates": {
+  "status": 200,
+  "final": "https://tanstack.com/query/latest/docs/framework/react/guides/optimistic-updates"
+ },
+ "https://esbuild.github.io/api/#metafile": {
+  "status": 200,
+  "final": "https://esbuild.github.io/api/"
+ },
+ "https://tanstack.com/query/latest/docs/framework/react/guides/testing": {
+  "status": 200,
+  "final": "https://tanstack.com/query/latest/docs/framework/react/guides/testing"
+ },
+ "https://nuqs.dev": {
+  "status": 200,
+  "final": "https://nuqs.dev/"
+ },
+ "https://developer.mozilla.org/en-US/docs/Web/API/Performance_API/Resource_timing": {
+  "status": 200,
+  "final": "https://developer.mozilla.org/en-US/docs/Web/API/Performance_API/Resource_timing"
+ },
+ "https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/rel/preload": {
+  "status": 200,
+  "final": "https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Attributes/rel/preload"
+ },
+ "https://developer.mozilla.org/en-US/docs/Web/API/PerformanceResourceTiming": {
+  "status": 200,
+  "final": "https://developer.mozilla.org/en-US/docs/Web/API/PerformanceResourceTiming"
+ },
+ "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Memory_management": {
+  "status": 200,
+  "final": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Memory_management"
+ },
+ "https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/rel/preconnect": {
+  "status": 200,
+  "final": "https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Attributes/rel/preconnect"
+ },
+ "http://localhost:4173/product/123": {
+  "status": 0,
+  "err": "ECONNREFUSED"
+ },
+ "https://developer.mozilla.org/en-US/docs/Web/API/URL/revokeObjectURL_static": {
+  "status": 200,
+  "final": "https://developer.mozilla.org/en-US/docs/Web/API/URL/revokeObjectURL_static"
+ },
+ "https://www.rfc-editor.org/rfc/rfc6455": {
+  "status": 200,
+  "final": "https://www.rfc-editor.org/info/rfc6455/"
+ },
+ "https://bundlephobia.com/": {
+  "status": 200,
+  "final": "https://bundlephobia.com/"
+ },
+ "https://github.com/enisdenjo/graphql-ws": {
+  "status": 200,
+  "final": "https://github.com/enisdenjo/graphql-ws"
+ },
+ "https://developer.mozilla.org/en-US/docs/Web/API/Performance_API/Long_animation_frame_timing": {
+  "status": 200,
+  "final": "https://developer.mozilla.org/en-US/docs/Web/API/Performance_API/Long_animation_frame_timing"
+ },
+ "https://developer.mozilla.org/en-US/docs/Web/API/Web_Workers_API/Using_web_workers": {
+  "status": 200,
+  "final": "https://developer.mozilla.org/en-US/docs/Web/API/Web_Workers_API/Using_web_workers"
+ },
+ "https://developer.mozilla.org/en-US/docs/Web/API/PerformanceResourceTiming/serverTiming": {
+  "status": 200,
+  "final": "https://developer.mozilla.org/en-US/docs/Web/API/PerformanceResourceTiming/serverTiming"
+ },
+ "https://www.w3.org/TR/trace-context/": {
+  "status": 200,
+  "final": "https://www.w3.org/TR/trace-context/"
+ },
+ "https://web.dev/articles/link-prefetch": {
+  "status": 200,
+  "final": "https://web.dev/articles/link-prefetch"
+ },
+ "https://web.dev/articles/content-visibility": {
+  "status": 200,
+  "final": "https://web.dev/articles/content-visibility?hl=de"
+ },
+ "https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Server-Timing": {
+  "status": 200,
+  "final": "https://developer.mozilla.org/en-US/docs/Web/HTTP/Reference/Headers/Server-Timing"
+ },
+ "http://localhost/": {
+  "status": 0,
+  "err": "ECONNREFUSED"
+ },
+ "https://tanstack.com/query/latest/docs/framework/react/guides/render-optimizations": {
+  "status": 200,
+  "final": "https://tanstack.com/query/latest/docs/framework/react/guides/render-optimizations"
+ },
+ "https://playwright.dev/docs/network": {
+  "status": 200,
+  "final": "https://playwright.dev/docs/network"
+ },
+ "https://github.com/bvaughn/react-window": {
+  "status": 200,
+  "final": "https://github.com/bvaughn/react-window"
+ },
+ "https://git-scm.com/docs/git-bisect": {
+  "status": 200,
+  "final": "https://git-scm.com/docs/git-bisect"
+ },
+ "https://developer.chrome.com/docs/devtools/network/reference": {
+  "status": 200,
+  "final": "https://developer.chrome.com/docs/devtools/network/reference"
+ },
+ "https://web.dev/articles/optimize-cls": {
+  "status": 200,
+  "final": "https://web.dev/articles/optimize-cls"
+ },
+ "https://web.dev/articles/debug-performance-in-the-field": {
+  "status": 200,
+  "final": "https://web.dev/articles/debug-performance-in-the-field"
+ },
+ "https://en.wikipedia.org/wiki/Amdahl%27s_law": {
+  "status": 200,
+  "final": "https://en.wikipedia.org/wiki/Amdahl%27s_law"
+ },
+ "https://en.wikipedia.org/wiki/Goodhart%27s_law": {
+  "status": 200,
+  "final": "https://en.wikipedia.org/wiki/Goodhart%27s_law"
+ },
+ "https://api.test": {
+  "status": 0,
+  "err": "ENOTFOUND"
+ },
+ "https://developer.chrome.com/docs/devtools/memory-problems/heap-snapshots": {
+  "status": 200,
+  "final": "https://developer.chrome.com/docs/devtools/memory-problems/heap-snapshots"
+ },
+ "https://developer.chrome.com/docs/web-platform/long-animation-frames": {
+  "status": 200,
+  "final": "https://developer.chrome.com/docs/web-platform/long-animation-frames?hl=pl"
+ },
+ "https://kentcdodds.com/blog/the-testing-trophy-and-testing-classifications": {
+  "status": 200,
+  "final": "https://kentcdodds.com/blog/the-testing-trophy-and-testing-classifications"
+ },
+ "https://github.com/danvk/source-map-explorer": {
+  "status": 200,
+  "final": "https://github.com/danvk/source-map-explorer"
+ },
+ "https://developer.chrome.com/docs/devtools/coverage": {
+  "status": 200,
+  "final": "https://developer.chrome.com/docs/devtools/coverage?hl=fa"
+ },
+ "https://nodejs.org/api/test.html": {
+  "status": 200,
+  "final": "https://nodejs.org/api/test.html"
+ },
+ "https://playwright.dev/docs/best-practices": {
+  "status": 200,
+  "final": "https://playwright.dev/docs/best-practices"
+ },
+ "https://github.com/btd/rollup-plugin-visualizer": {
+  "status": 200,
+  "final": "https://github.com/btd/rollup-plugin-visualizer"
+ },
+ "https://vitest.dev/config/": {
+  "status": 200,
+  "final": "https://vitest.dev/config/"
+ },
+ "https://martinfowler.com/articles/practical-test-pyramid.html": {
+  "status": 200,
+  "final": "https://martinfowler.com/articles/practical-test-pyramid.html"
+ },
+ "https://martinfowler.com/articles/mocksArentStubs.html": {
+  "status": 200,
+  "final": "https://martinfowler.com/articles/mocksArentStubs.html"
+ },
+ "https://web.dev/articles/optimize-lcp": {
+  "status": 200,
+  "final": "https://web.dev/articles/optimize-lcp?hl=ja"
+ },
+ "https://martinfowler.com/bliki/TestDouble.html": {
+  "status": 200,
+  "final": "https://martinfowler.com/bliki/TestDouble.html"
+ },
+ "https://fast-check.dev/": {
+  "status": 200,
+  "final": "https://fast-check.dev/"
+ },
+ "https://github.com/webpack-contrib/webpack-bundle-analyzer": {
+  "status": 200,
+  "final": "https://github.com/webpack/webpack-bundle-analyzer"
+ },
+ "https://developer.chrome.com/docs/crux": {
+  "status": 200,
+  "final": "https://developer.chrome.com/docs/crux"
+ },
+ "https://api.example.test/users/:id": {
+  "status": 0,
+  "err": "ENOTFOUND"
+ },
+ "https://web.dev/articles/fetch-priority": {
+  "status": 200,
+  "final": "https://web.dev/articles/fetch-priority?hl=ko"
+ },
+ "https://api.example.test/cart/promo": {
+  "status": 0,
+  "err": "ENOTFOUND"
+ },
+ "http://localhost:3000/": {
+  "status": 0,
+  "err": "ECONNREFUSED"
+ },
+ "http://localhost:3000/api/users/42": {
+  "status": 0,
+  "err": "ECONNREFUSED"
+ },
+ "https://api.test/greeting": {
+  "status": 0,
+  "err": "ENOTFOUND"
+ },
+ "https://api.test/other": {
+  "status": 0,
+  "err": "ENOTFOUND"
+ },
+ "https://api.test/a": {
+  "status": 0,
+  "err": "ENOTFOUND"
+ },
+ "https://api.test/ok": {
+  "status": 0,
+  "err": "ENOTFOUND"
+ },
+ "https://testing-library.com/docs/guiding-principles": {
+  "status": 200,
+  "final": "https://testing-library.com/docs/guiding-principles/"
+ },
+ "https://react.dev/reference/react/act": {
+  "status": 200,
+  "final": "https://react.dev/reference/react/act"
+ },
+ "https://vitest.dev/guide/migration": {
+  "status": 200,
+  "final": "https://vitest.dev/guide/migration/"
+ },
+ "https://github.com/GoogleChrome/lighthouse-ci": {
+  "status": 200,
+  "final": "https://github.com/GoogleChrome/lighthouse-ci"
+ },
+ "https://github.com/ai/size-limit": {
+  "status": 200,
+  "final": "https://github.com/ai/size-limit"
+ },
+ "https://stryker-mutator.io/": {
+  "status": 200,
+  "final": "https://stryker-mutator.io/"
+ },
+ "https://testing-playground.com/": {
+  "status": 200,
+  "final": "https://testing-playground.com/"
+ },
+ "https://vitest.dev/api/": {
+  "status": 200,
+  "final": "https://vitest.dev/api/test"
+ },
+ "https://kentcdodds.com/blog/common-mistakes-with-react-testing-library": {
+  "status": 200,
+  "final": "https://kentcdodds.com/blog/common-mistakes-with-react-testing-library"
+ },
+ "https://web.dev/articles/reduce-javascript-payloads-with-code-splitting": {
+  "status": 200,
+  "final": "https://web.dev/articles/reduce-javascript-payloads-with-code-splitting?hl=he"
+ },
+ "https://mswjs.io/docs/migrations/1.x-to-2.x": {
+  "status": 200,
+  "final": "https://mswjs.io/docs/migrations/1.x-to-2.x"
+ },
+ "http://localhost:4173": {
+  "status": 0,
+  "err": "ECONNREFUSED"
+ },
+ "https://web.dev/articles/tbt": {
+  "status": 200,
+  "final": "https://web.dev/articles/tbt?hl=es-419"
+ },
+ "https://redux.js.org/usage/writing-tests": {
+  "status": 200,
+  "final": "https://redux.js.org/usage/writing-tests"
+ },
+ "https://testing-library.com/docs/react-testing-library/setup/": {
+  "status": 200,
+  "final": "https://testing-library.com/docs/react-testing-library/setup/"
+ },
+ "https://mswjs.io/docs/integrations/node": {
+  "status": 200,
+  "final": "https://mswjs.io/guides/integrations/node"
+ },
+ "https://nextjs.org/docs/app/guides/testing": {
+  "status": 200,
+  "final": "https://nextjs.org/docs/app/guides/testing"
+ },
+ "https://playwright.dev/docs/test-components": {
+  "status": 200,
+  "final": "https://playwright.dev/docs/test-components"
+ },
+ "https://datatracker.ietf.org/doc/draft-ietf-httpapi-idempotency-key-header/": {
+  "status": 200,
+  "final": "https://datatracker.ietf.org/doc/draft-ietf-httpapi-idempotency-key-header/"
+ },
+ "https://mswjs.io/docs/integrations/browser": {
+  "status": 200,
+  "final": "https://mswjs.io/guides/integrations/browser"
+ },
+ "https://testing-library.com/docs/user-event/intro": {
+  "status": 200,
+  "final": "https://testing-library.com/docs/user-event/intro/"
+ },
+ "https://kentcdodds.com/blog/write-tests": {
+  "status": 200,
+  "final": "https://kentcdodds.com/blog/write-tests"
+ },
+ "https://testing-library.com/docs/react-testing-library/api": {
+  "status": 200,
+  "final": "https://testing-library.com/docs/react-testing-library/api/"
+ },
+ "https://playwright.dev/docs/locators": {
+  "status": 200,
+  "final": "https://playwright.dev/docs/locators"
+ },
+ "https://playwright.dev/docs/auth": {
+  "status": 200,
+  "final": "https://playwright.dev/docs/auth"
+ },
+ "https://testing-library.com/docs/queries/byrole": {
+  "status": 200,
+  "final": "https://testing-library.com/docs/queries/byrole/"
+ },
+ "https://www.w3.org/TR/WCAG22/": {
+  "status": 200,
+  "final": "https://www.w3.org/TR/WCAG22/"
+ },
+ "https://vitest.dev/api/vi.html": {
+  "status": 200,
+  "final": "https://vitest.dev/api/vi.html"
+ },
+ "https://playwright.dev/docs/trace-viewer": {
+  "status": 200,
+  "final": "https://playwright.dev/docs/trace-viewer"
+ },
+ "https://zustand.docs.pmnd.rs/learn/guides/testing": {
+  "status": 200,
+  "final": "https://zustand.docs.pmnd.rs/learn/guides/testing"
+ },
+ "https://www.w3.org/WAI/WCAG22/Understanding/": {
+  "status": 200,
+  "final": "https://www.w3.org/WAI/WCAG22/Understanding/"
+ },
+ "https://testing-library.com/docs/queries/about": {
+  "status": 200,
+  "final": "https://testing-library.com/docs/queries/about/"
+ },
+ "https://playwright.dev/docs/clock": {
+  "status": 200,
+  "final": "https://playwright.dev/docs/clock"
+ },
+ "https://playwright.dev/docs/actionability": {
+  "status": 200,
+  "final": "https://playwright.dev/docs/actionability"
+ },
+ "https://playwright.dev/docs/release-notes": {
+  "status": 200,
+  "final": "https://playwright.dev/docs/release-notes"
+ },
+ "https://playwright.dev/docs/test-assertions": {
+  "status": 200,
+  "final": "https://playwright.dev/docs/test-assertions"
+ },
+ "https://playwright.dev/docs/test-webserver": {
+  "status": 200,
+  "final": "https://playwright.dev/docs/test-webserver"
+ },
+ "https://playwright.dev/docs/ci": {
+  "status": 200,
+  "final": "https://playwright.dev/docs/ci"
+ },
+ "https://developer.mozilla.org/en-US/docs/Web/Accessibility": {
+  "status": 200,
+  "final": "https://developer.mozilla.org/en-US/docs/Web/Accessibility"
+ },
+ "https://web.dev/vitals/": {
+  "status": 200,
+  "final": "https://web.dev/articles/vitals?hl=he"
+ },
+ "https://testing-library.com/docs/react-testing-library/api#renderhook": {
+  "status": 200,
+  "final": "https://testing-library.com/docs/react-testing-library/api/"
+ },
+ "https://testing.googleblog.com/": {
+  "status": 200,
+  "final": "https://testing.googleblog.com/"
+ },
+ "https://legacy.reactjs.org/docs/accessibility.html": {
+  "status": 200,
+  "final": "https://legacy.reactjs.org/docs/accessibility.html"
+ },
+ "https://playwright.dev/docs/docker": {
+  "status": 200,
+  "final": "https://playwright.dev/docs/docker"
+ },
+ "https://kentcdodds.com/blog/fix-the-not-wrapped-in-act-warning": {
+  "status": 200,
+  "final": "https://kentcdodds.com/blog/fix-the-not-wrapped-in-act-warning"
+ },
+ "https://github.com/testing-library/jest-dom": {
+  "status": 200,
+  "final": "https://github.com/testing-library/jest-dom"
+ },
+ "https://testing-library.com/docs/queries/byrole/": {
+  "status": 200,
+  "final": "https://testing-library.com/docs/queries/byrole/"
+ },
+ "https://www.typescriptlang.org/tsconfig/": {
+  "status": 200,
+  "final": "https://www.typescriptlang.org/tsconfig/"
+ },
+ "https://playwright.dev/docs/accessibility-testing": {
+  "status": 200,
+  "final": "https://playwright.dev/docs/accessibility-testing"
+ },
+ "https://testing-library.com/docs/queries/about/": {
+  "status": 200,
+  "final": "https://testing-library.com/docs/queries/about/"
+ },
+ "https://www.browserstack.com/docs/percy": {
+  "status": 200,
+  "final": "https://www.browserstack.com/docs/percy"
+ },
+ "https://eslint.org/docs/latest/use/configure/migration-guide": {
+  "status": 200,
+  "final": "https://eslint.org/docs/latest/use/configure/migration-guide"
+ },
+ "https://playwright.dev/docs/test-snapshots": {
+  "status": 200,
+  "final": "https://playwright.dev/docs/test-snapshots"
+ },
+ "https://playwright.dev/docs/api/class-pageassertions": {
+  "status": 200,
+  "final": "https://playwright.dev/docs/api/class-pageassertions"
+ },
+ "https://www.typescriptlang.org/docs/handbook/2/everyday-types.html": {
+  "status": 200,
+  "final": "https://www.typescriptlang.org/docs/handbook/2/everyday-types.html"
+ },
+ "https://testing-library.com/docs/user-event/options": {
+  "status": 200,
+  "final": "https://testing-library.com/docs/user-event/options/"
+ },
+ "https://fakerjs.dev/": {
+  "status": 200,
+  "final": "https://fakerjs.dev/"
+ },
+ "https://developer.mozilla.org/en-US/docs/Web/CSS/@media/prefers-reduced-motion": {
+  "status": 200,
+  "final": "https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/At-rules/@media/prefers-reduced-motion"
+ },
+ "https://biomejs.dev/": {
+  "status": 200,
+  "final": "https://biomejs.dev/"
+ },
+ "https://eslint.org/docs/latest/": {
+  "status": 200,
+  "final": "https://eslint.org/docs/latest/"
+ },
+ "https://web.dev/learn/testing/": {
+  "status": 200,
+  "final": "https://web.dev/learn/testing/"
+ },
+ "https://docs.renovatebot.com/": {
+  "status": 200,
+  "final": "https://docs.renovatebot.com/"
+ },
+ "https://docs.github.com/en/actions": {
+  "status": 200,
+  "final": "https://docs.github.com/en/actions"
+ },
+ "https://docs.github.com/en/repositories/configuring-branches-and-merges-in-your-repository/managing-protected-branches/about-protected-branches": {
+  "status": 200,
+  "final": "https://docs.github.com/en/repositories/configuring-branches-and-merges-in-your-repository/managing-protected-branches/about-protected-branches"
+ },
+ "https://docs.github.com/en/repositories/configuring-branches-and-merges-in-your-repository/configuring-pull-request-merges/managing-a-merge-queue": {
+  "status": 200,
+  "final": "https://docs.github.com/en/repositories/configuring-branches-and-merges-in-your-repository/configuring-pull-request-merges/managing-a-merge-queue"
+ },
+ "https://www.w3.org/TR/wai-aria-1.2/#namefromcontent": {
+  "status": 200,
+  "final": "https://www.w3.org/TR/wai-aria-1.2/"
+ },
+ "https://docs.github.com/en/code-security/dependabot": {
+  "status": 200,
+  "final": "https://docs.github.com/en/code-security/how-tos/secure-your-supply-chain"
+ },
+ "https://docs.github.com/en/actions/security-for-github-actions/security-guides/security-hardening-for-github-actions": {
+  "status": 200,
+  "final": "https://docs.github.com/en/actions/reference/security/secure-use"
+ },
+ "https://playwright.dev/docs/test-sharding": {
+  "status": 200,
+  "final": "https://playwright.dev/docs/test-sharding"
+ },
+ "https://www.chromatic.com/docs/": {
+  "status": 200,
+  "final": "https://www.chromatic.com/docs/"
+ },
+ "https://vitest.dev/guide/cli": {
+  "status": 200,
+  "final": "https://vitest.dev/guide/cli"
+ },
+ "https://sre.google/sre-book/release-engineering/": {
+  "status": 200,
+  "final": "https://sre.google/sre-book/release-engineering/"
+ },
+ "https://react.dev/reference/react-dom/server/renderToReadableStream": {
+  "status": 200,
+  "final": "https://react.dev/reference/react-dom/server/renderToReadableStream"
+ },
+ "https://webaim.org/": {
+  "status": 200,
+  "final": "https://webaim.org/"
+ },
+ "https://shop.example/p/${product.slug}": {
+  "status": 0,
+  "err": "ENOTFOUND"
+ },
+ "https://react.dev/reference/react-dom/static/resumeAndPrerender": {
+  "status": 200,
+  "final": "https://react.dev/reference/react-dom/static/resumeAndPrerender"
+ },
+ "https://react.dev/reference/rsc/use-server": {
+  "status": 200,
+  "final": "https://react.dev/reference/rsc/use-server"
+ },
+ "https://react.dev/reference/react-dom/server/resume": {
+  "status": 200,
+  "final": "https://react.dev/reference/react-dom/server/resume"
+ },
+ "https://github.com/dequelabs/axe-core": {
+  "status": 200,
+  "final": "https://github.com/dequelabs/axe-core"
+ },
+ "https://github.com/mapbox/pixelmatch": {
+  "status": 200,
+  "final": "https://github.com/mapbox/pixelmatch"
+ },
+ "https://react.dev/blog/2020/12/21/data-fetching-with-react-server-components": {
+  "status": 200,
+  "final": "https://react.dev/blog/2020/12/21/data-fetching-with-react-server-components"
+ },
+ "https://react.dev/reference/react/experimental_taintObjectReference": {
+  "status": 200,
+  "final": "https://react.dev/reference/react/experimental_taintObjectReference"
+ },
+ "https://react.dev/reference/react-dom/preload": {
+  "status": 200,
+  "final": "https://react.dev/reference/react-dom/preload"
+ },
+ "https://react.dev/reference/react-compiler/configuration": {
+  "status": 200,
+  "final": "https://react.dev/reference/react-compiler/configuration"
+ },
+ "https://nextjs.org/docs/app/guides/server-actions": {
+  "status": 200,
+  "final": "https://nextjs.org/docs/app/guides/server-actions"
+ },
+ "https://nextjs.org/docs/app/getting-started/cache-components": {
+  "status": 200,
+  "final": "https://nextjs.org/docs/app/getting-started/caching"
+ },
+ "https://prettier.io/docs/": {
+  "status": 200,
+  "final": "https://prettier.io/docs/"
+ },
+ "https://github.com/DefinitelyTyped/DefinitelyTyped": {
+  "status": 200,
+  "final": "https://github.com/DefinitelyTyped/DefinitelyTyped"
+ },
+ "https://react.dev/learn/creating-a-react-app": {
+  "status": 200,
+  "final": "https://react.dev/learn/creating-a-react-app"
+ },
+ "https://developer.mozilla.org/en-US/docs/Web/API/Node/nodeType": {
+  "status": 200,
+  "final": "https://developer.mozilla.org/en-US/docs/Web/API/Node/nodeType"
+ },
+ "https://vitest.dev/guide/coverage": {
+  "status": 200,
+  "final": "https://vitest.dev/guide/coverage"
+ },
+ "https://www.w3.org/WAI/standards-guidelines/wcag/": {
+  "status": 200,
+  "final": "https://www.w3.org/WAI/standards-guidelines/wcag/"
+ },
+ "https://app.example.com": {
+  "status": 0,
+  "err": "ENOTFOUND"
+ },
+ "https://martinfowler.com/articles/nonDeterminism.html": {
+  "status": 200,
+  "final": "https://martinfowler.com/articles/nonDeterminism.html"
+ },
+ "https://nextjs.org/docs/app": {
+  "status": 200,
+  "final": "https://nextjs.org/docs/app"
+ },
+ "https://github.com/testing-library/eslint-plugin-testing-library": {
+  "status": 200,
+  "final": "https://github.com/testing-library/eslint-plugin-testing-library"
+ },
+ "https://vite.dev": {
+  "status": 200,
+  "final": "https://vite.dev/"
+ },
+ "https://github.com/vitest-dev/eslint-plugin-vitest": {
+  "status": 200,
+  "final": "https://github.com/vitest-dev/eslint-plugin-vitest"
+ },
+ "https://playwright.dev/docs/emulation": {
+  "status": 200,
+  "final": "https://playwright.dev/docs/emulation"
+ },
+ "https://github.com/actions/setup-node": {
+  "status": 200,
+  "final": "https://github.com/actions/setup-node"
+ },
+ "https://react.dev/blog/2025/04/21/react-compiler-rc": {
+  "status": 200,
+  "final": "https://react.dev/blog/2025/10/07/react-compiler-1"
+ },
+ "https://evil.com": {
+  "status": 0,
+  "err": "UNABLE_TO_GET_ISSUER_CERT_LOCALLY"
+ },
+ "https://docs.astro.build": {
+  "status": 200,
+  "final": "https://docs.astro.build/"
+ },
+ "https://images.example-cdn.com": {
+  "status": 200,
+  "final": "https://www.example-cdn.com/"
+ },
+ "https://nextjs.org/docs/app/getting-started/layouts-and-pages": {
+  "status": 200,
+  "final": "https://nextjs.org/docs/app/getting-started/layouts-and-pages"
+ },
+ "https://conf.react.dev/": {
+  "status": 200,
+  "final": "https://conf.react.dev/"
+ },
+ "https://developer.mozilla.org/en-US/docs/Web/HTML/Element/form": {
+  "status": 200,
+  "final": "https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/form"
+ },
+ "https://storybook.js.org/docs/writing-tests/visual-testing": {
+  "status": 200,
+  "final": "https://storybook.js.org/docs/writing-tests/visual-testing"
+ },
+ "https://nextjs.org/docs/app/guides/authentication": {
+  "status": 200,
+  "final": "https://nextjs.org/docs/app/guides/authentication"
+ },
+ "https://openid.net/developers/how-connect-works/": {
+  "status": 200,
+  "final": "https://openid.net/developers/how-connect-works/"
+ },
+ "https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/303": {
+  "status": 200,
+  "final": "https://developer.mozilla.org/en-US/docs/Web/HTTP/Reference/Status/303"
+ },
+ "https://storybook.js.org/docs/api/portable-stories/portable-stories-vitest": {
+  "status": 200,
+  "final": "https://storybook.js.org/docs/api/portable-stories/portable-stories-vitest"
+ },
+ "https://…/discontinued-slug": {
+  "status": 0,
+  "err": "ERR_INVALID_URL"
+ },
+ "https://nextjs.org/docs/app/guides/data-security": {
+  "status": 200,
+  "final": "https://nextjs.org/docs/app/guides/data-security"
+ },
+ "https://shop.example.com/p/${product.slug}": {
+  "status": 0,
+  "err": "ENOTFOUND"
+ },
+ "https://cheatsheetseries.owasp.org": {
+  "status": 200,
+  "final": "https://cheatsheetseries.owasp.org/"
+ },
+ "https://github.com/reactjs/rfcs": {
+  "status": 200,
+  "final": "https://github.com/reactjs/rfcs"
+ },
+ "https://api.prod": {
+  "status": 0,
+  "err": "ENOTFOUND"
+ },
+ "https://oauth.net/2/": {
+  "status": 200,
+  "final": "https://oauth.net/2/"
+ },
+ "https://developer.mozilla.org/en-US/docs/Web/HTTP/Cookies": {
+  "status": 200,
+  "final": "https://developer.mozilla.org/en-US/docs/Web/HTTP/Guides/Cookies"
+ },
+ "https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP": {
+  "status": 200,
+  "final": "https://developer.mozilla.org/en-US/docs/Web/HTTP/Guides/CSP"
+ },
+ "https://tanstack.com/start": {
+  "status": 200,
+  "final": "https://tanstack.com/start/latest"
+ },
+ "https://react.dev/reference/react-dom/components/title": {
+  "status": 200,
+  "final": "https://react.dev/reference/react-dom/components/title"
+ },
+ "https://schema.org": {
+  "status": 200,
+  "final": "https://schema.org/"
+ },
+ "https://owasp.org/www-project-top-ten/": {
+  "status": 200,
+  "final": "https://owasp.org/projects/top-ten"
+ },
+ "https://schema.org/InStock": {
+  "status": 200,
+  "final": "https://schema.org/InStock"
+ },
+ "https://webauthn.guide": {
+  "status": 200,
+  "final": "https://webauthn.guide/"
+ },
+ "https://legacy.reactjs.org/blog/2019/02/06/react-v16.8.0.html": {
+  "status": 200,
+  "final": "https://legacy.reactjs.org/blog/2019/02/06/react-v16.8.0.html"
+ },
+ "https://api.stg.example.com": {
+  "status": 0,
+  "err": "ENOTFOUND"
+ },
+ "https://legacy.reactjs.org/blog/2020/10/20/react-v17.html": {
+  "status": 200,
+  "final": "https://legacy.reactjs.org/blog/2020/10/20/react-v17.html"
+ },
+ "https://nx.dev/": {
+  "status": 200,
+  "final": "https://nx.dev/"
+ },
+ "https://github.com/reactwg/react-18/discussions/69": {
+  "status": 200,
+  "final": "https://github.com/reactwg/react-18/discussions/69"
+ },
+ "https://a.example": {
+  "status": 0,
+  "err": "ENOTFOUND"
+ },
+ "https://b.example": {
+  "status": 0,
+  "err": "ENOTFOUND"
+ },
+ "https://turborepo.dev/docs": {
+  "status": 200,
+  "final": "https://turborepo.dev/docs"
+ },
+ "https://www.w3.org/TR/using-aria/": {
+  "status": 200,
+  "final": "https://www.w3.org/TR/using-aria/"
+ },
+ "https://cdn.example.com": {
+  "status": 0,
+  "err": "ENOTFOUND"
+ },
+ "https://evil.example/?c=": {
+  "status": 0,
+  "err": "ENOTFOUND"
+ },
+ "https://developer.mozilla.org/en-US/docs/Web/API/Window/error_event": {
+  "status": 200,
+  "final": "https://developer.mozilla.org/en-US/docs/Web/API/Window/error_event"
+ },
+ "https://github.com/facebook/react/tree/main/compiler": {
+  "status": 200,
+  "final": "https://github.com/react/react/tree/main/compiler"
+ },
+ "https://widgets.example.com": {
+  "status": 0,
+  "err": "ENOTFOUND"
+ },
+ "https://12factor.net/config": {
+  "status": 200,
+  "final": "https://12factor.net/config"
+ },
+ "https://sre.google/workbook/alerting-on-slos/": {
+  "status": 200,
+  "final": "https://sre.google/workbook/alerting-on-slos/"
+ },
+ "https://html.spec.whatwg.org/multipage/form-control-infrastructure.html": {
+  "status": 200,
+  "final": "https://html.spec.whatwg.org/multipage/form-control-infrastructure.html"
+ },
+ "https://cheatsheetseries.owasp.org/cheatsheets/Secrets_Management_Cheat_Sheet.html": {
+  "status": 200,
+  "final": "https://cheatsheetseries.owasp.org/cheatsheets/Secrets_Management_Cheat_Sheet.html"
+ },
+ "https://example.com:443": {
+  "status": 200,
+  "final": "https://example.com/"
+ },
+ "https://developer.mozilla.org/en-US/docs/Web/API/Trusted_Types_API": {
+  "status": 200,
+  "final": "https://developer.mozilla.org/en-US/docs/Web/API/Trusted_Types_API"
+ },
+ "https://npm.internal.example.com/": {
+  "status": 0,
+  "err": "ENOTFOUND"
+ },
+ "https://cdn.example.com/lib@1.2.3/lib.min.js": {
+  "status": 0,
+  "err": "ENOTFOUND"
+ },
+ "https://chat.vendor.example/embed": {
+  "status": 0,
+  "err": "ENOTFOUND"
+ },
+ "https://cheatsheetseries.owasp.org/cheatsheets/Logging_Cheat_Sheet.html": {
+  "status": 200,
+  "final": "https://cheatsheetseries.owasp.org/cheatsheets/Logging_Cheat_Sheet.html"
+ },
+ "https://react.dev/reference/react-dom/components/common#dangerously-setting-the-inner-html": {
+  "status": 200,
+  "final": "https://react.dev/reference/react-dom/components/common"
+ },
+ "https://docs.renovatebot.com/renovate-schema.json": {
+  "status": 200,
+  "final": "https://docs.renovatebot.com/renovate-schema.json"
+ },
+ "https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Set-Cookie": {
+  "status": 200,
+  "final": "https://developer.mozilla.org/en-US/docs/Web/HTTP/Reference/Headers/Set-Cookie"
+ },
+ "https://datatracker.ietf.org/doc/draft-ietf-oauth-browser-based-apps/": {
+  "status": 200,
+  "final": "https://datatracker.ietf.org/doc/rfc10017/"
+ },
+ "https://cheatsheetseries.owasp.org/cheatsheets/Content_Security_Policy_Cheat_Sheet.html": {
+  "status": 200,
+  "final": "https://cheatsheetseries.owasp.org/cheatsheets/Content_Security_Policy_Cheat_Sheet.html"
+ },
+ "https://docs.npmjs.com/cli/using-npm/workspaces": {
+  "status": 200,
+  "final": "https://docs.npmjs.com/cli/using-npm/workspaces/"
+ },
+ "https://cheatsheetseries.owasp.org/cheatsheets/Cross_Site_Scripting_Prevention_Cheat_Sheet.html": {
+  "status": 200,
+  "final": "https://cheatsheetseries.owasp.org/cheatsheets/Cross_Site_Scripting_Prevention_Cheat_Sheet.html"
+ },
+ "https://cheatsheetseries.owasp.org/cheatsheets/Cross-Site_Request_Forgery_Prevention_Cheat_Sheet.html": {
+  "status": 200,
+  "final": "https://cheatsheetseries.owasp.org/cheatsheets/Cross-Site_Request_Forgery_Prevention_Cheat_Sheet.html"
+ },
+ "https://owasp.org/API-Security/": {
+  "status": 200,
+  "final": "https://api-security.owasp.org/"
+ },
+ "https://example.com/csp": {
+  "status": 404,
+  "final": "https://example.com/csp"
+ },
+ "https://example.com/a": {
+  "status": 404,
+  "final": "https://example.com/a"
+ },
+ "https://registry.npmjs.org/": {
+  "status": 200,
+  "final": "https://registry.npmjs.org/"
+ },
+ "https://github.com/eps1lon/types-react-codemod": {
+  "status": 200,
+  "final": "https://github.com/eps1lon/types-react-codemod"
+ },
+ "https://developers.google.com/search/docs/crawling-indexing/javascript/javascript-seo-basics": {
+  "status": 200,
+  "final": "https://developers.google.com/search/docs/crawling-indexing/javascript/javascript-seo-basics"
+ },
+ "https://opentelemetry.io/docs/languages/js/": {
+  "status": 200,
+  "final": "https://opentelemetry.io/docs/languages/js/"
+ },
+ "https://example.com/setup.sh": {
+  "status": 404,
+  "final": "https://example.com/setup.sh"
+ },
+ "https://docs.sentry.io/platforms/javascript/guides/react/": {
+  "status": 200,
+  "final": "https://docs.sentry.io/platforms/javascript/guides/react/"
+ },
+ "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl": {
+  "status": 200,
+  "final": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl"
+ },
+ "https://developer.mozilla.org/en-US/docs/Web/Security/Subresource_Integrity": {
+  "status": 200,
+  "final": "https://developer.mozilla.org/en-US/docs/Web/Security/Defenses/Subresource_Integrity"
+ },
+ "https://developer.mozilla.org/en-US/docs/Web/HTML/Element/iframe#sandbox": {
+  "status": 200,
+  "final": "https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/iframe"
+ },
+ "https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/inert": {
+  "status": 200,
+  "final": "https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Global_attributes/inert"
+ },
+ "https://cldr.unicode.org/index/cldr-spec/plural-rules": {
+  "status": 200,
+  "final": "https://cldr.unicode.org/index/cldr-spec/plural-rules"
+ },
+ "https://cheatsheetseries.owasp.org/cheatsheets/NPM_Security_Cheat_Sheet.html": {
+  "status": 200,
+  "final": "https://cheatsheetseries.owasp.org/cheatsheets/NPM_Security_Cheat_Sheet.html"
+ },
+ "https://tc39.es/ecma402/": {
+  "status": 200,
+  "final": "https://tc39.es/ecma402/"
+ },
+ "https://chat.vendor.example/widget.js": {
+  "status": 0,
+  "err": "ENOTFOUND"
+ },
+ "https://github.com/cure53/DOMPurify": {
+  "status": 200,
+  "final": "https://github.com/cure53/DOMPurify"
+ },
+ "https://slsa.dev/": {
+  "status": 200,
+  "final": "https://slsa.dev/"
+ },
+ "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Temporal": {
+  "status": 200,
+  "final": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Temporal"
+ },
+ "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/Segmenter": {
+  "status": 200,
+  "final": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/Segmenter"
+ },
+ "https://vite.dev/config/build-options.html#build-sourcemap": {
+  "status": 200,
+  "final": "https://vite.dev/config/build-options.html"
+ },
+ "https://formatjs.github.io/": {
+  "status": 200,
+  "final": "https://formatjs.github.io/"
+ },
+ "https://lingui.dev/": {
+  "status": 200,
+  "final": "https://lingui.dev/"
+ },
+ "https://unicode-org.github.io/icu/userguide/format_parse/messages/": {
+  "status": 200,
+  "final": "https://unicode-org.github.io/icu/userguide/format_parse/messages/"
+ },
+ "https://docs.npmjs.com/cli/configuring-npm/package-lock-json": {
+  "status": 200,
+  "final": "https://docs.npmjs.com/cli/configuring-npm/package-lock-json/"
+ },
+ "https://www.i18next.com/": {
+  "status": 200,
+  "final": "https://www.i18next.com/"
+ },
+ "https://docs.npmjs.com/cli/commands/npm-audit": {
+  "status": 200,
+  "final": "https://docs.npmjs.com/cli/commands/npm-audit/"
+ },
+ "https://docs.npmjs.com/cli/commands/npm-ci": {
+  "status": 200,
+  "final": "https://docs.npmjs.com/cli/commands/npm-ci/"
+ },
+ "https://developers.google.com/search/docs/appearance/structured-data": {
+  "status": 200,
+  "final": "https://developers.google.com/search/docs/appearance/structured-data?hl=it"
+ },
+ "https://www.w3.org/International/": {
+  "status": 200,
+  "final": "https://www.w3.org/International/"
+ },
+ "https://owasp.org/www-project-application-security-verification-standard/": {
+  "status": 200,
+  "final": "https://owasp.org/projects/asvs"
+ },
+ "https://sre.google/sre-book/addressing-cascading-failures/": {
+  "status": 200,
+  "final": "https://sre.google/sre-book/addressing-cascading-failures/"
+ },
+ "https://sre.google/sre-book/handling-overload/": {
+  "status": 200,
+  "final": "https://sre.google/sre-book/handling-overload/"
+ },
+ "https://docs.npmjs.com/generating-provenance-statements": {
+  "status": 200,
+  "final": "https://docs.npmjs.com/generating-provenance-statements/"
+ },
+ "https://developer.mozilla.org/en-US/docs/Web/API/Window/localStorage": {
+  "status": 200,
+  "final": "https://developer.mozilla.org/en-US/docs/Web/API/Window/localStorage"
+ },
+ "https://dora.dev/": {
+  "status": 200,
+  "final": "https://dora.dev/"
+ },
+ "https://learn.microsoft.com/en-us/azure/architecture/patterns/circuit-breaker": {
+  "status": 200,
+  "final": "https://learn.microsoft.com/en-us/azure/architecture/patterns/circuit-breaker"
+ },
+ "https://github.com/ossf/scorecard": {
+  "status": 200,
+  "final": "https://github.com/ossf/scorecard"
+ },
+ "https://principlesofchaos.org/": {
+  "status": 200,
+  "final": "https://principlesofchaos.org/"
+ },
+ "https://www.typescriptlang.org/docs/handbook/type-compatibility.html": {
+  "status": 200,
+  "final": "https://www.typescriptlang.org/docs/handbook/type-compatibility.html"
+ },
+ "https://api-extractor.com/": {
+  "status": 200,
+  "final": "https://api-extractor.com/"
+ },
+ "https://adr.github.io/madr/": {
+  "status": 200,
+  "final": "https://adr.github.io/madr/"
+ },
+ "https://adrianroselli.com/": {
+  "status": 200,
+  "final": "https://adrianroselli.com/"
+ },
+ "https://www.cognitect.com/blog/2011/11/15/documenting-architecture-decisions": {
+  "status": 200,
+  "final": "https://www.cognitect.com/blog/2011/11/15/documenting-architecture-decisions"
+ },
+ "https://wiki.c2.com/?WardExplainsDebtMetaphor": {
+  "status": 200,
+  "final": "https://wiki.c2.com/?WardExplainsDebtMetaphor"
+ },
+ "https://osv.dev/": {
+  "status": 200,
+  "final": "https://osv.dev/"
+ },
+ "https://www.hyrumslaw.com/": {
+  "status": 200,
+  "final": "https://www.hyrumslaw.com/"
+ },
+ "https://adr.github.io/": {
+  "status": 200,
+  "final": "https://adr.github.io/"
+ },
+ "https://ts-morph.com/": {
+  "status": 200,
+  "final": "https://ts-morph.com/"
+ },
+ "https://www.oreilly.com/": {
+  "status": 200,
+  "final": "https://www.oreilly.com/"
+ },
+ "https://martinfowler.com/bliki/BranchByAbstraction.html": {
+  "status": 200,
+  "final": "https://martinfowler.com/bliki/BranchByAbstraction.html"
+ },
+ "https://web.dev/articles/strict-csp": {
+  "status": 200,
+  "final": "https://web.dev/articles/strict-csp?hl=ja"
+ },
+ "https://www.melconway.com/Home/Committees_Paper.html": {
+  "status": 200,
+  "final": "https://www.melconway.com/Home/Committees_Paper.html"
+ },
+ "https://martinfowler.com/bliki/TechnicalDebtQuadrant.html": {
+  "status": 200,
+  "final": "https://martinfowler.com/bliki/TechnicalDebtQuadrant.html"
+ },
+ "https://martinfowler.com/bliki/TechnicalDebt.html": {
+  "status": 200,
+  "final": "https://martinfowler.com/bliki/TechnicalDebt.html"
+ },
+ "https://en.wikipedia.org/wiki/G._K._Chesterton#Chesterton": {
+  "status": 200,
+  "final": "https://en.wikipedia.org/wiki/G._K._Chesterton"
+ },
+ "https://typescript-eslint.io/rules/ban-ts-comment/": {
+  "status": 200,
+  "final": "https://typescript-eslint.io/rules/ban-ts-comment/"
+ },
+ "https://diataxis.fr/": {
+  "status": 200,
+  "final": "https://diataxis.fr/"
+ },
+ "https://tsdoc.org/": {
+  "status": 200,
+  "final": "https://tsdoc.org/"
+ },
+ "https://staging.example.com": {
+  "status": 0,
+  "err": "ENOTFOUND"
+ },
+ "https://trunkbaseddevelopment.com/": {
+  "status": 200,
+  "final": "https://trunkbaseddevelopment.com/"
+ },
+ "https://web.dev/learn/accessibility": {
+  "status": 200,
+  "final": "https://web.dev/learn/accessibility"
+ },
+ "https://sre.google/sre-book/postmortem-culture/": {
+  "status": 200,
+  "final": "https://sre.google/sre-book/postmortem-culture/"
+ },
+ "https://openfeature.dev/": {
+  "status": 200,
+  "final": "https://openfeature.dev/"
+ },
+ "https://analytics.example/a.js": {
+  "status": 0,
+  "err": "ENOTFOUND"
+ },
+ "https://img.example": {
+  "status": 0,
+  "err": "ENOTFOUND"
+ },
+ "https://github.com/reactjs/react-codemod": {
+  "status": 200,
+  "final": "https://github.com/reactjs/react-codemod"
+ },
+ "https://www.example.com": {
+  "status": 200,
+  "final": "https://www.example.com/"
+ },
+ "https://app.example.com/": {
+  "status": 0,
+  "err": "ENOTFOUND"
+ },
+ "https://app.example.com/assets/app.9f3a1c.js": {
+  "status": 0,
+  "err": "ENOTFOUND"
+ },
+ "https://martinfowler.com/bliki/ArchitectureDecisionRecord.html": {
+  "status": 200,
+  "final": "https://martinfowler.com/bliki/ArchitectureDecisionRecord.html"
+ },
+ "https://app.example.com/version.json": {
+  "status": 0,
+  "err": "ENOTFOUND"
+ },
+ "https://analytics.example": {
+  "status": 0,
+  "err": "ENOTFOUND"
+ },
+ "https://www.rfc-editor.org/info/bcp47": {
+  "status": 200,
+  "final": "https://www.rfc-editor.org/info/bcp47/"
+ },
+ "https://docs.github.com/en/get-started/writing-on-github/working-with-advanced-formatting/creating-diagrams": {
+  "status": 200,
+  "final": "https://docs.github.com/en/get-started/writing-on-github/working-with-advanced-formatting/creating-diagrams"
+ },
+ "https://sre.google/books/": {
+  "status": 200,
+  "final": "https://sre.google/books/"
+ },
+ "https://sre.google/sre-book/managing-incidents/": {
+  "status": 200,
+  "final": "https://sre.google/sre-book/managing-incidents/"
+ },
+ "https://example.invalid/migrate-dialog": {
+  "status": 0,
+  "err": "ENOTFOUND"
+ },
+ "https://pragprog.com/titles/atcrime2/your-code-as-a-crime-scene-second-edition/": {
+  "status": 200,
+  "final": "https://pragprog.com/titles/atcrime2/your-code-as-a-crime-scene-second-edition/"
+ },
+ "https://mermaid.js.org/": {
+  "status": 200,
+  "final": "https://mermaid.js.org/"
+ },
+ "https://www.sei.cmu.edu/": {
+  "status": 200,
+  "final": "https://www.sei.cmu.edu/"
+ },
+ "https://typedoc.org/": {
+  "status": 200,
+  "final": "https://typedoc.org/"
+ },
+ "https://github.com/npryce/adr-tools": {
+  "status": 200,
+  "final": "https://github.com/npryce/adr-tools"
+ },
+ "https://www.writethedocs.org/guide/": {
+  "status": 200,
+  "final": "https://www.writethedocs.org/guide/"
+ },
+ "https://developer.mozilla.org/en-US/docs/Web/API/Window/postMessage": {
+  "status": 200,
+  "final": "https://developer.mozilla.org/en-US/docs/Web/API/Window/postMessage"
+ },
+ "https://www.joelonsoftware.com/2002/11/11/the-law-of-leaky-abstractions/": {
+  "status": 200,
+  "final": "https://www.joelonsoftware.com/2002/11/11/the-law-of-leaky-abstractions/"
+ },
+ "https://c4model.com/": {
+  "status": 200,
+  "final": "https://c4model.com/"
+ },
+ "https://github.com/thomvaill/log4brains": {
+  "status": 200,
+  "final": "https://github.com/thomvaill/log4brains"
+ },
+ "https://nodejs.org/api/packages.html#package-entry-points": {
+  "status": 200,
+  "final": "https://nodejs.org/api/packages.html"
+ },
+ "https://www.example.com/version.json": {
+  "status": 404,
+  "final": "https://www.example.com/version.json"
+ },
+ "https://www.example.com/assets/<file": {
+  "status": 404,
+  "final": "https://www.example.com/assets/%3Cfile"
+ },
+ "https://extfiles.etsy.com/DebriefingFacilitationGuide.pdf": {
+  "status": 200,
+  "final": "https://extfiles.etsy.com/DebriefingFacilitationGuide.pdf"
+ },
+ "https://cdn.example.com/checkout/2026.10.3/remoteEntry.js": {
+  "status": 0,
+  "err": "ENOTFOUND"
+ },
+ "https://cdn.example.com/checkout/remoteEntry.js": {
+  "status": 0,
+  "err": "ENOTFOUND"
+ },
+ "http://localhost:3001": {
+  "status": 0,
+  "err": "ECONNREFUSED"
+ },
+ "https://www.industrialempathy.com/posts/design-docs-at-google/": {
+  "status": 200,
+  "final": "https://www.industrialempathy.com/posts/design-docs-at-google/"
+ },
+ "https://cheatsheetseries.owasp.org/": {
+  "status": 200,
+  "final": "https://cheatsheetseries.owasp.org/"
+ },
+ "https://www.w3.org/TR/accname-1.2/": {
+  "status": 200,
+  "final": "https://www.w3.org/TR/accname-1.2/"
+ },
+ "https://continuousdelivery.com/": {
+  "status": 200,
+  "final": "https://continuousdelivery.com/"
+ },
+ "https://testing-library.com/docs/queries/about/#priority": {
+  "status": 200,
+  "final": "https://testing-library.com/docs/queries/about/"
+ },
+ "https://sre.google/sre-book/service-level-objectives/": {
+  "status": 200,
+  "final": "https://sre.google/sre-book/service-level-objectives/"
+ },
+ "https://response.pagerduty.com/": {
+  "status": 200,
+  "final": "https://response.pagerduty.com/"
+ },
+ "https://design-system.service.gov.uk/components/error-summary/": {
+  "status": 200,
+  "final": "https://design-system.service.gov.uk/components/error-summary/"
+ },
+ "https://webpack.js.org/concepts/module-federation/": {
+  "status": 200,
+  "final": "https://webpack.js.org/concepts/module-federation/"
+ },
+ "https://react.dev/reference/react-dom/components#custom-html-elements": {
+  "status": 200,
+  "final": "https://react.dev/reference/react-dom/components"
+ },
+ "https://developer.mozilla.org/en-US/docs/Web/API/CustomEvent": {
+  "status": 200,
+  "final": "https://developer.mozilla.org/en-US/docs/Web/API/CustomEvent"
+ },
+ "https://opentelemetry.io/docs/": {
+  "status": 200,
+  "final": "https://opentelemetry.io/docs/"
+ },
+ "https://git-scm.com/docs/git-sparse-checkout": {
+  "status": 200,
+  "final": "https://git-scm.com/docs/git-sparse-checkout"
+ },
+ "https://opensource.org/licenses": {
+  "status": 200,
+  "final": "https://opensource.org/licenses"
+ },
+ "https://single-spa.js.org/": {
+  "status": 200,
+  "final": "https://single-spa.js.org/"
+ },
+ "https://dl.acm.org/doi/10.1145/2854146": {
+  "status": 403,
+  "final": "https://dl.acm.org/doi/10.1145/2854146"
+ },
+ "https://bazel.build/": {
+  "status": 200,
+  "final": "https://bazel.build/"
+ },
+ "https://www.w3.org/WAI/": {
+  "status": 200,
+  "final": "https://www.w3.org/WAI/"
+ },
+ "https://docs.astro.build/": {
+  "status": 200,
+  "final": "https://docs.astro.build/"
+ },
+ "https://developer.mozilla.org/en-US/docs/Web/HTML/Element/script/type/importmap": {
+  "status": 200,
+  "final": "https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/script/type/importmap"
+ },
+ "https://developer.mozilla.org/en-US/docs/Web/HTML/Element/iframe": {
+  "status": 200,
+  "final": "https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/iframe"
+ },
+ "https://www.thoughtworks.com/radar": {
+  "status": 200,
+  "final": "https://www.thoughtworks.com/radar"
+ },
+ "https://backstage.io/": {
+  "status": 200,
+  "final": "https://backstage.io/"
+ },
+ "https://sre.google/sre-book/table-of-contents/": {
+  "status": 200,
+  "final": "https://sre.google/sre-book/table-of-contents/"
+ },
+ "https://www.oreilly.com/library/view/the-staff-engineers/9781098118723/": {
+  "status": 200,
+  "final": "https://www.oreilly.com/library/view/the-staff-engineers/9781098118723/"
+ },
+ "https://turborepo.com/schema.json": {
+  "status": 200,
+  "final": "https://turborepo.dev/schema.json"
+ },
+ "https://web.dev/articles/service-worker-lifecycle": {
+  "status": 200,
+  "final": "https://web.dev/articles/service-worker-lifecycle"
+ },
+ "https://turborepo.com/docs": {
+  "status": 200,
+  "final": "https://turborepo.dev/docs"
+ },
+ "https://micro-frontends.org/": {
+  "status": 200,
+  "final": "https://micro-frontends.org/"
+ },
+ "https://www.penguinrandomhouse.com/books/": {
+  "status": 200,
+  "final": "https://www.penguinrandomhouse.com/books/"
+ },
+ "https://google.github.io/eng-practices/review/": {
+  "status": 200,
+  "final": "https://google.github.io/eng-practices/review/"
+ },
+ "https://www.oreilly.com/library/view/building-evolutionary-architectures/9781492097532/": {
+  "status": 200,
+  "final": "https://www.oreilly.com/library/view/building-evolutionary-architectures/9781492097532/"
+ },
+ "https://martinfowler.com/bliki/": {
+  "status": 200,
+  "final": "https://martinfowler.com/bliki/"
+ },
+ "https://queue.acm.org/detail.cfm?id=3454124": {
+  "status": 403,
+  "final": "https://queue.acm.org/detail.cfm?id=3454124"
+ },
+ "https://sre.google/sre-book/effective-troubleshooting/": {
+  "status": 200,
+  "final": "https://sre.google/sre-book/effective-troubleshooting/"
+ },
+ "https://staffeng.com/": {
+  "status": 200,
+  "final": "https://staffeng.com/"
+ },
+ "https://docs.sentry.io/": {
+  "status": 200,
+  "final": "https://docs.sentry.io/"
+ },
+ "https://developer.mozilla.org/en-US/docs/Tools": {
+  "status": 200,
+  "final": "https://firefox-source-docs.mozilla.org/devtools-user/index.html"
+ },
+ "https://en.wikipedia.org/wiki/Lehman%27s_laws_of_software_evolution": {
+  "status": 200,
+  "final": "https://en.wikipedia.org/wiki/Lehman%27s_laws_of_software_evolution"
+ },
+ "https://docs.yjs.dev/": {
+  "status": 200,
+  "final": "https://docs.yjs.dev/"
+ },
+ "https://innersourcecommons.org/": {
+  "status": 200,
+  "final": "https://innersourcecommons.org/"
+ },
+ "https://prosemirror.net/docs/guide/": {
+  "status": 200,
+  "final": "https://prosemirror.net/docs/guide/"
+ },
+ "https://spdx.org/licenses/": {
+  "status": 200,
+  "final": "https://spdx.org/licenses/"
+ },
+ "https://playwright.dev/": {
+  "status": 200,
+  "final": "https://playwright.dev/"
+ },
+ "https://testing-library.com/": {
+  "status": 200,
+  "final": "https://testing-library.com/"
+ },
+ "https://boringtechnology.club/": {
+  "status": 200,
+  "final": "https://boringtechnology.club/"
+ },
+ "https://example.test/products/${product.slug}": {
+  "status": 0,
+  "err": "ENOTFOUND"
+ },
+ "http://${req.headers.host}": {
+  "status": 0,
+  "err": "ENOTFOUND"
+ },
+ "https://vitest.dev/": {
+  "status": 200,
+  "final": "https://vitest.dev/"
+ },
+ "https://lethain.com/elegant-puzzle/": {
+  "status": 200,
+  "final": "https://lethain.com/elegant-puzzle/"
+ },
+ "https://git-scm.com/docs": {
+  "status": 200,
+  "final": "https://git-scm.com/docs"
+ },
+ "https://developer.mozilla.org/": {
+  "status": 200,
+  "final": "https://developer.mozilla.org/en-US/"
+ },
+ "https://caniuse.com/": {
+  "status": 200,
+  "final": "https://caniuse.com/"
+ },
+ "https://unpkg.com/@changesets/config/schema.json": {
+  "status": 200,
+  "final": "https://unpkg.com/@changesets/config@4.0.1/schema.json"
+ },
+ "https://react.dev/reference/react": {
+  "status": 200,
+  "final": "https://react.dev/reference/react"
+ },
+ "https://react.dev/learn/react-compiler/installation": {
+  "status": 200,
+  "final": "https://react.dev/learn/react-compiler/installation"
+ },
+ "https://reactrouter.com/upgrading/v7": {
+  "status": 200,
+  "final": "https://reactrouter.com/upgrading/v7"
+ },
+ "https://dataintensive.net/": {
+  "status": 200,
+  "final": "https://dataintensive.net/"
+ },
+ "https://conventionalcomments.org/": {
+  "status": 200,
+  "final": "https://conventionalcomments.org/"
+ },
+ "https://reactrouter.com/start/data/route-object": {
+  "status": 200,
+  "final": "https://reactrouter.com/start/data/route-object"
+ },
+ "https://www.greatfrontend.com/system-design": {
+  "status": 200,
+  "final": "https://www.greatfrontend.com/front-end-system-design-playbook"
+ },
+ "https://tanstack.com/virtual/latest": {
+  "status": 200,
+  "final": "https://tanstack.com/virtual/latest"
+ },
+ "https://vite.dev/guide/ssr": {
+  "status": 200,
+  "final": "https://vite.dev/guide/ssr"
+ },
+ "https://github.com/immerjs/immer": {
+  "status": 200,
+  "final": "https://github.com/immerjs/immer"
+ },
+ "https://github.com/reduxjs/redux": {
+  "status": 200,
+  "final": "https://github.com/reduxjs/redux"
+ },
+ "https://vite.dev/guide/backend-integration": {
+  "status": 200,
+  "final": "https://vite.dev/guide/backend-integration"
+ },
+ "https://html.spec.whatwg.org/": {
+  "status": 200,
+  "final": "https://html.spec.whatwg.org/"
+ },
+ "https://html.spec.whatwg.org/multipage/interactive-elements.html#the-dialog-element": {
+  "status": 200,
+  "final": "https://html.spec.whatwg.org/multipage/interactive-elements.html"
+ },
+ "https://developer.chrome.com/docs/devtools/javascript": {
+  "status": 200,
+  "final": "https://developer.chrome.com/docs/devtools/javascript?hl=vi"
+ },
+ "https://developer.chrome.com/": {
+  "status": 200,
+  "final": "https://developer.chrome.com/?hl=ko"
+ },
+ "https://example.com:8443": {
+  "status": 0,
+  "err": "This operation was aborted"
+ }
+}

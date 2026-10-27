@@ -1,0 +1,2 @@
+import { defineConfig } from 'vitest/config';
+export default defineConfig({ test: { environment: 'jsdom', globals: true, include: ['tests/**/*.test.tsx'], testTimeout: 120000, fileParallelism: false } });

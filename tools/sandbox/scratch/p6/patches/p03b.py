@@ -1,0 +1,21 @@
+from patchlib import apply
+apply('03',[
+("`status`/`isPending` ⚠ names |","`status`/`isPending` (TanStack Query v5) |"),
+("`isFetching`/`fetchStatus` ⚠ verify |","`isFetching`/`fetchStatus` (v5) |"),
+("Keep-previous/placeholder options ⚠ verify |","`placeholderData: keepPreviousData` (v5) |"),
+("Action error handling (⚠ verify) |","Action error handling (an error thrown inside an async transition/Action is rethrown to the nearest error boundary; verified on React 19.3) |"),
+("(honour `Retry-After` ⚠ if provided)","(honour `Retry-After` if provided)"),
+("⚠ *behavior varies across AT/browser pairs; test with real screen readers*.","*behavior varies across AT/browser pairs (not verifiable here); test with real screen readers*."),
+("that update may not be part of the transition ⚠ *React 19 documents `startTransition` for updates after `await` in async Actions; verify the current rules in the `useTransition` reference.*","that update may not be part of the transition: the react.dev `useTransition` reference states that async Actions are supported but \"currently require wrapping any set functions after the await in an additional `startTransition`\" (checked 2026-10-22)."),
+("a deliberate behavior for unexpected failures ⚠ verify in `useActionState` reference.","a deliberate behavior for unexpected failures (an async error thrown from `startTransition(async () => ...)` reached the nearest error boundary in a React 19.3 test)."),
+("| Yes (default behavior in most) ⚠ verify |","| Yes (default behavior in most; e.g. TanStack Query v5 keeps `data` while `isFetching`) |"),
+("Teams that standardize on boundaries ⚠ verify option names |","Teams that standardize on boundaries (TanStack Query v5: `throwOnError`, `useSuspenseQuery`) |"),
+("(e.g. Next.js loading/error files ⚠ verify)","(e.g. Next.js `loading`/`error` route files; check your framework version)"),
+("(or a library query in error state with `throwOnError` and no refetch on reset) so it throws on first render; no network request occurs. Fix: evict the rejection and refetch on reset (library's reset mechanism ⚠ verify), and include `resetKeys`.","(or a library query in error state with `throwOnError` and no refetch on reset) so it throws on first render; no network request occurs. Fix: evict the rejection and refetch on reset (library's reset mechanism, e.g. TanStack Query's `QueryErrorResetBoundary`), and include `resetKeys`."),
+("add a reset hook integration with the data library's error reset ⚠ verify.","add a reset hook integration with the data library's error reset (e.g. `QueryErrorResetBoundary`)."),
+("`onCaughtError`/`onUncaughtError` options ⚠ verify |","`onCaughtError`/`onUncaughtError` options (confirmed) |"),
+("| Stale/refetch/error defaults ⚠ verify |","| Stale/refetch/error defaults |"),
+("// class component or react-error-boundary ⚠ verify API","// class component or react-error-boundary"),
+("| Libraries distinguish initial from background; the flag's meaning is library-specific ⚠ verify. |","| Libraries distinguish initial from background; the flag's meaning is library-specific (TanStack Query v5: `isLoading` = `isFetching && isPending`; `isInitialLoading` is deprecated). |"),
+("  isInitialLoading: boolean;   // no data yet and a request is in flight","  isInitialLoading: boolean;   // no data yet and a request is in flight (our own view-model field; TanStack's `isInitialLoading` is deprecated, use its `isLoading`)"),
+])

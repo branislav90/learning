@@ -1,0 +1,11 @@
+import puppeteer from "puppeteer-core";
+import fs from "fs";
+import MarkdownIt from "markdown-it";
+const m=fs.readFileSync("node_modules/mermaid/dist/mermaid.min.js","utf8");
+const src=fs.readFileSync("../react-mastery/00-web-and-javascript-foundations/01-how-the-browser-works.md","utf8");
+const blocks=[...src.matchAll(/```mermaid\n([\s\S]*?)```/g)].map(x=>x[1]);
+const b=await puppeteer.launch({executablePath:"/Applications/Google Chrome.app/Contents/MacOS/Google Chrome",headless:true});
+const p=await b.newPage();
+await p.setContent(`<body>${blocks.map(x=>`<pre class="mermaid">${x}</pre>`).join("")}<script>${m}</script>`);
+const r=await p.evaluate(async()=>{mermaid.initialize({startOnLoad:false});await mermaid.run({nodes:[...document.querySelectorAll("pre.mermaid")],suppressErrors:true});return [...document.querySelectorAll("pre.mermaid")].map(n=>n.innerHTML.includes("<svg")&&!n.innerHTML.includes("Syntax error"))});
+console.log(r);await b.close();

@@ -1,0 +1,28 @@
+from ed import apply
+E=[
+("> ⚠ **Tool caveat.** Playwright's screenshot assertion options, Storybook's test runner/Vitest integration, and hosted services (Chromatic, Percy, and others) change often. Option names below follow current Playwright documentation as I know it; **verify against the version you install**. Vitest also has (or is gaining) browser-mode visual-comparison support, which is **volatile**: check the current Vitest browser-mode docs before relying on it.",
+ "> **Tool note (verified 2026-10-22).** The Playwright option names used below (`maxDiffPixels`, `maxDiffPixelRatio`, `threshold`, `animations`, `caret`, `mask`, `stylePath`, `fullPage`, `scale`, `snapshotPathTemplate` tokens, `--update-snapshots`) were checked against the Playwright 1.64 docs (`toHaveScreenshot` API reference, Visual comparisons guide, `testConfig.snapshotPathTemplate`). Storybook's test runner and hosted services (Chromatic, Percy, and others) change often; check their docs. Vitest browser mode (stable-labelled in the current docs, with `toMatchScreenshot` and a dedicated screenshot-directory config in Vitest 5) is a newer option for component-level visual checks; read its docs before relying on it."),
+("*(verify product details)* |","(check each vendor's docs) |"),
+("so each platform has its own baseline *(exact naming: verify; configurable via `snapshotPathTemplate`)*.","so each platform has its own baseline (verified in the docs: `example.spec.ts-snapshots/example-test-1-chromium-darwin.png`, i.e. test-name, project, platform; configurable via `snapshotPathTemplate`)."),
+("Behaviour on first run is intentional and documented *(verify in current docs)*.","Behaviour on first run is intentional and documented: the runner reports `Error: A snapshot doesn't exist at …, writing actual.`"),
+("⚠ **Implementation detail.** The exact stabilisation","**Implementation detail.** The exact stabilisation"),
+("with a platform suffix *(verify)*).","with a platform suffix, per the Playwright docs)."),
+("(verify page.clock API in your Playwright version)","(`page.clock` exists since Playwright 1.45)"),
+("*(verify; hand-rolled Date mocking is error-prone)*","(hand-rolled Date mocking is error-prone)"),
+("{testDir}/__screenshots__/{projectName}/{testFilePath}/{arg}{ext}', // (verify tokens)","{testDir}/__screenshots__/{projectName}/{testFilePath}/{arg}{ext}', // tokens verified in the docs; note there is no {platform} token here, so baselines are only valid for ONE OS (the pinned Docker image)"),
+("mcr.microsoft.com/playwright:v1.XX.X-jammy npx playwright test --grep @visual\",","mcr.microsoft.com/playwright:v1.64.0-noble npx playwright test --grep @visual\","),
+("mcr.microsoft.com/playwright:v1.XX.X-jammy npx playwright test --grep @visual --update-snapshots\"","mcr.microsoft.com/playwright:v1.64.0-noble npx playwright test --grep @visual --update-snapshots\""),
+("(⚠ Replace `v1.XX.X-jammy` with the tag matching your installed `@playwright/test` version; image tags and base OS names change. Mounting `node_modules` from a macOS host into a Linux container can break native dependencies; many teams `npm ci` inside the container or use a bind-mount strategy. Verify against the Playwright Docker documentation.)",
+ "(The image tag must match your installed `@playwright/test` version; the Playwright Docker docs currently show `mcr.microsoft.com/playwright:v1.64.0-noble` (Ubuntu 24.04), not the older `-jammy` tags. Mounting `node_modules` from a macOS host into a Linux container can break native dependencies; many teams `npm ci` inside the container or use a bind-mount strategy.)"),
+("// better: read /index.json from Storybook (verify path)","// better: read /index.json from Storybook (the story index file of Storybook 7+)"),
+("⚠ `iframe.html?id=…&viewMode=story` and `#storybook-root` are Storybook conventions that have been stable but **verify for your Storybook version**. Hosted tools (Chromatic and similar) automate story enumeration, parallelism, and review UIs *(verify features and pricing)*.","`iframe.html?id=…&viewMode=story` and `#storybook-root` are Storybook conventions that have been stable; confirm them for your Storybook version (Storybook 10 is current). Hosted tools (Chromatic and similar) automate story enumeration, parallelism, and review UIs (check current features and pricing)."),
+("*(CODEOWNERS is GitHub's mechanism; verify for your host)*","(CODEOWNERS is GitHub's mechanism; other hosts have equivalents)"),
+("with `--repeat-each=20` *(verify flag)*","with `--repeat-each=20` (a documented Playwright CLI flag)"),
+("*verify tooling*","check your tooling"),
+("*(Behaviour per docs; verify for your version.)*","(Behaviour per the Playwright docs: \"A snapshot doesn't exist at …, writing actual\".)"),
+("Playwright component testing *(experimental; verify status)*","Playwright's stories/gallery component-testing fixture (the old experimental `-ct-react` packages were removed in 1.63)"),
+("<https://playwright.dev/docs/api/class-pageassertions> | Option reference *(verify anchor)*","<https://playwright.dev/docs/api/class-pageassertions> | Option reference"),
+("<https://playwright.dev/docs/clock> *(verify)*","<https://playwright.dev/docs/clock>"),
+("<https://storybook.js.org/docs/writing-tests/visual-testing> *(verify path)*","<https://storybook.js.org/docs/writing-tests/visual-testing>"),
+]
+apply("12-visual-regression.md",E)

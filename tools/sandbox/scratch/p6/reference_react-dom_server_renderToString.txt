@@ -1,0 +1,164 @@
+ renderToString – React 
+ (function () {
+ try {
+ let logShown = false;
+ function setUwu(isUwu) {
+ try {
+ if (isUwu) {
+ localStorage.setItem('uwu', true);
+ document.documentElement.classList.add('uwu');
+ if (!logShown) {
+ console.log('uwu mode! turn off with ?uwu=0');
+ console.log('logo credit to @sawaratsuki1004 via https://github.com/SAWARATSUKI/KawaiiLogos');
+ logShown = true;
+ }
+ } else {
+ localStorage.removeItem('uwu');
+ document.documentElement.classList.remove('uwu');
+ console.log('uwu mode off. turn on with ?uwu');
+ }
+ } catch (err) { }
+ }
+ window.__setUwu = setUwu;
+ function checkQueryParam() {
+ const params = new URLSearchParams(window.location.search);
+ const value = params.get('uwu');
+ switch(value) {
+ case '':
+ case 'true':
+ case '1':
+ return true;
+ case 'false':
+ case '0':
+ return false;
+ default:
+ return null;
+ }
+ }
+ function checkLocalStorage() {
+ try {
+ return localStorage.getItem('uwu') === 'true';
+ } catch (err) {
+ return false;
+ }
+ }
+ const uwuQueryParam = checkQueryParam();
+ if (uwuQueryParam != null) {
+ setUwu(uwuQueryParam);
+ } else if (checkLocalStorage()) {
+ document.documentElement.classList.add('uwu');
+ }
+ } catch (err) { }
+ })();
+ 
+ (function () {
+ function setTheme(newTheme) {
+ window.__theme = newTheme;
+ if (newTheme === 'dark') {
+ document.documentElement.classList.add('dark');
+ } else if (newTheme === 'light') {
+ document.documentElement.classList.remove('dark');
+ }
+ }
+ var preferredTheme;
+ try {
+ preferredTheme = localStorage.getItem('theme');
+ } catch (err) { }
+ window.__setPreferredTheme = function(newTheme) {
+ preferredTheme = newTheme;
+ setTheme(newTheme);
+ try {
+ localStorage.setItem('theme', newTheme);
+ } catch (err) { }
+ };
+ var initialTheme = preferredTheme;
+ var darkQuery = window.matchMedia('(prefers-color-scheme: dark)');
+ if (!initialTheme) {
+ initialTheme = darkQuery.matches ? 'dark' : 'light';
+ }
+ setTheme(initialTheme);
+ darkQuery.addEventListener('change', function (e) {
+ if (!preferredTheme) {
+ setTheme(e.matches ? 'dark' : 'light');
+ }
+ });
+ // Detect whether the browser is Mac to display platform specific content
+ // An example of such content can be the keyboard shortcut displayed in the search bar
+ document.documentElement.classList.add(
+ window.navigator.platform.includes('Mac')
+ ? "platform-mac" 
+ : "platform-win"
+ );
+ })();
+ React v 19.3 Search ⌘ Ctrl K Learn Reference Community Blog react@19.3 Overview Hooks useActionState useCallback useContext useDebugValue useDeferredValue useEffect useEffectEvent useId useImperativeHandle useInsertionEffect useLayoutEffect useMemo useOptimistic useReducer useRef useState useSyncExternalStore useTransition Components &lt;Fragment&gt; (&lt;&gt;) &lt;Profiler&gt; &lt;StrictMode&gt; &lt;Suspense&gt; &lt;Activity&gt; &lt;ViewTransition&gt; APIs act addTransitionType cache cacheSignal captureOwnerStack createContext lazy memo startTransition use experimental_taintObjectReference - This feature is available in the latest Experimental version of React experimental_taintUniqueValue - This feature is available in the latest Experimental version of React react-dom@19.3 Hooks useFormStatus Components Common (e.g. &lt;div&gt;) &lt;form&gt; &lt;input&gt; &lt;option&gt; &lt;progress&gt; &lt;select&gt; &lt;textarea&gt; &lt;img&gt; &lt;link&gt; &lt;meta&gt; &lt;script&gt; &lt;style&gt; &lt;title&gt; APIs browser createPortal flushSync preconnect prefetchDNS preinit preinitModule preload preloadModule Client APIs createRoot hydrateRoot Server APIs renderToPipeableStream renderToReadableStream renderToStaticMarkup renderToString resume resumeToPipeableStream Static APIs prerender prerenderToNodeStream resumeAndPrerender resumeAndPrerenderToNodeStream React Compiler Configuration compilationMode gating logger panicThreshold target Directives &quot;use memo&quot; &quot;use no memo&quot; Compiling Libraries React DevTools React Performance tracks React DevTools for agents - This feature is available in the latest Experimental version of React eslint-plugin-react-hooks Lints exhaustive-deps rules-of-hooks component-hook-factories config error-boundaries gating globals immutability incompatible-library preserve-manual-memoization purity refs set-state-in-effect set-state-in-render static-components unsupported-syntax use-memo Rules of React Overview Components and Hooks must be pure React calls Components and Hooks Rules of Hooks React Server Components Server Components Server Functions Directives &#x27;use client&#x27; &#x27;use server&#x27; Legacy APIs Legacy React APIs Children cloneElement Component createElement createRef forwardRef isValidElement PureComponent API Reference Server APIs Copy page Copy renderToString Pitfall renderToString does not support streaming or waiting for data. See the alternatives. 
+ renderToString renders a React tree to an HTML string. const html = renderToString ( reactNode , options ? ) 
+ Reference renderToString(reactNode, options?) Usage Rendering a React tree as HTML to a string Alternatives Migrating from renderToString to a streaming render on the server Migrating from renderToString to a static prerender on the server Removing renderToString from the client code Troubleshooting When a component suspends, the HTML always contains a fallback 
+ 
+ Reference 
+ renderToString(reactNode, options?) 
+ On the server, call renderToString to render your app to HTML. 
+ import { renderToString } from &#x27;react-dom/server&#x27; ; const html = renderToString ( &lt; App /&gt; ) ; 
+ On the client, call hydrateRoot to make the server-generated HTML interactive. 
+ See more examples below. 
+ Parameters 
+ 
+ 
+ reactNode : A React node you want to render to HTML. For example, a JSX node like &lt;App /&gt; . 
+ 
+ 
+ optional options : An object for server render. 
+ 
+ optional identifierPrefix : A string prefix React uses for IDs generated by useId . Useful to avoid conflicts when using multiple roots on the same page. Must be the same prefix as passed to hydrateRoot . 
+ 
+ 
+ 
+ Returns 
+ An HTML string. 
+ Caveats 
+ 
+ 
+ renderToString has limited Suspense support. If a component suspends, renderToString immediately sends its fallback as HTML. 
+ 
+ 
+ renderToString works in the browser, but using it in the client code is not recommended. 
+ 
+ 
+ 
+ Usage 
+ Rendering a React tree as HTML to a string 
+ Call renderToString to render your app to an HTML string which you can send with your server response: 
+ import { renderToString } from &#x27;react-dom/server&#x27; ; // The route handler syntax depends on your backend framework app . use ( &#x27;/&#x27; , ( request , response ) =&gt; { const html = renderToString ( &lt; App /&gt; ) ; response . send ( html ) ; } ) ; 
+ This will produce the initial non-interactive HTML output of your React components. On the client, you will need to call hydrateRoot to hydrate that server-generated HTML and make it interactive. 
+ Pitfall renderToString does not support streaming or waiting for data. See the alternatives. 
+ 
+ Alternatives 
+ Migrating from renderToString to a streaming render on the server 
+ renderToString returns a string immediately, so it does not support streaming content as it loads. 
+ When possible, we recommend using these fully-featured alternatives: 
+ 
+ If you use Node.js, use renderToPipeableStream . 
+ If you use Deno or a modern edge runtime with Web Streams , use renderToReadableStream . 
+ 
+ You can continue using renderToString if your server environment does not support streams. 
+ 
+ Migrating from renderToString to a static prerender on the server 
+ renderToString returns a string immediately, so it does not support waiting for data to load for static HTML generation. 
+ We recommend using these fully-featured alternatives: 
+ 
+ If you use Node.js, use prerenderToNodeStream . 
+ If you use Deno or a modern edge runtime with Web Streams , use prerender . 
+ 
+ You can continue using renderToString if your static site generation environment does not support streams. 
+ 
+ Removing renderToString from the client code 
+ Sometimes, renderToString is used on the client to convert some component to HTML. 
+ // 🚩 Unnecessary: using renderToString on the client import { renderToString } from &#x27;react-dom/server&#x27; ; const html = renderToString ( &lt; MyIcon /&gt; ) ; console . log ( html ) ; // For example, &quot;&lt;svg&gt;...&lt;/svg&gt;&quot; 
+ Importing react-dom/server on the client unnecessarily increases your bundle size and should be avoided. If you need to render some component to HTML in the browser, use createRoot and read HTML from the DOM: 
+ import { createRoot } from &#x27;react-dom/client&#x27; ; import { flushSync } from &#x27;react-dom&#x27; ; const div = document . createElement ( &#x27;div&#x27; ) ; const root = createRoot ( div ) ; flushSync ( ( ) =&gt; { root . render ( &lt; MyIcon /&gt; ) ; } ) ; console . log ( div . innerHTML ) ; // For example, &quot;&lt;svg&gt;...&lt;/svg&gt;&quot; 
+ The flushSync call is necessary so that the DOM is updated before reading its innerHTML property. 
+ 
+ Troubleshooting 
+ When a component suspends, the HTML always contains a fallback 
+ renderToString does not fully support Suspense. 
+ If some component suspends (for example, because it’s defined with lazy or fetches data), renderToString will not wait for its content to resolve. Instead, renderToString will find the closest &lt;Suspense&gt; boundary above it and render its fallback prop in the HTML. The content will not appear until the client code loads. 
+ To solve this, use one of the recommended streaming solutions. For server side rendering, they can stream content in chunks as it resolves on the server so that the user sees the page being progressively filled in before the client code loads. For static site generation, they can wait for all the content to resolve before generating the static HTML. Previous renderToStaticMarkup Next resume Copyright © Meta Platforms, Inc no uwu plz uwu? Logo by @sawaratsuki1004 Learn React Quick Start Installation Describing the UI Adding Interactivity Managing State Escape Hatches API Reference React APIs React DOM APIs Community Code of Conduct Meet the Team Docs Contributors Acknowledgements More Blog React Native Privacy Terms On this page Overview Reference renderToString(reactNode, options?) Usage Rendering a React tree as HTML to a string Alternatives Migrating from renderToString to a streaming render on the server Migrating from renderToString to a static prerender on the server Removing renderToString from the client code Troubleshooting When a component suspends, the HTML always contains a fallback 

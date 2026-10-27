@@ -1,0 +1,5 @@
+from patchlib import apply
+apply('13',[("for your framework version in in [Phase 9","for your framework version in [Phase 9")])
+apply('03',[("the specific durations are internal and have changed over versions. ⚠ Do not assert numbers; observe via DevTools and the Suspense docs.",
+ "the react.dev `<Suspense>` reference currently documents that React reveals suspended content at most once every 300 ms (measured from the last reveal; boundaries that become ready within the window reveal together; checked 2026-10-22). Treat the number as documented-but-tunable and observe via DevTools rather than building logic on it."),
+ ("⚠ Version-sensitive details (for instance, how React throttles revealing fallbacks, and how nested boundaries reveal) are implementation behavior documented loosely; verify against the Suspense reference before relying on timing.","Details such as the reveal throttle (the Suspense reference documents one reveal per 300 ms) and how nested boundaries reveal are documented on react.dev but may be tuned between releases; do not rely on timing.")])

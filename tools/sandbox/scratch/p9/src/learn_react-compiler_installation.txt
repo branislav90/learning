@@ -1,0 +1,182 @@
+ 
+ (function () {
+ try {
+ let logShown = false;
+ function setUwu(isUwu) {
+ try {
+ if (isUwu) {
+ localStorage.setItem('uwu', true);
+ document.documentElement.classList.add('uwu');
+ if (!logShown) {
+ console.log('uwu mode! turn off with ?uwu=0');
+ console.log('logo credit to @sawaratsuki1004 via https://github.com/SAWARATSUKI/KawaiiLogos');
+ logShown = true;
+ }
+ } else {
+ localStorage.removeItem('uwu');
+ document.documentElement.classList.remove('uwu');
+ console.log('uwu mode off. turn on with ?uwu');
+ }
+ } catch (err) { }
+ }
+ window.__setUwu = setUwu;
+ function checkQueryParam() {
+ const params = new URLSearchParams(window.location.search);
+ const value = params.get('uwu');
+ switch(value) {
+ case '':
+ case 'true':
+ case '1':
+ return true;
+ case 'false':
+ case '0':
+ return false;
+ default:
+ return null;
+ }
+ }
+ function checkLocalStorage() {
+ try {
+ return localStorage.getItem('uwu') === 'true';
+ } catch (err) {
+ return false;
+ }
+ }
+ const uwuQueryParam = checkQueryParam();
+ if (uwuQueryParam != null) {
+ setUwu(uwuQueryParam);
+ } else if (checkLocalStorage()) {
+ document.documentElement.classList.add('uwu');
+ }
+ } catch (err) { }
+ })();
+ 
+ (function () {
+ function setTheme(newTheme) {
+ window.__theme = newTheme;
+ if (newTheme === 'dark') {
+ document.documentElement.classList.add('dark');
+ } else if (newTheme === 'light') {
+ document.documentElement.classList.remove('dark');
+ }
+ }
+ var preferredTheme;
+ try {
+ preferredTheme = localStorage.getItem('theme');
+ } catch (err) { }
+ window.__setPreferredTheme = function(newTheme) {
+ preferredTheme = newTheme;
+ setTheme(newTheme);
+ try {
+ localStorage.setItem('theme', newTheme);
+ } catch (err) { }
+ };
+ var initialTheme = preferredTheme;
+ var darkQuery = window.matchMedia('(prefers-color-scheme: dark)');
+ if (!initialTheme) {
+ initialTheme = darkQuery.matches ? 'dark' : 'light';
+ }
+ setTheme(initialTheme);
+ darkQuery.addEventListener('change', function (e) {
+ if (!preferredTheme) {
+ setTheme(e.matches ? 'dark' : 'light');
+ }
+ });
+ // Detect whether the browser is Mac to display platform specific content
+ // An example of such content can be the keyboard shortcut displayed in the search bar
+ document.documentElement.classList.add(
+ window.navigator.platform.includes('Mac')
+ ? "platform-mac" 
+ : "platform-win"
+ );
+ })();
+ React v 19.3 Search ⌘ Ctrl K Learn Reference Community Blog GET STARTED Quick Start Tutorial: Tic-Tac-Toe Thinking in React Installation Creating a React App Build a React App from Scratch Add React to an Existing Project Setup Editor Setup Using TypeScript React Developer Tools React Compiler Introduction Installation Incremental Adoption Debugging and Troubleshooting LEARN REACT Describing the UI Your First Component Importing and Exporting Components Writing Markup with JSX JavaScript in JSX with Curly Braces Passing Props to a Component Conditional Rendering Rendering Lists Keeping Components Pure Your UI as a Tree Adding Interactivity Responding to Events State: A Component's Memory Render and Commit State as a Snapshot Queueing a Series of State Updates Updating Objects in State Updating Arrays in State Managing State Reacting to Input with State Choosing the State Structure Sharing State Between Components Preserving and Resetting State Extracting State Logic into a Reducer Passing Data Deeply with Context Scaling Up with Reducer and Context Escape Hatches Referencing Values with Refs Manipulating the DOM with Refs Synchronizing with Effects You Might Not Need an Effect Lifecycle of Reactive Effects Separating Events from Effects Removing Effect Dependencies Reusing Logic with Custom Hooks Learn React React Compiler Copy page Copy Installation This guide will help you install and configure React Compiler in your React application. 
+ You will learn 
+ How to install React Compiler 
+ Basic configuration for different build tools 
+ How to verify your setup is working 
+ 
+ Prerequisites 
+ React Compiler is designed to work best with React 19, but it also supports React 17 and 18. Learn more about React version compatibility . 
+ Installation 
+ Install React Compiler as a devDependency : 
+ Terminal Copy npm install -D babel-plugin-react-compiler@latest 
+ Or with Yarn: 
+ Terminal Copy yarn add -D babel-plugin-react-compiler@latest 
+ Or with pnpm: 
+ Terminal Copy pnpm install -D babel-plugin-react-compiler@latest 
+ Basic Setup 
+ React Compiler is designed to work by default without any configuration. However, if you need to configure it in special circumstances (for example, to target React versions below 19), refer to the compiler options reference . 
+ The setup process depends on your build tool. React Compiler includes a Babel plugin that integrates with your build pipeline. 
+ Pitfall React Compiler must run first in your Babel plugin pipeline. The compiler needs the original source information for proper analysis, so it must process your code before other transformations. 
+ Babel 
+ Create or update your babel.config.js : 
+ module . exports = { plugins : [ 'babel-plugin-react-compiler' , // must run first! // ... other plugins ] , // ... other config } ; 
+ Vite 
+ If you use Vite with version 6.0.0 or later of @vitejs/plugin-react , you can use the reactCompilerPreset : 
+ Terminal Copy npm install -D @rolldown/plugin-babel 
+ // vite.config.js import { defineConfig } from 'vite' ; import react , { reactCompilerPreset } from '@vitejs/plugin-react' ; import babel from '@rolldown/plugin-babel' ; export default defineConfig ( { plugins : [ react ( ) , babel ( { presets : [ reactCompilerPreset ( ) ] } ) , ] , } ) ; 
+ Note In @vitejs/plugin-react@6.0.0 , the inline Babel option was removed. If you’re using an older version, you can use: // vite.config.js import { defineConfig } from 'vite' ; import react from '@vitejs/plugin-react' ; export default defineConfig ( { plugins : [ react ( { babel : { plugins : [ 'babel-plugin-react-compiler' ] , } , } ) , ] , } ) ; 
+ Alternatively, you can use the Babel plugin directly with @rolldown/plugin-babel : 
+ // vite.config.js import { defineConfig } from 'vite' ; import react from '@vitejs/plugin-react' ; import babel from '@rolldown/plugin-babel' ; export default defineConfig ( { plugins : [ react ( ) , babel ( { plugins : [ 'babel-plugin-react-compiler' ] , } ) , ] , } ) ; 
+ Next.js 
+ Please refer to the Next.js docs for more information. 
+ React Router 
+ Install vite-plugin-babel , and add the compiler’s Babel plugin to it: 
+ Terminal Copy npm install vite-plugin-babel 
+ // vite.config.js import { defineConfig } from "vite" ; import babel from "vite-plugin-babel" ; import { reactRouter } from "@react-router/dev/vite" ; const ReactCompilerConfig = { /* ... */ } ; export default defineConfig ( { plugins : [ reactRouter ( ) , babel ( { filter : /\.[jt]sx?$/ , babelConfig : { presets : [ "@babel/preset-typescript" ] , // if you use TypeScript plugins : [ [ "babel-plugin-react-compiler" , ReactCompilerConfig ] , ] , } , } ) , ] , } ) ; 
+ Webpack 
+ A community webpack loader is now available here . 
+ Expo 
+ Please refer to Expo’s docs to enable and use the React Compiler in Expo apps. 
+ Metro (React Native) 
+ React Native uses Babel via Metro, so refer to the Usage with Babel section for installation instructions. 
+ Rspack 
+ Please refer to Rspack’s docs to enable and use the React Compiler in Rspack apps. 
+ Rsbuild 
+ Please refer to Rsbuild’s docs to enable and use the React Compiler in Rsbuild apps. 
+ ESLint Integration 
+ React Compiler includes an ESLint rule that helps identify code that can’t be optimized. When the ESLint rule reports an error, it means the compiler will skip optimizing that specific component or hook. This is safe: the compiler will continue optimizing other parts of your codebase. You don’t need to fix all violations immediately. Address them at your own pace to gradually increase the number of optimized components. 
+ Install the ESLint plugin: 
+ Terminal Copy npm install -D eslint-plugin-react-hooks@latest 
+ If you haven’t already configured eslint-plugin-react-hooks, follow the installation instructions in the readme . The compiler rules are available in the recommended-latest preset. 
+ The ESLint rule will: 
+ 
+ Identify violations of the Rules of React 
+ Show which components can’t be optimized 
+ Provide helpful error messages for fixing issues 
+ 
+ Verify Your Setup 
+ After installation, verify that React Compiler is working correctly. 
+ Check React DevTools 
+ Components optimized by React Compiler will show a “Memo ✨” badge in React DevTools: 
+ 
+ Install the React Developer Tools browser extension 
+ Open your app in development mode 
+ Open React DevTools 
+ Look for the ✨ emoji next to component names 
+ 
+ If the compiler is working: 
+ 
+ Components will show a “Memo ✨” badge in React DevTools 
+ Expensive calculations will be automatically memoized 
+ No manual useMemo is required 
+ 
+ Check Build Output 
+ You can also verify the compiler is running by checking your build output. The compiled code will include automatic memoization logic that the compiler adds automatically. 
+ import { c as _c } from "react/compiler-runtime" ; export default function MyApp ( ) { const $ = _c ( 1 ) ; let t0 ; if ( $ [ 0 ] === Symbol . for ( "react.memo_cache_sentinel" ) ) { t0 = < div > Hello World </ div > ; $ [ 0 ] = t0 ; } else { t0 = $ [ 0 ] ; } return t0 ; } 
+ Troubleshooting 
+ Opting out specific components 
+ If a component is causing issues after compilation, you can temporarily opt it out using the "use no memo" directive: 
+ function ProblematicComponent ( ) { "use no memo" ; // Component code here } 
+ This tells the compiler to skip optimization for this specific component. You should fix the underlying issue and remove the directive once resolved. 
+ For more troubleshooting help, see the debugging guide . 
+ Next Steps 
+ Now that you have React Compiler installed, learn more about: 
+ 
+ React version compatibility for React 17 and 18 
+ Configuration options to customize the compiler 
+ Incremental adoption strategies for existing codebases 
+ Debugging techniques for troubleshooting issues 
+ Compiling Libraries guide for compiling your React library 
+ Previous Introduction Next Incremental Adoption Copyright © Meta Platforms, Inc no uwu plz uwu? Logo by @sawaratsuki1004 Learn React Quick Start Installation Describing the UI Adding Interactivity Managing State Escape Hatches API Reference React APIs React DOM APIs Community Code of Conduct Meet the Team Docs Contributors Acknowledgements More Blog React Native Privacy Terms On this page Overview Prerequisites Installation Basic Setup Babel Vite Next.js React Router Webpack Expo Metro (React Native) Rspack Rsbuild ESLint Integration Verify Your Setup Check React DevTools Check Build Output Troubleshooting Opting out specific components Next Steps 

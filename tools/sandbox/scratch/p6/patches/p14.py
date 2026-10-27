@@ -1,0 +1,18 @@
+from patchlib import apply
+apply('14',[
+("> ⚠ **Verify against current docs.** This lesson is **concept-first**","> **Checked against React 19.3 docs and `@tanstack/react-query` 5.104 (executed: dehydrate/prefetch behaviour, 2026-10-22).** This lesson is **concept-first**"),
+("must be checked against their current docs. Every framework API below is marked \"verify\" where it is easy to misremember.","must be checked against their current docs; framework APIs (Next.js, React Router, TanStack Start) were not executed in this review."),
+("⚠ Verify its availability/semantics in your React version and framework (it is meant for Server Components; behaviour outside RSC differs, and frameworks may also dedupe `fetch` calls themselves).","The react.dev `cache` reference (checked 2026-10-22) says \"At this time, `cache` should only be used in Server Components and the cache will be invalidated across server requests\"; behaviour outside RSC differs, and frameworks may also dedupe `fetch` calls themselves."),
+("(React's experimental `taintObjectReference`/`taintUniqueValue`; ⚠ experimental, verify availability)","(React's `experimental_taintObjectReference`/`experimental_taintUniqueValue`, which react.dev lists as available only in the latest Experimental version of React)"),
+("(framework helper or `HydrationBoundary` in the RSC tree; verify).","(framework helper or `HydrationBoundary` in the RSC tree; `dehydrate`, `HydrationBoundary` and `isServer` are exported by `@tanstack/react-query` 5.104)."),
+("*Answer:* default dehydration omits failed queries,","*Answer (verified in 5.104):* default dehydration omits failed queries (and queries that are still pending),"),
+("(or an error boundary result, depending on whether you `await` with `prefetchQuery` (swallows errors, never throws) or `fetchQuery` (throws))","(or an error boundary result, depending on whether you `await` with `prefetchQuery` (resolves to `undefined` and swallows errors, verified) or `fetchQuery` (rejects, verified))"),
+("; ⚠ simplified: no error handling, no streaming)","; simplified: no error handling, no streaming)"),
+("- `serialize` (maintained library; verify its options) escapes","- `serialize-javascript` (7.1.2 checked; `isJSON: true` is a documented option) escapes"),
+("`renderToString` is the legacy non-streaming API (React docs recommend streaming APIs for new code; verify current guidance).","`renderToString` is the non-streaming API (the react.dev reference carries a pitfall: \"renderToString does not support streaming or waiting for data\"; prefer the streaming APIs for new code)."),
+("this shows the pattern, not guaranteed exact syntax.","this shows the pattern, not guaranteed exact syntax. ⚠"),
+("// request-scoped in RSC (verify)","// request-scoped in RSC (React `cache`, Server Components only)"),
+("distinguishes environments (verify export);","distinguishes environments (exported by 5.104, verified);"),
+("The data transformer for non-JSON values (Dates) is the app's responsibility (verify `dehydrate` options).","The data transformer for non-JSON values (Dates) is the app's responsibility: verified that `dehydrate` keeps a `Date` as a `Date`, which becomes a string after JSON serialisation; 5.104 exposes `serializeData`/`deserializeData` options on dehydrate/hydrate for this."),
+("Shape of the integration in an RSC framework (e.g. Next.js App Router). ⚠ Verify against the framework's and TanStack Query's current SSR guides; this shows the pattern, not guaranteed exact syntax. ⚠","Shape of the integration in an RSC framework (e.g. Next.js App Router). Verify against the framework's and TanStack Query's current SSR guides; this shows the pattern, not guaranteed exact syntax."),
+])

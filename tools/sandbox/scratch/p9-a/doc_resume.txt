@@ -1,0 +1,130 @@
+Copy page Copy resume resume streams a pre-rendered React tree to a Readable Web Stream. const stream = await resume ( reactNode , postponedState , options ? ) 
+ Reference resume(node, postponedState, options?) Usage Resuming a prerender Further reading 
+ Note This API depends on Web Streams. For Node.js, use resumeToNodeStream instead. 
+ 
+ Reference 
+ resume(node, postponedState, options?) 
+ Call resume to resume rendering a pre-rendered React tree as HTML into a Readable Web Stream. 
+ import { resume } from &#x27;react-dom/server&#x27; ; import { getPostponedState } from &#x27;./storage&#x27; ; async function handler ( request , writable ) { const postponed = await getPostponedState ( request ) ; const resumeStream = await resume ( &lt; App /&gt; , postponed ) ; return resumeStream . pipeTo ( writable ) } 
+ See more examples below. 
+ Parameters 
+ 
+ reactNode : The React node you called prerender with. For example, a JSX element like &lt;App /&gt; . It is expected to represent the entire document, so the App component should render the &lt;html&gt; tag. 
+ postponedState : The opaque postpone object returned from a prerender API , loaded from wherever you stored it (e.g. redis, a file, or S3). 
+ optional options : An object with streaming options. 
+ 
+ optional nonce : A nonce string to allow scripts for script-src Content-Security-Policy . 
+ optional signal : An abort signal that lets you abort server rendering and render the rest on the client. 
+ optional onBrowserBailout : A callback React calls when it recovers from browser() by leaving a Suspense fallback for the browser to replace. It receives an Error describing the browser-only render and an errorInfo object containing the componentStack . If a reason was passed to browser , it is available as error.cause . By default, React does nothing. See how to report browser-only rendering. 
+ optional onError : A callback that fires whenever there is a server error, whether recoverable or not. By default, this only calls console.error . If you override it to log crash reports, make sure that you still call console.error . 
+ 
+ 
+ 
+ Returns 
+ resume returns a Promise: 
+ 
+ If resume successfully produced a shell , that Promise will resolve to a Readable Web Stream. that can be piped to a Writable Web Stream. . 
+ If an error happens in the shell, the Promise will reject with that error. 
+ 
+ The returned stream has an additional property: 
+ 
+ allReady : A Promise that resolves when all rendering is complete. You can await stream.allReady before returning a response for crawlers and static generation. If you do that, you won’t get any progressive loading. The stream will contain the final HTML. 
+ 
+ Caveats 
+ 
+ resume does not accept options for bootstrapScripts , bootstrapScriptContent , or bootstrapModules . Instead, you need to pass these options to the prerender call that generates the postponedState . You can also inject bootstrap content into the writable stream manually. 
+ resume does not accept identifierPrefix since the prefix needs to be the same in both prerender and resume . 
+ Since nonce cannot be provided to prerender, you should only provide nonce to resume if you’re not providing scripts to prerender. 
+ resume re-renders from the root until it finds a component that was not fully pre-rendered. Only fully prerendered Components (the Component and its children finished prerendering) are skipped entirely. 
+ 
+ Usage 
+ Resuming a prerender 
+ index.js index.html demo-helpers.js index.js Reload Clear Fork import { 
+ flushReadableStreamToFrame , 
+ getUser , 
+ Postponed , 
+ sleep , 
+ } from &quot;./demo-helpers&quot; ; 
+ import { StrictMode , Suspense , use , useEffect } from &quot;react&quot; ; 
+ import { prerender } from &quot;react-dom/static&quot; ; 
+ import { resume } from &quot;react-dom/server&quot; ; 
+ import { hydrateRoot } from &quot;react-dom/client&quot; ; 
+ function Header ( ) { 
+ return &lt; header &gt; Me and my descendants can be prerendered &lt;/ header &gt; ; 
+ } 
+ const { promise : cookies , resolve : resolveCookies } = Promise . withResolvers ( ) ; 
+ function Main ( ) { 
+ const { sessionID } = use ( cookies ) ; 
+ const user = getUser ( sessionID ) ; 
+ useEffect ( ( ) =&gt; { 
+ console . log ( &quot;reached interactivity!&quot; ) ; 
+ } , [ ] ) ; 
+ return ( 
+ &lt; main &gt; 
+ Hello, { user . name } !
+ &lt; button onClick = { ( ) =&gt; console . log ( &quot;hydrated!&quot; ) } &gt; 
+ Clicking me requires hydration.
+ &lt;/ button &gt; 
+ &lt;/ main &gt; 
+ ) ; 
+ } 
+ function Shell ( { children } ) { 
+ // In a real app, this is where you would put your html and body. 
+ // We&#x27;re just using tags here we can include in an existing body for demonstration purposes 
+ return ( 
+ &lt; html &gt; 
+ &lt; body &gt; { children } &lt;/ body &gt; 
+ &lt;/ html &gt; 
+ ) ; 
+ } 
+ function App ( ) { 
+ return ( 
+ &lt; Shell &gt; 
+ &lt; Suspense fallback = &quot;loading header&quot; &gt; 
+ &lt; Header /&gt; 
+ &lt;/ Suspense &gt; 
+ &lt; Suspense fallback = &quot;loading main&quot; &gt; 
+ &lt; Main /&gt; 
+ &lt;/ Suspense &gt; 
+ &lt;/ Shell &gt; 
+ ) ; 
+ } 
+ async function main ( frame ) { 
+ // Layer 1 
+ const controller = new AbortController ( ) ; 
+ const prerenderedApp = prerender ( &lt; App /&gt; , { 
+ signal : controller . signal , 
+ onError ( error ) { 
+ if ( error instanceof Postponed ) { 
+ } else { 
+ console . error ( error ) ; 
+ } 
+ } , 
+ } ) ; 
+ // We&#x27;re immediately aborting in a macrotask. 
+ // Any data fetching that&#x27;s not available synchronously, or in a microtask, will not have finished. 
+ setTimeout ( ( ) =&gt; { 
+ controller . abort ( new Postponed ( ) ) ; 
+ } ) ; 
+ const { prelude , postponed } = await prerenderedApp ; 
+ await flushReadableStreamToFrame ( prelude , frame ) ; 
+ // Layer 2 
+ // Just waiting here for demonstration purposes. 
+ // In a real app, the prelude and postponed state would&#x27;ve been serialized in Layer 1 and Layer would deserialize them. 
+ // The prelude content could be flushed immediated as plain HTML while 
+ // React is continuing to render from where the prerender left off. 
+ await sleep ( 2000 ) ; 
+ // You would get the cookies from the incoming HTTP request 
+ resolveCookies ( { sessionID : &quot;abc&quot; } ) ; 
+ const stream = await resume ( &lt; App /&gt; , postponed ) ; 
+ await flushReadableStreamToFrame ( stream , frame ) ; 
+ // Layer 3 
+ // Just waiting here for demonstration purposes. 
+ await sleep ( 2000 ) ; 
+ hydrateRoot ( frame . contentWindow . document , &lt; App /&gt; ) ; 
+ } 
+ main ( document . getElementById ( &quot;container&quot; ) ) ; 
+ Show more 
+ Further reading 
+ Resuming behaves like renderToReadableStream . For more examples, check out the usage section of renderToReadableStream .
+The usage section of prerender includes examples of how to use prerender specifically. Previous renderToString Next resumeToPipeableStream Copyright © Meta Platforms, Inc no uwu plz uwu? Logo by @sawaratsuki1004 Learn React Quick Start Installation Describing the UI Adding Interactivity Managing State Escape Hatches API Reference React APIs React DOM APIs Community Code of Conduct Meet the Team Docs Contributors Acknowledgements More Blog React Native Privacy Terms On this page Overview Reference resume(node, postponedState, options?) Usage Resuming a prerender Further reading 

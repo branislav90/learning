@@ -1,0 +1,1 @@
+{"compilerOptions":{"strict":true,"jsx":"react-jsx","noEmit":true,"module":"esnext","moduleResolution":"bundler","target":"es2022","lib":["es2023","dom","dom.iterable"],"skipLibCheck":true,"noUncheckedIndexedAccess":true,"types":[]},"include":["b/*"]}

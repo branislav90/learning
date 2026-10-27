@@ -1,0 +1,173 @@
+        React Performance tracks – React                                                                   window.dataLayer = window.dataLayer || [];function gtag(){dataLayer.push(arguments);}gtag('js', new Date());gtag('config', 'G-B1E83PJ3RT');   
+              (function () {
+                try {
+                  let logShown = false;
+                  function setUwu(isUwu) {
+                    try {
+                      if (isUwu) {
+                        localStorage.setItem('uwu', true);
+                        document.documentElement.classList.add('uwu');
+                        if (!logShown) {
+                          console.log('uwu mode! turn off with ?uwu=0');
+                          console.log('logo credit to @sawaratsuki1004 via https://github.com/SAWARATSUKI/KawaiiLogos');
+                          logShown = true;
+                        }
+                      } else {
+                        localStorage.removeItem('uwu');
+                        document.documentElement.classList.remove('uwu');
+                        console.log('uwu mode off. turn on with ?uwu');
+                      }
+                    } catch (err) { }
+                  }
+                  window.__setUwu = setUwu;
+                  function checkQueryParam() {
+                    const params = new URLSearchParams(window.location.search);
+                    const value = params.get('uwu');
+                    switch(value) {
+                      case '':
+                      case 'true':
+                      case '1':
+                        return true;
+                      case 'false':
+                      case '0':
+                        return false;
+                      default:
+                        return null;
+                    }
+                  }
+                  function checkLocalStorage() {
+                    try {
+                      return localStorage.getItem('uwu') === 'true';
+                    } catch (err) {
+                      return false;
+                    }
+                  }
+                  const uwuQueryParam = checkQueryParam();
+                  if (uwuQueryParam != null) {
+                    setUwu(uwuQueryParam);
+                  } else if (checkLocalStorage()) {
+                    document.documentElement.classList.add('uwu');
+                  }
+                } catch (err) { }
+              })();
+              
+                (function () {
+                  function setTheme(newTheme) {
+                    window.__theme = newTheme;
+                    if (newTheme === 'dark') {
+                      document.documentElement.classList.add('dark');
+                    } else if (newTheme === 'light') {
+                      document.documentElement.classList.remove('dark');
+                    }
+                  }
+
+                  var preferredTheme;
+                  try {
+                    preferredTheme = localStorage.getItem('theme');
+                  } catch (err) { }
+
+                  window.__setPreferredTheme = function(newTheme) {
+                    preferredTheme = newTheme;
+                    setTheme(newTheme);
+                    try {
+                      localStorage.setItem('theme', newTheme);
+                    } catch (err) { }
+                  };
+
+                  var initialTheme = preferredTheme;
+                  var darkQuery = window.matchMedia('(prefers-color-scheme: dark)');
+
+                  if (!initialTheme) {
+                    initialTheme = darkQuery.matches ? 'dark' : 'light';
+                  }
+                  setTheme(initialTheme);
+
+                  darkQuery.addEventListener('change', function (e) {
+                    if (!preferredTheme) {
+                      setTheme(e.matches ? 'dark' : 'light');
+                    }
+                  });
+
+                  // Detect whether the browser is Mac to display platform specific content
+                  // An example of such content can be the keyboard shortcut displayed in the search bar
+                  document.documentElement.classList.add(
+                      window.navigator.platform.includes('Mac')
+                      ? "platform-mac" 
+                      : "platform-win"
+                  );
+                })();
+                                                                       React       v 19.3         Search  ⌘  Ctrl  K        Learn    Reference    Community    Blog                                                                           react@19.3    Overview        Hooks                    useActionState        useCallback        useContext        useDebugValue        useDeferredValue        useEffect        useEffectEvent        useId        useImperativeHandle        useInsertionEffect        useLayoutEffect        useMemo        useOptimistic        useReducer        useRef        useState        useSyncExternalStore        useTransition            Components                    &lt;Fragment&gt; (&lt;&gt;)        &lt;Profiler&gt;        &lt;StrictMode&gt;        &lt;Suspense&gt;        &lt;Activity&gt;        &lt;ViewTransition&gt;            APIs                    act        addTransitionType        cache        cacheSignal        captureOwnerStack        createContext        lazy        memo        startTransition        use        experimental_taintObjectReference     - This feature is available in the latest Experimental version of React              experimental_taintUniqueValue     - This feature is available in the latest Experimental version of React                  react-dom@19.3    Hooks                    useFormStatus            Components                    Common (e.g. &lt;div&gt;)        &lt;form&gt;        &lt;input&gt;        &lt;option&gt;        &lt;progress&gt;        &lt;select&gt;        &lt;textarea&gt;        &lt;img&gt;        &lt;link&gt;        &lt;meta&gt;        &lt;script&gt;        &lt;style&gt;        &lt;title&gt;            APIs                    browser        createPortal        flushSync        preconnect        prefetchDNS        preinit        preinitModule        preload        preloadModule            Client APIs                    createRoot        hydrateRoot            Server APIs                    renderToPipeableStream        renderToReadableStream        renderToStaticMarkup        renderToString        resume        resumeToPipeableStream            Static APIs                    prerender        prerenderToNodeStream        resumeAndPrerender        resumeAndPrerenderToNodeStream            React Compiler    Configuration                    compilationMode        gating        logger        panicThreshold        target            Directives                    &quot;use memo&quot;        &quot;use no memo&quot;            Compiling Libraries        React DevTools    React Performance tracks        React DevTools for agents     - This feature is available in the latest Experimental version of React              eslint-plugin-react-hooks    Lints                    exhaustive-deps        rules-of-hooks        component-hook-factories        config        error-boundaries        gating        globals        immutability        incompatible-library        preserve-manual-memoization        purity        refs        set-state-in-effect        set-state-in-render        static-components        unsupported-syntax        use-memo            Rules of React    Overview                    Components and Hooks must be pure        React calls Components and Hooks        Rules of Hooks            React Server Components    Server Components        Server Functions        Directives                    &#x27;use client&#x27;        &#x27;use server&#x27;            Legacy APIs    Legacy React APIs                    Children        cloneElement        Component        createElement        createRef        forwardRef        isValidElement        PureComponent                               API Reference                   Copy page  Copy    React Performance tracks                   React Performance tracks are specialized custom entries that appear on the Performance panel’s timeline in your browser developer tools.  
+ These tracks are designed to provide developers with comprehensive insights into their React application’s performance by visualizing React-specific events and metrics alongside other critical data sources such as network requests, JavaScript execution, and event loop activity, all synchronized on a unified timeline within the Performance panel for a complete understanding of application behavior. 
+    
+   Usage     Using profiling builds       Tracks     Scheduler     Components     Server      
+ 
+ Usage            
+ React Performance tracks are only available in development and profiling builds of React: 
+ 
+  Development : enabled by default. 
+  Profiling : Only Scheduler tracks are enabled by default. The Components track only lists Components that are in subtrees wrapped with   &lt;Profiler&gt;  . If you have  React Developer Tools extension  enabled, all Components are included in the Components track even if they’re not wrapped in  &lt;Profiler&gt; . Server tracks are not available in profiling builds. 
+ 
+ If enabled, tracks should appear automatically in the traces you record with the Performance panel of browsers that provide  extensibility APIs . 
+              Pitfall    The profiling instrumentation that powers React Performance tracks adds some additional overhead, so it is disabled in production builds by default.
+Server Components and Server Requests tracks are only available in development builds.    
+ Using profiling builds            
+ In addition to production and development builds, React also includes a special profiling build.
+To use profiling builds, you have to use  react-dom/profiling  instead of  react-dom/client .
+We recommend that you alias  react-dom/client  to  react-dom/profiling  at build time via bundler aliases instead of manually updating each  react-dom/client  import.
+Your framework might have built-in support for enabling React’s profiling build. 
+ 
+ Tracks            
+ Scheduler            
+ The Scheduler is an internal React concept used for managing tasks with different priorities. This track consists of 4 subtracks, each representing work of a specific priority: 
+ 
+  Blocking  - The synchronous updates, which could’ve been initiated by user interactions. 
+  Transition  - Non-blocking work that happens in the background, usually initiated via   startTransition  . 
+  Suspense  - Work related to Suspense boundaries, such as displaying fallbacks or revealing content. 
+  Idle  - The lowest priority work that is done when there are no other tasks with higher priority. 
+ 
+    
+ Renders            
+ Every render pass consists of multiple phases that you can see on a timeline: 
+ 
+  Update  - this is what caused a new render pass. 
+  Render  - React renders the updated subtree by calling render functions of components. You can see the rendered components subtree on  Components track , which follows the same color scheme. 
+  Commit  - After rendering components, React will submit the changes to the DOM and run layout effects, like   useLayoutEffect  . 
+  Remaining Effects  - React runs passive effects of a rendered subtree. This usually happens after the paint, and this is when React runs hooks like   useEffect  . One known exception is user interactions, like clicks, or other discrete events. In this scenario, this phase could run before the paint. 
+ 
+    
+  Learn more about renders and commits . 
+ Cascading updates            
+ Cascading updates is one of the patterns for performance regressions. If an update was scheduled during a render pass, React could discard completed work and start a new pass. 
+ In development builds, React can show you which Component scheduled a new update. This includes both general updates and cascading ones. You can see the enhanced stack trace by clicking on the “Cascading update” entry, which should also display the name of the method that scheduled an update. 
+    
+  Learn more about Effects . 
+ Components            
+ The Components track visualizes the durations of React components. They are displayed as a flamegraph, where each entry represents the duration of the corresponding component render and all its descendant children components. 
+    
+ Similar to render durations, effect durations are also represented as a flamegraph, but with a different color scheme that aligns with the corresponding phase on the Scheduler track. 
+    
+                  Note    Unlike renders, not all effects are shown on the Components track by default.  To maintain performance and prevent UI clutter, React will only display those effects, which had a duration of 0.05ms or longer, or triggered an update.    
+ Additional events may be displayed during the render and effects phases: 
+ 
+  Mount  - A corresponding subtree of component renders or effects was mounted. 
+  Unmount  - A corresponding subtree of component renders or effects was unmounted. 
+  Reconnect  - Similar to Mount, but limited to cases when   &lt;Activity&gt;   is used. 
+  Disconnect  - Similar to Unmount, but limited to cases when   &lt;Activity&gt;   is used. 
+ 
+ Changed props            
+ In development builds, when you click on a component render entry, you can inspect potential changes in props. You can use this information to identify unnecessary renders. 
+    
+ Server            
+    
+ Server Requests            
+ The Server Requests track visualized all Promises that eventually end up in a React Server Component. This includes any  async  operations like calling  fetch  or async Node.js file operations. 
+ React will try to combine Promises that are started from inside third-party code into a single span representing the the duration of the entire operation blocking 1st party code.
+For example, a third party library method called  getUser  that calls  fetch  internally multiple times will be represented as a single span called  getUser , instead of showing multiple  fetch  spans. 
+ Clicking on spans will show you a stack trace of where the Promise was created as well as a view of the value that the Promise resolved to, if available. 
+ Rejected Promises are displayed as red with their rejected value. 
+ Server Components            
+ The Server Components tracks visualize the durations of React Server Components Promises they awaited. Timings are displayed as a flamegraph, where each entry represents the duration of the corresponding component render and all its descendant children components. 
+ If you await a Promise, React will display duration of that Promise. To see all I/O operations, use the Server Requests track. 
+ Different colors are used to indicate the duration of the component render. The darker the color, the longer the duration. 
+ The Server Components track group will always contain a “Primary” track. If React is able to render Server Components concurrently, it will display addititional “Parallel” tracks.
+If more than 8 Server Components are rendered concurrently, React will associate them with the last “Parallel” track instead of adding more tracks.                 Next  React DevTools for agents                                                                                                                                                                  Copyright © Meta Platforms, Inc  no uwu plz  uwu?  Logo by @sawaratsuki1004      Learn React    Quick Start    Installation    Describing the UI    Adding Interactivity    Managing State    Escape Hatches      API Reference    React APIs    React DOM APIs      Community    Code of Conduct    Meet the Team    Docs Contributors    Acknowledgements     More   Blog    React Native    Privacy    Terms                                          On this page     Overview    Usage     Using profiling builds     Tracks     Scheduler     Components     Server          {"props":{"pageProps":{"toc":"[{\"url\":\"#\",\"text\":\"Overview\",\"depth\":2},{\"url\":\"#usage\",\"depth\":2,\"text\":\"Usage \"},{\"url\":\"#using-profiling-builds\",\"depth\":3,\"text\":\"Using profiling builds \"},{\"url\":\"#tracks\",\"depth\":2,\"text\":\"Tracks \"},{\"url\":\"#scheduler\",\"depth\":3,\"text\":\"Scheduler \"},{\"url\":\"#components\",\"depth\":3,\"text\":\"Components \"},{\"url\":\"#server\",\"depth\":3,\"text\":\"Server \"}]","content":"[[\"$r\",\"MaxWidth\",\"last\",{\"children\":[[\"$r\",\"Intro\",null,{\"children\":[\"$r\",\"p\",null,{\"children\":\"React Performance tracks are specialized custom entries that appear on the Performance panel’s timeline in your browser developer tools.\"}]}],\"\\n\",[\"$r\",\"p\",null,{\"children\":\"These tracks are designed to provide developers with comprehensive insights into their React application’s performance by visualizing React-specific events and metrics alongside other critical data sources such as network requests, JavaScript execution, and event loop activity, all synchronized on a unified timeline within the Performance panel for a complete understanding of application behavior.\"}],\"\\n\",[\"$r\",\"div\",null,{\"style\":{\"display\":\"flex\",\"justifyContent\":\"center\",\"marginBottom\":\"1rem\"},\"children\":[[\"$r\",\"img\",null,{\"className\":\"w-full light-image\",\"src\":\"/images/docs/performance-tracks/overview.png\",\"alt\":\"React Performance Tracks\"}],[\"$r\",\"img\",null,{\"className\":\"w-full dark-image\",\"src\":\"/images/docs/performance-tracks/overview.dark.png\",\"alt\":\"React Performance Tracks\"}]]}],\"\\n\",[\"$r\",\"InlineToc\",null,{}],\"\\n\",[\"$r\",\"hr\",null,{}],\"\\n\",[\"$r\",\"h2\",null,{\"id\":\"usage\",\"children\":\"Usage \"}],\"\\n\",[\"$r\",\"p\",null,{\"children\":\"React Performance tracks are only available in development and profiling builds of React:\"}],\"\\n\",[\"$r\",\"ul\",null,{\"children\":[\"\\n\",[\"$r\",\"li\",null,{\"children\":[[\"$r\",\"strong\",null,{\"children\":\"Development\"}],\": enabled by default.\"]}],\"\\n\",[\"$r\",\"li\",null,{\"children\":[[\"$r\",\"strong\",null,{\"children\":\"Profiling\"}],\": Only Scheduler tracks are enabled by default. The Components track only lists Components that are in subtrees wrapped with \",[\"$r\",\"a\",null,{\"href\":\"/reference/react/Profiler\",\"children\":[\"$r\",\"code\",null,{\"children\":\"\u003cProfiler\u003e\"}]}],\". If you have \",[\"$r\",\"a\",null,{\"href\":\"/learn/react-developer-tools\",\"children\":\"React Developer Tools extension\"}],\" enabled, all Components are included in the Components track even if they’re not wrapped in \",[\"$r\",\"code\",null,{\"children\":\"\u003cProfiler\u003e\"}],\". Server tracks are not available in profiling builds.\"]}],\"\\n\"]}],\"\\n\",[\"$r\",\"p\",null,{\"children\":[\"If enabled, tracks should appear automatically in the traces you record with the Performance panel of browsers that provide \",[\"$r\",\"a\",null,{\"href\":\"https://developer.chrome.com/docs/devtools/performance/extension\",\"target\":\"_blank\",\"rel\":\"nofollow noopener noreferrer\",\"children\":\"extensibility APIs\"}],\".\"]}],\"\\n\",[\"$r\",\"Pitfall\",null,{\"children\":[\"$r\",\"p\",null,{\"children\":\"The profiling instrumentation that powers React Performance tracks adds some additional overhead, so it is disabled in production builds by default.\\nServer Components and Server Requests tracks are only available in development builds.\"}]}],\"\\n\",[\"$r\",\"h3\",null,{\"id\":\"using-profiling-builds\",\"children\":\"Using profiling builds \"}],\"\\n\",[\"$r\",\"p\",null,{\"children\":[\"In addition to production and development builds, React also includes a special profiling build.\\nTo use profiling builds, you have to use \",[\"$r\",\"code\",null,{\"children\":\"react-dom/profiling\"}],\" instead of \",[\"$r\",\"code\",null,{\"children\":\"react-dom/client\"}],\".\\nWe recommend that you alias \",[\"$r\",\"code\",null,{\"children\":\"react-dom/client\"}],\" to \",[\"$r\",\"code\",null,{\"children\":\"react-dom/profiling\"}],\" at build time via bundler aliases instead of manually updating each \",[\"$r\",\"code\",null,{\"children\":\"react-dom/client\"}],\" import.\\nYour framework might have built-in support for enabling React’s profiling build.\"]}],\"\\n\",[\"$r\",\"hr\",null,{}],\"\\n\",[\"$r\",\"h2\",null,{\"id\":\"tracks\",\"children\":\"Tracks \"}],\"\\n\",[\"$r\",\"h3\",null,{\"id\":\"scheduler\",\"children\":\"Scheduler \"}],\"\\n\",[\"$r\",\"p\",null,{\"children\":\"The Scheduler is an internal React concept used for managing tasks with different priorities. This track consists of 4 subtracks, each representing work of a specific priority:\"}],\"\\n\",[\"$r\",\"ul\",null,{\"children\":[\"\\n\",[\"$r\",\"li\",null,{\"children\":[[\"$r\",\"strong\",null,{\"children\":\"Blocking\"}],\" - The synchronous updates, which could’ve been initiated by user interactions.\"]}],\"\\n\",[\"$r\",\"li\",null,{\"children\":[[\"$r\",\"strong\",null,{\"children\":\"Transition\"}],\" - Non-blocking work that happens in the background, usually initiated via \",[\"$r\",\"a\",null,{\"href\":\"/reference/react/startTransition\",\"children\":[\"$r\",\"code\",null,{\"children\":\"startTransition\"}]}],\".\"]}],\"\\n\",[\"$r\",\"li\",null,{\"children\":[[\"$r\",\"strong\",null,{\"children\":\"Suspense\"}],\" - Work related to Suspense boundaries, such as displaying fallbacks or revealing content.\"]}],\"\\n\",[\"$r\",\"li\",null,{\"children\":[[\"$r\",\"strong\",null,{\"children\":\"Idle\"}],\" - The lowest priority work that is done when there are no other tasks with higher priority.\"]}],\"\\n\"]}],\"\\n\",[\"$r\",\"div\",null,{\"style\":{\"display\":\"flex\",\"justifyContent\":\"center\",\"marginBottom\":\"1rem\"},\"children\":[[\"$r\",\"img\",null,{\"className\":\"w-full light-image\",\"src\":\"/images/docs/performance-tracks/scheduler.png\",\"alt\":\"Scheduler track\"}],[\"$r\",\"img\",null,{\"className\":\"w-full dark-image\",\"src\":\"/images/docs/performance-tracks/scheduler.dark.png\",\"alt\":\"Scheduler track\"}]]}],\"\\n\",[\"$r\",\"h4\",null,{\"id\":\"renders\",\"children\":\"Renders \"}],\"\\n\",[\"$r\",\"p\",null,{\"children\":\"Every render pass consists of multiple phases that you can see on a timeline:\"}],\"\\n\",[\"$r\",\"ul\",null,{\"children\":[\"\\n\",[\"$r\",\"li\",null,{\"children\":[[\"$r\",\"strong\",null,{\"children\":\"Update\"}],\" - this is what caused a new render pass.\"]}],\"\\n\",[\"$r\",\"li\",null,{\"children\":[[\"$r\",\"strong\",null,{\"children\":\"Render\"}],\" - React renders the updated subtree by calling render functions of components. You can see the rendered components subtree on \",[\"$r\",\"a\",null,{\"href\":\"#components\",\"children\":\"Components track\"}],\", which follows the same color scheme.\"]}],\"\\n\",[\"$r\",\"li\",null,{\"children\":[[\"$r\",\"strong\",null,{\"children\":\"Commit\"}],\" - After rendering components, React will submit the changes to the DOM and run layout effects, like \",[\"$r\",\"a\",null,{\"href\":\"/reference/react/useLayoutEffect\",\"children\":[\"$r\",\"code\",null,{\"children\":\"useLayoutEffect\"}]}],\".\"]}],\"\\n\",[\"$r\",\"li\",null,{\"children\":[[\"$r\",\"strong\",null,{\"children\":\"Remaining Effects\"}],\" - React runs passive effects of a rendered subtree. This usually happens after the paint, and this is when React runs hooks like \",[\"$r\",\"a\",null,{\"href\":\"/reference/react/useEffect\",\"children\":[\"$r\",\"code\",null,{\"children\":\"useEffect\"}]}],\". One known exception is user interactions, like clicks, or other discrete events. In this scenario, this phase could run before the paint.\"]}],\"\\n\"]}],\"\\n\",[\"$r\",\"div\",null,{\"style\":{\"display\":\"flex\",\"justifyContent\":\"center\",\"marginBottom\":\"1rem\"},\"children\":[[\"$r\",\"img\",null,{\"className\":\"w-full light-image\",\"src\":\"/images/docs/performance-tracks/scheduler-update.png\",\"alt\":\"Scheduler track: updates\"}],[\"$r\",\"img\",null,{\"className\":\"w-full dark-image\",\"src\":\"/images/docs/performance-tracks/scheduler-update.dark.png\",\"alt\":\"Scheduler track: updates\"}]]}],\"\\n\",[\"$r\",\"p\",null,{\"children\":[[\"$r\",\"a\",null,{\"href\":\"/learn/render-and-commit\",\"children\":\"Learn more about renders and commits\"}],\".\"]}],\"\\n\",[\"$r\",\"h4\",null,{\"id\":\"cascading-updates\",\"children\":\"Cascading updates \"}],\"\\n\",[\"$r\",\"p\",null,{\"children\":\"Cascading updates is one of the patterns for performance regressions. If an update was scheduled during a render pass, React could discard completed work and start a new pass.\"}],\"\\n\",[\"$r\",\"p\",null,{\"children\":\"In development builds, React can show you which Component scheduled a new update. This includes both general updates and cascading ones. You can see the enhanced stack trace by clicking on the “Cascading update” entry, which should also display the name of the method that scheduled an update.\"}],\"\\n\",[\"$r\",\"div\",null,{\"style\":{\"display\":\"flex\",\"justifyContent\":\"center\",\"marginBottom\":\"1rem\"},\"children\":[[\"$r\",\"img\",null,{\"className\":\"w-full light-image\",\"src\":\"/images/docs/performance-tracks/scheduler-cascading-update.png\",\"alt\":\"Scheduler track: cascading updates\"}],[\"$r\",\"img\",null,{\"className\":\"w-full dark-image\",\"src\":\"/images/docs/performance-tracks/scheduler-cascading-update.dark.png\",\"alt\":\"Scheduler track: cascading updates\"}]]}],\"\\n\",[\"$r\",\"p\",null,{\"children\":[[\"$r\",\"a\",null,{\"href\":\"/learn/you-might-not-need-an-effect\",\"children\":\"Learn more about Effects\"}],\".\"]}],\"\\n\",[\"$r\",\"h3\",null,{\"id\":\"components\",\"children\":\"Components \"}],\"\\n\",[\"$r\",\"p\",null,{\"children\":\"The Components track visualizes the durations of React components. They are displayed as a flamegraph, where each entry represents the duration of the corresponding component render and all its descendant children components.\"}],\"\\n\",[\"$r\",\"div\",null,{\"style\":{\"display\":\"flex\",\"justifyContent\":\"center\",\"marginBottom\":\"1rem\"},\"children\":[[\"$r\",\"img\",null,{\"className\":\"w-full light-image\",\"src\":\"/images/docs/performance-tracks/components-render.png\",\"alt\":\"Components track: render durations\"}],[\"$r\",\"img\",null,{\"className\":\"w-full dark-image\",\"src\":\"/images/docs/performance-tracks/components-render.dark.png\",\"alt\":\"Components track: render durations\"}]]}],\"\\n\",[\"$r\",\"p\",null,{\"children\":\"Similar to render durations, effect durations are also represented as a flamegraph, but with a different color scheme that aligns with the corresponding phase on the Scheduler track.\"}],\"\\n\",[\"$r\",\"div\",null,{\"style\":{\"display\":\"flex\",\"justifyContent\":\"center\",\"marginBottom\":\"1rem\"},\"children\":[[\"$r\",\"img\",null,{\"className\":\"w-full light-image\",\"src\":\"/images/docs/performance-tracks/components-effects.png\",\"alt\":\"Components track: effects durations\"}],[\"$r\",\"img\",null,{\"className\":\"w-full dark-image\",\"src\":\"/images/docs/performance-tracks/components-effects.dark.png\",\"alt\":\"Components track: effects durations\"}]]}],\"\\n\",[\"$r\",\"Note\",null,{\"children\":[[\"$r\",\"p\",null,{\"children\":\"Unlike renders, not all effects are shown on the Components track by default.\"}],[\"$r\",\"p\",null,{\"children\":\"To maintain performance and prevent UI clutter, React will only display those effects, which had a duration of 0.05ms or longer, or triggered an update.\"}]]}],\"\\n\",[\"$r\",\"p\",null,{\"children\":\"Additional events may be displayed during the render and effects phases:\"}],\"\\n\",[\"$r\",\"ul\",null,{\"children\":[\"\\n\",[\"$r\",\"li\",null,{\"children\":[[\"$r\",\"span\",null,{\"style\":{\"padding\":\"0.125rem 0.25rem\",\"backgroundColor\":\"#facc15\",\"color\":\"#1f1f1fff\"},\"children\":\"Mount\"}],\" - A corresponding subtree of component renders or effects was mounted.\"]}],\"\\n\",[\"$r\",\"li\",null,{\"children\":[[\"$r\",\"span\",null,{\"style\":{\"padding\":\"0.125rem 0.25rem\",\"backgroundColor\":\"#facc15\",\"color\":\"#1f1f1fff\"},\"children\":\"Unmount\"}],\" - A corresponding subtree of component renders or effects was unmounted.\"]}],\"\\n\",[\"$r\",\"li\",null,{\"children\":[[\"$r\",\"span\",null,{\"style\":{\"padding\":\"0.125rem 0.25rem\",\"backgroundColor\":\"#facc15\",\"color\":\"#1f1f1fff\"},\"children\":\"Reconnect\"}],\" - Similar to Mount, but limited to cases when \",[\"$r\",\"a\",null,{\"href\":\"/reference/react/Activity\",\"children\":[\"$r\",\"code\",null,{\"children\":\"\u003cActivity\u003e\"}]}],\" is used.\"]}],\"\\n\",[\"$r\",\"li\",null,{\"children\":[[\"$r\",\"span\",null,{\"style\":{\"padding\":\"0.125rem 0.25rem\",\"backgroundColor\":\"#facc15\",\"color\":\"#1f1f1fff\"},\"children\":\"Disconnect\"}],\" - Similar to Unmount, but limited to cases when \",[\"$r\",\"a\",null,{\"href\":\"/reference/react/Activity\",\"children\":[\"$r\",\"code\",null,{\"children\":\"\u003cActivity\u003e\"}]}],\" is used.\"]}],\"\\n\"]}],\"\\n\",[\"$r\",\"h4\",null,{\"id\":\"changed-props\",\"children\":\"Changed props \"}],\"\\n\",[\"$r\",\"p\",null,{\"children\":\"In development builds, when you click on a component render entry, you can inspect potential changes in props. You can use this information to identify unnecessary renders.\"}],\"\\n\",[\"$r\",\"div\",null,{\"style\":{\"display\":\"flex\",\"justifyContent\":\"center\",\"marginBottom\":\"1rem\"},\"children\":[[\"$r\",\"img\",null,{\"className\":\"w-full light-image\",\"src\":\"/images/docs/performance-tracks/changed-props.png\",\"alt\":\"Components track: changed props\"}],[\"$r\",\"img\",null,{\"className\":\"w-full dark-image\",\"src\":\"/images/docs/performance-tracks/changed-props.dark.png\",\"alt\":\"Components track: changed props\"}]]}],\"\\n\",[\"$r\",\"h3\",null,{\"id\":\"server\",\"children\":\"Server \"}],\"\\n\",[\"$r\",\"div\",null,{\"style\":{\"display\":\"flex\",\"justifyContent\":\"center\",\"marginBottom\":\"1rem\"},\"children\":[[\"$r\",\"img\",null,{\"className\":\"w-full light-image\",\"src\":\"/images/docs/performance-tracks/server-overview.png\",\"alt\":\"React Server Performance Tracks\"}],[\"$r\",\"img\",null,{\"className\":\"w-full dark-image\",\"src\":\"/images/docs/performance-tracks/server-overview.dark.png\",\"alt\":\"React Server Performance Tracks\"}]]}],\"\\n\",[\"$r\",\"h4\",null,{\"id\":\"server-requests\",\"children\":\"Server Requests \"}],\"\\n\",[\"$r\",\"p\",null,{\"children\":[\"The Server Requests track visualized all Promises that eventually end up in a React Server Component. This includes any \",[\"$r\",\"code\",null,{\"children\":\"async\"}],\" operations like calling \",[\"$r\",\"code\",null,{\"children\":\"fetch\"}],\" or async Node.js file operations.\"]}],\"\\n\",[\"$r\",\"p\",null,{\"children\":[\"React will try to combine Promises that are started from inside third-party code into a single span representing the the duration of the entire operation blocking 1st party code.\\nFor example, a third party library method called \",[\"$r\",\"code\",null,{\"children\":\"getUser\"}],\" that calls \",[\"$r\",\"code\",null,{\"children\":\"fetch\"}],\" internally multiple times will be represented as a single span called \",[\"$r\",\"code\",null,{\"children\":\"getUser\"}],\", instead of showing multiple \",[\"$r\",\"code\",null,{\"children\":\"fetch\"}],\" spans.\"]}],\"\\n\",[\"$r\",\"p\",null,{\"children\":\"Clicking on spans will show you a stack trace of where the Promise was created as well as a view of the value that the Promise resolved to, if available.\"}],\"\\n\",[\"$r\",\"p\",null,{\"children\":\"Rejected Promises are displayed as red with their rejected value.\"}],\"\\n\",[\"$r\",\"h4\",null,{\"id\":\"server-components\",\"children\":\"Server Components \"}],\"\\n\",[\"$r\",\"p\",null,{\"children\":\"The Server Components tracks visualize the durations of React Server Components Promises they awaited. Timings are displayed as a flamegraph, where each entry represents the duration of the corresponding component render and all its descendant children components.\"}],\"\\n\",[\"$r\",\"p\",null,{\"children\":\"If you await a Promise, React will display duration of that Promise. To see all I/O operations, use the Server Requests track.\"}],\"\\n\",[\"$r\",\"p\",null,{\"children\":\"Different colors are used to indicate the duration of the component render. The darker the color, the longer the duration.\"}],\"\\n\",[\"$r\",\"p\",null,{\"children\":\"The Server Components track group will always contain a “Primary” track. If React is able to render Server Components concurrently, it will display addititional “Parallel” tracks.\\nIf more than 8 Server Components are rendered concurrently, React will associate them with the last “Parallel” track instead of adding more tracks.\"}]]}]]","meta":{"title":"React Performance tracks"},"languages":null},"__N_SSG":true},"page":"/[[...markdownPath]]","query":{"markdownPath":["reference","dev-tools","react-performance-tracks"]},"buildId":"iL-S_VcpSPApikCxaBjlp","isFallback":false,"gsp":true,"scriptLoader":[]}   
